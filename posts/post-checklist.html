@@ -1,0 +1,162 @@
+<title>メンタルジム 投稿チェック</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap">
+<style id="app-style">
+/* Layout: one calm column; sticky progress header, filter chips, category groups of post cards with a check toggle */
+:root{
+  --bg:#f5f4f8; --surface:#ffffff; --fg:#2b2733; --muted:#6f6879; --line:#e3dfea;
+  --accent:#7a4f8c; --accent-soft:#efe6f3; --done:#3f7d62; --done-soft:#e3f1ea;
+  --display:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Noto Sans JP",sans-serif;
+  --body:"Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1b1920; --surface:#25222c; --fg:#ece8f1; --muted:#a59db0; --line:#3a3542;
+  --accent:#c79ad9; --accent-soft:#3a2d42; --done:#7cc8a3; --done-soft:#223a30; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1b1920; --surface:#25222c; --fg:#ece8f1; --muted:#a59db0; --line:#3a3542;
+  --accent:#c79ad9; --accent-soft:#3a2d42; --done:#7cc8a3; --done-soft:#223a30; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.75}
+.wrap{max-width:720px;margin:0 auto;padding-inline:16px;padding-block:0 48px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:18px 12px;border-bottom:1px solid var(--line);display:grid;gap:10px}
+h1{font-family:var(--display);font-weight:700;font-size:1.35rem;margin:0;text-wrap:balance;line-height:1.4}
+.meta{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;color:var(--muted);font-size:.85rem}
+.count{font-family:var(--display);font-size:1.1rem;color:var(--fg);font-variant-numeric:tabular-nums}
+.count b{color:var(--done);font-size:1.5rem}
+.bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--done);transition:width .3s}
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.filters button{font:inherit;font-size:.85rem;padding:4px 14px;border-radius:99px;border:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.save{font-size:.8rem;color:var(--muted);min-height:1.2em}
+.notice{font-size:.8rem;color:var(--muted);background:var(--accent-soft);padding:8px 12px;border-radius:8px}
+h2{font-family:var(--display);font-size:1rem;color:var(--accent);margin:28px 0 10px;letter-spacing:.04em}
+.list{display:grid;gap:12px}
+.post{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:grid;gap:8px;min-width:0}
+.post.is-done{background:var(--done-soft);border-color:transparent}
+.post.is-done .text{color:var(--muted)}
+.head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.no{font-family:var(--display);font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums}
+.theme{font-weight:700;flex:1;min-width:0}
+.chip{font-size:.72rem;padding:1px 8px;border-radius:99px;background:var(--accent-soft);color:var(--accent);letter-spacing:.03em}
+.text{white-space:pre-wrap;margin:0;font-size:.95rem;overflow-wrap:anywhere}
+.text.clamp{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.foot{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.check{display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-weight:500;padding:4px 12px 4px 6px;border-radius:99px;border:1px solid var(--line);background:var(--surface);user-select:none}
+.check input{width:20px;height:20px;accent-color:var(--done);margin:0;cursor:pointer}
+.is-done .check{border-color:var(--done);color:var(--done)}
+.date{font-size:.8rem;color:var(--done);font-variant-numeric:tabular-nums}
+.foot .spacer{flex:1}
+.link{font:inherit;font-size:.82rem;background:none;border:none;color:var(--accent);cursor:pointer;padding:4px 6px;text-decoration:underline;text-underline-offset:3px}
+button:focus-visible,.check input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.empty{color:var(--muted);text-align:center;padding:32px 0}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+<div class="wrap">
+  <header>
+    <h1>女性のインサイト投稿 30本</h1>
+    <div class="meta"><span class="count"><b id="done-n">0</b> / <span id="total-n">30</span> 投稿済み</span><span id="save" class="save" role="status"></span></div>
+    <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+    <div class="filters" role="group" aria-label="表示の切り替え">
+      <button type="button" data-f="all" aria-pressed="true">すべて</button>
+      <button type="button" data-f="todo" aria-pressed="false">未投稿</button>
+      <button type="button" data-f="done" aria-pressed="false">投稿済み</button>
+    </div>
+    <p id="notice" class="notice" hidden></p>
+  </header>
+  <main id="main"></main>
+</div>
+<script type="application/json" id="posts-data">[{"id": "01", "theme": "休むことに罪悪感がある", "type": "反転型", "cat": "A. 頑張りすぎ・休めない", "text": "休むのが下手な人ほど「休む理由」を探しています。\n疲れたから休む、ではなく\n「ここまでやったから休んでいい」と許可を取ろうとする。\n\nでも休息は、ご褒美ではなくメンテナンス。\n車にガソリンを入れるのに、理由はいりません。"}, {"id": "02", "theme": "「ちゃんとしなきゃ」が口ぐせ", "type": "リスト型", "cat": "A. 頑張りすぎ・休めない", "text": "頑張りすぎて心が疲れやすい人の特徴5つ\n・「大丈夫？」と聞かれると反射的に「大丈夫」と言う\n・頼むより自分でやった方が早いと思う\n・予定がない休日に不安になる\n・人の機嫌に敏感\n・できたことより、できなかったことを覚えている\n\n3つ当てはまったら、今日は“何もしない予定”を入れてください。"}, {"id": "03", "theme": "家事・仕事・育児で余裕がない", "type": "生活習慣処方型", "cat": "A. 頑張りすぎ・休めない", "text": "余裕がない日にいちばん削ってはいけないのは睡眠です。\n睡眠が足りないと、同じ出来事でもイライラや不安を感じやすくなります。\n\n「夜しか自分の時間がない」と夜更かしするほど、翌日の余裕が消えていく。\n自分時間は夜ではなく、朝の10分に移してみてください。"}, {"id": "04", "theme": "完璧にできないならやりたくない", "type": "定義型", "cat": "A. 頑張りすぎ・休めない", "text": "完璧主義の正体は、高い理想ではなく「失敗したときの自分を責める強さ」です。\n\nだから直すべきは基準ではなく、失敗したときの声かけ。\n「なんでできないの」を「ここまでできたね」に変えるだけで、動き出せる人になります。"}, {"id": "05", "theme": "休日に何もできず自己嫌悪", "type": "反転型", "cat": "A. 頑張りすぎ・休めない", "text": "「休日を無駄にした」と落ち込む人は多いけど、\n何もしなかった休日は、無駄ではなく“回復に全部使った日”です。\n\n回復した分は、平日のどこかで必ず返ってきます。\n自己嫌悪の分だけ、回復が目減りするのがもったいない。"}, {"id": "06", "theme": "嫌われるのが怖くて断れない", "type": "知見→テクニック型", "cat": "B. 人間関係・他人軸", "text": "断れない人は「断る＝関係が壊れる」と思い込んでいます。\nでも実際は、断り方さえ丁寧なら、相手はこちらが思うほど気にしていないことが多い。\n\n使えるのは「感謝＋理由＋代案」\n「誘ってくれてありがとう。今週は余裕がなくて、来月ならぜひ」\n断ったのに、関係はむしろ良くなります。"}, {"id": "07", "theme": "LINEの返信が遅いと不安になる", "type": "反転型", "cat": "B. 人間関係・他人軸", "text": "返信が遅いと「何かしたかな」と考えてしまう。\nでも相手の返信速度は、あなたへの気持ちではなく、相手の“今の余裕”を表しているだけです。\n\n不安になったら、スマホを置いて外を5分歩く。\n思考は、体を動かすと止まります。"}, {"id": "08", "theme": "いい人をやめたい", "type": "定義型", "cat": "B. 人間関係・他人軸", "text": "「いい人」と「優しい人」は違います。\nいい人は、嫌われないために我慢する人。\n優しい人は、相手のために本音を伝えられる人。\n\n我慢が続く関係は、いつか爆発するか、静かに離れるかのどちらか。\n本当に大切な人にこそ、小さな本音を。"}, {"id": "09", "theme": "職場の人間関係に疲れる", "type": "リスト型", "cat": "B. 人間関係・他人軸", "text": "職場の人間関係で消耗しない3つのルール\n①相手の機嫌は、相手の担当\n②「わかってもらう」より「伝わればOK」\n③職場は仲良くなる場所ではなく、気持ちよく働く場所\n\n全員に好かれる必要はありません。\n2割と気が合えば、職場としては十分うまくいっています。"}, {"id": "10", "theme": "人と比べて落ち込む", "type": "知見→テクニック型", "cat": "B. 人間関係・他人軸", "text": "人は無意識に、自分より上に見える人と比べて落ち込みやすい生き物です。\nSNSは特に、他人の「一番いい瞬間」と自分の「普通の日常」を比べる装置。\n\n対策はシンプル。\n比べる相手を「過去の自分」に固定する。\n「半年前の私と比べてどう？」で、ちゃんと前に進んでいることに気づけます。"}, {"id": "11", "theme": "察してほしいのに伝わらない", "type": "反転型", "cat": "B. 人間関係・他人軸", "text": "「言わなくてもわかってほしい」は、相手への期待というより、\n“言ったのに断られる”のが怖い気持ちの裏返しです。\n\n察してもらうのを待つより、一言で伝える方が関係はずっとラク。\n「今日は話を聞いてほしいだけ」\nこの一文で、すれ違いの半分はなくなります。"}, {"id": "12", "theme": "悪口・マウントの輪から抜けたい", "type": "定義型", "cat": "B. 人間関係・他人軸", "text": "マウントを取る人の正体は、自信がある人ではなく、自信を確認し続けないと不安な人です。\n\nだから張り合う必要も、傷つく必要もない。\n「そうなんだ、すごいね」で会話を終わらせる。\n相手の土俵に上がらないのが、いちばんの自衛です。"}, {"id": "13", "theme": "自分に自信がない", "type": "定義型", "cat": "C. 自己肯定感・自信", "text": "自信は「できた経験」から生まれるものだと思われがち。\nでも実際は、「自分との約束を守った回数」で育ちます。\n\n大きな目標じゃなくていい。\n「朝コップ一杯の水を飲む」を守るだけで、自分への信頼は少しずつ積み上がります。"}, {"id": "14", "theme": "褒められても素直に受け取れない", "type": "知見→テクニック型", "cat": "C. 自己肯定感・自信", "text": "褒め言葉を「いやいや」と否定するクセがある人へ。\n否定するたびに、脳は「私は褒められる価値がない」と学習し直してしまいます。\n\n今日からは「ありがとう、うれしい」だけで返す。\n謙遜しなくても、あなたの印象は悪くなりません。むしろ上がります。"}, {"id": "15", "theme": "夜になると反省会が始まる", "type": "生活習慣処方型", "cat": "C. 自己肯定感・自信", "text": "夜に自分を責める思考が止まらないのは、あなたの性格ではなく「疲れた脳」のせいです。\n疲れているときの脳は、ネガティブな情報に引っぱられやすい。\n\n夜の反省は禁止。\n代わりに「今日よかったこと3つ」を書いて寝る。\n考えるのは、朝の自分に任せましょう。"}, {"id": "16", "theme": "「私なんて」と言ってしまう", "type": "反転型", "cat": "C. 自己肯定感・自信", "text": "「私なんて」は謙虚さではなく、自分への小さな攻撃です。\n毎日言っていれば、毎日少しずつ傷つきます。\n\n言いそうになったら「私なりに」に言い換えてみてください。\n「私なんてまだまだ」→「私なりに頑張ってる」\n一語変えるだけで、自分の扱い方が変わります。"}, {"id": "17", "theme": "自分の好きなことがわからない", "type": "リスト型", "cat": "C. 自己肯定感・自信", "text": "「好きなことがわからない」ときの見つけ方3つ\n①時間を忘れた経験を思い出す\n②人に頼まれなくてもやってしまうことを探す\n③「嫌いじゃない」から始める\n\n好きは“見つける”ものではなく“育てる”もの。\nずっと他人を優先してきた人ほど、まず小さな「ちょっと好き」を大事にしてください。"}, {"id": "18", "theme": "モヤモヤが言葉にならない", "type": "知見→テクニック型", "cat": "D. 感情・不安のコントロール", "text": "心理学では、感情に名前をつけるだけで、気持ちが落ち着きやすくなると言われています。\n\n「なんかしんどい」を\n「期待してたのに、わかってもらえなくて寂しい」まで分解する。\n正体がわかった不安は、半分に小さくなります。"}, {"id": "19", "theme": "不安で眠れない", "type": "生活習慣処方型", "cat": "D. 感情・不安のコントロール", "text": "不安で眠れない夜は、頭の中にあることを全部紙に書き出してください。\nやること、心配なこと、モヤモヤ、ぜんぶ。\n\n頭は「忘れちゃいけない」と思っている間、ずっと考え続けます。\n紙に預ければ、脳は安心して休めます。\nスマホのメモより、手書きがおすすめです。"}, {"id": "20", "theme": "生理前に気分が落ち込む", "type": "反転型", "cat": "D. 感情・不安のコントロール", "text": "生理前にイライラしたり落ち込んだりする自分を責めていませんか。\nそれは性格の問題ではなく、ホルモンの波の問題です。\n\n“今の私はホルモン期”と名前をつけるだけで、自分を責める気持ちは軽くなります。\n大事な決断や話し合いは、波が過ぎてからで大丈夫。\nつらさが強いときは、婦人科に相談するのも立派なセルフケアです。"}, {"id": "21", "theme": "イライラして後悔する", "type": "知見→テクニック型", "cat": "D. 感情・不安のコントロール", "text": "怒りのピークは長く続かないと言われています。\nだからイラッとした瞬間に言葉を出さないことが、いちばんのコツ。\n\nおすすめは「6秒深呼吸＋その場を離れる」\nトイレに行く、お茶を入れる。\nワンクッション置くだけで、後悔する一言はほとんど防げます。"}, {"id": "22", "theme": "考えすぎて動けない", "type": "定義型", "cat": "D. 感情・不安のコントロール", "text": "考えすぎの正体は、慎重さではなく「失敗しない方法」を探し続けていることです。\nでも、失敗しない方法は、考えるだけでは見つかりません。\n\n動いてから考える。\n行動したあとの悩みは、行動する前の悩みよりずっと具体的で、解決しやすいから。"}, {"id": "23", "theme": "朝から気分が重い", "type": "生活習慣処方型", "cat": "D. 感情・不安のコントロール", "text": "朝から気分が重い日こそ、外に出て15分歩いてください。\n朝日を浴びて体を動かすと、心を安定させるセロトニンが働きやすくなり、体内時計も整います。\n\nやる気が出てから歩くのではなく、歩くからやる気が出る。\nメンタルは、気合いより生活習慣で整えるものです。"}, {"id": "24", "theme": "恋愛で不安になりやすい", "type": "反転型", "cat": "E. 恋愛・パートナー", "text": "恋愛で不安になるのは、相手を好きだからではなく、\n「自分には愛される価値がある」と思えていないからかもしれません。\n\n不安を相手で埋めようとするほど、関係は苦しくなる。\n相手に確認するより、自分を満たす時間を増やす。\nそれが結果的に、いちばん関係を安定させます。"}, {"id": "25", "theme": "尽くしすぎてしまう", "type": "定義型", "cat": "E. 恋愛・パートナー", "text": "尽くしすぎる恋愛の正体は、「役に立たないと大切にされない」という思い込みです。\n\nでも本当に大切にしてくれる人は、あなたが何かをしてくれるからではなく、あなたがいるから一緒にいる。\n何もしない自分でも受け入れてくれるか。\nそれが相手を見極めるいちばんの基準です。"}, {"id": "26", "theme": "パートナーにわかってもらえない", "type": "知見→テクニック型", "cat": "E. 恋愛・パートナー", "text": "パートナーへの不満は「あなたは〜してくれない」ではなく\n「私は〜してもらえるとうれしい」で伝えると届きやすくなります。\n\n主語を“あなた”から“私”に変えるだけで、責めている感じが消えるから。\n伝え方を変えるのは、我慢ではなく戦略です。"}, {"id": "27", "theme": "年齢に焦りを感じる", "type": "反転型", "cat": "F. 将来・年齢・生き方", "text": "「もうこの年だから」と思ったとき、思い出してほしいこと。\n今日のあなたは、これからの人生でいちばん若い。\n\n焦りは「遅れている」サインではなく、「本当はやりたいことがある」サインです。\n焦りを責めずに、その正体を聞いてあげてください。"}, {"id": "28", "theme": "このままでいいのか不安", "type": "定義型", "cat": "F. 将来・年齢・生き方", "text": "「このままでいいのかな」という不安の正体は、現状への不満ではなく、変わりたい自分からの合図です。\n\n大きく変えなくていい。\nいつもと違う道を通る、行ったことのないカフェに入る。\n小さな変化を選べる人は、大きな変化も選べるようになります。"}, {"id": "29", "theme": "何から変えればいいかわからない", "type": "リスト型", "cat": "F. 将来・年齢・生き方", "text": "メンタルを整えたい人が、今日から始める3つ\n①7時間眠る\n②朝15分歩く\n③寝る前に「よかったこと」を1つ書く\n\n心の問題を心だけで解決しようとすると、行き詰まります。\nまずは体から整える。心はあとからついてきます。"}, {"id": "30", "theme": "自分を大切にする方法がわからない", "type": "反転型（まとめ）", "cat": "F. 将来・年齢・生き方", "text": "自分を大切にするって、特別なことではありません。\n\n疲れたら休む。\n嫌なことは嫌と言う。\n好きなものを好きと言う。\nできたことを、ちゃんと認める。\n\n大切な友達にしてあげることを、自分にもしてあげる。\n安心は、誰かにもらうものではなく、自分の中に育てるものです。"}]</script>
+<script type="application/json" id="state-data">{"done":{}}</script>
+<script id="app-script">
+(function(){
+  const POSTS = JSON.parse(document.getElementById('posts-data').textContent);
+  let state = JSON.parse(document.getElementById('state-data').textContent || '{}');
+  if (!state.done) state.done = {};
+  let filter = 'all', artifact = null, mode = 'loading', timer = null, open = {};
+  const LS = 'mentalgym-posted';
+  try { const f = localStorage.getItem('mentalgym-filter'); if (f) filter = f; } catch(e){}
+
+  const $ = id => document.getElementById(id);
+  const today = () => { const d = new Date(); return d.getFullYear()+'/'+String(d.getMonth()+1).padStart(2,'0')+'/'+String(d.getDate()).padStart(2,'0'); };
+
+  function render(){
+    const doneN = POSTS.filter(p => state.done[p.id]).length;
+    $('done-n').textContent = doneN; $('total-n').textContent = POSTS.length;
+    $('bar').style.width = (doneN / POSTS.length * 100) + '%';
+    document.querySelectorAll('.filters button').forEach(b => b.setAttribute('aria-pressed', b.dataset.f === filter));
+    const main = $('main'); main.textContent = '';
+    const shown = POSTS.filter(p => filter === 'all' || (filter === 'done') === !!state.done[p.id]);
+    if (!shown.length){ const e = document.createElement('p'); e.className='empty'; e.textContent = filter==='done' ? 'まだ投稿済みの投稿はありません。' : '30本すべて投稿済みです。おつかれさまでした。'; main.append(e); return; }
+    let cat = null, list = null;
+    shown.forEach(p => {
+      if (p.cat !== cat){ cat = p.cat; const h = document.createElement('h2'); h.textContent = cat; list = document.createElement('div'); list.className='list'; main.append(h, list); }
+      const done = state.done[p.id];
+      const card = document.createElement('article'); card.className = 'post' + (done ? ' is-done' : '');
+      const head = document.createElement('div'); head.className='head';
+      const no = document.createElement('span'); no.className='no'; no.textContent = p.id;
+      const th = document.createElement('span'); th.className='theme'; th.textContent = p.theme;
+      const chip = document.createElement('span'); chip.className='chip'; chip.textContent = p.type;
+      head.append(no, th, chip);
+      const text = document.createElement('p'); text.className = 'text' + (done && !open[p.id] ? ' clamp' : ''); text.textContent = p.text;
+      const foot = document.createElement('div'); foot.className='foot';
+      const lab = document.createElement('label'); lab.className='check';
+      const cb = document.createElement('input'); cb.type='checkbox'; cb.id='done-'+p.id; cb.checked = !!done;
+      cb.addEventListener('change', () => toggle(p.id, cb.checked));
+      lab.append(cb, document.createTextNode('投稿済み'));
+      foot.append(lab);
+      if (done){ const d = document.createElement('span'); d.className='date'; d.textContent = done; foot.append(d); }
+      const sp = document.createElement('span'); sp.className='spacer'; foot.append(sp);
+      if (done){ const more = document.createElement('button'); more.type='button'; more.className='link'; more.textContent = open[p.id] ? '閉じる' : '全文を見る'; more.onclick = () => { open[p.id] = !open[p.id]; render(); }; foot.append(more); }
+      const copy = document.createElement('button'); copy.type='button'; copy.className='link'; copy.textContent='本文をコピー';
+      copy.onclick = () => {
+        const ok = () => { copy.textContent='コピーしました'; setTimeout(() => copy.textContent='本文をコピー', 1500); };
+        const fallback = () => { const r = document.createRange(); r.selectNodeContents(text); const s = getSelection(); s.removeAllRanges(); s.addRange(r); copy.textContent='選択しました'; };
+        try { navigator.clipboard.writeText(p.text).then(ok, fallback); } catch(e){ fallback(); }
+      };
+      foot.append(copy);
+      card.append(head, text, foot); list.append(card);
+    });
+  }
+
+  function toggle(id, on){
+    if (on) state.done[id] = today(); else delete state.done[id];
+    render();
+    if (mode === 'shared'){ $('save').textContent = '保存待ち…'; clearTimeout(timer); timer = setTimeout(save, 1200); }
+    else if (mode === 'local'){ try { localStorage.setItem(LS, JSON.stringify(state)); } catch(e){} }
+  }
+
+  function esc(s){ return s.replace(/</g, '\\u003c'); }
+  function buildDoc(){
+    const reset = (document.head.querySelector('style') || {}).textContent || '';
+    const parts = [
+      '<title>' + document.title + '</title>',
+      document.querySelector('link[href*="fonts.googleapis"]').outerHTML,
+      $('app-style').outerHTML,
+      document.querySelector('.wrap').outerHTML.replace(/<main id="main">[\s\S]*<\/main>/, '<main id="main"></main>'),
+      '<script type="application/json" id="posts-data">' + esc(JSON.stringify(POSTS)) + '<\/script>',
+      '<script type="application/json" id="state-data">' + esc(JSON.stringify(state)) + '<\/script>',
+      $('app-script').outerHTML
+    ];
+    return '<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>' + reset + '</style></head><body>' + parts.join('\n') + '</body></html>';
+  }
+  async function save(){
+    $('save').textContent = '保存中…';
+    try { await artifact.publish(buildDoc()); $('save').textContent = '保存しました'; }
+    catch(e){
+      if (e && (e.code === 'not_writer' || e.code === 'not_granted')){ mode = 'local'; try { localStorage.setItem(LS, JSON.stringify(state)); } catch(_){} const n = $('notice'); n.textContent = 'この画面では共有保存の権限がないため、チェックはこのブラウザ内にだけ保存されます。'; n.hidden = false; $('save').textContent = ''; return; }
+      $('save').textContent = (e && e.code === 'conflict') ? '別の画面で更新されたため再読み込みします' : '保存できませんでした。もう一度チェックし直してください'; }
+  }
+
+  document.querySelectorAll('.filters button').forEach(b => b.addEventListener('click', () => {
+    filter = b.dataset.f; try { localStorage.setItem('mentalgym-filter', filter); } catch(e){} render();
+  }));
+
+  render();
+  (async () => {
+    try { artifact = window.claude && window.claude.use ? await window.claude.use('artifact') : null; } catch(e){ artifact = null; }
+    if (artifact){ mode = 'shared'; return; }
+    mode = 'local';
+    try { const s = JSON.parse(localStorage.getItem(LS) || 'null'); if (s && s.done) { state = s; render(); } } catch(e){}
+    const n = $('notice'); n.textContent = 'この画面では共有保存ができないため、チェックはこのブラウザ内にだけ保存されます。'; n.hidden = false;
+  })();
+})();
+</script>
