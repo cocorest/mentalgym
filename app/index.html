@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>メンタルジム｜自分の中に安心を育てる</title>
+<meta name="description" content="ACT・セルフコンパッション・NVCをベースにした、毎日のこころのセルフケアアプリ">
+<meta name="theme-color" content="#fde8ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="メンタルジム">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink:        #e8a5b0;
+    --pink-light:  #f5cfd5;
+    --pink-pale:   #fdf0f2;
+    --pink-dark:   #c4697a;
+    --peach:       #f2c4a8;
+    --peach-light: #fae3d4;
+    --peach-pale:  #fef7f3;
+    --rose:        #d4687e;
+    --lavender:    #d5bfe8;
+    --lav-light:   #efe8f8;
+    --mint:        #cfe8dc;
+    --mint-dark:   #5f9a80;
+    --cream:       #fdf8f5;
+    --warm-white:  #fffcfa;
+    --brown:       #5c3d42;
+    --brown-mid:   #8a5f67;
+    --muted:       #a0747d;
+    --text:        #4a3035;
+    --card:        #ffffff;
+    --shadow:      0 4px 18px rgba(196,105,122,0.10);
+    --tabbar-h:    64px;
+    --safe-b:      env(safe-area-inset-bottom, 0px);
+    --safe-t:      env(safe-area-inset-top, 0px);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; }
+  body {
+    font-family: 'M PLUS Rounded 1c', 'Hiragino Maru Gothic ProN', 'Noto Sans JP', sans-serif;
+    background: var(--warm-white);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.7;
+    overscroll-behavior-y: none;
+    -webkit-font-smoothing: antialiased;
+  }
+  button, input, textarea { font: inherit; color: inherit; }
+  button { cursor: pointer; border: none; background: none; }
+  .serif { font-family: 'Zen Maru Gothic', sans-serif; }
+
+  /* ── レイアウト ── */
+  #app {
+    max-width: 520px;
+    margin: 0 auto;
+    min-height: 100%;
+    padding: calc(var(--safe-t) + 8px) 16px calc(var(--tabbar-h) + var(--safe-b) + 24px);
+    background: linear-gradient(180deg, #fde8ec 0%, #fdf0e8 220px, var(--warm-white) 420px);
+    background-repeat: no-repeat;
+  }
+  .screen { display: none; animation: fadeIn .35s ease; }
+  .screen.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+  header.top {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 2px 14px;
+  }
+  .logo { display: flex; align-items: center; gap: 8px; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; color: var(--brown); font-size: 16px; }
+  .logo img { width: 28px; height: 28px; border-radius: 8px; }
+  .date-chip { font-size: 12px; color: var(--muted); background: rgba(255,255,255,.7); padding: 4px 12px; border-radius: 99px; }
+
+  h1.page { font-family: 'Zen Maru Gothic', sans-serif; font-size: 22px; color: var(--brown); margin: 4px 2px 4px; }
+  p.lead { color: var(--brown-mid); font-size: 13px; margin: 0 2px 18px; }
+  h2.sec { font-family: 'Zen Maru Gothic', sans-serif; font-size: 16px; color: var(--brown); margin: 26px 2px 10px; display: flex; align-items: center; gap: 8px; }
+  h2.sec::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--pink); }
+
+  .card {
+    background: var(--card);
+    border-radius: 20px;
+    padding: 18px;
+    box-shadow: var(--shadow);
+    border: 1px solid #fbe3e7;
+  }
+  .card + .card { margin-top: 12px; }
+
+  /* ── ホーム ── */
+  .greet { font-family: 'Zen Maru Gothic', sans-serif; font-size: 21px; color: var(--brown); line-height: 1.5; margin: 2px 2px 4px; }
+  .greet-sub { font-size: 13px; color: var(--brown-mid); margin: 0 2px 18px; }
+
+  .message-card {
+    background: linear-gradient(135deg, #fff 0%, var(--pink-pale) 100%);
+    position: relative; overflow: hidden;
+  }
+  .message-card::after {
+    content: ''; position: absolute; right: -40px; top: -40px; width: 140px; height: 140px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,165,176,.25), transparent 70%);
+  }
+  .message-label { font-size: 11px; letter-spacing: .12em; color: var(--pink-dark); font-weight: 700; }
+  .message-text { font-family: 'Zen Maru Gothic', sans-serif; font-size: 17px; color: var(--brown); margin-top: 6px; line-height: 1.7; position: relative; z-index: 1; }
+
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 12px; }
+  .stat { background: rgba(255,255,255,.85); border-radius: 16px; padding: 12px 6px; text-align: center; border: 1px solid #fbe3e7; }
+  .stat b { display: block; font-size: 22px; color: var(--pink-dark); font-family: 'Zen Maru Gothic', sans-serif; line-height: 1.3; }
+  .stat span { font-size: 11px; color: var(--muted); }
+
+  .checkin-cta {
+    display: flex; align-items: center; gap: 14px; width: 100%; text-align: left;
+    background: var(--pink-dark); color: #fff; border-radius: 20px; padding: 16px 18px; margin-top: 14px;
+    box-shadow: 0 8px 22px rgba(196,105,122,.32); transition: transform .15s;
+  }
+  .checkin-cta:active { transform: scale(.98); }
+  .checkin-cta .emoji { font-size: 30px; }
+  .checkin-cta b { display: block; font-size: 16px; }
+  .checkin-cta small { font-size: 12px; opacity: .9; }
+  .checkin-done { background: #fff; color: var(--text); box-shadow: var(--shadow); border: 1px solid #fbe3e7; }
+  .checkin-done small { color: var(--muted); opacity: 1; }
+
+  .step-item { display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; border-bottom: 1px dashed var(--pink-light); }
+  .step-item:last-child { border-bottom: none; }
+  .check {
+    flex: none; width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--pink);
+    display: grid; place-items: center; color: #fff; font-size: 14px; margin-top: 1px; transition: all .2s;
+  }
+  .check.on { background: var(--pink-dark); border-color: var(--pink-dark); }
+  .step-item .txt { flex: 1; }
+  .step-item .txt small { display: block; color: var(--muted); font-size: 11px; }
+  .step-item.done .txt span { text-decoration: line-through; color: var(--muted); }
+  .empty { color: var(--muted); font-size: 13px; text-align: center; padding: 8px 0; }
+  .link-btn { color: var(--pink-dark); font-weight: 700; font-size: 13px; }
+
+  /* ── ワーク一覧 ── */
+  .work-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+  .work-card {
+    display: flex; align-items: center; gap: 14px; text-align: left; width: 100%;
+    background: #fff; border-radius: 18px; padding: 14px 16px; box-shadow: var(--shadow); border: 1px solid #fbe3e7;
+    transition: transform .15s;
+  }
+  .work-card:active { transform: scale(.98); }
+  .work-icon { flex: none; width: 48px; height: 48px; border-radius: 15px; display: grid; place-items: center; font-size: 24px; }
+  .work-card b { display: block; color: var(--brown); font-size: 15px; }
+  .work-card small { display: block; color: var(--muted); font-size: 12px; line-height: 1.5; }
+  .work-card .meta { margin-left: auto; flex: none; font-size: 11px; color: var(--muted); background: var(--pink-pale); padding: 3px 9px; border-radius: 99px; }
+  .tag { display: inline-block; font-size: 10px; color: var(--pink-dark); background: var(--pink-pale); padding: 1px 8px; border-radius: 99px; margin-bottom: 2px; font-weight: 700; }
+  .bg-pink { background: var(--pink-pale); }
+  .bg-peach { background: var(--peach-light); }
+  .bg-lav { background: var(--lav-light); }
+  .bg-mint { background: #e6f3ec; }
+
+  .recommend {
+    display: flex; gap: 14px; align-items: center; width: 100%; text-align: left;
+    background: linear-gradient(135deg, var(--lav-light), var(--pink-pale)); border-radius: 20px; padding: 16px; border: 1px solid #ecdcf3;
+  }
+  .recommend .work-icon { background: #fff; }
+  .recommend b { color: var(--brown); display: block; }
+  .recommend small { color: var(--brown-mid); font-size: 12px; display: block; line-height: 1.5; }
+
+  /* ── 記録 ── */
+  .chart-wrap { overflow: hidden; }
+  .chart-legend { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); margin-top: 4px; }
+  .seg { display: inline-flex; background: var(--pink-pale); border-radius: 99px; padding: 3px; margin-bottom: 10px; }
+  .seg button { padding: 5px 14px; border-radius: 99px; font-size: 12px; color: var(--brown-mid); }
+  .seg button.on { background: #fff; color: var(--pink-dark); font-weight: 700; box-shadow: 0 2px 8px rgba(196,105,122,.15); }
+  .day-head { font-size: 12px; color: var(--muted); margin: 18px 4px 8px; font-weight: 700; }
+  .entry { display: flex; gap: 12px; align-items: flex-start; }
+  .entry .face { font-size: 26px; line-height: 1.2; flex: none; width: 34px; text-align: center; }
+  .entry .body { flex: 1; min-width: 0; }
+  .entry .body b { color: var(--brown); font-size: 14px; }
+  .entry .time { font-size: 11px; color: var(--muted); margin-left: 6px; font-weight: 400; }
+  .entry .note { font-size: 13px; color: var(--brown-mid); white-space: pre-wrap; word-break: break-word; margin-top: 2px; }
+  .entry .del { color: var(--muted); font-size: 18px; padding: 0 4px; line-height: 1; flex: none; }
+  .chips-mini { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+  .chips-mini span { font-size: 11px; background: var(--pink-pale); color: var(--pink-dark); padding: 1px 8px; border-radius: 99px; }
+  .top-emotions { display: flex; flex-wrap: wrap; gap: 6px; }
+  .top-emotions span { font-size: 12px; background: var(--peach-pale); border: 1px solid var(--peach-light); padding: 3px 10px; border-radius: 99px; color: var(--brown-mid); }
+
+  /* ── 相談 ── */
+  .profile { display: flex; gap: 14px; align-items: center; }
+  .avatar { width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--pink-light), var(--peach-light)); display: grid; place-items: center; font-size: 28px; flex: none; }
+  .profile b { font-family: 'Zen Maru Gothic', sans-serif; color: var(--brown); font-size: 17px; display: block; }
+  .profile small { color: var(--muted); font-size: 12px; }
+  .plan { border-radius: 18px; padding: 16px; border: 1.5px solid var(--pink-light); background: #fff; }
+  .plan + .plan { margin-top: 10px; }
+  .plan.premium { border-color: var(--pink); background: linear-gradient(135deg, #fff, var(--pink-pale)); }
+  .plan .name { font-weight: 700; color: var(--brown); }
+  .plan .price { font-family: 'Zen Maru Gothic', sans-serif; font-size: 24px; color: var(--pink-dark); font-weight: 700; }
+  .plan .price small { font-size: 12px; color: var(--muted); font-weight: 400; }
+  .plan p { font-size: 12px; color: var(--brown-mid); }
+  .btn {
+    display: block; width: 100%; text-align: center; text-decoration: none;
+    background: var(--pink-dark); color: #fff; border-radius: 99px; padding: 13px 18px; font-weight: 700; font-size: 15px;
+    box-shadow: 0 6px 18px rgba(196,105,122,.28); transition: transform .15s, opacity .2s;
+  }
+  .btn:active { transform: scale(.98); }
+  .btn[disabled] { opacity: .45; box-shadow: none; }
+  .btn.ghost { background: #fff; color: var(--pink-dark); border: 1.5px solid var(--pink); box-shadow: none; }
+  .btn.small { padding: 9px 14px; font-size: 13px; display: inline-block; width: auto; }
+  .btn + .btn { margin-top: 10px; }
+  .help { background: #fff8f0; border: 1px solid var(--peach-light); }
+  .help a { color: var(--pink-dark); font-weight: 700; text-decoration: none; }
+  .help li { list-style: none; padding: 6px 0; font-size: 13px; border-bottom: 1px dashed var(--peach-light); }
+  .help li:last-child { border-bottom: none; }
+  .fine { font-size: 11px; color: var(--muted); line-height: 1.7; }
+  .row-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  /* ── タブバー ── */
+  nav.tabbar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+    background: rgba(255,252,250,.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-top: 1px solid var(--pink-light);
+    padding-bottom: var(--safe-b);
+  }
+  nav.tabbar .inner { max-width: 520px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); height: var(--tabbar-h); }
+  nav.tabbar button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 10.5px; color: var(--muted); }
+  nav.tabbar button svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  nav.tabbar button.on { color: var(--pink-dark); font-weight: 700; }
+
+  /* ── シート（モーダル） ── */
+  .sheet-bg {
+    position: fixed; inset: 0; z-index: 100; background: rgba(92,61,66,.28);
+    display: none; align-items: flex-end; justify-content: center;
+  }
+  .sheet-bg.open { display: flex; animation: bgIn .25s ease; }
+  @keyframes bgIn { from { opacity: 0; } to { opacity: 1; } }
+  .sheet {
+    width: 100%; max-width: 520px; max-height: 94vh; max-height: 94dvh;
+    background: var(--warm-white); border-radius: 26px 26px 0 0;
+    display: flex; flex-direction: column;
+    animation: sheetUp .32s cubic-bezier(.2,.8,.2,1);
+  }
+  @keyframes sheetUp { from { transform: translateY(100%); } to { transform: none; } }
+  .sheet-head { display: flex; align-items: center; gap: 10px; padding: 14px 16px 10px; border-bottom: 1px solid #fbe3e7; }
+  .sheet-head .t { flex: 1; font-family: 'Zen Maru Gothic', sans-serif; font-weight: 700; color: var(--brown); font-size: 16px; }
+  .sheet-head .x { width: 34px; height: 34px; border-radius: 50%; background: var(--pink-pale); color: var(--pink-dark); font-size: 18px; }
+  .progress { height: 4px; background: var(--pink-pale); border-radius: 99px; margin: 0 16px; overflow: hidden; }
+  .progress i { display: block; height: 100%; background: linear-gradient(90deg, var(--pink), var(--pink-dark)); border-radius: 99px; transition: width .35s; }
+  .sheet-body { padding: 18px 18px 8px; overflow-y: auto; -webkit-overflow-scrolling: touch; flex: 1; }
+  .sheet-foot { padding: 12px 16px calc(14px + var(--safe-b)); display: flex; gap: 10px; border-top: 1px solid #fbe3e7; }
+  .sheet-foot .btn { margin: 0; }
+  .sheet-foot .back { flex: 0 0 auto; width: auto; padding: 13px 18px; }
+
+  .step-label { font-size: 11px; letter-spacing: .1em; color: var(--pink-dark); font-weight: 700; }
+  .step-title { font-family: 'Zen Maru Gothic', sans-serif; font-size: 20px; color: var(--brown); line-height: 1.5; margin: 4px 0 10px; }
+  .step-text { font-size: 14px; color: var(--brown-mid); margin-bottom: 14px; white-space: pre-line; }
+  .hint { font-size: 12px; color: var(--muted); background: var(--peach-pale); border-radius: 12px; padding: 10px 12px; margin-bottom: 14px; }
+  textarea, input[type=text] {
+    width: 100%; border: 1.5px solid var(--pink-light); border-radius: 14px; padding: 12px 14px; background: #fff;
+    font-size: 16px; /* iOSのズーム防止 */ outline: none; resize: none; transition: border-color .2s;
+  }
+  textarea { min-height: 104px; }
+  textarea:focus, input[type=text]:focus { border-color: var(--pink); }
+  .field + .field { margin-top: 12px; }
+  .field label { display: block; font-size: 12px; color: var(--brown-mid); font-weight: 700; margin-bottom: 4px; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .chip {
+    padding: 7px 14px; border-radius: 99px; border: 1.5px solid var(--pink-light); background: #fff; font-size: 13px; color: var(--brown-mid);
+    transition: all .15s;
+  }
+  .chip.on { background: var(--pink-dark); border-color: var(--pink-dark); color: #fff; }
+
+  .faces { display: flex; justify-content: space-between; gap: 6px; margin: 6px 0 4px; }
+  .face-btn { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 10px 0; border-radius: 16px; border: 1.5px solid transparent; background: #fff; box-shadow: var(--shadow); transition: all .15s; }
+  .face-btn span { font-size: 30px; line-height: 1.2; filter: grayscale(.35); transition: filter .15s, transform .15s; }
+  .face-btn small { font-size: 10px; color: var(--muted); }
+  .face-btn.on { border-color: var(--pink-dark); background: var(--pink-pale); }
+  .face-btn.on span { filter: none; transform: scale(1.12); }
+
+  .quote {
+    background: #fff; border-radius: 18px; padding: 18px; border-left: 4px solid var(--pink);
+    font-family: 'Zen Maru Gothic', sans-serif; font-size: 17px; color: var(--brown); line-height: 1.8; box-shadow: var(--shadow);
+    word-break: break-word;
+  }
+  .quote + .quote { margin-top: 10px; }
+  .quote.soft { border-left-color: var(--lavender); }
+  .quote small { display: block; font-family: 'M PLUS Rounded 1c', sans-serif; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+
+  /* 呼吸 */
+  .breath-stage { display: grid; place-items: center; padding: 14px 0 6px; }
+  .breath-ring { position: relative; width: 230px; height: 230px; display: grid; place-items: center; }
+  .breath-ring::before { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 2px dashed var(--pink-light); }
+  .breath-ball {
+    width: 90px; height: 90px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #fff 0%, var(--pink-light) 35%, var(--pink) 100%);
+    box-shadow: 0 10px 40px rgba(232,165,176,.55);
+    transition-property: transform; transition-timing-function: ease-in-out;
+  }
+  .breath-label { position: absolute; text-align: center; font-family: 'Zen Maru Gothic', sans-serif; color: var(--brown); pointer-events: none; }
+  .breath-label b { display: block; font-size: 20px; }
+  .breath-label span { font-size: 13px; color: var(--muted); }
+  .breath-meta { text-align: center; font-size: 13px; color: var(--muted); margin-top: 8px; }
+
+  .done-hero { text-align: center; padding: 14px 0 8px; }
+  .done-hero .big { font-size: 52px; animation: pop .6s cubic-bezier(.2,1.6,.4,1); }
+  @keyframes pop { from { transform: scale(.3); opacity: 0; } to { transform: none; opacity: 1; } }
+  .done-hero h3 { font-family: 'Zen Maru Gothic', sans-serif; color: var(--brown); font-size: 20px; margin-top: 6px; }
+  .done-hero p { font-size: 13px; color: var(--brown-mid); }
+
+  /* インストール案内 */
+  .install {
+    display: none; align-items: center; gap: 12px; margin-bottom: 12px;
+    background: #fff; border: 1px dashed var(--pink); border-radius: 16px; padding: 10px 12px; font-size: 12px; color: var(--brown-mid);
+  }
+  .install.show { display: flex; }
+  .install img { width: 36px; height: 36px; border-radius: 9px; flex: none; }
+  .install .grow { flex: 1; }
+  .install .close { color: var(--muted); font-size: 18px; padding: 0 4px; }
+
+  .toast {
+    position: fixed; left: 50%; bottom: calc(var(--tabbar-h) + var(--safe-b) + 16px); transform: translateX(-50%) translateY(20px);
+    background: var(--brown); color: #fff; font-size: 13px; padding: 10px 18px; border-radius: 99px; opacity: 0; pointer-events: none;
+    transition: all .3s; z-index: 200; white-space: nowrap;
+  }
+  .toast.show { opacity: .95; transform: translateX(-50%); }
+
+  @media (min-width: 560px) {
+    #app { padding-left: 20px; padding-right: 20px; }
+    .work-grid { grid-template-columns: 1fr 1fr; }
+    .work-card { flex-direction: column; align-items: flex-start; }
+    .work-card .meta { margin-left: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- ホーム -->
+  <section class="screen active" id="screen-home">
+    <header class="top">
+      <div class="logo"><img src="icons/icon-192.png" alt="">メンタルジム</div>
+      <div class="date-chip" id="today-label"></div>
+    </header>
+
+    <div class="install" id="install-banner">
+      <img src="icons/icon-192.png" alt="">
+      <div class="grow" id="install-text">ホーム画面に追加すると、アプリのように使えます</div>
+      <button class="btn small" id="install-btn" style="display:none">追加</button>
+      <button class="close" id="install-close" aria-label="閉じる">×</button>
+    </div>
+
+    <div class="greet" id="greet"></div>
+    <div class="greet-sub">不安を消すのではなく、自分の中に安心を育てる時間です。</div>
+
+    <div class="card message-card">
+      <div class="message-label">TODAY'S WORDS</div>
+      <div class="message-text" id="daily-message"></div>
+    </div>
+
+    <div id="checkin-slot"></div>
+
+    <div class="stats">
+      <div class="stat"><b id="stat-streak">0</b><span>連続日数</span></div>
+      <div class="stat"><b id="stat-works">0</b><span>今週のワーク</span></div>
+      <div class="stat"><b id="stat-days">0</b><span>記録した日</span></div>
+    </div>
+
+    <h2 class="sec">いまのあなたにおすすめ</h2>
+    <div id="recommend-slot"></div>
+
+    <h2 class="sec">今日の小さな一歩</h2>
+    <div class="card" id="steps-card"></div>
+
+    <h2 class="sec">すぐできるワーク</h2>
+    <div class="work-grid" id="home-works"></div>
+  </section>
+
+  <!-- ワーク -->
+  <section class="screen" id="screen-works">
+    <header class="top"><div class="logo"><img src="icons/icon-192.png" alt="">メンタルジム</div></header>
+    <h1 class="page">ワーク</h1>
+    <p class="lead">臨床心理学（ACT・セルフコンパッション・NVC）をベースにした、毎日使えるこころのトレーニングです。</p>
+    <div id="works-list"></div>
+  </section>
+
+  <!-- 記録 -->
+  <section class="screen" id="screen-log">
+    <header class="top"><div class="logo"><img src="icons/icon-192.png" alt="">メンタルジム</div></header>
+    <h1 class="page">ふりかえり</h1>
+    <p class="lead">記録はこの端末の中だけに保存されます。</p>
+
+    <div class="card chart-wrap">
+      <div class="seg" id="range-seg">
+        <button data-range="7" class="on">7日</button>
+        <button data-range="30">30日</button>
+      </div>
+      <div id="chart"></div>
+      <div class="chart-legend"><span id="chart-from"></span><span>気分のうつりかわり</span><span>今日</span></div>
+    </div>
+
+    <h2 class="sec">よく感じている気持ち</h2>
+    <div class="card"><div class="top-emotions" id="top-emotions"></div></div>
+
+    <h2 class="sec">記録一覧</h2>
+    <div id="log-list"></div>
+  </section>
+
+  <!-- 相談 -->
+  <section class="screen" id="screen-session">
+    <header class="top"><div class="logo"><img src="icons/icon-192.png" alt="">メンタルジム</div></header>
+    <h1 class="page">個人セッション</h1>
+    <p class="lead">ひとりで頑張るんじゃなく、伴走してほしいときに。</p>
+
+    <div class="card">
+      <div class="profile">
+        <div class="avatar">🌷</div>
+        <div><b>ぽ子</b><small>臨床心理士・公認心理師</small></div>
+      </div>
+      <p style="font-size:13px; color:var(--brown-mid); margin-top:12px;">
+        心理学の知識と、成功者たちが取り入れている行動パターンを組み合わせた個人セッションです。
+        「ちょっと聞いてみたい」くらいの気持ちで全然OK。オンライン（Zoom等）で対応しています。
+      </p>
+    </div>
+
+    <h2 class="sec">メニュー</h2>
+    <div class="plan">
+      <div class="name">個別スポット相談 <span class="tag">期間限定</span></div>
+      <div class="price">¥8,000 <small>/ 1時間 × 1回</small></div>
+      <p style="margin-bottom:12px;">⚡ 新規枠は数名限定です</p>
+      <a class="btn" href="https://mosh.jp/services/363404?openExternalBrowser=1" target="_blank" rel="noopener">まず話を聞いてほしい →</a>
+    </div>
+    <div class="plan premium">
+      <div class="name">👑 個別メンタルジム 6回コース</div>
+      <div class="price">¥150,000 <small>税込 ¥165,000</small></div>
+      <p>完全オーダーメイドの個別伴走プログラム。現状と理想を丁寧にヒアリングし、今一番必要な心理学ワークを設計します。</p>
+      <p style="margin:2px 0 12px; text-decoration: line-through;">通常価格 ¥180,000（税込¥198,000）</p>
+      <a class="btn" href="https://mosh.jp/services/363313?openExternalBrowser=1" target="_blank" rel="noopener">6回コースに申し込む →</a>
+    </div>
+    <a class="btn ghost" href="../" style="margin-top:12px;">メンタルジムについて詳しく見る</a>
+
+    <h2 class="sec">記録をセッションで使う</h2>
+    <div class="card">
+      <p style="font-size:13px; color:var(--brown-mid); margin-bottom:12px;">最近の気分やワークの記録をテキストでコピーできます。セッションで「最近どうだったか」を伝えるときにどうぞ。</p>
+      <button class="btn ghost" id="copy-summary">直近7日のまとめをコピー</button>
+    </div>
+
+    <h2 class="sec">いま、とてもつらいときは</h2>
+    <div class="card help">
+      <p style="font-size:13px; color:var(--brown-mid); margin-bottom:6px;">ひとりで抱えずに、今すぐ話せる窓口があります。</p>
+      <ul>
+        <li>こころの健康相談統一ダイヤル<br><a href="tel:0570064556">📞 0570-064-556</a></li>
+        <li>よりそいホットライン（24時間）<br><a href="tel:0120279338">📞 0120-279-338</a></li>
+        <li>命の危険があるときは <a href="tel:119">119</a> へ</li>
+      </ul>
+    </div>
+
+    <h2 class="sec">データ</h2>
+    <div class="card">
+      <div class="row-btns">
+        <button class="btn small ghost" id="export-data">バックアップを保存</button>
+        <button class="btn small ghost" id="import-data">バックアップから復元</button>
+        <button class="btn small ghost" id="clear-data" style="color:var(--muted); border-color:var(--pink-light);">すべて削除</button>
+      </div>
+      <input type="file" id="import-file" accept="application/json" hidden>
+      <p class="fine" style="margin-top:12px;">
+        このアプリはセルフケアを目的としたもので、医療行為や診断の代わりにはなりません。
+        記録はお使いの端末内にのみ保存され、外部に送信されることはありません。
+      </p>
+    </div>
+  </section>
+</div>
+
+<nav class="tabbar">
+  <div class="inner">
+    <button data-tab="home" class="on">
+      <svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-5h4v5"/></svg>ホーム
+    </button>
+    <button data-tab="works">
+      <svg viewBox="0 0 24 24"><path d="M12 21c-5-3.5-8-7-8-10.5A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 8 3.5C20 14 17 17.5 12 21z"/></svg>ワーク
+    </button>
+    <button data-tab="log">
+      <svg viewBox="0 0 24 24"><path d="M4 19V5"/><path d="M4 19h16"/><path d="m7 14 4-4 3 3 5-6"/></svg>ふりかえり
+    </button>
+    <button data-tab="session">
+      <svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/></svg>相談
+    </button>
+  </div>
+</nav>
+
+<div class="sheet-bg" id="sheet-bg">
+  <div class="sheet" role="dialog" aria-modal="true">
+    <div class="sheet-head"><div class="t" id="sheet-title"></div><button class="x" id="sheet-close" aria-label="閉じる">×</button></div>
+    <div class="progress"><i id="sheet-progress" style="width:0"></i></div>
+    <div class="sheet-body" id="sheet-body"></div>
+    <div class="sheet-foot" id="sheet-foot"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(() => {
+  'use strict';
+
+  // ───────── ストレージ ─────────
+  const KEY = 'mentalgym.v1';
+  const defaultState = () => ({ entries: [], steps: [], installDismissed: false });
+  let state = defaultState();
+  try {
+    const raw = localStorage.getItem(KEY);
+    if (raw) state = Object.assign(defaultState(), JSON.parse(raw));
+  } catch (e) { /* プライベートモード等では保存なしで動かす */ }
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} };
+
+  // ───────── ユーティリティ ─────────
+  const $ = (s, el = document) => el.querySelector(s);
+  const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+  const dayKey = (d) => { const x = new Date(d); return `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, '0')}-${String(x.getDate()).padStart(2, '0')}`; };
+  const todayKey = () => dayKey(Date.now());
+  const WEEK = ['日', '月', '火', '水', '木', '金', '土'];
+  const fmtDay = (k) => { const [y, m, d] = k.split('-').map(Number); const dt = new Date(y, m - 1, d); return `${m}月${d}日（${WEEK[dt.getDay()]}）`; };
+  const fmtTime = (t) => { const d = new Date(t); return `${d.getHours()}:${String(d.getMinutes()).padStart(2, '0')}`; };
+  const toast = (msg) => { const t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toast._t); toast._t = setTimeout(() => t.classList.remove('show'), 2200); };
+  const vibrate = (ms) => { try { navigator.vibrate && navigator.vibrate(ms); } catch (e) {} };
+
+  // ───────── データ定義 ─────────
+  const MOODS = [
+    { v: 1, e: '😣', l: 'しんどい' },
+    { v: 2, e: '😔', l: 'いまいち' },
+    { v: 3, e: '😐', l: 'ふつう' },
+    { v: 4, e: '🙂', l: 'まあまあ' },
+    { v: 5, e: '😊', l: 'いい感じ' },
+  ];
+  const EMOTIONS = ['安心', 'うれしい', 'ほっとした', '感謝', 'ワクワク', 'モヤモヤ', 'イライラ', '焦り', '不安', '疲れ', 'さみしい', '落ち込み', '罪悪感', '自分を責める'];
+  const FEELINGS = ['悲しい', 'さみしい', '不安', '心配', '疲れている', 'がっかり', 'イライラする', '困っている', '焦っている', 'うれしい', 'ほっとする', '感謝している'];
+  const NEEDS = ['休息', '理解されること', '協力', '安心', '尊重', 'つながり', '自分の時間', '信頼', '感謝されること', '見通し', '自由', '大切にされること'];
+  const VALUES = ['家族', '健康', '成長', 'つながり', '誠実さ', '楽しさ', '貢献', '自分らしさ', '挑戦', '穏やかさ', '学び', 'やさしさ'];
+
+  const MESSAGES = [
+    '不安は「悪者」じゃない。\nあなたを守ろうとしてくれている感情です。',
+    '今日も頑張った。なのにしんどい。\nそれ、あなたが弱いんじゃない。',
+    '気持ちは追い出さなくていい。\nただ、少し隣に座らせておけばいい。',
+    '「もっと頑張る」の前に、\n自分の中に安心をひとつ。',
+    '考えは、事実ではなく「心のおしゃべり」。\n聞き流してもいいんです。',
+    '親友に声をかけるように、\n自分にも声をかけてみよう。',
+    '完璧じゃなくていい。\n小さな一歩で、ちゃんと前に進んでいる。',
+    '「助けてほしい」と言えるのは、\n強さのひとつです。',
+    '感情の奥には、いつも大切な「願い」がある。',
+    'うまくいかない日があるのは、\nあなたが人間だから。みんな同じです。',
+    '今この瞬間、足の裏を感じてみよう。\nあなたは、ここにいる。',
+    '相手の課題と、自分の課題。\n境界線を引くのは、冷たさではなくやさしさ。',
+  ];
+
+  // ワーク定義：steps は順番に表示される
+  const WORKS = [
+    {
+      id: 'breath', icon: '🌬️', bg: 'bg-mint', tag: '呼吸', mins: '1〜5分',
+      title: '安心の呼吸', desc: '吐く息を長くして、からだから落ち着きをつくる',
+      steps: [
+        { type: 'info', label: 'はじめに', title: 'からだから、安心をつくる', text: '吐く息を長くすると、副交感神経が働いて、からだが「もう大丈夫」と感じやすくなります。\n\n楽な姿勢で座って、肩の力を抜きましょう。', },
+        { type: 'choice', key: 'len', label: '時間をえらぶ', title: 'どのくらい続けますか？', options: [['1', '1分'], ['3', '3分'], ['5', '5分']], def: '1' },
+        { type: 'breath' },
+        { type: 'chips', key: 'after', label: 'ふりかえり', title: '今、からだはどんな感じ？', options: ['少しゆるんだ', '落ち着いた', 'あたたかい', '眠くなった', 'あまり変わらない'], multi: true, optional: true },
+      ],
+      summary: (d) => `${d.len || 1}分の呼吸${d.after?.length ? '｜' + d.after.join('・') : ''}`,
+    },
+    {
+      id: 'ground', icon: '🌿', bg: 'bg-mint', tag: 'マインドフルネス', mins: '3分',
+      title: '5-4-3-2-1 グラウンディング', desc: '頭の中のぐるぐるから「今ここ」に戻る',
+      steps: [
+        { type: 'info', label: 'はじめに', title: '「今ここ」に戻ってくる', text: '不安や焦りでいっぱいのとき、心は「未来」や「過去」に飛んでいます。\n五感を使って、今この場所に意識を戻しましょう。\n\n書かなくても、心の中で数えるだけでもOKです。' },
+        { type: 'text', key: 'see', label: '1 / 5　見る', title: '見えるものを5つ', placeholder: '例）白いマグカップ、窓の光…', optional: true },
+        { type: 'text', key: 'touch', label: '2 / 5　触れる', title: '触れているものを4つ', placeholder: '例）椅子の背もたれ、服の肌ざわり…', optional: true },
+        { type: 'text', key: 'hear', label: '3 / 5　聞く', title: '聞こえる音を3つ', placeholder: '例）エアコンの音、遠くの車…', optional: true },
+        { type: 'text', key: 'smell', label: '4 / 5　かぐ', title: 'におい・香りを2つ', placeholder: '例）コーヒー、柔軟剤…', optional: true },
+        { type: 'text', key: 'taste', label: '5 / 5　味わう', title: '味を1つ', placeholder: '例）さっき飲んだお茶…', optional: true },
+      ],
+      summary: () => '五感で「今ここ」に戻った',
+    },
+    {
+      id: 'defuse', icon: '☁️', bg: 'bg-lav', tag: 'ACT', mins: '3分',
+      title: '考えと距離をとる', desc: '頭から離れない考えを「雲」のように眺める',
+      steps: [
+        { type: 'info', label: 'はじめに', title: '考えは、事実ではない', text: '「私はダメだ」「また失敗する」——\n頭に浮かぶ考えは、心が自動的に作る「おしゃべり」です。\n\n考えを消そうと戦うのではなく、少し距離をとって眺める練習をします。' },
+        { type: 'text', key: 'thought', label: 'STEP 1', title: '今、頭から離れない考えは？', placeholder: '例）私はちゃんとできていない', required: true, hint: '短い一文で書いてみましょう。' },
+        { type: 'reflect', label: 'STEP 2', title: 'ことばを少し変えてみる', render: (d) => `
+            <div class="quote"><small>いつもの頭の中</small>${esc(d.thought)}</div>
+            <div class="quote soft"><small>距離をとると…</small>「${esc(d.thought)}」<br>という考えが、いま浮かんでいる</div>
+            <div class="quote soft"><small>もう一歩はなれると…</small>「${esc(d.thought)}」<br>と、私の心が言っているのに気づいている</div>
+            <p class="step-text" style="margin-top:14px;">ゆっくり声に出して（心の中でも）読んでみてください。感じ方に違いはありますか？</p>` },
+        { type: 'chips', key: 'useful', label: 'STEP 3', title: 'この考えに従うと、大切にしたい自分に近づける？', options: ['近づける', '遠ざかる', 'わからない'], single: true },
+        { type: 'text', key: 'action', label: 'STEP 4', title: 'もし考えに振り回されないとしたら、何をしたい？', placeholder: '例）完璧じゃなくても、今日の資料を出す', optional: true, toStep: true },
+      ],
+      summary: (d) => `「${d.thought}」と距離をとった`,
+    },
+    {
+      id: 'compassion', icon: '🤲', bg: 'bg-pink', tag: 'セルフコンパッション', mins: '3分',
+      title: 'セルフ・コンパッション', desc: '親友にかけるような言葉を、自分にもかける',
+      steps: [
+        { type: 'info', label: 'はじめに', title: '自分に、やさしくしていい', text: '自分を責めるのは、もっと良くなりたいから。\nでも、責められ続けた心は動けなくなります。\n\nここでは、自分を「味方」にする3つのステップを行います。' },
+        { type: 'text', key: 'pain', label: 'STEP 1　気づく', title: 'いま、何がつらい？', placeholder: '例）子どもにきつく言ってしまった', required: true },
+        { type: 'reflect', label: 'STEP 1　気づく', title: '「これは、苦しい瞬間だ」', render: (d) => `
+            <div class="quote"><small>${esc(d.pain)}</small>今、私は苦しい。<br>これは、つらい瞬間だ。</div>
+            <p class="step-text" style="margin-top:14px;">良い・悪いと判断せずに、ただ「つらいんだな」と認めてあげましょう。</p>` },
+        { type: 'reflect', label: 'STEP 2　つながる', title: '「苦しいのは、私だけじゃない」', render: () => `
+            <div class="quote soft">同じように悩んでいる人は、<br>世界中にたくさんいる。<br>苦しみは、人間であることの一部。</div>
+            <p class="step-text" style="margin-top:14px;">「こんなことで悩むのは私だけ」という孤独感を、少しゆるめます。</p>` },
+        { type: 'text', key: 'words', label: 'STEP 3　やさしさ', title: '大切な親友が同じ状況だったら、なんて声をかける？', placeholder: '例）それだけ一生懸命だったんだよね。今日はもう休もう', required: true, hint: '胸やほおに手をあてて、そのぬくもりを感じながら書いてみてください。' },
+        { type: 'reflect', label: 'さいごに', title: 'その言葉を、自分に。', render: (d) => `
+            <div class="quote">${esc(d.words)}</div>
+            <p class="step-text" style="margin-top:14px;">この言葉は記録に残ります。しんどいときに、また読み返してくださいね。</p>` },
+      ],
+      summary: (d) => `自分への言葉：「${d.words}」`,
+    },
+    {
+      id: 'imessage', icon: '💌', bg: 'bg-peach', tag: 'NVC', mins: '5分',
+      title: 'アイメッセージをつくる', desc: '感情的にならずに「願い」を素直に伝える',
+      steps: [
+        { type: 'info', label: 'はじめに', title: '責めずに、願いを伝える', text: '「なんでやってくれないの！」（あなたメッセージ）は、相手を守りの姿勢にさせます。\n\n「私は〜と感じている。〜を大切にしたいから、〜してもらえる？」（アイメッセージ）は、相手に届きやすくなります。\n\n4つの要素で組み立ててみましょう。' },
+        { type: 'text', key: 'obs', label: '1 / 4　観察', title: '何があった？（事実だけ）', placeholder: '例）今週、夕飯の片づけを3日続けて私がした', required: true, hint: '「いつも」「全然」などの評価を入れず、カメラに映る事実だけを。' },
+        { type: 'chips', key: 'feel', label: '2 / 4　感情', title: 'そのとき、どう感じた？', options: FEELINGS, multi: true, required: true, custom: '他の気持ち' },
+        { type: 'chips', key: 'need', label: '3 / 4　ニーズ', title: 'その気持ちの奥にある「願い」は？', options: NEEDS, multi: true, required: true, custom: '他の願い' },
+        { type: 'text', key: 'req', label: '4 / 4　リクエスト', title: '相手に、具体的に何をお願いしたい？', placeholder: '例）火曜と木曜は片づけをお願いできる？', required: true, hint: '相手が「はい／いいえ」で答えられる、具体的なお願いにしましょう。' },
+        { type: 'reflect', label: 'できあがり', title: 'あなたのアイメッセージ', render: (d) => `
+            <div class="quote" id="imsg-text">${esc(buildIMessage(d))}</div>
+            <button class="btn ghost" style="margin-top:12px;" data-copy="#imsg-text">コピーする</button>
+            <p class="step-text" style="margin-top:14px;">相手の返事が「いいえ」でも大丈夫。そこからが対話のはじまりです。</p>` },
+      ],
+      summary: (d) => buildIMessage(d),
+    },
+    {
+      id: 'worry', icon: '🧸', bg: 'bg-peach', tag: '不安の整理', mins: '5分',
+      title: '不安を「お守り」から外す', desc: '事実と想像を分けて、できることだけ手に取る',
+      steps: [
+        { type: 'info', label: 'はじめに', title: '先読みの不安を、整理する', text: 'リスクを先読みして対処してきた人ほど、「不安になることで安心する」がクセになりがちです。\n\n不安を無理に消すのではなく、紙の上に出して、事実と想像に分けてみましょう。' },
+        { type: 'text', key: 'worry', label: 'STEP 1', title: '今、気になっている不安は？', placeholder: '例）来週のプレゼンで失敗して評価が下がるかも', required: true },
+        { type: 'text', key: 'fact', label: 'STEP 2', title: 'その中で「確かな事実」は？', placeholder: '例）来週プレゼンがある。準備はまだ半分', optional: true },
+        { type: 'text', key: 'imagine', label: 'STEP 3', title: '「想像・予測」の部分は？', placeholder: '例）失敗する、評価が下がる', optional: true, hint: '想像は、起こるかもしれないし、起こらないかもしれないこと。' },
+        { type: 'text', key: 'can', label: 'STEP 4', title: 'その中で、自分にコントロールできることは？', placeholder: '例）明日の朝30分、スライドを見直す', required: true, toStep: true },
+        { type: 'reflect', label: 'さいごに', title: 'できないことは、そっと置いておく', render: (d) => `
+            <div class="quote soft"><small>手放すもの</small>${esc(d.imagine || '（コントロールできない部分）')}</div>
+            <div class="quote"><small>手に取るもの</small>${esc(d.can)}</div>
+            <p class="step-text" style="margin-top:14px;">「手に取るもの」は今日の小さな一歩に追加しました。不安がまた来ても、それは心があなたを守ろうとしているサインです。</p>` },
+      ],
+      summary: (d) => `不安：${d.worry} → できること：${d.can}`,
+    },
+    {
+      id: 'values', icon: '🌱', bg: 'bg-lav', tag: 'ACT', mins: '3分',
+      title: '大切にしたいこと', desc: '自分の価値に沿った、今日の小さな一歩を決める',
+      steps: [
+        { type: 'info', label: 'はじめに', title: 'コンパスを確かめる', text: '「価値」は、ゴールではなく方角のようなもの。\n不安や迷いがあっても、大切にしたい方向に一歩ずつ進むことができます。' },
+        { type: 'chips', key: 'vals', label: 'STEP 1', title: '今のあなたが、大切にしたいことは？', options: VALUES, multi: true, required: true, custom: '他にも' },
+        { type: 'text', key: 'why', label: 'STEP 2', title: 'それを大切にしたいのは、なぜ？', placeholder: '例）子どもと笑って過ごす時間が、私の元気の源だから', optional: true },
+        { type: 'text', key: 'step', label: 'STEP 3', title: 'その方向に、今日できる小さな一歩は？', placeholder: '例）寝る前に5分、子どもの話をちゃんと聞く', required: true, hint: '「これならできそう」と思えるくらい小さくてOK。', toStep: true },
+      ],
+      summary: (d) => `大切にしたい：${(d.vals || []).join('・')} → ${d.step}`,
+    },
+  ];
+  const workById = (id) => WORKS.find((w) => w.id === id);
+
+  function buildIMessage(d) {
+    const feel = (d.feel || []).join('し、');
+    const need = (d.need || []).join('と');
+    return `${d.obs || ''}とき、私は${feel}と感じたんだ。私は${need}を大切にしたいと思っているから。${d.req || ''}`;
+  }
+
+  // ───────── 集計 ─────────
+  const moodEntries = () => state.entries.filter((e) => e.type === 'mood');
+  const workEntries = () => state.entries.filter((e) => e.type === 'work');
+  const activeDays = () => new Set(state.entries.map((e) => dayKey(e.t)));
+  function streak() {
+    const days = activeDays();
+    let n = 0; const d = new Date();
+    if (!days.has(dayKey(d))) d.setDate(d.getDate() - 1); // 今日まだでも昨日までの連続は維持
+    while (days.has(dayKey(d))) { n++; d.setDate(d.getDate() - 1); }
+    return n;
+  }
+  const todaysMood = () => moodEntries().filter((e) => dayKey(e.t) === todayKey()).sort((a, b) => b.t - a.t)[0];
+
+  // ───────── ホーム描画 ─────────
+  function renderHome() {
+    const now = new Date();
+    $('#today-label').textContent = fmtDay(todayKey());
+    const h = now.getHours();
+    $('#greet').textContent = h < 5 ? '夜おそくまで、おつかれさま' : h < 11 ? 'おはようございます' : h < 17 ? 'こんにちは' : '今日もおつかれさま';
+    const dayIndex = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 864e5);
+    $('#daily-message').innerHTML = esc(MESSAGES[dayIndex % MESSAGES.length]).replace(/\n/g, '<br>');
+
+    const tm = todaysMood();
+    const m = tm && MOODS.find((x) => x.v === tm.mood);
+    $('#checkin-slot').innerHTML = tm
+      ? `<button class="checkin-cta checkin-done" data-action="checkin"><span class="emoji">${m.e}</span><span><b>今日の気分：${m.l}</b><small>${tm.emotions?.length ? esc(tm.emotions.join('・')) + '｜' : ''}もう一度記録する →</small></span></button>`
+      : `<button class="checkin-cta" data-action="checkin"><span class="emoji">🌸</span><span><b>今日の気分をチェックイン</b><small>30秒で、今の自分の状態に気づく</small></span></button>`;
+
+    $('#stat-streak').textContent = streak();
+    const weekAgo = Date.now() - 7 * 864e5;
+    $('#stat-works').textContent = workEntries().filter((e) => e.t >= weekAgo).length;
+    $('#stat-days').textContent = activeDays().size;
+
+    // おすすめ：気分と感情から選ぶ
+    let rec = 'breath', why = 'まずは呼吸で、からだに安心を。';
+    if (tm) {
+      const em = tm.emotions || [];
+      if (em.some((x) => ['自分を責める', '罪悪感', '落ち込み'].includes(x))) { rec = 'compassion'; why = '自分を責めているときは、まず味方になってあげて。'; }
+      else if (em.some((x) => ['不安', '焦り'].includes(x))) { rec = 'worry'; why = '不安を事実と想像に分けてみましょう。'; }
+      else if (em.includes('イライラ')) { rec = 'imessage'; why = 'イライラの奥にある「願い」を言葉にしてみよう。'; }
+      else if (em.includes('モヤモヤ')) { rec = 'defuse'; why = 'ぐるぐるする考えと、少し距離をとってみよう。'; }
+      else if (tm.mood <= 2) { rec = 'ground'; why = 'しんどいときは「今ここ」に戻ってくるところから。'; }
+      else { rec = 'values'; why = '調子がいい日は、大切にしたい方向へ一歩を。'; }
+    }
+    const w = workById(rec);
+    $('#recommend-slot').innerHTML = `<button class="recommend" data-work="${w.id}"><span class="work-icon">${w.icon}</span><span><b>${w.title}</b><small>${why}</small></span></button>`;
+
+    renderSteps();
+    $('#home-works').innerHTML = WORKS.filter((x) => x.id !== rec).slice(0, 4).map(workCard).join('');
+  }
+
+  function renderSteps() {
+    const today = todayKey();
+    // 今日のもの＋未完了で過去のもの
+    const list = state.steps.filter((s) => s.day === today || !s.done).slice(-8);
+    $('#steps-card').innerHTML = (list.length
+      ? list.map((s) => `<div class="step-item ${s.done ? 'done' : ''}">
+          <button class="check ${s.done ? 'on' : ''}" data-step="${s.id}" aria-label="完了">${s.done ? '✓' : ''}</button>
+          <div class="txt"><span>${esc(s.text)}</span><small>${s.day === today ? '今日' : fmtDay(s.day)}${s.from ? '｜' + esc(s.from) : ''}</small></div>
+          <button class="del" data-del-step="${s.id}" aria-label="削除" style="color:var(--muted);font-size:18px;">×</button>
+        </div>`).join('')
+      : `<div class="empty">ワークで決めた一歩がここに並びます</div>`) +
+      `<div style="text-align:center; margin-top:8px;"><button class="link-btn" data-action="add-step">＋ 自分で追加する</button></div>`;
+  }
+
+  function workCard(w) {
+    return `<button class="work-card" data-work="${w.id}">
+      <span class="work-icon ${w.bg}">${w.icon}</span>
+      <span><span class="tag">${w.tag}</span><b>${w.title}</b><small>${w.desc}</small></span>
+      <span class="meta">${w.mins}</span>
+    </button>`;
+  }
+
+  function renderWorks() {
+    const groups = [
+      ['からだから落ち着く', ['breath', 'ground']],
+      ['思考・感情との関わり方を変える', ['defuse', 'worry', 'compassion']],
+      ['人とのコミュニケーション', ['imessage']],
+      ['動き出す', ['values']],
+    ];
+    $('#works-list').innerHTML = groups.map(([t, ids]) =>
+      `<h2 class="sec">${t}</h2><div class="work-grid">${ids.map((id) => workCard(workById(id))).join('')}</div>`).join('');
+  }
+
+  // ───────── ふりかえり描画 ─────────
+  let range = 7;
+  function renderLog() {
+    // グラフ：日ごとの平均気分
+    const days = [];
+    for (let i = range - 1; i >= 0; i--) { const d = new Date(); d.setDate(d.getDate() - i); days.push(dayKey(d)); }
+    const byDay = {};
+    moodEntries().forEach((e) => { const k = dayKey(e.t); (byDay[k] = byDay[k] || []).push(e.mood); });
+    const pts = days.map((k, i) => ({ i, v: byDay[k] ? byDay[k].reduce((a, b) => a + b, 0) / byDay[k].length : null }));
+    const W = 320, H = 150, px = 14, pl = 30, py = 18;
+    const x = (i) => pl + (i * (W - pl - px)) / Math.max(1, range - 1);
+    const y = (v) => H - py - ((v - 1) / 4) * (H - py * 2);
+    const valid = pts.filter((p) => p.v != null);
+    let path = '';
+    valid.forEach((p, j) => { path += `${j ? 'L' : 'M'}${x(p.i).toFixed(1)},${y(p.v).toFixed(1)} `; });
+    const area = valid.length > 1 ? `${path}L${x(valid[valid.length - 1].i).toFixed(1)},${H - py} L${x(valid[0].i).toFixed(1)},${H - py} Z` : '';
+    $('#chart').innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="100%" style="display:block" role="img" aria-label="気分の推移">
+      <defs><linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8a5b0" stop-opacity=".35"/><stop offset="1" stop-color="#e8a5b0" stop-opacity="0"/></linearGradient></defs>
+      ${[1, 2, 3, 4, 5].map((v) => `<line x1="${pl}" x2="${W - px}" y1="${y(v)}" y2="${y(v)}" stroke="#fbe3e7" stroke-dasharray="${v === 3 ? '0' : '3 4'}"/>`).join('')}
+      ${area ? `<path d="${area}" fill="url(#ga)"/>` : ''}
+      ${valid.length > 1 ? `<path d="${path}" fill="none" stroke="#c4697a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>` : ''}
+      ${valid.map((p) => `<circle cx="${x(p.i)}" cy="${y(p.v)}" r="${range > 7 ? 3 : 4.5}" fill="#fff" stroke="#c4697a" stroke-width="2"/>`).join('')}
+      ${range === 7 ? days.map((k, i) => `<text x="${x(i)}" y="${H - 2}" text-anchor="middle" font-size="10" fill="#a0747d">${WEEK[new Date(k.replace(/-/g, '/')).getDay()]}</text>`).join('') : ''}
+      <text x="2" y="${y(5) + 5}" font-size="13">😊</text>
+      <text x="2" y="${y(3) + 5}" font-size="13">😐</text>
+      <text x="2" y="${y(1) + 5}" font-size="13">😣</text>
+      ${valid.length === 0 ? `<text x="${W / 2}" y="${H / 2}" text-anchor="middle" font-size="12" fill="#a0747d">チェックインすると、ここにグラフが表示されます</text>` : ''}
+    </svg>`;
+    $('#chart-from').textContent = fmtDay(days[0]).replace(/（.）/, '');
+
+    // よく感じる気持ち
+    const since = Date.now() - range * 864e5;
+    const count = {};
+    moodEntries().filter((e) => e.t >= since).forEach((e) => (e.emotions || []).forEach((x) => (count[x] = (count[x] || 0) + 1)));
+    const top = Object.entries(count).sort((a, b) => b[1] - a[1]).slice(0, 8);
+    $('#top-emotions').innerHTML = top.length ? top.map(([k, n]) => `<span>${esc(k)} × ${n}</span>`).join('') : '<div class="empty" style="width:100%">まだ記録がありません</div>';
+
+    // 一覧
+    const sorted = [...state.entries].sort((a, b) => b.t - a.t).slice(0, 200);
+    if (!sorted.length) { $('#log-list').innerHTML = '<div class="card empty">まだ記録がありません。<br>ホームから今日の気分をチェックインしてみましょう 🌸</div>'; return; }
+    let html = '', cur = '';
+    sorted.forEach((e) => {
+      const k = dayKey(e.t);
+      if (k !== cur) { if (cur) html += '</div>'; html += `<div class="day-head">${fmtDay(k)}</div><div class="card">`; cur = k; }
+      else html += '<div style="height:1px;background:#fbe3e7;margin:12px 0"></div>';
+      if (e.type === 'mood') {
+        const m = MOODS.find((x) => x.v === e.mood) || MOODS[2];
+        html += `<div class="entry"><div class="face">${m.e}</div><div class="body"><b>${m.l}<span class="time">${fmtTime(e.t)}</span></b>
+          ${e.emotions?.length ? `<div class="chips-mini">${e.emotions.map((x) => `<span>${esc(x)}</span>`).join('')}</div>` : ''}
+          ${e.note ? `<div class="note">${esc(e.note)}</div>` : ''}</div><button class="del" data-del="${e.id}" aria-label="削除">×</button></div>`;
+      } else {
+        const w = workById(e.workId);
+        html += `<div class="entry"><div class="face">${w ? w.icon : '✨'}</div><div class="body"><b>${w ? w.title : 'ワーク'}<span class="time">${fmtTime(e.t)}</span></b>
+          <div class="note">${esc(e.summary || '')}</div></div><button class="del" data-del="${e.id}" aria-label="削除">×</button></div>`;
+      }
+    });
+    html += '</div>';
+    $('#log-list').innerHTML = html;
+  }
+
+  function renderAll() { renderHome(); renderWorks(); renderLog(); }
+
+  // ───────── タブ ─────────
+  function showTab(tab) {
+    $$('.screen').forEach((s) => s.classList.toggle('active', s.id === 'screen-' + tab));
+    $$('nav.tabbar button').forEach((b) => b.classList.toggle('on', b.dataset.tab === tab));
+    if (tab === 'log') renderLog();
+    if (tab === 'home') renderHome();
+    window.scrollTo(0, 0);
+  }
+  $$('nav.tabbar button').forEach((b) => b.addEventListener('click', () => showTab(b.dataset.tab)));
+
+  // ───────── シート ─────────
+  const sheet = { flow: null, i: 0, data: {}, onFinish: null, timer: null };
+  function openSheet(title) {
+    $('#sheet-title').textContent = title;
+    $('#sheet-bg').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeSheet() {
+    stopBreath();
+    $('#sheet-bg').classList.remove('open');
+    document.body.style.overflow = '';
+    sheet.flow = null;
+  }
+  $('#sheet-close').addEventListener('click', () => {
+    if (sheet.flow && sheet.i > 0 && sheet.i < sheet.flow.length && !confirm('ワークを途中で終了しますか？')) return;
+    closeSheet();
+  });
+  $('#sheet-bg').addEventListener('click', (e) => { if (e.target.id === 'sheet-bg' && !sheet.flow) closeSheet(); });
+
+  // ── チェックイン ──
+  function openCheckin() {
+    sheet.flow = null;
+    const d = { mood: 0, emotions: [], note: '' };
+    openSheet('今日の気分チェックイン');
+    $('#sheet-progress').style.width = '0';
+    $('#sheet-body').innerHTML = `
+      <div class="step-title" style="margin-top:0">今、どんな気分？</div>
+      <div class="faces">${MOODS.map((m) => `<button class="face-btn" data-mood="${m.v}"><span>${m.e}</span><small>${m.l}</small></button>`).join('')}</div>
+      <div class="step-title" style="font-size:16px; margin-top:20px;">近い気持ちは？<span style="font-size:12px;color:var(--muted);font-weight:400;">（いくつでも）</span></div>
+      <div class="chips">${EMOTIONS.map((x) => `<button class="chip" data-emo="${esc(x)}">${esc(x)}</button>`).join('')}</div>
+      <div class="field" style="margin-top:12px;"><label>ひとことメモ（任意）</label><textarea id="ci-note" placeholder="例）朝バタバタして子どもに怒ってしまった" style="min-height:80px"></textarea></div>
+      <p class="fine" style="margin-top:10px;">どんな気持ちも「あっていい」もの。良い・悪いで判断せずに、ただ気づくことが第一歩です。</p>`;
+    $('#sheet-foot').innerHTML = `<button class="btn" id="ci-save" disabled>記録する</button>`;
+    const btn = $('#ci-save');
+    $$('.face-btn', $('#sheet-body')).forEach((b) => b.addEventListener('click', () => {
+      d.mood = +b.dataset.mood; $$('.face-btn').forEach((x) => x.classList.toggle('on', x === b)); btn.disabled = false; vibrate(8);
+    }));
+    $$('.chip', $('#sheet-body')).forEach((b) => b.addEventListener('click', () => {
+      const v = b.dataset.emo; const i = d.emotions.indexOf(v);
+      i >= 0 ? d.emotions.splice(i, 1) : d.emotions.push(v); b.classList.toggle('on', i < 0);
+    }));
+    btn.addEventListener('click', () => {
+      d.note = $('#ci-note').value.trim();
+      state.entries.push({ id: uid(), t: Date.now(), type: 'mood', ...d });
+      save();
+      const m = MOODS.find((x) => x.v === d.mood);
+      $('#sheet-body').innerHTML = `<div class="done-hero"><div class="big">${m.e}</div><h3>記録しました</h3>
+        <p>${d.mood <= 2 ? 'しんどい中、自分の状態に気づけたことが大切な一歩です。<br>よかったら、ワークで少し自分をいたわってみませんか？' : '自分の状態に気づくことが、安心を育てる第一歩です。'}</p></div>`;
+      $('#sheet-foot').innerHTML = `<button class="btn ghost back" id="ci-close">閉じる</button><button class="btn" id="ci-work">おすすめワークへ</button>`;
+      $('#ci-close').addEventListener('click', closeSheet);
+      renderAll();
+      $('#ci-work').addEventListener('click', () => { const id = $('#recommend-slot [data-work]').dataset.work; openWork(id); });
+    });
+  }
+
+  // ── ワーク実行 ──
+  function openWork(id) {
+    const w = workById(id);
+    sheet.flow = w.steps; sheet.i = 0; sheet.data = {}; sheet.work = w;
+    w.steps.forEach((s) => { if (s.type === 'choice') sheet.data[s.key] = s.def; });
+    openSheet(`${w.icon} ${w.title}`);
+    renderStep();
+  }
+
+  function renderStep() {
+    stopBreath();
+    sheet.breathStarted = false;
+    const w = sheet.work, s = sheet.flow[sheet.i], d = sheet.data, last = sheet.i === sheet.flow.length - 1;
+    $('#sheet-progress').style.width = `${((sheet.i + 1) / (sheet.flow.length + 1)) * 100}%`;
+    const body = $('#sheet-body');
+    let html = '';
+    if (s.type === 'breath') {
+      html = `<div class="step-label">ゆっくり呼吸</div>
+        <div class="breath-stage"><div class="breath-ring"><div class="breath-ball" id="ball"></div><div class="breath-label"><b id="b-phase">準備</b><span id="b-count"></span></div></div></div>
+        <div class="breath-meta" id="b-meta">鼻から吸って、口からゆっくり吐きましょう</div>`;
+    } else {
+      html = `<div class="step-label">${s.label || ''}</div><div class="step-title">${s.title}</div>`;
+      if (s.text) html += `<div class="step-text">${esc(s.text)}</div>`;
+      if (s.hint) html += `<div class="hint">💡 ${esc(s.hint)}</div>`;
+      if (s.type === 'text') html += `<textarea id="f-input" placeholder="${esc(s.placeholder || '')}">${esc(d[s.key] || '')}</textarea>`;
+      if (s.type === 'chips' || s.type === 'choice') {
+        const opts = s.type === 'choice' ? s.options : s.options.map((o) => [o, o]);
+        const cur = d[s.key];
+        const isOn = (v) => (Array.isArray(cur) ? cur.includes(v) : cur === v);
+        const extras = Array.isArray(cur) ? cur.filter((v) => !opts.some(([o]) => o === v)) : [];
+        html += `<div class="chips">${[...opts, ...extras.map((v) => [v, v])].map(([v, l]) => `<button class="chip ${isOn(v) ? 'on' : ''}" data-v="${esc(v)}">${esc(l)}</button>`).join('')}</div>`;
+        if (s.custom) html += `<div style="display:flex;gap:8px;margin-top:6px;"><input type="text" id="f-custom" placeholder="${esc(s.custom)}を入力"><button class="btn small ghost" id="f-add">追加</button></div>`;
+      }
+      if (s.type === 'reflect') html += s.render(d);
+    }
+    body.innerHTML = html;
+    body.scrollTop = 0;
+
+    const canNext = () => {
+      if (!s.required) return true;
+      const v = d[s.key];
+      return Array.isArray(v) ? v.length > 0 : !!(v && String(v).trim());
+    };
+    $('#sheet-foot').innerHTML = `${sheet.i > 0 ? '<button class="btn ghost back" id="f-back">戻る</button>' : ''}
+      <button class="btn" id="f-next">${s.type === 'breath' ? 'スタート' : last ? '完了する' : (s.optional && !d[s.key] ? 'スキップ / 次へ' : '次へ')}</button>`;
+    const next = $('#f-next');
+    const refresh = () => {
+      next.disabled = !canNext();
+      if (s.optional && s.type === 'text') next.textContent = last ? '完了する' : (d[s.key] ? '次へ' : 'スキップ / 次へ');
+    };
+    refresh();
+
+    const input = $('#f-input');
+    if (input) input.addEventListener('input', () => { d[s.key] = input.value; refresh(); });
+
+    $$('.chip', body).forEach((b) => b.addEventListener('click', () => {
+      const v = b.dataset.v;
+      if (s.type === 'choice' || s.single) { d[s.key] = v; $$('.chip', body).forEach((x) => x.classList.toggle('on', x === b)); }
+      else { const arr = (d[s.key] = d[s.key] || []); const i = arr.indexOf(v); i >= 0 ? arr.splice(i, 1) : arr.push(v); b.classList.toggle('on', i < 0); }
+      vibrate(6); refresh();
+    }));
+    const add = $('#f-add');
+    if (add) add.addEventListener('click', () => {
+      const v = $('#f-custom').value.trim(); if (!v) return;
+      const arr = (d[s.key] = d[s.key] || []); if (!arr.includes(v)) arr.push(v);
+      renderStep();
+    });
+    $$('[data-copy]', body).forEach((b) => b.addEventListener('click', () => copyText($(b.dataset.copy).textContent)));
+
+    const back = $('#f-back');
+    if (back) back.addEventListener('click', () => { sheet.i--; renderStep(); });
+    next.addEventListener('click', () => {
+      if (s.type === 'breath') { if (!sheet.breathStarted) { sheet.breathStarted = true; startBreath(+d.len || 1); next.textContent = 'おわる'; } else { stopBreath(); sheet.i++; renderStep(); } return; }
+      if (last) finishWork(); else { sheet.i++; renderStep(); }
+    });
+  }
+
+  function finishWork() {
+    const w = sheet.work, d = sheet.data;
+    let summary = '';
+    try { summary = w.summary(d); } catch (e) { summary = w.title; }
+    state.entries.push({ id: uid(), t: Date.now(), type: 'work', workId: w.id, data: d, summary });
+    // 「一歩」になる入力は今日の小さな一歩へ
+    w.steps.filter((s) => s.toStep && d[s.key] && String(d[s.key]).trim()).forEach((s) => {
+      state.steps.push({ id: uid(), day: todayKey(), text: String(d[s.key]).trim(), done: false, from: w.title });
+    });
+    save();
+    sheet.flow = null;
+    $('#sheet-progress').style.width = '100%';
+    const words = ['よくがんばりました', 'おつかれさまでした', 'ちゃんと自分に向き合えました'];
+    $('#sheet-body').innerHTML = `<div class="done-hero"><div class="big">🌸</div><h3>${words[Math.floor(Math.random() * words.length)]}</h3>
+      <p>心のトレーニングは、筋トレと同じ。<br>くり返すほど、安心が育っていきます。</p></div>
+      ${w.steps.some((s) => s.toStep && d[s.key]) ? '<div class="hint" style="text-align:center">🌱 今日の小さな一歩に追加しました</div>' : ''}`;
+    $('#sheet-foot').innerHTML = `<button class="btn" id="f-done">ホームへ</button>`;
+    $('#f-done').addEventListener('click', () => { closeSheet(); showTab('home'); });
+    vibrate([10, 60, 10]);
+    renderAll();
+  }
+
+  // ── 呼吸ガイド（吸う4秒・止める2秒・吐く6秒）──
+  function startBreath(mins) {
+    const ball = $('#ball'), phase = $('#b-phase'), cnt = $('#b-count'), meta = $('#b-meta');
+    const P = [['吸って', 4, 2.3], ['とめて', 2, 2.3], ['吐いて', 6, 1]];
+    const end = Date.now() + mins * 60000;
+    let pi = 0, left = 0, cycles = 0;
+    sheet.breathing = true;
+    const tick = () => {
+      if (!sheet.breathing) return;
+      if (left <= 0) {
+        if (pi === 0 && Date.now() >= end) {
+          stopBreath(); phase.textContent = 'おしまい'; cnt.textContent = `${cycles}回の呼吸`; meta.textContent = 'おつかれさまでした。「おわる」で次へ進みます';
+          vibrate([10, 80, 10]); return;
+        }
+        const [label, sec, scale] = P[pi];
+        phase.textContent = label; left = sec;
+        ball.style.transitionDuration = `${sec}s`; ball.style.transform = `scale(${scale})`;
+        if (pi === 0) { cycles++; vibrate(15); }
+        pi = (pi + 1) % P.length;
+      }
+      cnt.textContent = left;
+      const rest = Math.max(0, Math.ceil((end - Date.now()) / 1000));
+      meta.textContent = `残り ${Math.floor(rest / 60)}:${String(rest % 60).padStart(2, '0')}`;
+      left--;
+      sheet.timer = setTimeout(tick, 1000);
+    };
+    tick();
+  }
+  function stopBreath() { sheet.breathing = false; clearTimeout(sheet.timer); }
+
+  // ───────── 小さな一歩 ─────────
+  function addStepPrompt() {
+    sheet.flow = null;
+    openSheet('🌱 小さな一歩を追加');
+    $('#sheet-progress').style.width = '0';
+    $('#sheet-body').innerHTML = `<div class="step-title" style="margin-top:0">今日、どんな一歩を踏み出す？</div>
+      <div class="hint">💡 「これならできそう」と思えるくらい小さくてOK。例）5分だけ散歩する／「ありがとう」を1回伝える</div>
+      <input type="text" id="new-step" placeholder="小さな一歩を入力">`;
+    $('#sheet-foot').innerHTML = `<button class="btn" id="step-save" disabled>追加する</button>`;
+    const inp = $('#new-step'), b = $('#step-save');
+    inp.addEventListener('input', () => (b.disabled = !inp.value.trim()));
+    b.addEventListener('click', () => {
+      state.steps.push({ id: uid(), day: todayKey(), text: inp.value.trim(), done: false });
+      save(); closeSheet(); renderHome(); toast('一歩を追加しました 🌱');
+    });
+    setTimeout(() => inp.focus(), 350);
+  }
+
+  // ───────── イベント委譲 ─────────
+  document.addEventListener('click', (e) => {
+    const t = e.target.closest('[data-work],[data-action],[data-step],[data-del],[data-del-step]');
+    if (!t) return;
+    if (t.dataset.work) openWork(t.dataset.work);
+    else if (t.dataset.action === 'checkin') openCheckin();
+    else if (t.dataset.action === 'add-step') addStepPrompt();
+    else if (t.dataset.step) {
+      const s = state.steps.find((x) => x.id === t.dataset.step);
+      if (s) { s.done = !s.done; save(); renderSteps(); if (s.done) { vibrate(12); toast('ナイス一歩！ 🌸'); } }
+    } else if (t.dataset.delStep) {
+      state.steps = state.steps.filter((x) => x.id !== t.dataset.delStep); save(); renderSteps();
+    } else if (t.dataset.del) {
+      if (!confirm('この記録を削除しますか？')) return;
+      state.entries = state.entries.filter((x) => x.id !== t.dataset.del); save(); renderAll();
+    }
+  });
+
+  $('#range-seg').addEventListener('click', (e) => {
+    const b = e.target.closest('button'); if (!b) return;
+    range = +b.dataset.range; $$('#range-seg button').forEach((x) => x.classList.toggle('on', x === b)); renderLog();
+  });
+
+  // ───────── コピー・データ管理 ─────────
+  async function copyText(text) {
+    try { await navigator.clipboard.writeText(text); toast('コピーしました'); }
+    catch (e) {
+      const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); toast('コピーしました'); } catch (_) { toast('コピーできませんでした'); }
+      ta.remove();
+    }
+  }
+
+  $('#copy-summary').addEventListener('click', () => {
+    const since = Date.now() - 7 * 864e5;
+    const list = state.entries.filter((e) => e.t >= since).sort((a, b) => a.t - b.t);
+    if (!list.length) { toast('直近7日の記録がありません'); return; }
+    const lines = ['【直近7日のふりかえり（メンタルジム）】'];
+    let cur = '';
+    list.forEach((e) => {
+      const k = dayKey(e.t);
+      if (k !== cur) { lines.push('', '■ ' + fmtDay(k)); cur = k; }
+      if (e.type === 'mood') {
+        const m = MOODS.find((x) => x.v === e.mood);
+        lines.push(`・気分：${m ? m.l : ''}${e.emotions?.length ? '（' + e.emotions.join('・') + '）' : ''}${e.note ? '　' + e.note : ''}`);
+      } else {
+        const w = workById(e.workId);
+        lines.push(`・ワーク「${w ? w.title : ''}」：${e.summary || ''}`);
+      }
+    });
+    copyText(lines.join('\n'));
+  });
+
+  $('#export-data').addEventListener('click', () => {
+    const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = `mentalgym-backup-${todayKey()}.json`;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  });
+  $('#import-data').addEventListener('click', () => $('#import-file').click());
+  $('#import-file').addEventListener('change', async (e) => {
+    const f = e.target.files[0]; if (!f) return;
+    try {
+      const data = JSON.parse(await f.text());
+      if (!Array.isArray(data.entries)) throw new Error('bad');
+      if (!confirm('バックアップから復元しますか？（今の記録は置き換わります）')) return;
+      state = Object.assign(defaultState(), data); save(); renderAll(); toast('復元しました');
+    } catch (err) { toast('ファイルを読み込めませんでした'); }
+    e.target.value = '';
+  });
+  $('#clear-data').addEventListener('click', () => {
+    if (!confirm('すべての記録を削除します。元に戻せません。よろしいですか？')) return;
+    state = defaultState(); save(); renderAll(); toast('削除しました');
+  });
+
+  // ───────── ホーム画面に追加 ─────────
+  const standalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  let deferredPrompt = null;
+  const banner = $('#install-banner');
+  if (!standalone && !state.installDismissed) {
+    if (isIOS) { $('#install-text').innerHTML = 'Safariの <b>共有ボタン</b> →「<b>ホーム画面に追加</b>」で、アプリとして使えます'; banner.classList.add('show'); }
+  }
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault(); deferredPrompt = e;
+    if (!standalone && !state.installDismissed) { $('#install-btn').style.display = ''; banner.classList.add('show'); }
+  });
+  $('#install-btn').addEventListener('click', async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt(); await deferredPrompt.userChoice; deferredPrompt = null; banner.classList.remove('show');
+  });
+  $('#install-close').addEventListener('click', () => { banner.classList.remove('show'); state.installDismissed = true; save(); });
+
+  if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+    window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+  }
+
+  // 日付が変わったら更新
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) renderHome(); });
+
+  renderAll();
+})();
+</script>
+</body>
+</html>
