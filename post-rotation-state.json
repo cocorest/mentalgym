@@ -1,5 +1,5 @@
 {
-  "next_index": 0,
+  "next_index": 3,
   "cycle": 1,
   "note": "next_index は all-posts.json の配列インデックス(0始まり)。毎日の投稿ピックアップRoutineが読み書きする。88件を一周したら0に戻りcycleを+1する。"
 }
