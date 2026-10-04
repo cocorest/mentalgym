@@ -80,6 +80,13 @@ h1 { font-family: var(--font-display); font-size: 24px; margin: 0; text-wrap: ba
 .body ul, .body ol { padding-left: 1.4em; margin: 0 0 1em; }
 .body blockquote { margin: 0 0 1em; padding: 8px 14px; border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 0 8px 8px 0; }
 .body hr { border: 0; border-top: 1px solid var(--line); margin: 1.6em 0; }
+.group { font-family: var(--font-display); font-size: 13px; color: var(--muted); margin: 10px 2px 2px; letter-spacing: .04em; }
+.group:first-child { margin-top: 0; }
+.pill.paid { background: var(--accent); color: var(--surface); border-color: var(--accent); }
+.item.is-paid .date b { color: var(--accent); font-size: 14px; }
+.paywall { display: flex; align-items: center; gap: 10px; margin: 2em 0; color: var(--accent); font-size: 13px; font-weight: 700; }
+.paywall::before, .paywall::after { content: ''; flex: 1; border-top: 2px dashed var(--accent); }
+.body h4 { font-size: 16px; margin: 1.4em 0 .4em; }
 .empty { color: var(--muted); padding: 24px; text-align: center; }
 .toast { position: fixed; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 20px); transform: translateX(-50%); background: var(--fg); color: var(--bg); padding: 8px 16px; border-radius: 99px; font-size: 13px; }
 @media (prefers-reduced-motion: reduce) { .bar > span { transition: none; } }
@@ -119,13 +126,14 @@ h1 { font-family: var(--font-display); font-size: 24px; margin: 0; text-wrap: ba
 <div class="toast" id="toast" hidden></div>
 
 <script>
-const state = { articles: [], filter: 'all', selected: null, db: null, canWrite: false, source: '' };
+const state = { current: null, articles: [], filter: 'all', selected: null, db: null, canWrite: false, source: '' };
 const $ = (id) => document.getElementById(id);
 const WEEK = ['日','月','火','水','木','金','土'];
 const todayStr = (() => { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0'); })();
 
 function esc(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
-function inline(s) { return esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>'); }
+function inline(s) { return esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>'); }
+const PAYWALL = '===有料ライン===';
 
 function renderMarkdown(md) {
   const out = []; let list = null;
@@ -135,7 +143,9 @@ function renderMarkdown(md) {
     let m;
     if (!line.trim()) { close(); continue; }
     if (line.trim() === '---') { close(); out.push('<hr>'); continue; }
-    if ((m = line.match(/^#{2,3}\s+(.*)/))) { close(); out.push('<h3>' + inline(m[1]) + '</h3>'); continue; }
+    if (line.trim() === PAYWALL) { close(); out.push('<div class="paywall">ここから有料（¥' + (state.current && state.current.price || '') + '）</div>'); continue; }
+    if ((m = line.match(/^###\s+(.*)/))) { close(); out.push('<h4>' + inline(m[1]) + '</h4>'); continue; }
+    if ((m = line.match(/^##\s+(.*)/))) { close(); out.push('<h3>' + inline(m[1]) + '</h3>'); continue; }
     if ((m = line.match(/^>\s?(.*)/))) { close(); out.push('<blockquote>' + inline(m[1]) + '</blockquote>'); continue; }
     if ((m = line.match(/^\s*-\s+(.*)/))) { if (list !== 'ul') { close(); out.push('<ul>'); list = 'ul'; } out.push('<li>' + inline(m[1]) + '</li>'); continue; }
     if ((m = line.match(/^\s*\d+\.\s+(.*)/))) { if (list !== 'ol') { close(); out.push('<ol>'); list = 'ol'; } out.push('<li>' + inline(m[1]) + '</li>'); continue; }
@@ -147,10 +157,11 @@ function renderMarkdown(md) {
 }
 
 function plainText(md) {
-  return md.replace(/\*\*(.+?)\*\*/g, '$1');
+  return md.replace(/\*\*(.+?)\*\*/g, '$1').replace(/\*(.+?)\*/g, '$1').trim();
 }
 
 function fmtDate(iso) {
+  if (!iso) return { md: '', w: '' };
   const [y, m, d] = iso.split('-').map(Number);
   return { md: m + '/' + d, w: WEEK[new Date(y, m-1, d).getDay()] };
 }
@@ -166,36 +177,51 @@ function renderList() {
   $('barFill').style.width = state.articles.length ? (done / state.articles.length * 100) + '%' : '0';
   const rows = visible();
   if (!rows.length) { $('list').innerHTML = '<p class="empty">' + (state.articles.length ? 'この条件の記事はありません。' : '記事がまだありません。') + '</p>'; return; }
-  $('list').innerHTML = rows.map(a => {
+  const paid = rows.filter(a => a.type === 'paid'), daily = rows.filter(a => a.type !== 'paid');
+  const row = a => {
+    if (a.type === 'paid') {
+      return '<button type="button" class="item is-paid' + (a.posted ? ' is-done' : '') + '" data-id="' + esc(a.id) + '"' + (state.selected === a.id ? ' aria-current="true"' : '') + '>' +
+        '<span class="date"><b>¥' + a.price + '</b><small>' + Math.round((a.chars || 0) / 1000) + '千字</small></span>' +
+        '<span class="ititle">' + esc(a.title) + '</span>' + (a.posted ? '<span class="pill done">投稿済み</span>' : '<span class="pill paid">有料</span>') + '</button>';
+    }
     const f = fmtDate(a.date);
     const isToday = a.date === todayStr;
     const pill = a.posted ? '<span class="pill done">投稿済み</span>' : isToday ? '<span class="pill today">今日</span>' : (a.date < todayStr ? '<span class="pill">未投稿</span>' : '<span class="pill">予定</span>');
     return '<button type="button" class="item' + (a.posted ? ' is-done' : '') + (isToday ? ' is-today' : '') + '" data-id="' + esc(a.id) + '"' + (state.selected === a.id ? ' aria-current="true"' : '') + '>' +
       '<span class="date"><b>' + f.md + '</b><small>' + f.w + ' · Day ' + a.day + '</small></span>' +
       '<span class="ititle">' + esc(a.title) + '</span>' + pill + '</button>';
-  }).join('');
+  };
+  $('list').innerHTML = (paid.length ? '<p class="group">有料記事</p>' + paid.map(row).join('') : '') +
+    (daily.length ? '<p class="group">毎日の記事</p>' + daily.map(row).join('') : '');
 }
 
 function renderPane() {
   const a = state.articles.find(x => x.id === state.selected);
   if (!a) { $('pane').innerHTML = '<p class="empty">左の一覧から記事を選ぶと、本文がここに表示されます。</p>'; return; }
+  state.current = a;
+  const isPaid = a.type === 'paid';
   const f = fmtDate(a.date);
+  const parts = a.body.split(PAYWALL);
   const postedAt = a.postedAt ? new Date(a.postedAt) : null;
   $('pane').innerHTML =
-    '<div class="meta"><span>Day ' + a.day + '</span><span>' + a.date + '（' + f.w + '）投稿予定</span><span>' + (a.chars || a.body.length) + '字</span><span>着想：' + esc(a.inspiration || '') + '</span></div>' +
+    '<div class="meta">' + (isPaid ? '<span>有料記事 ¥' + a.price + '</span><span>無料部分 ' + parts[0].trim().length + '字／有料部分 ' + (parts[1] || '').trim().length + '字</span>' : '<span>Day ' + a.day + '</span><span>' + a.date + '（' + f.w + '）投稿予定</span>') + '<span>' + (a.chars || a.body.length) + '字</span><span>着想：' + esc(a.inspiration || '') + '</span></div>' +
     '<h2>' + esc(a.title) + '</h2>' +
     '<p class="summary">' + esc(a.summary) + '</p>' +
     '<div class="tags">' + (a.tags || []).map(t => '<span>#' + esc(t) + '</span>').join('') + '</div>' +
     '<div class="actions">' +
       '<button type="button" class="btn" id="copyTitle">タイトルをコピー</button>' +
-      '<button type="button" class="btn" id="copyBody">本文をコピー</button>' +
+      (isPaid ? '<button type="button" class="btn" id="copyFree">無料部分をコピー</button><button type="button" class="btn" id="copyPaid">有料部分をコピー</button>'
+              : '<button type="button" class="btn" id="copyBody">本文をコピー</button>') +
       '<button type="button" class="btn" id="copyTags">ハッシュタグをコピー</button>' +
       '<button type="button" class="btn ' + (a.posted ? 'posted' : 'primary') + '" id="togglePosted"' + (state.canWrite ? '' : ' disabled title="このページでは投稿状況を保存できません"') + '>' + (a.posted ? '✓ 投稿済み（取り消す）' : '投稿済みにする') + '</button>' +
       (postedAt ? '<span class="postedat">' + postedAt.toLocaleDateString('ja-JP') + ' に投稿</span>' : '') +
     '</div>' +
     '<div class="body">' + renderMarkdown(a.body) + '</div>';
   $('copyTitle').onclick = () => copy(a.title, 'タイトルをコピーしました');
-  $('copyBody').onclick = () => copy(plainText(a.body), '本文をコピーしました');
+  if (isPaid) {
+    $('copyFree').onclick = () => copy(plainText(parts[0]), '無料部分をコピーしました');
+    $('copyPaid').onclick = () => copy(plainText(parts[1] || ''), '有料部分をコピーしました');
+  } else $('copyBody').onclick = () => copy(plainText(a.body), '本文をコピーしました');
   $('copyTags').onclick = () => copy((a.tags || []).map(t => '#' + t).join(' '), 'ハッシュタグをコピーしました');
   $('togglePosted').onclick = () => togglePosted(a);
 }
@@ -243,16 +269,20 @@ $('jumpToday').addEventListener('click', () => {
   if (t) { state.selected = t.id; render(); }
 });
 
+function sortArticles(list) {
+  return list.sort((a, b) => (a.type === 'paid') !== (b.type === 'paid') ? (a.type === 'paid' ? -1 : 1) : (a.day || 0) - (b.day || 0) || a.id.localeCompare(b.id));
+}
+
 function pickDefault() {
   if (state.selected && state.articles.some(a => a.id === state.selected)) return;
-  const t = state.articles.find(a => a.date === todayStr) || state.articles.find(a => !a.posted) || state.articles[0];
+  const t = state.articles.find(a => a.date === todayStr) || state.articles.find(a => !a.posted && a.type !== 'paid') || state.articles[0];
   state.selected = t ? t.id : null;
 }
 
 async function loadFallback() {
   try {
     const res = await fetch('articles.json');
-    state.articles = (await res.json()).sort((a, b) => a.day - b.day);
+    state.articles = sortArticles(await res.json());
     state.source = 'file';
     $('syncNote').textContent = '閲覧のみ（投稿状況は保存されません）';
     pickDefault(); render();
@@ -267,9 +297,9 @@ async function loadFallback() {
   const user = await window.claude.use('user');
   const can = user ? await user.can('data.write') : null;
   state.canWrite = can !== false;
-  db.collection('articles').orderBy('day').onSnapshot(snap => {
+  db.collection('articles').onSnapshot(snap => {
     if (snap.empty) { if (!state.articles.length) loadFallback(); return; }
-    state.articles = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    state.articles = sortArticles(snap.docs.map(d => ({ id: d.id, ...d.data() })));
     state.source = 'db';
     $('syncNote').textContent = state.canWrite ? '投稿状況は自動で保存・同期されます' : '閲覧のみ';
     pickDefault(); render();
