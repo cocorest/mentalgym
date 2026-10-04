@@ -1,0 +1,278 @@
+<title>メンタルジム note管理</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap">
+<style>
+/* Layout: left = 30-day schedule list, right = reading pane; stacks on phones */
+:root {
+  --bg: #fffaf8;
+  --surface: #ffffff;
+  --line: #f1d9dd;
+  --fg: #4a3035;
+  --muted: #9a737b;
+  --accent: #c4697a;
+  --accent-soft: #fbe9ec;
+  --done: #4f8a6b;
+  --done-soft: #e5f2ea;
+  --today: #e6a15a;
+  --font-display: 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', sans-serif;
+  --font-body: 'M PLUS Rounded 1c', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1f1719; --surface: #2a2023; --line: #45343a; --fg: #f3e6e8; --muted: #b9989f;
+    --accent: #e49aa8; --accent-soft: #3d2a2f; --done: #8fc9a8; --done-soft: #23352b; --today: #f0b97c;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1f1719; --surface: #2a2023; --line: #45343a; --fg: #f3e6e8; --muted: #b9989f;
+  --accent: #e49aa8; --accent-soft: #3d2a2f; --done: #8fc9a8; --done-soft: #23352b; --today: #f0b97c;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.7; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-inline: 16px; padding-block: 24px 48px; }
+header.top { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
+h1 { font-family: var(--font-display); font-size: 24px; margin: 0; text-wrap: balance; }
+.sub { color: var(--muted); font-size: 13px; margin: 2px 0 0; }
+.progress { min-width: 240px; flex: 0 1 320px; }
+.progress-label { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.progress-label strong { color: var(--fg); font-size: 18px; }
+.bar { height: 8px; background: var(--accent-soft); border-radius: 99px; overflow: hidden; margin-top: 4px; }
+.bar > span { display: block; height: 100%; background: var(--done); width: 0; transition: width .3s; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; align-items: center; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 99px; overflow: hidden; background: var(--surface); }
+.seg button { border: 0; background: transparent; color: var(--muted); padding: 6px 14px; font: inherit; font-size: 13px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--accent); color: var(--surface); }
+.status-note { font-size: 12px; color: var(--muted); margin-left: auto; }
+.grid { display: grid; grid-template-columns: minmax(0, 400px) minmax(0, 1fr); gap: 20px; align-items: start; }
+@media (max-width: 820px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+.list { display: flex; flex-direction: column; gap: 6px; }
+.item { display: grid; grid-template-columns: 52px minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); cursor: pointer; text-align: left; font: inherit; color: inherit; width: 100%; }
+.item:hover { border-color: var(--accent); }
+.item[aria-current="true"] { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
+.item.is-done { background: var(--done-soft); }
+.date { font-variant-numeric: tabular-nums; line-height: 1.2; text-align: center; }
+.date b { display: block; font-size: 17px; font-family: var(--font-display); }
+.date small { font-size: 11px; color: var(--muted); }
+.item.is-today .date b { color: var(--today); }
+.ititle { font-size: 14px; font-weight: 500; line-height: 1.45; min-width: 0; }
+.ititle small { display: block; color: var(--muted); font-weight: 400; font-size: 11px; }
+.pill { font-size: 11px; padding: 2px 8px; border-radius: 99px; white-space: nowrap; border: 1px solid var(--line); color: var(--muted); }
+.pill.done { background: var(--done); color: var(--surface); border-color: var(--done); }
+.pill.today { border-color: var(--today); color: var(--today); }
+.pane { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px; min-width: 0; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); max-height: calc(100vh - 24px); overflow: auto; }
+@media (max-width: 820px) { .pane { position: static; max-height: none; } }
+.meta { display: flex; flex-wrap: wrap; gap: 6px 12px; font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+.pane h2 { font-family: var(--font-display); font-size: 22px; line-height: 1.45; margin: 0 0 10px; text-wrap: balance; }
+.summary { background: var(--accent-soft); border-radius: 10px; padding: 10px 14px; font-size: 14px; margin: 0 0 14px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.tags span { font-size: 12px; color: var(--accent); }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; padding-bottom: 16px; border-bottom: 1px dashed var(--line); }
+.btn { font: inherit; font-size: 13px; border-radius: 99px; padding: 7px 16px; border: 1px solid var(--accent); background: var(--surface); color: var(--accent); cursor: pointer; }
+.btn.primary { background: var(--accent); color: var(--surface); }
+.btn.posted { background: var(--done); border-color: var(--done); color: var(--surface); }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn:focus-visible, .item:focus-visible, .seg button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.postedat { font-size: 12px; color: var(--done); align-self: center; }
+.body { max-width: 40em; }
+.body h3 { font-family: var(--font-display); font-size: 18px; margin: 1.6em 0 .5em; }
+.body p { margin: 0 0 1em; }
+.body ul, .body ol { padding-left: 1.4em; margin: 0 0 1em; }
+.body blockquote { margin: 0 0 1em; padding: 8px 14px; border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 0 8px 8px 0; }
+.body hr { border: 0; border-top: 1px solid var(--line); margin: 1.6em 0; }
+.empty { color: var(--muted); padding: 24px; text-align: center; }
+.toast { position: fixed; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 20px); transform: translateX(-50%); background: var(--fg); color: var(--bg); padding: 8px 16px; border-radius: 99px; font-size: 13px; }
+@media (prefers-reduced-motion: reduce) { .bar > span { transition: none; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>メンタルジム note管理</h1>
+      <p class="sub">個人版メンタルジム｜毎日1本の投稿スケジュール</p>
+    </div>
+    <div class="progress" aria-live="polite">
+      <div class="progress-label"><span>投稿済み</span><span><strong id="doneCount">0</strong> / <span id="totalCount">0</span> 本</span></div>
+      <div class="bar"><span id="barFill"></span></div>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <div class="seg" role="group" aria-label="表示する記事">
+      <button type="button" id="f-all" data-filter="all" aria-pressed="true">すべて</button>
+      <button type="button" id="f-todo" data-filter="todo" aria-pressed="false">未投稿</button>
+      <button type="button" id="f-done" data-filter="done" aria-pressed="false">投稿済み</button>
+    </div>
+    <button type="button" class="btn" id="jumpToday">今日の記事へ</button>
+    <span class="status-note" id="syncNote">読み込み中…</span>
+  </div>
+
+  <div class="grid">
+    <nav class="list" id="list" aria-label="記事一覧">
+      <p class="empty">記事を読み込んでいます。</p>
+    </nav>
+    <article class="pane" id="pane">
+      <p class="empty">左の一覧から記事を選ぶと、本文がここに表示されます。</p>
+    </article>
+  </div>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+const state = { articles: [], filter: 'all', selected: null, db: null, canWrite: false, source: '' };
+const $ = (id) => document.getElementById(id);
+const WEEK = ['日','月','火','水','木','金','土'];
+const todayStr = (() => { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0'); })();
+
+function esc(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function inline(s) { return esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>'); }
+
+function renderMarkdown(md) {
+  const out = []; let list = null;
+  const close = () => { if (list) { out.push('</' + list + '>'); list = null; } };
+  for (const raw of md.split('\n')) {
+    const line = raw.trimEnd();
+    let m;
+    if (!line.trim()) { close(); continue; }
+    if (line.trim() === '---') { close(); out.push('<hr>'); continue; }
+    if ((m = line.match(/^#{2,3}\s+(.*)/))) { close(); out.push('<h3>' + inline(m[1]) + '</h3>'); continue; }
+    if ((m = line.match(/^>\s?(.*)/))) { close(); out.push('<blockquote>' + inline(m[1]) + '</blockquote>'); continue; }
+    if ((m = line.match(/^\s*-\s+(.*)/))) { if (list !== 'ul') { close(); out.push('<ul>'); list = 'ul'; } out.push('<li>' + inline(m[1]) + '</li>'); continue; }
+    if ((m = line.match(/^\s*\d+\.\s+(.*)/))) { if (list !== 'ol') { close(); out.push('<ol>'); list = 'ol'; } out.push('<li>' + inline(m[1]) + '</li>'); continue; }
+    if (list && /^\s{2,}/.test(raw)) { out[out.length-1] = out[out.length-1].replace(/<\/li>$/, '<br>' + inline(line.trim()) + '</li>'); continue; }
+    close(); out.push('<p>' + inline(line) + '</p>');
+  }
+  close();
+  return out.join('\n');
+}
+
+function plainText(md) {
+  return md.replace(/\*\*(.+?)\*\*/g, '$1');
+}
+
+function fmtDate(iso) {
+  const [y, m, d] = iso.split('-').map(Number);
+  return { md: m + '/' + d, w: WEEK[new Date(y, m-1, d).getDay()] };
+}
+
+function visible() {
+  return state.articles.filter(a => state.filter === 'all' || (state.filter === 'done') === !!a.posted);
+}
+
+function renderList() {
+  const done = state.articles.filter(a => a.posted).length;
+  $('doneCount').textContent = done;
+  $('totalCount').textContent = state.articles.length;
+  $('barFill').style.width = state.articles.length ? (done / state.articles.length * 100) + '%' : '0';
+  const rows = visible();
+  if (!rows.length) { $('list').innerHTML = '<p class="empty">' + (state.articles.length ? 'この条件の記事はありません。' : '記事がまだありません。') + '</p>'; return; }
+  $('list').innerHTML = rows.map(a => {
+    const f = fmtDate(a.date);
+    const isToday = a.date === todayStr;
+    const pill = a.posted ? '<span class="pill done">投稿済み</span>' : isToday ? '<span class="pill today">今日</span>' : (a.date < todayStr ? '<span class="pill">未投稿</span>' : '<span class="pill">予定</span>');
+    return '<button type="button" class="item' + (a.posted ? ' is-done' : '') + (isToday ? ' is-today' : '') + '" data-id="' + esc(a.id) + '"' + (state.selected === a.id ? ' aria-current="true"' : '') + '>' +
+      '<span class="date"><b>' + f.md + '</b><small>' + f.w + ' · Day ' + a.day + '</small></span>' +
+      '<span class="ititle">' + esc(a.title) + '</span>' + pill + '</button>';
+  }).join('');
+}
+
+function renderPane() {
+  const a = state.articles.find(x => x.id === state.selected);
+  if (!a) { $('pane').innerHTML = '<p class="empty">左の一覧から記事を選ぶと、本文がここに表示されます。</p>'; return; }
+  const f = fmtDate(a.date);
+  const postedAt = a.postedAt ? new Date(a.postedAt) : null;
+  $('pane').innerHTML =
+    '<div class="meta"><span>Day ' + a.day + '</span><span>' + a.date + '（' + f.w + '）投稿予定</span><span>' + (a.chars || a.body.length) + '字</span><span>着想：' + esc(a.inspiration || '') + '</span></div>' +
+    '<h2>' + esc(a.title) + '</h2>' +
+    '<p class="summary">' + esc(a.summary) + '</p>' +
+    '<div class="tags">' + (a.tags || []).map(t => '<span>#' + esc(t) + '</span>').join('') + '</div>' +
+    '<div class="actions">' +
+      '<button type="button" class="btn" id="copyTitle">タイトルをコピー</button>' +
+      '<button type="button" class="btn" id="copyBody">本文をコピー</button>' +
+      '<button type="button" class="btn" id="copyTags">ハッシュタグをコピー</button>' +
+      '<button type="button" class="btn ' + (a.posted ? 'posted' : 'primary') + '" id="togglePosted"' + (state.canWrite ? '' : ' disabled title="このページでは投稿状況を保存できません"') + '>' + (a.posted ? '✓ 投稿済み（取り消す）' : '投稿済みにする') + '</button>' +
+      (postedAt ? '<span class="postedat">' + postedAt.toLocaleDateString('ja-JP') + ' に投稿</span>' : '') +
+    '</div>' +
+    '<div class="body">' + renderMarkdown(a.body) + '</div>';
+  $('copyTitle').onclick = () => copy(a.title, 'タイトルをコピーしました');
+  $('copyBody').onclick = () => copy(plainText(a.body), '本文をコピーしました');
+  $('copyTags').onclick = () => copy((a.tags || []).map(t => '#' + t).join(' '), 'ハッシュタグをコピーしました');
+  $('togglePosted').onclick = () => togglePosted(a);
+}
+
+function render() { renderList(); renderPane(); }
+
+let toastTimer;
+function toast(msg) { const t = $('toast'); t.textContent = msg; t.hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => { t.hidden = true; }, 2200); }
+
+async function copy(text, msg) {
+  try { await navigator.clipboard.writeText(text); toast(msg); }
+  catch {
+    const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+    let ok = false; try { ok = document.execCommand('copy'); } catch {}
+    ta.remove(); toast(ok ? msg : 'コピーできませんでした。本文を選択してコピーしてください');
+  }
+}
+
+let writing = false;
+async function togglePosted(a) {
+  if (!state.db || writing) return;
+  writing = true;
+  const next = !a.posted;
+  try {
+    await state.db.doc('articles/' + a.id).update({ posted: next, postedAt: next ? new Date().toISOString() : null });
+    toast(next ? '投稿済みにしました' : '未投稿に戻しました');
+  } catch (e) {
+    toast(e && e.code === 'invalid_argument' ? 'このアカウントでは保存できません' : '保存できませんでした。少し待ってからもう一度お試しください');
+  } finally { writing = false; }
+}
+
+document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => {
+  state.filter = b.dataset.filter;
+  document.querySelectorAll('.seg button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+  try { localStorage.setItem('noteFilter', state.filter); } catch {}
+  renderList();
+}));
+$('list').addEventListener('click', e => {
+  const b = e.target.closest('.item'); if (!b) return;
+  state.selected = b.dataset.id; render();
+  if (window.matchMedia('(max-width: 820px)').matches) $('pane').scrollIntoView({ behavior: 'smooth' });
+});
+$('jumpToday').addEventListener('click', () => {
+  const t = state.articles.find(a => a.date === todayStr) || state.articles.find(a => !a.posted);
+  if (t) { state.selected = t.id; render(); }
+});
+
+function pickDefault() {
+  if (state.selected && state.articles.some(a => a.id === state.selected)) return;
+  const t = state.articles.find(a => a.date === todayStr) || state.articles.find(a => !a.posted) || state.articles[0];
+  state.selected = t ? t.id : null;
+}
+
+async function loadFallback() {
+  try {
+    const res = await fetch('articles.json');
+    state.articles = (await res.json()).sort((a, b) => a.day - b.day);
+    state.source = 'file';
+    $('syncNote').textContent = '閲覧のみ（投稿状況は保存されません）';
+    pickDefault(); render();
+  } catch { $('list').innerHTML = '<p class="empty">記事を読み込めませんでした。ページを再読み込みしてください。</p>'; }
+}
+
+(async () => {
+  try { const f = localStorage.getItem('noteFilter'); if (f) { const b = document.querySelector('[data-filter="' + f + '"]'); if (b) b.click(); } } catch {}
+  const db = window.claude ? await window.claude.use('db') : null;
+  if (!db) { loadFallback(); return; }
+  state.db = db;
+  const user = await window.claude.use('user');
+  const can = user ? await user.can('data.write') : null;
+  state.canWrite = can !== false;
+  db.collection('articles').orderBy('day').onSnapshot(snap => {
+    if (snap.empty) { if (!state.articles.length) loadFallback(); return; }
+    state.articles = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    state.source = 'db';
+    $('syncNote').textContent = state.canWrite ? '投稿状況は自動で保存・同期されます' : '閲覧のみ';
+    pickDefault(); render();
+  }, () => { $('syncNote').textContent = '同期が切れました。再読み込みしてください'; });
+})();
+</script>
