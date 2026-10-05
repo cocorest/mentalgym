@@ -70,6 +70,14 @@ h1 { font-family: var(--font-display); font-size: 24px; margin: 0; text-wrap: ba
 .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; padding-bottom: 16px; border-bottom: 1px dashed var(--line); }
 .btn { font: inherit; font-size: 13px; border-radius: 99px; padding: 7px 16px; border: 1px solid var(--accent); background: var(--surface); color: var(--accent); cursor: pointer; }
 .btn.primary { background: var(--accent); color: var(--surface); }
+.btn.done-btn { background: var(--done-soft); border-color: var(--done); color: var(--done); }
+a.btn { text-decoration: none; display: inline-flex; align-items: center; }
+.steps { margin: 0 0 12px; padding-left: 1.4em; font-size: 12px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 2px 18px; }
+.steps li::marker { color: var(--accent); font-weight: 700; }
+.tablewrap { overflow-x: auto; margin: 0 0 1em; }
+.body table { border-collapse: collapse; font-size: 14px; min-width: 100%; }
+.body th, .body td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+.body th { background: var(--accent-soft); font-weight: 500; }
 .btn.posted { background: var(--done); border-color: var(--done); color: var(--surface); }
 .btn:disabled { opacity: .5; cursor: not-allowed; }
 .btn:focus-visible, .item:focus-visible, .seg button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
@@ -135,29 +143,62 @@ function esc(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&
 function inline(s) { return esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>'); }
 const PAYWALL = '===有料ライン===';
 
-function renderMarkdown(md) {
-  const out = []; let list = null;
+function tableCells(line) { return line.trim().replace(/^\||\|$/g, '').split('|').map(c => c.trim()); }
+function isTableSep(line) { return /^\|?\s*:?-{2,}/.test(line.trim()) && /^[\s|:-]+$/.test(line.trim()); }
+
+// mode 'view' renders for this page; mode 'note' renders HTML that note's editor accepts on paste
+// (大見出し=h2, 小見出し=h3, no tables, no italics).
+function renderMarkdown(md, mode) {
+  const note = mode === 'note';
+  const il = note ? (t => esc(t).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '$1')) : inline;
+  const out = []; let list = null; let table = null;
   const close = () => { if (list) { out.push('</' + list + '>'); list = null; } };
+  const flushTable = () => {
+    if (!table) return;
+    const [head, ...rows] = table; table = null;
+    if (note) {
+      out.push('<ul>' + rows.map(r => '<li>' + r.map((c, i) => (head[i] ? il(head[i]) + '：' : '') + il(c)).join(' ／ ') + '</li>').join('') + '</ul>');
+    } else {
+      out.push('<div class="tablewrap"><table><thead><tr>' + head.map(c => '<th>' + il(c) + '</th>').join('') + '</tr></thead><tbody>' +
+        rows.map(r => '<tr>' + r.map(c => '<td>' + il(c) + '</td>').join('') + '</tr>').join('') + '</tbody></table></div>');
+    }
+  };
   for (const raw of md.split('\n')) {
     const line = raw.trimEnd();
     let m;
+    if (line.trim().startsWith('|')) { close(); if (isTableSep(line)) continue; (table = table || []).push(tableCells(line)); continue; }
+    flushTable();
     if (!line.trim()) { close(); continue; }
     if (line.trim() === '---') { close(); out.push('<hr>'); continue; }
-    if (line.trim() === PAYWALL) { close(); out.push('<div class="paywall">ここから有料（¥' + (state.current && state.current.price || '') + '）</div>'); continue; }
-    if ((m = line.match(/^###\s+(.*)/))) { close(); out.push('<h4>' + inline(m[1]) + '</h4>'); continue; }
-    if ((m = line.match(/^##\s+(.*)/))) { close(); out.push('<h3>' + inline(m[1]) + '</h3>'); continue; }
-    if ((m = line.match(/^>\s?(.*)/))) { close(); out.push('<blockquote>' + inline(m[1]) + '</blockquote>'); continue; }
-    if ((m = line.match(/^\s*-\s+(.*)/))) { if (list !== 'ul') { close(); out.push('<ul>'); list = 'ul'; } out.push('<li>' + inline(m[1]) + '</li>'); continue; }
-    if ((m = line.match(/^\s*\d+\.\s+(.*)/))) { if (list !== 'ol') { close(); out.push('<ol>'); list = 'ol'; } out.push('<li>' + inline(m[1]) + '</li>'); continue; }
-    if (list && /^\s{2,}/.test(raw)) { out[out.length-1] = out[out.length-1].replace(/<\/li>$/, '<br>' + inline(line.trim()) + '</li>'); continue; }
-    close(); out.push('<p>' + inline(line) + '</p>');
+    if (line.trim() === PAYWALL) { close(); if (!note) out.push('<div class="paywall">ここから有料（¥' + (state.current && state.current.price || '') + '）</div>'); continue; }
+    if ((m = line.match(/^###\s+(.*)/))) { close(); out.push(note ? '<h3>' + il(m[1]) + '</h3>' : '<h4>' + il(m[1]) + '</h4>'); continue; }
+    if ((m = line.match(/^##\s+(.*)/))) { close(); out.push(note ? '<h2>' + il(m[1]) + '</h2>' : '<h3>' + il(m[1]) + '</h3>'); continue; }
+    if ((m = line.match(/^>\s?(.*)/))) { close(); out.push('<blockquote>' + il(m[1]) + '</blockquote>'); continue; }
+    if ((m = line.match(/^\s*-\s+(.*)/))) { if (list !== 'ul') { close(); out.push('<ul>'); list = 'ul'; } out.push('<li>' + il(m[1]) + '</li>'); continue; }
+    if ((m = line.match(/^\s*\d+\.\s+(.*)/))) { if (list !== 'ol') { close(); out.push('<ol>'); list = 'ol'; } out.push('<li>' + il(m[1]) + '</li>'); continue; }
+    if (list && /^\s{2,}/.test(raw)) { out[out.length-1] = out[out.length-1].replace(/<\/li>$/, '<br>' + il(line.trim()) + '</li>'); continue; }
+    close(); out.push('<p>' + il(line) + '</p>');
   }
-  close();
+  flushTable(); close();
   return out.join('\n');
 }
 
 function plainText(md) {
-  return md.replace(/\*\*(.+?)\*\*/g, '$1').replace(/\*(.+?)\*/g, '$1').trim();
+  const lines = []; let head = null;
+  for (const raw of md.split('\n')) {
+    const line = raw.trimEnd();
+    if (line.trim().startsWith('|')) {
+      if (isTableSep(line)) continue;
+      const cells = tableCells(line);
+      if (!head) { head = cells; continue; }
+      lines.push('・' + cells.map((c, i) => (head[i] ? head[i] + '：' : '') + c).join(' ／ '));
+      continue;
+    }
+    head = null;
+    if (line.trim() === PAYWALL) continue;
+    lines.push(line.replace(/^#{2,3}\s+/, ''));
+  }
+  return lines.join('\n').replace(/\*\*(.+?)\*\*/g, '$1').replace(/\*(.+?)\*/g, '$1').trim();
 }
 
 function fmtDate(iso) {
@@ -208,20 +249,22 @@ function renderPane() {
     '<h2>' + esc(a.title) + '</h2>' +
     '<p class="summary">' + esc(a.summary) + '</p>' +
     '<div class="tags">' + (a.tags || []).map(t => '<span>#' + esc(t) + '</span>').join('') + '</div>' +
+    '<ol class="steps"><li>noteで新しい記事を開く</li><li>タイトルを貼る</li><li>' + (isPaid ? '無料部分→有料ライン→有料部分の順に貼る' : '本文を貼る（見出し・太字もそのまま）') + '</li><li>公開設定でハッシュタグを貼る</li><li>投稿したら「投稿済みにする」</li></ol>' +
     '<div class="actions">' +
+      '<a class="btn primary" href="https://note.com/notes/new" target="_blank" rel="noopener">noteで新しい記事を書く ↗</a>' +
       '<button type="button" class="btn" id="copyTitle">タイトルをコピー</button>' +
       (isPaid ? '<button type="button" class="btn" id="copyFree">無料部分をコピー</button><button type="button" class="btn" id="copyPaid">有料部分をコピー</button>'
               : '<button type="button" class="btn" id="copyBody">本文をコピー</button>') +
       '<button type="button" class="btn" id="copyTags">ハッシュタグをコピー</button>' +
-      '<button type="button" class="btn ' + (a.posted ? 'posted' : 'primary') + '" id="togglePosted"' + (state.canWrite ? '' : ' disabled title="このページでは投稿状況を保存できません"') + '>' + (a.posted ? '✓ 投稿済み（取り消す）' : '投稿済みにする') + '</button>' +
+      '<button type="button" class="btn ' + (a.posted ? 'posted' : 'done-btn') + '" id="togglePosted"' + (state.canWrite ? '' : ' disabled title="このページでは投稿状況を保存できません"') + '>' + (a.posted ? '✓ 投稿済み（取り消す）' : '投稿済みにする') + '</button>' +
       (postedAt ? '<span class="postedat">' + postedAt.toLocaleDateString('ja-JP') + ' に投稿</span>' : '') +
     '</div>' +
     '<div class="body">' + renderMarkdown(a.body) + '</div>';
   $('copyTitle').onclick = () => copy(a.title, 'タイトルをコピーしました');
   if (isPaid) {
-    $('copyFree').onclick = () => copy(plainText(parts[0]), '無料部分をコピーしました');
-    $('copyPaid').onclick = () => copy(plainText(parts[1] || ''), '有料部分をコピーしました');
-  } else $('copyBody').onclick = () => copy(plainText(a.body), '本文をコピーしました');
+    $('copyFree').onclick = () => copyRich(parts[0], '無料部分をコピーしました（見出し・太字つき）');
+    $('copyPaid').onclick = () => copyRich(parts[1] || '', '有料部分をコピーしました（見出し・太字つき）');
+  } else $('copyBody').onclick = () => copyRich(a.body, '本文をコピーしました（見出し・太字つき）');
   $('copyTags').onclick = () => copy((a.tags || []).map(t => '#' + t).join(' '), 'ハッシュタグをコピーしました');
   $('togglePosted').onclick = () => togglePosted(a);
 }
@@ -238,6 +281,20 @@ async function copy(text, msg) {
     let ok = false; try { ok = document.execCommand('copy'); } catch {}
     ta.remove(); toast(ok ? msg : 'コピーできませんでした。本文を選択してコピーしてください');
   }
+}
+
+// Copies note-ready HTML (headings, bold, lists keep their formatting when pasted into note)
+// with a plain-text fallback for apps that refuse rich clipboard writes.
+async function copyRich(md, msg) {
+  const html = renderMarkdown(md, 'note'), text = plainText(md);
+  try {
+    if (!window.ClipboardItem || !navigator.clipboard.write) throw new Error('no rich clipboard');
+    await navigator.clipboard.write([new ClipboardItem({
+      'text/html': new Blob([html], { type: 'text/html' }),
+      'text/plain': new Blob([text], { type: 'text/plain' })
+    })]);
+    toast(msg);
+  } catch { copy(text, '書式なしでコピーしました'); }
 }
 
 let writing = false;
