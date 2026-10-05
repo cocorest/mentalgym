@@ -18,8 +18,8 @@ inspiration: メンタルジム（親切の心理学・受け取る力）
 
 ## 「自分を後回しにする優しさ」の代償
 
-心理学では、自分のことを後回しにしてまで人の世話をしすぎる傾向が研究されています。
-こうした傾向が強い人は、人に尽くしているにもかかわらず、心身の不調を抱えやすいことが報告されています。
+心理学では、自分のことを後回しにしてまで人の世話をしすぎる傾向を「非緩和的共同性（unmitigated communion）」と呼び、研究が重ねられてきました。
+こうした傾向が強い人は、人に尽くしているにもかかわらず、心身の不調を抱えやすいことが報告されています（Helgeson & Fritz, 1998）。
 
 また、与えすぎる人の中には、
 
@@ -38,6 +38,12 @@ inspiration: メンタルジム（親切の心理学・受け取る力）
 
 **受け取ることは、相手に「与える喜び」を贈ることでもあります。**
 
+## 「お互いさま」が、関係を育てる
+
+人間関係の研究では、「相手の役に立ちたい」「相手を大切にしたい」という気持ちで関わる人ほど、周りからのサポートも受けやすくなり、お互いに支え合う関係が育っていくことがわかっています。一方で、「よく思われたい」という気持ちが強いと、どれだけ尽くしても孤独や対立を感じやすかったそうです（Crocker & Canevello, 2008）。
+
+また、27の研究をまとめた分析では、親切をすることが、親切をした本人の幸福感も高めることが確かめられています（Curry et al., 2018）。あなたが受け取ることで、相手もまたこの「与える喜び」を味わえるのです。
+
 ## 受け取る練習
 
 受け取るのが苦手な方は、小さなことから練習してみてください。
@@ -54,3 +60,8 @@ inspiration: メンタルジム（親切の心理学・受け取る力）
 ---
 
 人間関係で消耗しがちな方のための有料ワークブック第2弾を、近日公開予定です。
+
+**参考文献**
+- Crocker, J., & Canevello, A. (2008). Creating and undermining social support in communal relationships: The role of compassionate and self-image goals. *Journal of Personality and Social Psychology, 95*(3), 555–575.
+- Curry, O. S., et al. (2018). Happy to help? A systematic review and meta-analysis of the effects of performing acts of kindness on the well-being of the actor. *Journal of Experimental Social Psychology, 76*, 320–329.
+- Helgeson, V. S., & Fritz, H. L. (1998). A theory of unmitigated communion. *Personality and Social Psychology Review, 2*(3), 173–183.

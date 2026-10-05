@@ -40,6 +40,14 @@ inspiration: メンタルジム（NVC・課題の分離）
 第1部でお話しした「課題の分離」（Day12）で考えると、親の不安は親の課題です。
 あなたがそれを全部解消してあげる必要はありません。
 
+## 研究が教えてくれること
+
+大人になった子どもと親の関係を調べた研究では、親子の間に「イライラ」や「わずらわしさ」といった緊張を感じるのは、ごく一般的なことだとわかっています。そして、緊張を感じながらも、親子のつながりや愛情も同時に感じている、という「両方の気持ち」を抱えている人が多いのです（Birditt et al., 2009）。
+
+親にイライラするからといって、親を大切に思っていないわけではありません。イライラと愛情は、同じ心の中に並んで存在していいのです。
+
+また、イライラしたときに「今、私はわかってほしくてイライラしている」と言葉にするだけでも、気持ちは落ち着きやすくなります（Lieberman et al., 2007）。
+
 ## 距離のとり方を選んでいい
 
 親との関係に、正解はありません。
@@ -58,3 +66,8 @@ inspiration: メンタルジム（NVC・課題の分離）
 ---
 
 家族との関係で悩んでいる方は、個別スポット相談でゆっくりお話を聞かせてください。
+
+**参考文献**
+- Birditt, K. S., Miller, L. M., Fingerman, K. L., & Lefkowitz, E. S. (2009). Tensions in the parent and adult child relationship: Links to solidarity and ambivalence. *Psychology and Aging, 24*(2), 287–295.
+- Lieberman, M. D., et al. (2007). Putting feelings into words: Affect labeling disrupts amygdala activity in response to affective stimuli. *Psychological Science, 18*(5), 421–428.
+- Rosenberg, M. B. (2015). *Nonviolent communication: A language of life* (3rd ed.). PuddleDancer Press.

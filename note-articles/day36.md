@@ -33,7 +33,11 @@ inspiration: メンタルジム（イルカモード・自己一致）
 
 ## 研究が教えてくれること
 
-心理学の研究では、自分の気持ちを押し殺す（感情を抑える）傾向が強い人ほど、周りの人から「親しみにくい」と感じられやすく、人間関係の満足度も下がりやすいことが報告されています。
+スタンフォード大学の研究では、自分の気持ちを押し殺す（感情を抑える）傾向が強い人ほど、ポジティブな気持ちを感じにくく、人との親密さや人間関係の満足度も低くなりやすいことが報告されています（Gross & John, 2003）。
+
+さらに、初対面の2人に会話をしてもらう実験では、一方が感情を抑えながら話すと、相手のほうも居心地の悪さを感じ、「この人ともっと仲良くなりたい」という気持ちが弱まることがわかりました（Butler et al., 2003）。
+
+また、「自分らしくいられている」という感覚が強い人ほど、自尊心や人生の満足度が高いことも報告されています（Wood et al., 2008）。
 
 意外かもしれませんが、本音を隠して合わせ続けるほうが、かえって相手との距離は縮まりにくいのです。
 
@@ -51,3 +55,8 @@ inspiration: メンタルジム（イルカモード・自己一致）
 ---
 
 人間関係で疲れやすい方のために、近日中に有料ワークブック第2弾を公開予定です。
+
+**参考文献**
+- Butler, E. A., et al. (2003). The social consequences of expressive suppression. *Emotion, 3*(1), 48–67.
+- Gross, J. J., & John, O. P. (2003). Individual differences in two emotion regulation processes: Implications for affect, relationships, and well-being. *Journal of Personality and Social Psychology, 85*(2), 348–362.
+- Wood, A. M., et al. (2008). The authentic personality: A theoretical and empirical conceptualization and the development of the Authenticity Scale. *Journal of Counseling Psychology, 55*(3), 385–399.

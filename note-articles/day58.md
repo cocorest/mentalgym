@@ -22,7 +22,9 @@ inspiration: メンタルジム（安心51％・RAS・感謝の習慣）
 
 心理学では、感謝の気持ちを意識的に向けることが、幸福感を高める可能性があることが研究されています。
 
-ある研究では、毎週「感謝していること」を書き出したグループは、「困ったこと」を書き出したグループに比べて、人生をより前向きにとらえるようになったと報告されています。
+ある研究では、10週間にわたって毎週「感謝していること」を5つ書き出したグループは、「困ったこと」を書き出したグループに比べて、人生をより前向きにとらえ、体の不調も少なく、運動にも多くの時間を使うようになったと報告されています（Emmons & McCullough, 2003）。
+
+また、寝る前に「その日にあった良かったこと」を3つ書く習慣を1週間続けたグループは、6か月後まで幸福感が高く、落ち込みも少ない状態が続いたという研究もあります（Seligman et al., 2005）。
 
 すでにあるものに目を向けることは、現実から目をそらすことではありません。
 **足りないものと同じように、すでにあるものも、現実の一部**なのです。
@@ -51,3 +53,7 @@ inspiration: メンタルジム（安心51％・RAS・感謝の習慣）
 ---
 
 1年の終わりに、自分の心をゆっくり整理したい方は、個別スポット相談をご利用ください。
+
+**参考文献**
+- Emmons, R. A., & McCullough, M. E. (2003). Counting blessings versus burdens: An experimental investigation of gratitude and subjective well-being in daily life. *Journal of Personality and Social Psychology, 84*(2), 377–389.
+- Seligman, M. E. P., Steen, T. A., Park, N., & Peterson, C. (2005). Positive psychology progress: Empirical validation of interventions. *American Psychologist, 60*(5), 410–421.

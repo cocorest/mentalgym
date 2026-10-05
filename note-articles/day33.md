@@ -29,6 +29,15 @@ inspiration: メンタルジム（AWAREテクニック・感情の波）
 
 この「考え」が新しい燃料になって、感情の波を何度も起こし直してしまうのです。
 
+## 研究が教えてくれること
+
+感情がどのくらい続くかを調べた研究があります。ベルギーの研究チームが、さまざまな感情の持続時間を比べたところ、感情によって長さが大きくちがい、とくに悲しみは長く続きやすいことがわかりました。そして、**感情を長引かせる大きな要因は「反すう」、つまり出来事をくり返し考え続けること**でした（Verduyn & Lavrijsen, 2015）。
+
+また、反すうしやすい人ほど、気分の落ち込みや不安が強くなりやすいことも、多くの研究で示されています（Nolen-Hoeksema, 2000）。
+
+一方で、「不安」「イライラ」と感情に言葉をつけるだけで、不安や恐怖に反応する脳の部位（扁桃体）の活動が落ち着くことも、脳画像の研究でわかっています（Lieberman et al., 2007）。
+「今、不安の波が来た」と実況するのは、気休めではなく、脳のしくみにかなった方法なのです。
+
 ## 波を見送る3ステップ
 
 1. **気づく**：「あ、今、不安の波が来た」と心の中で実況する
@@ -45,3 +54,8 @@ inspiration: メンタルジム（AWAREテクニック・感情の波）
 ---
 
 不安の波に何度も飲み込まれてしまう方は、個別スポット相談でパターンを一緒に見ていきましょう。
+
+**参考文献**
+- Lieberman, M. D., et al. (2007). Putting feelings into words: Affect labeling disrupts amygdala activity in response to affective stimuli. *Psychological Science, 18*(5), 421–428.
+- Nolen-Hoeksema, S. (2000). The role of rumination in depressive disorders and mixed anxiety/depressive symptoms. *Journal of Abnormal Psychology, 109*(3), 504–511.
+- Verduyn, P., & Lavrijsen, S. (2015). Which emotions last longest and why: The role of event importance and rumination. *Motivation and Emotion, 39*(1), 119–127.

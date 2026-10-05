@@ -35,6 +35,14 @@ inspiration: メンタルジム（キャンセルした心・感情の受容）
 **ステップ3：小さく表現する**
 全部を伝えなくても大丈夫です。「今日はちょっと疲れてるんだ」と一言だけ伝える。それだけでも、我慢は少しずつ減っていきます。
 
+## 研究が教えてくれること
+
+気持ちを押し殺す「感情の抑制」がくせになっている人は、ポジティブな感情を感じにくく、落ち込みやすく、人間関係の満足度も低くなりやすいことがわかっています（Gross & John, 2003）。我慢は、その場はやりすごせても、長い目で見ると心のエネルギーを少しずつ削っていくのです。
+
+一方で、つらい気持ちを紙に書き出すだけでも、心と体の健康によい影響があることが知られています。ある実験では、つらい体験について4日間、15分ずつ思いや気持ちを書いた学生は、その後の数か月で健康センターを受診する回数が少なかったと報告されています（Pennebaker & Beall, 1986）。
+
+誰かに言えないときは、まずノートに書くことから始めてみてください。それも立派な「我慢をやめる」一歩です。
+
 ## 我慢は「悪いこと」ではない
 
 誤解しないでほしいのは、我慢そのものが悪いわけではない、ということです。
@@ -51,3 +59,7 @@ inspiration: メンタルジム（キャンセルした心・感情の受容）
 ---
 
 我慢がたまって限界を感じている方は、無理をせず、個別スポット相談をご利用ください。
+
+**参考文献**
+- Gross, J. J., & John, O. P. (2003). Individual differences in two emotion regulation processes: Implications for affect, relationships, and well-being. *Journal of Personality and Social Psychology, 85*(2), 348–362.
+- Pennebaker, J. W., & Beall, S. K. (1986). Confronting a traumatic event: Toward an understanding of inhibition and disease. *Journal of Abnormal Psychology, 95*(3), 274–281.
