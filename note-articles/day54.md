@@ -41,6 +41,14 @@ inspiration: メンタルジム（人生を「実験」する心理学・プラ�
 
 キャリア心理学には「計画的偶発性理論」という考え方があります。キャリアの多くは予想しない偶然によって形づくられ、その偶然を活かせるかどうかは、好奇心を持って動いてみるかどうかにかかっている、という考え方です。一見むだに見える寄り道が、あとから大切な意味を持つこともあるのです。
 
+## 環境だけを変えても、元に戻りやすい
+
+「じゃあ、思い切って転職すればいいのでは？」と思う方もいるかもしれません。
+
+もちろん、それが必要なときもあります。ただ、転職直後に仕事の満足度はぐっと上がっても、時間とともに下がっていくことが研究で報告されています（Boswell et al., 2005）。休暇の効果も、仕事に戻ってから数週間ほどで薄れていくことがわかっています（de Bloom et al., 2009）。
+
+新しい環境は、しばらくすると予測できる日常になります。だからこそ、外側を大きく変える前に、**毎日の中で「自分がどう関わりたいか」を小さく試してみる**ことが大切なのです。
+
 ## 「やりたいこと」は、探すより感じるもの
 
 「やりたいことを見つけなきゃ」と思うほど、見つからなくなることがあります。
@@ -60,3 +68,7 @@ inspiration: メンタルジム（人生を「実験」する心理学・プラ�
 ---
 
 キャリアの迷いを一緒に整理したい方は、個別スポット相談をご利用ください。
+
+**参考文献**
+- Boswell, W. R., Boudreau, J. W., & Tichy, J. (2005). The relationship between employee job change and job satisfaction: The honeymoon-hangover effect. *Journal of Applied Psychology, 90*(5), 882–892.
+- de Bloom, J., et al. (2009). Do we recover from vacation? Meta-analysis of vacation effects on health and well-being. *Journal of Occupational Health, 51*(1), 13–25.
