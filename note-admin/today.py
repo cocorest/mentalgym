@@ -35,6 +35,9 @@ def to_html(md):
             out.append("<li>" + " ／ ".join(inline((h + "：" if h else "") + c) for h, c in zip(head, cells)) + "</li>")
             continue
         head = None
+        if lst and re.match(r"\s{2,}\S", raw) and out and out[-1].endswith("</li>"):
+            out[-1] = out[-1][:-5] + "<br>" + inline(line.strip()) + "</li>"
+            continue
         if lst and not re.match(r"\s*(-|\d+\.)\s", line):
             out.append(f"</{lst}>"); lst = None
         if not line.strip():
