@@ -218,8 +218,13 @@ function renderList() {
   $('barFill').style.width = state.articles.length ? (done / state.articles.length * 100) + '%' : '0';
   const rows = visible();
   if (!rows.length) { $('list').innerHTML = '<p class="empty">' + (state.articles.length ? 'この条件の記事はありません。' : '記事がまだありません。') + '</p>'; return; }
-  const paid = rows.filter(a => a.type === 'paid'), daily = rows.filter(a => a.type !== 'paid');
+  const paid = rows.filter(a => a.type === 'paid'), special = rows.filter(a => a.type === 'special'), daily = rows.filter(a => a.type !== 'paid' && a.type !== 'special');
   const row = a => {
+    if (a.type === 'special') {
+      return '<button type="button" class="item is-paid' + (a.posted ? ' is-done' : '') + '" data-id="' + esc(a.id) + '"' + (state.selected === a.id ? ' aria-current="true"' : '') + '>' +
+        '<span class="date"><b>長編</b><small>' + Math.round((a.chars || 0) / 100) / 10 + '千字</small></span>' +
+        '<span class="ititle">' + esc(a.title) + '</span>' + (a.posted ? '<span class="pill done">投稿済み</span>' : '<span class="pill">いつでも</span>') + '</button>';
+    }
     if (a.type === 'paid') {
       return '<button type="button" class="item is-paid' + (a.posted ? ' is-done' : '') + '" data-id="' + esc(a.id) + '"' + (state.selected === a.id ? ' aria-current="true"' : '') + '>' +
         '<span class="date"><b>¥' + a.price + '</b><small>' + Math.round((a.chars || 0) / 1000) + '千字</small></span>' +
@@ -233,6 +238,7 @@ function renderList() {
       '<span class="ititle">' + esc(a.title) + '</span>' + pill + '</button>';
   };
   $('list').innerHTML = (paid.length ? '<p class="group">有料記事</p>' + paid.map(row).join('') : '') +
+    (special.length ? '<p class="group">特別記事（長編・投稿日は自由）</p>' + special.map(row).join('') : '') +
     (daily.length ? '<p class="group">毎日の記事</p>' + daily.map(row).join('') : '');
 }
 
@@ -245,7 +251,7 @@ function renderPane() {
   const parts = a.body.split(PAYWALL);
   const postedAt = a.postedAt ? new Date(a.postedAt) : null;
   $('pane').innerHTML =
-    '<div class="meta">' + (isPaid ? '<span>有料記事 ¥' + a.price + '</span><span>無料部分 ' + parts[0].trim().length + '字／有料部分 ' + (parts[1] || '').trim().length + '字</span>' : '<span>Day ' + a.day + '</span><span>' + a.date + '（' + f.w + '）投稿予定</span>') + '<span>' + (a.chars || a.body.length) + '字</span><span>着想：' + esc(a.inspiration || '') + '</span></div>' +
+    '<div class="meta">' + (isPaid ? '<span>有料記事 ¥' + a.price + '</span><span>無料部分 ' + parts[0].trim().length + '字／有料部分 ' + (parts[1] || '').trim().length + '字</span>' : a.type === 'special' ? '<span>特別記事（長編）</span><span>投稿日は自由</span>' : '<span>Day ' + a.day + '</span><span>' + a.date + '（' + f.w + '）投稿予定</span>') + '<span>' + (a.chars || a.body.length) + '字</span><span>着想：' + esc(a.inspiration || '') + '</span></div>' +
     '<h2>' + esc(a.title) + '</h2>' +
     '<p class="summary">' + esc(a.summary) + '</p>' +
     '<div class="tags">' + (a.tags || []).map(t => '<span>#' + esc(t) + '</span>').join('') + '</div>' +
@@ -327,12 +333,13 @@ $('jumpToday').addEventListener('click', () => {
 });
 
 function sortArticles(list) {
-  return list.sort((a, b) => (a.type === 'paid') !== (b.type === 'paid') ? (a.type === 'paid' ? -1 : 1) : (a.day || 0) - (b.day || 0) || a.id.localeCompare(b.id));
+  const rank = a => a.type === 'paid' ? 0 : a.type === 'special' ? 1 : 2;
+  return list.sort((a, b) => rank(a) - rank(b) || (a.day || 0) - (b.day || 0) || a.id.localeCompare(b.id));
 }
 
 function pickDefault() {
   if (state.selected && state.articles.some(a => a.id === state.selected)) return;
-  const t = state.articles.find(a => a.date === todayStr) || state.articles.find(a => !a.posted && a.type !== 'paid') || state.articles[0];
+  const t = state.articles.find(a => a.date === todayStr) || state.articles.find(a => !a.posted && a.type === 'daily') || state.articles[0];
   state.selected = t ? t.id : null;
 }
 
