@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>対話ジム｜1日5分の伝え方トレーニング</title>
+<meta name="description" content="臨床心理士・公認心理師監修。ACT・自己慈悲・NVCをベースに、聴く・伝える・境界線を1日5分で練習できる対話トレーニングアプリ。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink:        #e8a5b0;
+    --pink-light:  #f5cfd5;
+    --pink-pale:   #fdf0f2;
+    --pink-dark:   #c4697a;
+    --peach:       #f2c4a8;
+    --peach-pale:  #fef7f3;
+    --rose:        #d4687e;
+    --lavender:    #d5bfe8;
+    --lav-light:   #efe8f8;
+    --mint:        #cfe8dc;
+    --mint-dark:   #4f8a6e;
+    --warm-white:  #fffcfa;
+    --brown:       #5c3d42;
+    --brown-mid:   #8a5f67;
+    --muted:       #a0747d;
+    --text:        #4a3035;
+    --ng:          #b5485c;
+    --ng-bg:       #fbe9ec;
+    --ok:          #3f7d62;
+    --ok-bg:       #e8f4ee;
+    --radius:      18px;
+    --shadow:      0 6px 22px rgba(196,105,122,0.12);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: 'M PLUS Rounded 1c', 'Hiragino Maru Gothic ProN', 'Noto Sans JP', sans-serif;
+    background: linear-gradient(160deg, #fde8ec 0%, #fdf4ee 40%, #f8eef6 100%) fixed;
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.8;
+    min-height: 100vh;
+    padding-bottom: calc(84px + env(safe-area-inset-bottom));
+  }
+  button { font-family: inherit; cursor: pointer; }
+  textarea, input { font-family: inherit; font-size: 16px; }
+
+  /* ── HEADER ── */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,252,250,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--pink-light);
+    height: 58px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 16px;
+  }
+  .logo {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-weight: 700; color: var(--brown); font-size: 17px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .logo-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--pink); }
+  .streak-pill {
+    background: var(--pink-pale); border: 1px solid var(--pink-light);
+    border-radius: 50px; padding: 4px 12px; font-size: 13px; color: var(--pink-dark); font-weight: 700;
+  }
+
+  main { max-width: 680px; margin: 0 auto; padding: 20px 16px 32px; }
+  .view { display: none; animation: fade .35s ease; }
+  .view.active { display: block; }
+  @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+  /* ── TYPO ── */
+  h1, h2, h3 { font-family: 'Zen Maru Gothic', sans-serif; color: var(--brown); line-height: 1.5; }
+  h1 { font-size: 24px; }
+  h2 { font-size: 20px; margin-bottom: 12px; }
+  h3 { font-size: 17px; margin-bottom: 8px; }
+  .eyebrow { font-size: 12px; letter-spacing: .12em; color: var(--muted); font-weight: 700; text-transform: uppercase; }
+  .lead { color: var(--brown-mid); font-size: 15px; }
+  .small { font-size: 13px; color: var(--muted); }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--warm-white);
+    border: 1px solid var(--pink-light);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+  }
+  .card.soft { background: var(--pink-pale); box-shadow: none; }
+  .card.lav  { background: var(--lav-light); border-color: var(--lavender); box-shadow: none; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    background: var(--pink-dark); color: #fff; border: none;
+    padding: 12px 22px; border-radius: 50px; font-size: 15px; font-weight: 700;
+    transition: transform .15s, background .2s;
+  }
+  .btn:hover { background: var(--rose); }
+  .btn:active { transform: scale(.97); }
+  .btn.ghost { background: transparent; color: var(--pink-dark); border: 1.5px solid var(--pink); }
+  .btn.ghost:hover { background: var(--pink-pale); }
+  .btn.block { width: 100%; }
+  .btn:disabled { opacity: .45; cursor: default; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  /* ── HERO ── */
+  .hero { text-align: center; padding: 18px 4px 6px; }
+  .hero h1 { margin: 8px 0 10px; }
+  .hero .badge-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .badge { background: #fff; border: 1px solid var(--pink-light); border-radius: 50px; padding: 3px 12px; font-size: 12px; color: var(--brown-mid); }
+
+  /* ── PROGRESS ── */
+  .progress { height: 10px; border-radius: 10px; background: var(--pink-light); overflow: hidden; }
+  .progress > span { display: block; height: 100%; background: linear-gradient(90deg, var(--pink), var(--pink-dark)); border-radius: 10px; transition: width .5s; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 14px; }
+  .stat { background: var(--pink-pale); border-radius: 14px; padding: 10px 6px; text-align: center; }
+  .stat b { display: block; font-size: 22px; color: var(--pink-dark); font-family: 'Zen Maru Gothic', sans-serif; }
+  .stat span { font-size: 12px; color: var(--muted); }
+
+  /* ── STEPS ── */
+  .steps { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .step { background: #fff; border: 1px solid var(--pink-light); border-radius: 14px; padding: 12px; }
+  .step .n { font-size: 11px; font-weight: 700; color: var(--pink-dark); letter-spacing: .1em; }
+  .step b { display: block; color: var(--brown); font-size: 15px; }
+  .step p { font-size: 13px; color: var(--brown-mid); line-height: 1.6; }
+
+  .shift { display: grid; grid-template-columns: 1fr auto 1fr; gap: 6px 10px; align-items: center; font-size: 15px; }
+  .shift .from { text-align: right; color: var(--muted); }
+  .shift .arrow { color: var(--pink); }
+  .shift .to { color: var(--pink-dark); font-weight: 700; }
+
+  /* ── FOCUS CHIPS ── */
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    border: 1.5px solid var(--pink-light); background: #fff; color: var(--brown);
+    border-radius: 50px; padding: 7px 14px; font-size: 14px;
+  }
+  .chip.on { background: var(--pink-dark); border-color: var(--pink-dark); color: #fff; }
+
+  /* ── LESSON LIST ── */
+  .cat-title { display: flex; align-items: center; gap: 8px; margin: 22px 0 10px; }
+  .cat-title .emoji { font-size: 20px; }
+  .cat-title h3 { margin: 0; }
+  .lesson-item {
+    display: flex; align-items: center; gap: 12px; width: 100%;
+    background: #fff; border: 1px solid var(--pink-light); border-radius: 14px;
+    padding: 12px 14px; margin-bottom: 8px; text-align: left; color: var(--text);
+  }
+  .lesson-item:hover { border-color: var(--pink); }
+  .lesson-item .num { flex: none; width: 34px; height: 34px; border-radius: 50%; background: var(--pink-pale); color: var(--pink-dark); display: grid; place-items: center; font-weight: 700; font-size: 14px; }
+  .lesson-item.done .num { background: var(--pink-dark); color: #fff; }
+  .lesson-item .t { flex: 1; }
+  .lesson-item .t b { display: block; font-size: 15px; color: var(--brown); line-height: 1.5; }
+  .lesson-item .t span { font-size: 12px; color: var(--muted); }
+
+  /* ── LESSON DETAIL ── */
+  .back { background: none; border: none; color: var(--pink-dark); font-weight: 700; font-size: 14px; margin-bottom: 10px; }
+  .lesson-head { margin-bottom: 14px; }
+  .lesson-head .cat { font-size: 13px; color: var(--pink-dark); font-weight: 700; }
+  .point {
+    background: linear-gradient(135deg, var(--pink-pale), var(--peach-pale));
+    border-left: 4px solid var(--pink-dark);
+    border-radius: 0 14px 14px 0; padding: 14px 16px; margin-bottom: 16px;
+    font-weight: 700; color: var(--brown);
+  }
+  .sec-label { font-size: 13px; font-weight: 700; color: var(--pink-dark); margin: 18px 0 6px; letter-spacing: .05em; }
+  ul.tips { list-style: none; }
+  ul.tips li { position: relative; padding-left: 22px; margin-bottom: 6px; }
+  ul.tips li::before { content: '✓'; position: absolute; left: 0; color: var(--pink-dark); font-weight: 700; }
+
+  .talk { border-radius: 14px; padding: 12px 14px; margin-bottom: 10px; }
+  .talk.ng { background: var(--ng-bg); }
+  .talk.ok { background: var(--ok-bg); }
+  .talk .tag { display: inline-block; font-size: 11px; font-weight: 700; border-radius: 50px; padding: 1px 10px; margin-bottom: 6px; color: #fff; }
+  .talk.ng .tag { background: var(--ng); }
+  .talk.ok .tag { background: var(--ok); }
+  .talk .line { margin: 2px 0; }
+  .talk .who { font-weight: 700; color: var(--brown); }
+  .talk .why { font-size: 13px; margin-top: 6px; color: var(--brown-mid); border-top: 1px dashed rgba(0,0,0,.1); padding-top: 6px; }
+
+  .action, .reflect { border-radius: 14px; padding: 14px 16px; margin-top: 10px; }
+  .action { background: var(--mint); }
+  .action b { color: var(--mint-dark); }
+  .reflect { background: var(--lav-light); }
+  .reflect textarea { width: 100%; margin-top: 8px; border: 1px solid var(--lavender); border-radius: 10px; padding: 10px; min-height: 80px; background: #fff; color: var(--text); }
+
+  /* ── QUIZ ── */
+  .quiz-q { font-weight: 700; color: var(--brown); margin-bottom: 10px; }
+  .opt {
+    display: block; width: 100%; text-align: left;
+    background: #fff; border: 1.5px solid var(--pink-light); border-radius: 12px;
+    padding: 10px 14px; margin-bottom: 8px; font-size: 15px; color: var(--text); line-height: 1.6;
+  }
+  .opt:hover:not(:disabled) { border-color: var(--pink); }
+  .opt.correct { border-color: var(--ok); background: var(--ok-bg); }
+  .opt.wrong { border-color: var(--ng); background: var(--ng-bg); }
+  .explain { background: var(--pink-pale); border-radius: 12px; padding: 12px 14px; margin-top: 6px; font-size: 14px; display: none; }
+  .explain.show { display: block; }
+
+  /* ── PRACTICE ── */
+  .drill-ng { background: var(--ng-bg); border-radius: 14px; padding: 14px 16px; margin: 8px 0 14px; font-size: 17px; font-weight: 700; color: var(--ng); }
+  .drill-ctx { font-size: 13px; color: var(--muted); }
+  .score { text-align: center; padding: 10px 0; }
+  .score b { font-size: 42px; color: var(--pink-dark); font-family: 'Zen Maru Gothic', sans-serif; }
+
+  /* ── TOOLS ── */
+  .tool-btn {
+    display: flex; gap: 14px; align-items: center; width: 100%; text-align: left;
+    background: #fff; border: 1px solid var(--pink-light); border-radius: var(--radius);
+    padding: 16px; margin-bottom: 10px; color: var(--text); box-shadow: var(--shadow);
+  }
+  .tool-btn .ic { font-size: 28px; }
+  .tool-btn b { display: block; color: var(--brown); }
+  .tool-btn span { font-size: 13px; color: var(--muted); }
+  label.fl { display: block; font-weight: 700; color: var(--brown); font-size: 14px; margin: 14px 0 4px; }
+  .hint { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+  .field { width: 100%; border: 1.5px solid var(--pink-light); border-radius: 12px; padding: 10px 12px; background: #fff; color: var(--text); }
+  .field:focus { outline: none; border-color: var(--pink); }
+  textarea.field { min-height: 70px; resize: vertical; }
+  .warn { font-size: 13px; color: var(--ng); background: var(--ng-bg); border-radius: 10px; padding: 6px 10px; margin-top: 6px; display: none; }
+  .warn.show { display: block; }
+  .output { background: var(--ok-bg); border-radius: 14px; padding: 14px 16px; margin-top: 14px; font-size: 16px; white-space: pre-wrap; }
+
+  /* breathing */
+  .breath-wrap { display: grid; place-items: center; padding: 20px 0; }
+  .breath {
+    width: 170px; height: 170px; border-radius: 50%;
+    background: radial-gradient(circle, var(--pink-light), var(--pink));
+    display: grid; place-items: center; color: #fff; font-weight: 700; font-size: 18px;
+    transform: scale(.6); transition: transform 4s ease-in-out;
+    box-shadow: 0 0 0 14px rgba(232,165,176,.18);
+  }
+  .breath.in { transform: scale(1); transition-duration: 4s; }
+  .breath.out { transform: scale(.6); transition-duration: 6s; }
+
+  .ground-step { display: none; }
+  .ground-step.active { display: block; animation: fade .35s ease; }
+
+  /* journal */
+  .entry { background: #fff; border: 1px solid var(--pink-light); border-radius: 14px; padding: 12px 14px; margin-bottom: 10px; font-size: 14px; }
+  .entry .d { font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; }
+  .entry .d button { background: none; border: none; color: var(--muted); font-size: 12px; }
+  .entry dl { display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; margin-top: 6px; }
+  .entry dt { color: var(--pink-dark); font-weight: 700; font-size: 12px; padding-top: 2px; }
+  .entry dd { white-space: pre-wrap; }
+
+  /* NG list */
+  .ng-item { border-bottom: 1px dashed var(--pink-light); padding: 10px 0; }
+  .ng-item:last-child { border-bottom: none; }
+  .ng-item .bad { color: var(--ng); font-weight: 700; }
+  .ng-item .good { color: var(--ok); }
+  .ng-item .note { font-size: 13px; color: var(--brown-mid); }
+
+  /* ── TAB BAR ── */
+  nav.tabs {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 60;
+    background: rgba(255,252,250,0.96); backdrop-filter: blur(12px);
+    border-top: 1px solid var(--pink-light);
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
+  }
+  nav.tabs button {
+    background: none; border: none; color: var(--muted);
+    display: flex; flex-direction: column; align-items: center; gap: 1px;
+    font-size: 11px; font-weight: 700; padding: 4px 0;
+  }
+  nav.tabs button .i { font-size: 21px; line-height: 1.2; filter: grayscale(.6); opacity: .75; }
+  nav.tabs button.on { color: var(--pink-dark); }
+  nav.tabs button.on .i { filter: none; opacity: 1; }
+
+  .toast {
+    position: fixed; left: 50%; bottom: calc(96px + env(safe-area-inset-bottom)); transform: translateX(-50%) translateY(20px);
+    background: var(--brown); color: #fff; padding: 10px 18px; border-radius: 50px; font-size: 14px;
+    opacity: 0; pointer-events: none; transition: all .3s; z-index: 80; max-width: calc(100% - 32px); text-align: center;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  footer { text-align: center; font-size: 12px; color: var(--muted); padding: 20px 16px 8px; line-height: 1.7; }
+
+  @media (min-width: 600px) {
+    h1 { font-size: 28px; }
+    main { padding-top: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><span class="logo-dot"></span>対話ジム</div>
+  <div class="streak-pill" id="streakPill">🔥 0日</div>
+</header>
+
+<main>
+
+  <!-- ════════ HOME ════════ -->
+  <section class="view active" id="view-home">
+    <div class="hero">
+      <div class="eyebrow">Dialogue Gym by Mental Gym</div>
+      <h1>話す前に、<br>自分の中に安心を。</h1>
+      <p class="lead">うまく話す「テクニック」より先に、<br>安心した自分から言葉を出す練習を。<br>1日5分、ひとつずつ。</p>
+      <div class="badge-row">
+        <span class="badge">ACT × 自己慈悲</span>
+        <span class="badge">NVC</span>
+        <span class="badge">臨床心理士・公認心理師 監修</span>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:18px">
+      <div class="eyebrow">Today's Lesson</div>
+      <h2 id="todayTitle" style="margin:4px 0 6px">今日のレッスン</h2>
+      <p class="small" id="todayMeta"></p>
+      <p id="todayPoint" style="margin:8px 0 14px"></p>
+      <button class="btn block" id="todayBtn">5分レッスンを始める →</button>
+    </div>
+
+    <div class="card">
+      <h3>あなたの進み具合</h3>
+      <div class="progress"><span id="progBar" style="width:0%"></span></div>
+      <div class="stats">
+        <div class="stat"><b id="statDone">0</b><span>完了レッスン</span></div>
+        <div class="stat"><b id="statStreak">0</b><span>連続日数</span></div>
+        <div class="stat"><b id="statJournal">0</b><span>ふりかえり</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>いま一番、整えたいのは？</h3>
+      <p class="small" style="margin-bottom:10px">選ぶと「今日のレッスン」がそのテーマから出てきます（複数OK）。</p>
+      <div class="chips" id="focusChips"></div>
+    </div>
+
+    <div class="card soft">
+      <h3>対話ジムの進め方</h3>
+      <div class="steps">
+        <div class="step"><div class="n">STEP 1</div><b>気づく</b><p>いまの自分の反応パターンに、責めずに気づく</p></div>
+        <div class="step"><div class="n">STEP 2</div><b>整える</b><p>話す前に、自分の中に安心をつくる</p></div>
+        <div class="step"><div class="n">STEP 3</div><b>使ってみる</b><p>今日の会話で、小さく1つだけ試す</p></div>
+        <div class="step"><div class="n">STEP 4</div><b>ふりかえる</b><p>できた所を見つけて、次の一歩を決める</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>続けると起きる、静かな変化</h3>
+      <div class="shift" style="margin-top:10px">
+        <span class="from">言えずに飲みこむ</span><span class="arrow">→</span><span class="to">短く、穏やかに伝えられる</span>
+        <span class="from">相手に巻きこまれる</span><span class="arrow">→</span><span class="to">寄り添いつつ、線を引ける</span>
+        <span class="from">頭の中で反省会</span><span class="arrow">→</span><span class="to">事実と考えを分けられる</span>
+        <span class="from">「察してほしい」</span><span class="arrow">→</span><span class="to">「助けて」と頼める</span>
+        <span class="from">指摘に身がまえる</span><span class="arrow">→</span><span class="to">一度受け取ってから考えられる</span>
+      </div>
+    </div>
+
+    <div class="card lav">
+      <h3>💬 ぽ子からひとこと</h3>
+      <p style="font-size:15px">会話がうまくいかないのは、あなたの性格や能力のせいではありません。多くの場合、<b>不安や焦りが「先に」しゃべってしまっている</b>だけ。このアプリでは、言い方の型と同じくらい「話す前の自分の整え方」を大事にしています。完璧じゃなくて大丈夫。1つ試せたら、それで今日は花まるです。</p>
+    </div>
+  </section>
+
+  <!-- ════════ LESSONS ════════ -->
+  <section class="view" id="view-lessons">
+    <div id="lessonList">
+      <div class="eyebrow">Lessons</div>
+      <h2>5分レッスン</h2>
+      <p class="lead">各レッスン ＝ ポイント → 会話例（NG/OK）→ 今日の小さな行動 → ふりかえり → 理解度チェック</p>
+      <div id="lessonCats"></div>
+    </div>
+    <div id="lessonDetail" style="display:none"></div>
+  </section>
+
+  <!-- ════════ PRACTICE ════════ -->
+  <section class="view" id="view-practice">
+    <div class="eyebrow">Practice</div>
+    <h2>言いかえドリル</h2>
+    <p class="lead">よくある「つい言ってしまう一言」を、関係が深まる言葉に言いかえる練習です。</p>
+    <div class="card" id="drillCard" style="margin-top:14px"></div>
+  </section>
+
+  <!-- ════════ TOOLS ════════ -->
+  <section class="view" id="view-tools">
+    <div id="toolMenu">
+      <div class="eyebrow">Tools</div>
+      <h2>会話の前後に使うツール</h2>
+      <button class="tool-btn" data-tool="ground"><span class="ic">🌿</span><span><b>話す前の60秒リセット</b><span>緊張・イライラしたまま話しはじめないために</span></span></button>
+      <button class="tool-btn" data-tool="nvc"><span class="ic">💌</span><span><b>伝え方ビルダー（NVC）</b><span>観察・気持ち・大切なこと・お願い の4ステップで文章を作る</span></span></button>
+      <button class="tool-btn" data-tool="boundary"><span class="ic">🛡️</span><span><b>やさしい断り方メーカー</b><span>共感 → 自分の線 → 代わりの案 で角を立てずに断る</span></span></button>
+      <button class="tool-btn" data-tool="nglist"><span class="ic">🚫</span><span><b>NGワード早見表</b><span>関係をこじらせやすい言葉と、その言いかえ</span></span></button>
+    </div>
+    <div id="toolBody" style="display:none"></div>
+  </section>
+
+  <!-- ════════ JOURNAL ════════ -->
+  <section class="view" id="view-journal">
+    <div class="eyebrow">Reflection</div>
+    <h2>ふりかえりノート</h2>
+    <p class="lead">気になった会話を「事実」と「考え」に分けて書くだけで、頭の中の反省会が静かになります。</p>
+    <div class="card" style="margin-top:14px">
+      <label class="fl">どんな場面？</label>
+      <input class="field" id="jScene" placeholder="例：朝、子どもが「行きたくない」と言った">
+      <label class="fl">起きたこと（事実だけ）</label>
+      <div class="hint">カメラに映る・録音に残ることだけ。</div>
+      <textarea class="field" id="jFact" placeholder="例：玄関で10分泣いていた。私は「早くして」と2回言った"></textarea>
+      <label class="fl">浮かんだ考え</label>
+      <div class="hint">「〜という考えが浮かんだ」と書いてみる。</div>
+      <textarea class="field" id="jThought" placeholder="例：「私の育て方が悪い」という考えが浮かんだ"></textarea>
+      <label class="fl">そのときの気持ち・体の感じ</label>
+      <input class="field" id="jFeel" placeholder="例：焦り、胸がぎゅっとする">
+      <label class="fl">自分にかけたい言葉</label>
+      <input class="field" id="jSelf" placeholder="例：朝はただでさえ大変。焦るのは当然だよ">
+      <label class="fl">次に1つだけ試すこと</label>
+      <input class="field" id="jNext" placeholder="例：まず「行きたくないんだね」と受け止める">
+      <button class="btn block" style="margin-top:16px" id="jSave">ノートに保存する</button>
+    </div>
+    <div id="jList"></div>
+  </section>
+
+  <footer>
+    監修：臨床心理士・公認心理師 ぽ子（個人版メンタルジム）<br>
+    入力した内容は、この端末のブラウザの中にだけ保存されます。<br>
+    本アプリはセルフケア・学習用であり、医療行為や治療の代わりではありません。<br>
+    つらさが強いとき・続くときは、医療機関や専門家にご相談ください。<br>
+    © 対話ジム / Mental Gym　無断転載・再配布を禁じます
+  </footer>
+</main>
+
+<nav class="tabs" id="tabs">
+  <button data-view="home" class="on"><span class="i">🏠</span>ホーム</button>
+  <button data-view="lessons"><span class="i">📖</span>レッスン</button>
+  <button data-view="practice"><span class="i">🎯</span>ドリル</button>
+  <button data-view="tools"><span class="i">🧰</span>ツール</button>
+  <button data-view="journal"><span class="i">📝</span>ノート</button>
+</nav>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   CONTENT
+   ============================================================ */
+const CATS = [
+  { id: 'self',     emoji: '🌱', name: '自分を整える', desc: '話す前の土台づくり' },
+  { id: 'listen',   emoji: '👂', name: '聴く',         desc: '相手が「わかってもらえた」と感じる聴き方' },
+  { id: 'express',  emoji: '💬', name: '伝える',       desc: '責めずに、飲みこまずに、願いを伝える' },
+  { id: 'boundary', emoji: '🛡️', name: '境界線',       desc: '巻きこまれず、やさしく線を引く' },
+  { id: 'pressure', emoji: '⚡', name: 'プレッシャー場面', desc: '指摘・対立・感情が高ぶる瞬間に' },
+];
+
+const LESSONS = [
+  /* ── 自分を整える ── */
+  {
+    id: 'anxiety-ok', cat: 'self', min: 4,
+    title: '不安は「消さなくていい」',
+    point: '緊張や不安は、あなたを守ろうとしている合図。消してから話すのではなく、「不安があっても話せる」を目指します。',
+    tips: [
+      '「緊張しちゃダメ」と思うほど、体はもっと緊張します',
+      '「いま不安が来ているな」と実況するだけで、少し距離がとれます',
+      '不安の強さより、「何を大切にして話したいか」に目を向けます',
+    ],
+    ng: { lines: [['心の声', '落ち着け、緊張するな、変に思われる…']], why: '不安と戦うほど、注意が自分の内側に向き、相手の話が入ってこなくなります。' },
+    ok: { lines: [['心の声', 'あ、ドキドキしてる。大事な話だから当然だよね。それでも、伝えたいのは「一緒に考えたい」ってこと。']], why: '不安を認めたうえで「大切にしたいこと」に戻ると、言葉が自然に出やすくなります。' },
+    action: '今日、緊張した瞬間に心の中で「いま、不安が来てる」と一度だけ実況してみる。',
+    reflect: '最近、不安と「戦って」しまった会話はありますか？そのとき本当は何を大切にしたかった？',
+    quiz: {
+      q: '大事な話の前に緊張してきました。対話ジムでおすすめの関わり方は？',
+      opts: ['深呼吸して、緊張が完全に消えるまで話さない', '「緊張してるな、大事な話だからね」と認めて、伝えたいことに意識を戻す', '緊張を悟られないよう、明るく早口で話す'],
+      a: 1,
+      ex: '不安は消そうとするほど強くなります。認めて、大切にしたいこと（価値）に戻るのがACTの考え方です。',
+    },
+  },
+  {
+    id: 'fact-thought', cat: 'self', min: 5,
+    title: '「事実」と「考え」を切り分ける',
+    point: '会話のモヤモヤの多くは、事実ではなく、事実に貼りついた「考え」から生まれています。',
+    tips: [
+      '事実＝カメラに映ること・録音に残ること',
+      '考え＝解釈・予想・決めつけ（「嫌われた」「どうせ」）',
+      '「〜という考えが浮かんでいる」と言いかえると、考えにのみこまれにくくなります',
+    ],
+    ng: { lines: [['心の声', '既読なのに返事がない。絶対怒ってる。私が何かしたんだ。']], why: '「既読で返事がない」という事実に、「怒ってる」「私のせい」という考えが一気にくっついています。' },
+    ok: { lines: [['心の声', '事実は「既読で、まだ返事がない」。「怒ってるのかも」という考えが浮かんでるな。忙しいだけかもしれない。']], why: '事実と考えを分けると、確かめてもいないことで落ちこむ時間が減ります。' },
+    action: '今日モヤッとしたことを1つ選び、「事実」と「浮かんだ考え」を1行ずつ分けて書く（ノート機能が使えます）。',
+    reflect: 'よく浮かぶ「お決まりの考え」はありますか？（例：「どうせ私なんて」「迷惑かけてる」）',
+    quiz: {
+      q: '次のうち「事実」はどれ？',
+      opts: ['上司は私の企画に興味がない', '会議で上司は私の企画に質問をしなかった', '上司は私を評価していない'],
+      a: 1,
+      ex: '「質問しなかった」は誰が見ても同じ「事実」。「興味がない」「評価していない」は解釈（考え）です。',
+    },
+  },
+  {
+    id: 'self-compassion', cat: 'self', min: 4,
+    title: 'うまくいかなかった後の「自分への声かけ」',
+    point: '反省会で自分を責めても、次の会話は上手になりません。大切な友人にかけるような言葉を、自分にもかけます。',
+    tips: [
+      '①「つらかったね」と気持ちを認める',
+      '②「こういうこと、誰にでもある」とつながりを思い出す',
+      '③「次はどうしたい？」とやさしく前を向く',
+    ],
+    ng: { lines: [['心の声', 'またキツい言い方しちゃった。ほんと私ってダメ。母親失格。']], why: '自分を責めると心が「守り」に入り、次の会話でもっと余裕がなくなります。' },
+    ok: { lines: [['心の声', '余裕がない朝だったね、つらかった。誰だってそういう日はある。あとで「さっきは強く言ってごめんね」って言おうかな。']], why: '自分に優しくすることは甘やかしではなく、立ち直って行動するための土台です。' },
+    action: '今日、自分にダメ出しをしたら「親友だったら何て声をかける？」と一度だけ問いかけてみる。',
+    reflect: 'もし大切な友人が同じ失敗をしたら、あなたはどんな言葉をかけますか？',
+    quiz: {
+      q: '会話で失敗したと感じたとき、次につながりやすい関わり方は？',
+      opts: ['二度と同じ失敗をしないよう、厳しく自分を叱る', '気持ちを認め、「誰にでもある」と思い出し、次の一歩を考える', 'なかったことにして忘れる'],
+      a: 1,
+      ex: 'セルフコンパッション（自己への思いやり）の3要素です。自分を責めるより、立ち直りが早くなります。',
+    },
+  },
+
+  /* ── 聴く ── */
+  {
+    id: 'listen-first', cat: 'listen', min: 4,
+    title: 'すぐに解決しない。まず最後まで聴く',
+    point: '相手が欲しいのは「答え」ではなく「わかってもらえた感覚」のことが多い。アドバイスは、聞かれてからで十分です。',
+    tips: [
+      '話の途中で口をはさまず、相手が話し終えるまで待つ',
+      '「それで？」「うん、うん」で、話を相手に返す',
+      'アドバイスしたくなったら「アドバイスいる？それとも聞いてほしい？」と確認',
+    ],
+    ng: { lines: [['相手', '最近、仕事がしんどくて…'], ['あなた', 'それなら上司に相談したら？あと早く寝た方がいいよ。']], why: '善意でも、すぐに解決策を出されると「話を切られた」と感じやすくなります。' },
+    ok: { lines: [['相手', '最近、仕事がしんどくて…'], ['あなた', 'そっか、しんどいんだね。どんなところが一番？']], why: '気持ちを受け取ってから質問すると、相手は安心して話し続けられます。' },
+    action: '今日の会話で1回だけ、アドバイスしたくなったら飲みこんで「それで？」と聞いてみる。',
+    reflect: 'あなたが「ただ聞いてほしかった」のに、アドバイスされて寂しかった経験はありますか？',
+    quiz: {
+      q: '友人が「最近、夫とうまくいってなくて」と話し始めました。最初の一言でおすすめは？',
+      opts: ['「それは早く話し合った方がいいよ」', '「うちもだよ！うちなんてさ…」', '「そうなんだ…。よかったら聞かせて」'],
+      a: 2,
+      ex: '解決策や自分の話は、相手の話を最後まで聴いてから。まずは安心して話せる場をつくります。',
+    },
+  },
+  {
+    id: 'reflect-feeling', cat: 'listen', min: 5,
+    title: '気持ちを言葉にして返す',
+    point: '相手の言葉の奥にある「気持ち」を言葉にして返すと、「わかってもらえた」が伝わります。',
+    tips: [
+      '「〇〇だったんだね」「それは悔しいね」と、感じていそうな気持ちを返す',
+      '当たっていなくてもOK。「ちょっと違うかも」と訂正してもらえれば会話が深まります',
+      '「でも」「気にしすぎ」「よくあることだよ」は、気持ちを打ち消す言葉',
+    ],
+    ng: { lines: [['子ども', 'もう学校行きたくない！'], ['あなた', 'そんなこと言わないの。みんな行ってるでしょ。']], why: '気持ちを否定されると、子どもは「わかってもらえない」と感じ、さらに強く主張するか黙ってしまいます。' },
+    ok: { lines: [['子ども', 'もう学校行きたくない！'], ['あなた', '行きたくないくらい、いやなことがあるんだね。']], why: '気持ちを受け止めることは、行かなくていいと認めることとは別。受け止めてもらえると、子どもは理由を話しやすくなります。' },
+    action: '今日、誰かの話に1回だけ「〇〇だったんだね」と気持ちを返してみる。',
+    reflect: '「気にしすぎだよ」と言われて、もやっとしたことは？どう言ってほしかった？',
+    quiz: {
+      q: '同僚「また私だけ残業。もう限界…」への返しで、気持ちを受け取っているのは？',
+      opts: ['「私も昨日残業したよ」', '「自分だけって感じると、本当に疲れるよね」', '「仕事だから仕方ないよ」'],
+      a: 1,
+      ex: '「自分だけ」「疲れ」という気持ちを言葉にして返しています。比べたり、正論で返したりすると、気持ちは置き去りになります。',
+    },
+  },
+  {
+    id: 'open-question', cat: 'listen', min: 4,
+    title: '「なんで？」を「何が？」に変える',
+    point: '「なんで〜しないの？」は質問の形をした責め言葉になりがち。「何が」「どんなふうに」で一緒に考える質問に。',
+    tips: [
+      '「なんで？」→ 責められている感じがして、言いわけを引き出しやすい',
+      '「何があった？」「どこで困ってる？」→ 状況を一緒に見る質問',
+      'はい/いいえで終わらない質問で、相手の言葉を引き出す',
+    ],
+    ng: { lines: [['あなた', 'なんで宿題やってないの？'], ['子ども', '……べつに。']], why: '「なんで」は責める響きになり、相手は身を守るために心を閉じます。' },
+    ok: { lines: [['あなた', '宿題、どこで止まってる？'], ['子ども', '算数の文章題がわかんない。']], why: '状況をたずねる質問は、相手を「一緒に解決する人」にしてくれます。' },
+    action: '今日「なんで？」と言いそうになったら、「何が／どこで／どんなふうに」に変えてみる。',
+    reflect: 'あなたがつい使っている「質問のふりをした責め言葉」はありますか？',
+    quiz: {
+      q: '部下の資料提出が遅れています。話を引き出しやすい問いかけは？',
+      opts: ['「なんでまだ出てないの？」', '「どこで詰まってる？手伝えることある？」', '「前も遅れたよね？」'],
+      a: 1,
+      ex: '状況とサポートに焦点を当てた質問は、相手の防衛反応を下げ、本当の理由を話しやすくします。',
+    },
+  },
+
+  /* ── 伝える ── */
+  {
+    id: 'i-message', cat: 'express', min: 4,
+    title: '「あなたは」ではなく「わたしは」で伝える',
+    point: '「あなたはいつも〜」は相手を責める言葉、「わたしは〜と感じる」は自分の気持ちを伝える言葉。同じ内容でも届き方が変わります。',
+    tips: [
+      'Youメッセージ：「（あなたは）なんで手伝ってくれないの」',
+      'Iメッセージ：「（わたしは）一人で全部やっていて、しんどいんだ」',
+      '「いつも」「絶対」「全然」は事実より大きく聞こえるので避ける',
+    ],
+    ng: { lines: [['あなた', 'いつも私ばっかり家事してる。少しは手伝ってよ！']], why: '「いつも」「ばっかり」で責められると、相手は反論か防御に入ります。' },
+    ok: { lines: [['あなた', '今週ずっと一人で夕飯と片付けをしてて、正直しんどいの。お皿洗いをお願いできると、すごく助かる。']], why: '事実＋自分の気持ち＋具体的なお願い。相手は「責められた」ではなく「頼まれた」と受け取れます。' },
+    action: '今日1回、「あなたは〜」と言いそうな場面で「わたしは〜と感じる」から話し始めてみる。',
+    reflect: '最近「あなたは〜」で言ってしまった言葉を、「わたしは〜」に言いかえるとどうなる？',
+    quiz: {
+      q: 'Iメッセージになっているのはどれ？',
+      opts: ['「あなたって本当に話を聞かないよね」', '「話の途中でスマホを見られると、私は大事にされてない気がして寂しい」', '「普通は人の話を聞くでしょ」'],
+      a: 1,
+      ex: '具体的な行動（スマホを見る）と、自分の気持ち（寂しい）を「わたし」を主語に伝えています。',
+    },
+  },
+  {
+    id: 'nvc', cat: 'express', min: 6,
+    title: '4ステップで「願い」を伝える（NVC）',
+    point: '観察 → 気持ち → 大切にしたいこと → お願い。この順番で話すと、責めずに本音が届きます。',
+    tips: [
+      '① 観察：評価を入れずに事実だけ（「昨日22時に帰ってきたとき」）',
+      '② 気持ち：自分の感情（「心配だった」「寂しかった」）',
+      '③ 大切にしたいこと：その奥の願い（「安心したい」「つながっていたい」）',
+      '④ お願い：具体的で、相手が断れる形で（「遅くなる日は19時までに連絡もらえる？」）',
+    ],
+    ng: { lines: [['あなた', '連絡もしないで遅く帰ってくるなんて、非常識じゃない？']], why: '「非常識」は評価。評価をぶつけられると、相手は中身より「責められたこと」に反応します。' },
+    ok: { lines: [['あなた', '昨日、連絡がないまま22時になって（観察）、すごく心配だったの（気持ち）。安心して待っていたいから（大切なこと）、遅くなる日は19時までにLINEもらえる？（お願い）']], why: '相手を変えようとするのではなく、自分の願いと、具体的にしてほしいことを伝えています。' },
+    action: 'ツールの「伝え方ビルダー」で、伝えたいことを1つ4ステップにしてみる（実際に言うかは自由）。',
+    reflect: '最近イラッとしたことの奥には、どんな「大切にしたいこと」がありましたか？',
+    quiz: {
+      q: 'NVCの「お願い」として適切なのは？',
+      opts: ['「もっとちゃんとして」', '「私の気持ちをわかって」', '「明日の朝、ゴミ出しをお願いできる？」'],
+      a: 2,
+      ex: 'お願いは「具体的な行動」で「相手が断ることもできる」形に。あいまいなお願いは伝わりません。',
+    },
+  },
+  {
+    id: 'ask-help', cat: 'express', min: 4,
+    title: '「察して」をやめて、短く「助けて」と言う',
+    point: '頑張り屋さんほど一人で抱えこみ、限界で爆発しがち。爆発する前に、短く具体的に頼むのが「伝える力」です。',
+    tips: [
+      '遠回しなため息や「別にいいけど」は、相手に伝わりません',
+      '頼むときは「何を・いつまでに」を具体的に',
+      '頼むことは迷惑ではなく、相手に「役に立つ機会」を渡すこと',
+    ],
+    ng: { lines: [['あなた', '（ため息）…いいよ、私がやるから。'], ['相手', '（え、怒ってる？）']], why: '本当は手伝ってほしいのに「いいよ」と言うと、相手は何をすればいいかわからず、すれ違いが積み重なります。' },
+    ok: { lines: [['あなた', 'ちょっと助けてほしい。お風呂のあいだ、子どもを見ててもらえる？']], why: '短く、具体的に。それだけで、相手は動きやすくなります。' },
+    action: '今日、小さなことを1つ、誰かに具体的に頼んでみる（「〇〇を、△△までにお願いできる？」）。',
+    reflect: '人に頼れないとき、心の中ではどんな考えが浮かんでいますか？（例：「迷惑かけちゃダメ」）',
+    quiz: {
+      q: '仕事が手一杯のとき、同僚への伝え方で一番伝わりやすいのは？',
+      opts: ['大きめのため息をついて気づいてもらう', '「手一杯で困ってて。この資料の数字チェックを、明日の午前中までにお願いできる？」', '「全然大丈夫です！」と笑顔で引き受け続ける'],
+      a: 1,
+      ex: '状況＋具体的な依頼（何を・いつまでに）。察してもらうのを待つより、早く確実に届きます。',
+    },
+  },
+  {
+    id: 'quiet-confidence', cat: 'express', min: 4,
+    title: '謝りすぎずに、静かな自信で話す',
+    point: '「すみません」「たいしたことじゃないんですけど」で始めると、内容の価値まで小さく伝わってしまいます。',
+    tips: [
+      '前置きの「すみません」は「ありがとう」や本題に置きかえる',
+      '「〜かもしれないんですけど…」より「〜だと考えています」',
+      '自信は「大きな声」ではなく「短く、落ち着いて言い切る」ことから',
+    ],
+    ng: { lines: [['あなた', 'すみません、たいした話じゃないんですけど…もしかしたら的外れかもしれないんですが…']], why: '前置きが長いほど、相手は「自信がない話」として聞き、内容が軽く扱われやすくなります。' },
+    ok: { lines: [['あなた', '1つ提案があります。〇〇の手順を変えると、確認作業が半分になると考えています。']], why: '結論から短く言い切ると、内容そのものに注目してもらえます。' },
+    action: '今日1回、「すみません」を「ありがとうございます」か本題に置きかえてみる。',
+    reflect: 'あなたがよく使う「自分を小さくする前置き」はどんな言葉ですか？',
+    quiz: {
+      q: '会議で意見を言うとき、静かな自信が伝わる言い方は？',
+      opts: ['「すみません、全然違うかもなんですけど…」', '「1点、提案させてください。〇〇にすると△△が改善すると考えています」', '「まあ、どっちでもいいんですけど」'],
+      a: 1,
+      ex: '前置きで自分を下げず、結論と理由を短く。それが「静かな自信」です。',
+    },
+  },
+
+  /* ── 境界線 ── */
+  {
+    id: 'separation', cat: 'boundary', min: 5,
+    title: '「課題の分離」で巻きこまれない',
+    point: '相手の気持ちや選択は、相手のもの。寄り添うことと、背負いこむことは別です。',
+    tips: [
+      '「これは誰の課題？」と心の中で問いかける',
+      '自分の課題：どう関わるか・何を伝えるか',
+      '相手の課題：どう受け取るか・どう感じるか・最終的にどうするか',
+    ],
+    ng: { lines: [['心の声', '後輩が落ちこんでる…私がなんとかしなきゃ。機嫌が直るまで気が休まらない。']], why: '相手の感情まで自分の責任にすると、こちらがすり減り、結果的に良い関わりができなくなります。' },
+    ok: { lines: [['あなた', 'つらかったね。話したくなったらいつでも聞くよ。'], ['心の声', 'どう立ち直るかは本人のペース。私は「話せる場所」でいよう。']], why: '自分にできること（声をかける・聞く）だけを丁寧にやり、相手の回復は相手に任せています。' },
+    action: '今日モヤモヤした人間関係を1つ選び、「私の課題」と「相手の課題」に分けて書き出す。',
+    reflect: 'あなたが背負いこみがちな「他人の課題」は何ですか？',
+    quiz: {
+      q: '相談を受けた後輩が、あなたのアドバイスを実行しませんでした。「課題の分離」の考え方では？',
+      opts: ['実行するまで何度も言い続けるべき', 'アドバイスを伝えるまでが自分の課題。実行するかは後輩の課題', '自分の伝え方が悪かったので、自分を責めるべき'],
+      a: 1,
+      ex: '伝えるところまでが自分の課題。どうするかは相手が決めること。そう分けると、相手を信頼して見守れます。',
+    },
+  },
+  {
+    id: 'say-no', cat: 'boundary', min: 5,
+    title: 'やさしく断る「共感 → 線 → 代わりの案」',
+    point: '断ることは、相手を拒否することではなく、自分を大切にすること。3ステップで角を立てずに伝えられます。',
+    tips: [
+      '① 共感：「声をかけてくれてありがとう」「困ってるよね」',
+      '② 自分の線：「今週は手一杯で、引き受けられない」（言いわけを並べすぎない）',
+      '③ 代わりの案：「来週なら30分とれる」「〇〇さんに聞いてみるのはどう？」',
+    ],
+    ng: { lines: [['あなた', 'あ、えっと…うーん、たぶん大丈夫…かな…（本当は無理）']], why: 'あいまいなOKは、後で自分を追い詰め、相手との信頼も下げてしまいます。' },
+    ok: { lines: [['あなた', '頼ってくれてありがとう。ただ今週は締め切りが重なっていて、引き受けられないんだ。来週の水曜なら30分とれるけど、どうかな？']], why: '感謝・はっきりした線・代わりの案。相手は断られても大切にされていると感じます。' },
+    action: 'ツールの「やさしい断り方メーカー」で、断りたい場面の文章を1つ作っておく。',
+    reflect: '断れなかったとき、どんなことが怖かったですか？',
+    quiz: {
+      q: 'ママ友からPTAの役を頼まれましたが、今年は難しい。いちばん関係を保ちやすい断り方は？',
+      opts: ['返事をあいまいにして、自然消滅を待つ', '「声をかけてくれてありがとう。今年は仕事の事情で難しいの。来年度なら考えられるかも」', '「無理です」とだけ伝える'],
+      a: 1,
+      ex: '共感・線・代わりの案の3ステップ。はっきり、でもあたたかく。',
+    },
+  },
+
+  /* ── プレッシャー場面 ── */
+  {
+    id: 'feedback', cat: 'pressure', min: 5,
+    title: '指摘を「一度受け取って」から考える',
+    point: '指摘された瞬間の「でも」は、ほぼ反射。まず受け取り、時間をおいてから必要な部分だけを取り入れます。',
+    tips: [
+      '最初の一言は「教えてくれてありがとうございます」',
+      '具体的に知りたい点は「例えばどの部分ですか？」と確認',
+      '受け取る＝全部正しいと認めること、ではありません。持ち帰って選んでいい',
+    ],
+    ng: { lines: [['上司', 'この資料、ちょっと分かりにくいね。'], ['あなた', 'でも、それは時間がなかったので…']], why: '反射的な言いわけは、相手に「聞く気がない」と伝わり、評価を下げてしまうことも。' },
+    ok: { lines: [['上司', 'この資料、ちょっと分かりにくいね。'], ['あなた', 'ありがとうございます。特にどのあたりが分かりにくかったか、教えていただけますか？']], why: 'いったん受け取って具体化すると、指摘が「攻撃」から「改善のヒント」に変わります。' },
+    action: '今日、何か言われてカチンときたら、「でも」の代わりに「なるほど」を最初に言ってみる。',
+    reflect: '指摘されたとき、体のどこにどんな反応が出ますか？（例：顔が熱い、胸がざわつく）',
+    quiz: {
+      q: '指摘を受けた直後の最初の一言として、おすすめなのは？',
+      opts: ['「でも、それは〇〇だったからで…」', '「教えてくれてありがとうございます。具体的にどの部分ですか？」', '黙って下を向く'],
+      a: 1,
+      ex: '受け取り＋具体化。反論したいことがあれば、落ち着いてから伝えても遅くありません。',
+    },
+  },
+  {
+    id: 'pause', cat: 'pressure', min: 4,
+    title: '感情が高ぶったら「一時停止」を宣言する',
+    point: '怒りや焦りがピークのときに出た言葉は、後悔しやすい言葉。「続きはあとで」と伝えるのは逃げではなく、関係を守る選択です。',
+    tips: [
+      '体のサイン（顔が熱い・声が大きくなる・早口）に気づいたら一時停止',
+      '「大事な話だから、落ち着いて話したい。10分後でもいい？」と、戻る時間も伝える',
+      '黙って席を立つのはNG。相手は「見捨てられた」と感じやすい',
+    ],
+    ng: { lines: [['あなた', 'もういい！（ドアを閉めて部屋にこもる）']], why: '何も言わずに離れると、相手は不安や怒りを強め、話し合いがさらにこじれます。' },
+    ok: { lines: [['あなた', 'ごめん、いま感情的になってて、このままだとキツいことを言いそう。大事な話だから、10分だけ時間をもらって、もう一度話したい。']], why: '状態を伝え、「戻ってくる」と約束することで、相手も安心して待てます。' },
+    action: 'ツールの「話す前の60秒リセット」を、一度だけ試しておく（いざという時に使えるように）。',
+    reflect: 'あなたが感情的になる前に出る「体のサイン」は何ですか？',
+    quiz: {
+      q: 'パートナーとの話し合いでカッとなってきました。一番おすすめなのは？',
+      opts: ['勢いのまま、思っていることを全部言う', '何も言わずに部屋を出る', '「落ち着いて話したいから10分ちょうだい。そのあと続きを話そう」と伝える'],
+      a: 2,
+      ex: '一時停止＋戻る約束。関係を守りながら、自分を整える時間をとれます。',
+    },
+  },
+  {
+    id: 'child-anxiety', cat: 'pressure', min: 5,
+    title: '子どもの不安には「否定しない・あおらない・寄りそう」',
+    point: '「大丈夫だよ！」の連発や「怖くないでしょ」は、子どもの不安を消すどころか「わかってもらえない」に。不安ごと受け止めると、子どもは自分で一歩を出しやすくなります。',
+    tips: [
+      '気持ちを言葉にする：「ドキドキするんだね」',
+      '不安があっても大丈夫と伝える：「ドキドキしてても行けるよ」',
+      '親の焦りがうつらないよう、まず親が深呼吸',
+      '小さな一歩を一緒に決める：「今日は門まで一緒に行こうか」',
+    ],
+    ng: { lines: [['子ども', '学校こわい…'], ['あなた', '何がこわいの！こわくないでしょ、早く行きなさい！']], why: '不安を否定されると、子どもは不安に加えて「怒られる不安」も抱えてしまいます。' },
+    ok: { lines: [['子ども', '学校こわい…'], ['あなた', 'こわいんだね。こわい気持ちがあっても大丈夫。今日はどこまでなら行けそう？一緒に考えよう。']], why: '受け止めた上で、子ども自身が選べる小さな一歩を一緒に探しています。' },
+    action: 'お子さん（または身近な人）が不安を口にしたら、まず「〇〇なんだね」とそのまま返してみる。',
+    reflect: '子どもの不安を見たとき、あなた自身の中ではどんな不安が動きますか？',
+    quiz: {
+      q: '子どもが「明日の発表会、こわい」と言いました。おすすめの返しは？',
+      opts: ['「こわくない、こわくない！」', '「ドキドキするよね。ドキドキしてても大丈夫。一緒に練習してみる？」', '「そんなこと言ってたらダメだよ」'],
+      a: 1,
+      ex: '気持ちを受け止め、「不安があっても大丈夫」と伝え、小さな行動を提案しています。',
+    },
+  },
+];
+
+const DRILLS = [
+  { ctx: '友人の悩み相談', ng: '気にしすぎだよ', opts: ['そう感じるくらい、気になってるんだね', 'みんなそんなもんだって', 'もっと前向きに考えたら？'], a: 0, ex: '「気にしすぎ」は気持ちの否定。まず感じていることを受け取ります。' },
+  { ctx: '子どもが泣いている', ng: '泣かないの！', opts: ['泣いてもしょうがないでしょ', '悲しかったんだね。泣いていいよ', '泣いたら置いていくよ'], a: 1, ex: '感情を止めるのではなく、受け止めると早く落ち着きやすくなります。' },
+  { ctx: 'パートナーに', ng: 'なんでいつもそうなの？', opts: ['もう言っても無駄だよね', '昨日〇〇だったとき、私は悲しかった。次は△△してもらえる？', '普通はそうしないよね'], a: 1, ex: '「いつも」を、具体的な観察＋気持ち＋お願いに。' },
+  { ctx: '部下のミス', ng: '何回言ったらわかるの？', opts: ['どこで迷った？手順を一緒に確認しよう', 'もういいよ、私がやる', 'ちゃんとしてよ'], a: 0, ex: '責めるより、状況をたずねて一緒に解決へ。' },
+  { ctx: '頼まれごと', ng: '（本当は無理だけど）大丈夫です…', opts: ['大丈夫です！やります！', '今週は難しいです。来週の火曜以降ならできます', '……（返事をしない）'], a: 1, ex: 'はっきりした線＋代わりの案で、信頼を保ったまま断れます。' },
+  { ctx: '会議で発言', ng: 'すみません、的外れかもですけど…', opts: ['あ、やっぱりいいです', '1点、提案があります', 'たいしたことじゃないんですけど…'], a: 1, ex: '自分を下げる前置きを外して、結論から。' },
+  { ctx: '指摘されたとき', ng: 'でも、それは〜だったので', opts: ['ご指摘ありがとうございます。どのあたりか具体的に教えてもらえますか？', 'すみません、すみません', 'それは私の担当じゃないです'], a: 0, ex: 'まず受け取り、具体化してから考えます。' },
+  { ctx: '家族に手伝ってほしい', ng: '（ため息）…もういい、私がやる', opts: ['見ればわかるでしょ', '洗濯物をたたむの、お願いできる？すごく助かる', '別にいいけど'], a: 1, ex: '「察して」より、短く具体的なお願いが届きます。' },
+  { ctx: '相手が落ちこんでいる', ng: 'もっと大変な人もいるよ', opts: ['私の方が大変だよ', '早く忘れなよ', 'それはしんどかったね。よかったら聞かせて'], a: 2, ex: '比較は気持ちの打ち消し。相手のつらさは相手のものとして受け取ります。' },
+  { ctx: '子どもが宿題をしない', ng: 'なんでやらないの？', opts: ['どこで止まってる？', 'やらないならゲーム禁止', 'お兄ちゃんはちゃんとやってたよ'], a: 0, ex: '「なんで」を「どこで／何が」に。比較は自己肯定感を下げます。' },
+  { ctx: 'ケンカの最中', ng: 'もういい！（無言で立ち去る）', opts: ['あなたが悪いんでしょ', '少し落ち着きたいから10分ちょうだい。そのあと続きを話そう', '……（何日も口をきかない）'], a: 1, ex: '一時停止を宣言し、戻ってくる約束をします。' },
+  { ctx: '自分への声かけ', ng: 'ほんと私ってダメだな', opts: ['今日は余裕がなかったね。次はどうしたい？', 'もっと頑張らないと', 'どうせまた失敗する'], a: 0, ex: '親友にかけるような言葉を、自分にも。' },
+  { ctx: '友人が転職を迷っている', ng: '絶対やめた方がいいよ', opts: ['好きにすれば？', 'あなたなら絶対大丈夫！', '迷ってるんだね。何が一番引っかかってる？'], a: 2, ex: '決めるのは相手（課題の分離）。考えを整理する手伝いをします。' },
+  { ctx: '同僚の愚痴が止まらない', ng: '（本当は限界だけど、ずっと聞き続ける）', opts: ['しんどいよね。ごめん、今日は15分だけ聞けるよ', '愚痴ばっかりでうんざり', '……（スマホを見て聞き流す）'], a: 0, ex: '共感しながら、自分が無理なく聞ける線を伝えます。' },
+  { ctx: '褒められたとき', ng: 'いえいえ、全然です…', opts: ['そんなことないです、たまたまです', 'ありがとうございます、うれしいです', '……（苦笑い）'], a: 1, ex: '受け取ることも自己信頼の練習。相手の言葉を大切にすることでもあります。' },
+];
+
+const NG_LIST = [
+  { bad: '気にしすぎだよ／考えすぎ', good: '「そう感じるくらい、気になってるんだね」', note: '気持ちの否定。相手は「わかってもらえない」と感じます。' },
+  { bad: 'でも／だって（指摘への第一声）', good: '「なるほど」「教えてくれてありがとう」', note: '反射的な反論は、聞く気がないサインに見えます。' },
+  { bad: 'なんで〜しないの？', good: '「どこで止まってる？」「何があった？」', note: '質問の形をした責め言葉。言いわけを引き出します。' },
+  { bad: 'いつも／絶対／全然', good: '「昨日〇〇のとき」と具体的な1回に', note: '事実より大げさになり、相手は反論したくなります。' },
+  { bad: 'あなたって〇〇だよね（決めつけ）', good: '「わたしは〜と感じた」', note: '人格への評価は、関係そのものを傷つけます。' },
+  { bad: '普通は〜でしょ', good: '「わたしは〜だとうれしい」', note: '「普通」は自分の価値観。相手を否定する響きに。' },
+  { bad: 'もっと大変な人もいるよ', good: '「それはしんどかったね」', note: '比較は、相手のつらさを小さく扱うことになります。' },
+  { bad: '〇〇ちゃんはできてるのに', good: '「どこが難しい？」', note: '他人との比較は、自己肯定感を下げます。' },
+  { bad: '泣かないの！怒らないの！', good: '「悲しかったんだね」「怒りたくなるよね」', note: '感情そのものは止めなくていい。行動だけを一緒に考えます。' },
+  { bad: '（ため息）…もういい、私がやる', good: '「〇〇をお願いできる？助かる」', note: '「察して」は届きません。短く具体的に頼みます。' },
+  { bad: 'すみません、たいしたことじゃないんですけど', good: '「1点、提案があります」', note: '自分を下げる前置きは、内容の価値まで下げます。' },
+  { bad: '大丈夫です（本当は無理）', good: '「今週は難しいです。来週なら〜」', note: 'あいまいなOKは、あとで自分と信頼を追い詰めます。' },
+  { bad: '無言で立ち去る／既読無視で黙る', good: '「落ち着きたいから10分ちょうだい。そのあと話そう」', note: '一時停止はOK。戻る約束をセットに。' },
+  { bad: 'すぐのアドバイス「〇〇すればいいじゃん」', good: '「アドバイスいる？それとも聞いてほしい？」', note: '求められていない解決策は、話を切られた感じに。' },
+  { bad: '自分へ「ほんと私ってダメ」', good: '「余裕がなかったね。次はどうしたい？」', note: '自分責めは、次の会話の余裕を奪います。' },
+];
+
+const PSEUDO_FEELINGS = ['無視され', '裏切られ', 'バカにされ', '見下され', '責められ', '拒絶され', '利用され', '否定され', '軽く見られ', '見捨てられ', 'ないがしろ'];
+const EVAL_WORDS = ['いつも', '絶対', '全然', 'また', '毎回', '普通', '非常識', 'だらしな', 'ちゃんとして', 'ひどい', 'ありえない', 'くせに'];
+
+/* ============================================================
+   STORAGE (safe)
+   ============================================================ */
+const KEY = 'dialogueGym.v1';
+function load() {
+  try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; }
+}
+let state = Object.assign({ done: {}, days: [], focus: [], journal: [], reflections: {}, drillBest: 0 }, load());
+function save() {
+  try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* 保存できない環境でも動作は続ける */ }
+}
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+function esc(s) { return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+function today() { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+function toast(msg) { const t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toast._t); toast._t = setTimeout(() => t.classList.remove('show'), 2200); }
+function catOf(id) { return CATS.find(c => c.id === id); }
+
+function markActiveDay() {
+  const d = today();
+  if (!state.days.includes(d)) { state.days.push(d); save(); }
+}
+function streak() {
+  const set = new Set(state.days);
+  let n = 0; const d = new Date();
+  // 今日まだなら昨日から数える
+  const fmt = x => x.getFullYear() + '-' + String(x.getMonth() + 1).padStart(2, '0') + '-' + String(x.getDate()).padStart(2, '0');
+  if (!set.has(fmt(d))) d.setDate(d.getDate() - 1);
+  while (set.has(fmt(d))) { n++; d.setDate(d.getDate() - 1); }
+  return n;
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+function go(view) {
+  $$('.view').forEach(v => v.classList.toggle('active', v.id === 'view-' + view));
+  $$('#tabs button').forEach(b => b.classList.toggle('on', b.dataset.view === view));
+  if (view === 'lessons') showLessonList();
+  if (view === 'tools') showToolMenu();
+  if (view === 'home') renderHome();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+$$('#tabs button').forEach(b => b.addEventListener('click', () => go(b.dataset.view)));
+
+/* ============================================================
+   HOME
+   ============================================================ */
+function pickToday() {
+  const pool = state.focus.length ? LESSONS.filter(l => state.focus.includes(l.cat)) : LESSONS;
+  return pool.find(l => !state.done[l.id]) || LESSONS.find(l => !state.done[l.id]) || pool[new Date().getDate() % pool.length];
+}
+function renderHome() {
+  const l = pickToday();
+  const allDone = LESSONS.every(x => state.done[x.id]);
+  $('#todayTitle').textContent = l.title;
+  $('#todayMeta').textContent = catOf(l.cat).emoji + ' ' + catOf(l.cat).name + '・約' + l.min + '分' + (allDone ? '（全レッスン完了！復習モード）' : '');
+  $('#todayPoint').textContent = l.point;
+  $('#todayBtn').onclick = () => { go('lessons'); showLesson(l.id); };
+
+  const done = Object.keys(state.done).length;
+  $('#progBar').style.width = Math.round(done / LESSONS.length * 100) + '%';
+  $('#statDone').textContent = done + '/' + LESSONS.length;
+  const s = streak();
+  $('#statStreak').textContent = s;
+  $('#statJournal').textContent = state.journal.length;
+  $('#streakPill').textContent = '🔥 ' + s + '日';
+
+  const chips = $('#focusChips');
+  chips.innerHTML = CATS.map(c => `<button class="chip ${state.focus.includes(c.id) ? 'on' : ''}" data-c="${c.id}">${c.emoji} ${c.name}</button>`).join('');
+  $$('.chip', chips).forEach(ch => ch.onclick = () => {
+    const id = ch.dataset.c;
+    state.focus = state.focus.includes(id) ? state.focus.filter(x => x !== id) : [...state.focus, id];
+    save(); renderHome();
+  });
+}
+
+/* ============================================================
+   LESSONS
+   ============================================================ */
+function showLessonList() {
+  $('#lessonList').style.display = '';
+  $('#lessonDetail').style.display = 'none';
+  let n = 0;
+  $('#lessonCats').innerHTML = CATS.map(c => {
+    const items = LESSONS.filter(l => l.cat === c.id).map(l => {
+      n++;
+      return `<button class="lesson-item ${state.done[l.id] ? 'done' : ''}" data-id="${l.id}">
+        <span class="num">${state.done[l.id] ? '✓' : n}</span>
+        <span class="t"><b>${esc(l.title)}</b><span>約${l.min}分</span></span>
+        <span style="color:var(--pink)">›</span></button>`;
+    }).join('');
+    return `<div class="cat-title"><span class="emoji">${c.emoji}</span><div><h3>${c.name}</h3><div class="small">${c.desc}</div></div></div>${items}`;
+  }).join('');
+  $$('.lesson-item').forEach(b => b.onclick = () => showLesson(b.dataset.id));
+}
+
+function talkHTML(type, t) {
+  return `<div class="talk ${type}"><span class="tag">${type === 'ng' ? 'NG例' : 'OK例'}</span>
+    ${t.lines.map(([w, s]) => `<div class="line"><span class="who">${esc(w)}：</span>${esc(s)}</div>`).join('')}
+    <div class="why">${type === 'ng' ? '⚠️ ' : '💡 '}${esc(t.why)}</div></div>`;
+}
+
+function showLesson(id) {
+  const l = LESSONS.find(x => x.id === id);
+  const c = catOf(l.cat);
+  const idx = LESSONS.indexOf(l);
+  const next = LESSONS[idx + 1];
+  $('#lessonList').style.display = 'none';
+  const el = $('#lessonDetail');
+  el.style.display = '';
+  el.innerHTML = `
+    <button class="back" id="lBack">‹ レッスン一覧へ</button>
+    <div class="lesson-head">
+      <div class="cat">${c.emoji} ${c.name}・約${l.min}分</div>
+      <h1 style="font-size:22px">${esc(l.title)}</h1>
+    </div>
+    <div class="point">${esc(l.point)}</div>
+
+    <div class="card">
+      <div class="sec-label">● コツ・ポイント</div>
+      <ul class="tips">${l.tips.map(t => `<li>${esc(t)}</li>`).join('')}</ul>
+
+      <div class="sec-label">● 会話の具体例</div>
+      ${talkHTML('ng', l.ng)}
+      ${talkHTML('ok', l.ok)}
+
+      <div class="action"><b>🌿 今日の小さな行動</b><br>${esc(l.action)}</div>
+      <div class="reflect"><b>🪞 ふりかえりの問い</b><br>${esc(l.reflect)}
+        <textarea id="lReflect" placeholder="思いついたことを自由に（この端末にだけ保存されます）">${esc(state.reflections[l.id] || '')}</textarea>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="sec-label">● 理解度チェック</div>
+      <div class="quiz-q">${esc(l.quiz.q)}</div>
+      ${l.quiz.opts.map((o, i) => `<button class="opt" data-i="${i}">${esc(o)}</button>`).join('')}
+      <div class="explain" id="lExplain"></div>
+    </div>
+
+    <button class="btn block" id="lDone" ${state.done[l.id] ? '' : 'disabled'}>${state.done[l.id] ? '完了済み ✓' : 'チェックに答えると完了できます'}</button>
+    ${next ? `<button class="btn ghost block" style="margin-top:10px" id="lNext">次のレッスン：${esc(next.title)} →</button>` : ''}
+  `;
+  $('#lBack').onclick = showLessonList;
+  $('#lReflect').addEventListener('input', e => { state.reflections[l.id] = e.target.value; save(); });
+
+  $$('.opt', el).forEach(b => b.onclick = () => {
+    const i = +b.dataset.i;
+    $$('.opt', el).forEach(o => o.disabled = true);
+    $$('.opt', el)[l.quiz.a].classList.add('correct');
+    if (i !== l.quiz.a) b.classList.add('wrong');
+    const ex = $('#lExplain');
+    ex.innerHTML = (i === l.quiz.a ? '<b>⭕ 正解！</b> ' : '<b>もう一歩！</b> ') + esc(l.quiz.ex);
+    ex.classList.add('show');
+    const d = $('#lDone');
+    if (!state.done[l.id]) { d.disabled = false; d.textContent = 'このレッスンを完了する ✓'; }
+  });
+  $('#lDone').onclick = () => {
+    if (state.done[l.id]) return;
+    state.done[l.id] = today(); markActiveDay(); save();
+    $('#lDone').textContent = '完了済み ✓'; $('#lDone').disabled = true;
+    toast('おつかれさま！今日の小さな行動、試してみてね 🌷');
+    $('#streakPill').textContent = '🔥 ' + streak() + '日';
+  };
+  if (next) $('#lNext').onclick = () => showLesson(next.id);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ============================================================
+   DRILL
+   ============================================================ */
+let drill = null;
+function startDrill() {
+  const order = DRILLS.map((_, i) => i).sort(() => Math.random() - .5).slice(0, 8);
+  drill = { order, i: 0, score: 0, answered: false };
+  renderDrill();
+}
+function renderDrill() {
+  const card = $('#drillCard');
+  if (!drill) {
+    card.innerHTML = `<h3>8問チャレンジ</h3>
+      <p class="small" style="margin-bottom:12px">「つい言いがちな一言（NG）」に対して、関係が深まる言いかえを選びます。全${DRILLS.length}問からランダムに出題。</p>
+      ${state.drillBest ? `<p class="small">これまでのベスト：<b style="color:var(--pink-dark)">${state.drillBest} / 8</b></p>` : ''}
+      <button class="btn block" style="margin-top:10px" id="dStart">はじめる</button>`;
+    $('#dStart').onclick = startDrill; return;
+  }
+  if (drill.i >= drill.order.length) {
+    const s = drill.score;
+    if (s > state.drillBest) state.drillBest = s;
+    markActiveDay(); save();
+    const msg = s >= 7 ? 'すばらしい！言葉の選び方が身についてきています。' : s >= 4 ? 'いい感じ！迷った問題は、レッスンで見直してみましょう。' : 'ここから伸びていきます。NGワード早見表もあわせてどうぞ。';
+    card.innerHTML = `<div class="score"><div class="small">結果</div><b>${s} / 8</b><p>${msg}</p></div>
+      <button class="btn block" id="dAgain">もう一度チャレンジ</button>`;
+    $('#dAgain').onclick = startDrill; return;
+  }
+  const q = DRILLS[drill.order[drill.i]];
+  card.innerHTML = `
+    <div class="small">${drill.i + 1} / ${drill.order.length}　｜　場面：${esc(q.ctx)}</div>
+    <div class="drill-ng">🚫「${esc(q.ng)}」</div>
+    <div class="quiz-q">言いかえるなら？</div>
+    ${q.opts.map((o, i) => `<button class="opt" data-i="${i}">${esc(o)}</button>`).join('')}
+    <div class="explain" id="dEx"></div>
+    <button class="btn block" style="margin-top:12px;display:none" id="dNext">次へ →</button>`;
+  $$('.opt', card).forEach(b => b.onclick = () => {
+    const i = +b.dataset.i;
+    $$('.opt', card).forEach(o => o.disabled = true);
+    $$('.opt', card)[q.a].classList.add('correct');
+    if (i === q.a) drill.score++; else b.classList.add('wrong');
+    $('#dEx').innerHTML = (i === q.a ? '<b>⭕ 正解！</b> ' : '<b>おしい！</b> ') + esc(q.ex);
+    $('#dEx').classList.add('show');
+    $('#dNext').style.display = '';
+  });
+  $('#dNext').onclick = () => { drill.i++; renderDrill(); };
+}
+
+/* ============================================================
+   TOOLS
+   ============================================================ */
+function showToolMenu() {
+  $('#toolMenu').style.display = '';
+  $('#toolBody').style.display = 'none';
+  stopBreath();
+}
+$$('.tool-btn').forEach(b => b.addEventListener('click', () => openTool(b.dataset.tool)));
+
+function openTool(name) {
+  $('#toolMenu').style.display = 'none';
+  const el = $('#toolBody');
+  el.style.display = '';
+  const back = '<button class="back" id="tBack">‹ ツール一覧へ</button>';
+  if (name === 'ground') el.innerHTML = back + groundHTML();
+  if (name === 'nvc') el.innerHTML = back + nvcHTML();
+  if (name === 'boundary') el.innerHTML = back + boundaryHTML();
+  if (name === 'nglist') el.innerHTML = back + nglistHTML();
+  $('#tBack').onclick = showToolMenu;
+  if (name === 'ground') bindGround();
+  if (name === 'nvc') bindNvc();
+  if (name === 'boundary') bindBoundary();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ── 60秒リセット ── */
+function groundHTML() {
+  return `<h2>🌿 話す前の60秒リセット</h2>
+  <p class="lead">緊張・イライラ・焦りを「消す」のではなく、「あっても話せる」状態をつくります。</p>
+  <div class="card" style="margin-top:14px">
+    <div class="ground-step active" data-s="0">
+      <div class="sec-label">STEP 1 ／ 気づく（10秒）</div>
+      <p>いま、体のどこに何を感じていますか？<br>「胸がざわざわ」「肩に力が入ってる」——<b>ただ気づくだけ</b>でOK。</p>
+      <button class="btn block" style="margin-top:14px" data-next>次へ</button>
+    </div>
+    <div class="ground-step" data-s="1">
+      <div class="sec-label">STEP 2 ／ 呼吸（約30秒）</div>
+      <p class="small" style="text-align:center">4秒吸って、6秒はく。3回くり返します。</p>
+      <div class="breath-wrap"><div class="breath" id="breath">準備</div></div>
+      <button class="btn block" id="bStart">呼吸をはじめる</button>
+      <button class="btn ghost block" style="margin-top:8px" data-next>次へ</button>
+    </div>
+    <div class="ground-step" data-s="2">
+      <div class="sec-label">STEP 3 ／ 事実と考えを分ける（10秒）</div>
+      <p>心の中でこう言ってみます：<br><b>「〜という考えが浮かんでいる」</b></p>
+      <p class="small" style="margin-top:6px">例：「『また否定される』という考えが浮かんでいる」</p>
+      <button class="btn block" style="margin-top:14px" data-next>次へ</button>
+    </div>
+    <div class="ground-step" data-s="3">
+      <div class="sec-label">STEP 4 ／ 大切にしたいことに戻る（10秒）</div>
+      <p>この会話で、本当に大切にしたいことは？</p>
+      <div class="chips" style="margin-top:10px">
+        <span class="chip">わかり合いたい</span><span class="chip">安心したい</span><span class="chip">相手を大事にしたい</span>
+        <span class="chip">自分も大事にしたい</span><span class="chip">一緒に解決したい</span><span class="chip">正直でいたい</span>
+      </div>
+      <button class="btn block" style="margin-top:16px" data-next>完了</button>
+    </div>
+    <div class="ground-step" data-s="4" style="text-align:center">
+      <div style="font-size:40px">🌷</div>
+      <h3>整いました</h3>
+      <p>不安があっても大丈夫。<br>大切にしたいことから、最初のひと言を。</p>
+      <button class="btn ghost block" style="margin-top:14px" id="gAgain">もう一度</button>
+    </div>
+  </div>`;
+}
+let breathTimer = null;
+function stopBreath() { clearTimeout(breathTimer); breathTimer = null; }
+function bindGround() {
+  let s = 0;
+  const steps = $$('.ground-step');
+  const show = i => { steps.forEach(x => x.classList.toggle('active', +x.dataset.s === i)); };
+  $$('[data-next]').forEach(b => b.onclick = () => { stopBreath(); s++; show(s); if (s === 4) markActiveDay(); });
+  $$('.ground-step .chip').forEach(c => c.onclick = () => c.classList.toggle('on'));
+  $('#gAgain').onclick = () => { s = 0; show(0); };
+  $('#bStart').onclick = () => {
+    stopBreath();
+    const b = $('#breath'); let n = 0;
+    const cycle = () => {
+      if (n >= 3) { b.className = 'breath'; b.textContent = 'おつかれさま'; return; }
+      b.className = 'breath in'; b.textContent = '吸って…';
+      breathTimer = setTimeout(() => {
+        b.className = 'breath out'; b.textContent = 'はいて…';
+        breathTimer = setTimeout(() => { n++; cycle(); }, 6000);
+      }, 4000);
+    };
+    cycle();
+  };
+}
+
+/* ── NVC ── */
+function nvcHTML() {
+  return `<h2>💌 伝え方ビルダー（NVC）</h2>
+  <p class="lead">4つの欄を埋めると、責めずに願いが届く文章ができます。</p>
+  <div class="card" style="margin-top:14px">
+    <label class="fl">① 観察：何があった？</label>
+    <div class="hint">評価や決めつけを入れず、カメラに映る事実だけ。</div>
+    <textarea class="field" id="n1" placeholder="例：昨日、連絡がないまま22時に帰ってきたとき"></textarea>
+    <div class="warn" id="w1"></div>
+
+    <label class="fl">② 気持ち：わたしはどう感じた？</label>
+    <div class="hint">「心配」「寂しい」「悲しい」「焦る」など、自分の感情。</div>
+    <input class="field" id="n2" placeholder="例：すごく心配だった">
+    <div class="warn" id="w2"></div>
+
+    <label class="fl">③ 大切にしたいこと：その奥の願いは？</label>
+    <div class="hint">「安心」「つながり」「尊重」「協力」「休息」など。</div>
+    <input class="field" id="n3" placeholder="例：安心して待っていたい">
+
+    <label class="fl">④ お願い：具体的に何をしてほしい？</label>
+    <div class="hint">行動で、相手が「いいよ／難しい」と答えられる形に。</div>
+    <input class="field" id="n4" placeholder="例：遅くなる日は19時までにLINEをもらえる">
+
+    <div class="output" id="nOut">ここに文章ができあがります</div>
+    <div class="row" style="margin-top:12px">
+      <button class="btn" id="nCopy">コピー</button>
+      <button class="btn ghost" id="nClear">クリア</button>
+    </div>
+  </div>
+  <div class="card soft">
+    <h3>💡 ぽ子のワンポイント</h3>
+    <p style="font-size:14px">「無視された」「バカにされた」は、気持ちではなく<b>相手の行動への解釈</b>。その奥にある「寂しい」「悲しい」「悔しい」を探してみてください。それだけで、相手が受け取りやすい言葉に変わります。</p>
+  </div>`;
+}
+function bindNvc() {
+  const ids = ['n1', 'n2', 'n3', 'n4'];
+  const strip = s => s.trim().replace(/[。、．,.]+$/, '');
+  const upd = () => {
+    const [a, b, c, d] = ids.map(i => strip($('#' + i).value));
+    const ev = EVAL_WORDS.filter(w => a.includes(w));
+    $('#w1').textContent = ev.length ? `「${ev.join('」「')}」は評価や誇張に聞こえやすい言葉。具体的な1回の出来事にしてみましょう。` : '';
+    $('#w1').classList.toggle('show', !!ev.length);
+    const pf = PSEUDO_FEELINGS.filter(w => b.includes(w));
+    $('#w2').textContent = pf.length ? `「${pf.join('」「')}た」は相手の行動への解釈かも。その時の「自分の感情」（寂しい・悲しい・不安など）は？` : '';
+    $('#w2').classList.toggle('show', !!pf.length);
+    if (!a && !b && !c && !d) { $('#nOut').textContent = 'ここに文章ができあがります'; return; }
+    let out = '';
+    if (a) out += a + '、';
+    if (b) out += 'わたしは' + b + '。';
+    if (c) out += c + 'から、';
+    if (d) out += d + (/[？?]$/.test(d) ? '' : 'と、うれしいな。');
+    $('#nOut').textContent = out;
+  };
+  ids.forEach(i => $('#' + i).addEventListener('input', upd));
+  $('#nCopy').onclick = () => copy($('#nOut').textContent);
+  $('#nClear').onclick = () => { ids.forEach(i => $('#' + i).value = ''); upd(); };
+}
+
+/* ── 断り方 ── */
+function boundaryHTML() {
+  return `<h2>🛡️ やさしい断り方メーカー</h2>
+  <p class="lead">共感 → 自分の線 → 代わりの案。3つ選ぶ・書くだけで、角の立たない断り方ができます。</p>
+  <div class="card" style="margin-top:14px">
+    <label class="fl">① 共感・感謝</label>
+    <div class="chips" id="b1">
+      <button class="chip on">声をかけてくれてありがとう。</button>
+      <button class="chip">頼ってくれてうれしいです。</button>
+      <button class="chip">困っているよね。</button>
+      <button class="chip">気にかけてくれてありがとう。</button>
+    </div>
+    <label class="fl">② 自分の線（理由は短く）</label>
+    <input class="field" id="b2" placeholder="例：今週は締め切りが重なっていて、引き受けられないんだ">
+    <label class="fl">③ 代わりの案（なくてもOK）</label>
+    <input class="field" id="b3" placeholder="例：来週の水曜なら30分とれるけど、どうかな？">
+    <div class="output" id="bOut">ここに文章ができあがります</div>
+    <div class="row" style="margin-top:12px"><button class="btn" id="bCopy">コピー</button></div>
+  </div>
+  <div class="card soft">
+    <h3>💡 断るときのNG</h3>
+    <ul class="tips">
+      <li>理由を長々と並べる（言いわけに聞こえ、交渉の余地があると思われる）</li>
+      <li>「たぶん」「できたら」など、あいまいなまま返事を先のばしにする</li>
+      <li>断った後に何度も謝る（罪悪感は相手の課題ではありません）</li>
+    </ul>
+  </div>`;
+}
+function bindBoundary() {
+  const upd = () => {
+    const a = $('#b1 .chip.on')?.textContent || '';
+    const b = $('#b2').value.trim(), c = $('#b3').value.trim();
+    const out = [a, b ? 'ただ、' + b.replace(/[。]$/, '') + '。' : '', c].filter(Boolean).join('');
+    $('#bOut').textContent = (b || c) ? out : 'ここに文章ができあがります';
+  };
+  $$('#b1 .chip').forEach(ch => ch.onclick = () => { $$('#b1 .chip').forEach(x => x.classList.remove('on')); ch.classList.add('on'); upd(); });
+  ['b2', 'b3'].forEach(i => $('#' + i).addEventListener('input', upd));
+  $('#bCopy').onclick = () => copy($('#bOut').textContent);
+}
+
+/* ── NG早見表 ── */
+function nglistHTML() {
+  return `<h2>🚫 NGワード早見表</h2>
+  <p class="lead">悪気がなくても、関係をこじらせやすい言葉たち。言いかえとセットで覚えましょう。</p>
+  <div class="card" style="margin-top:14px">
+    ${NG_LIST.map(n => `<div class="ng-item"><div class="bad">✕ ${esc(n.bad)}</div><div class="good">◯ ${esc(n.good)}</div><div class="note">${esc(n.note)}</div></div>`).join('')}
+  </div>`;
+}
+
+function copy(text) {
+  if (!text || text.startsWith('ここに')) { toast('まず文章を作ってみましょう'); return; }
+  const done = () => toast('コピーしました 📋');
+  try {
+    navigator.clipboard.writeText(text).then(done, () => fallbackCopy(text, done));
+  } catch (e) { fallbackCopy(text, done); }
+}
+function fallbackCopy(text, cb) {
+  const t = document.createElement('textarea'); t.value = text; document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); cb(); } catch (e) { toast('コピーできませんでした'); }
+  t.remove();
+}
+
+/* ============================================================
+   JOURNAL
+   ============================================================ */
+const J_FIELDS = [['jScene', '場面'], ['jFact', '事実'], ['jThought', '考え'], ['jFeel', '気持ち'], ['jSelf', '自分へ'], ['jNext', '次に']];
+function renderJournal() {
+  const list = $('#jList');
+  if (!state.journal.length) { list.innerHTML = '<p class="small" style="text-align:center">まだ記録はありません。小さなモヤモヤから書いてみましょう。</p>'; return; }
+  list.innerHTML = '<h3 style="margin:8px 0 10px">これまでの記録</h3>' + state.journal.slice().reverse().map(e => `
+    <div class="entry"><div class="d"><span>${esc(e.date)}</span><button data-del="${e.id}">削除</button></div>
+    <dl>${J_FIELDS.filter(([k]) => e[k]).map(([k, lab]) => `<dt>${lab}</dt><dd>${esc(e[k])}</dd>`).join('')}</dl></div>`).join('');
+  $$('[data-del]', list).forEach(b => b.onclick = () => {
+    if (!confirm('この記録を削除しますか？')) return;
+    state.journal = state.journal.filter(e => String(e.id) !== b.dataset.del); save(); renderJournal();
+  });
+}
+$('#jSave').onclick = () => {
+  const e = { id: Date.now(), date: today() };
+  J_FIELDS.forEach(([k]) => e[k] = $('#' + k).value.trim());
+  if (!e.jFact && !e.jThought && !e.jScene) { toast('「場面」か「事実」を書いてみましょう'); return; }
+  state.journal.push(e); markActiveDay(); save();
+  J_FIELDS.forEach(([k]) => $('#' + k).value = '');
+  renderJournal();
+  toast('保存しました。書けた自分に花まる 🌸');
+};
+
+/* ============================================================
+   INIT
+   ============================================================ */
+renderHome();
+renderDrill();
+renderJournal();
+</script>
+</body>
+</html>
