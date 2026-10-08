@@ -26,14 +26,19 @@
     --ok: #1fa971;
     --warn: #c98a00;
     --shadow: 0 2px 12px rgba(31,36,51,.06);
+    --toast-bg: #1f2433; --toast-fg: #ffffff;
     --safe-b: env(safe-area-inset-bottom, 0px);
     --safe-t: env(safe-area-inset-top, 0px);
   }
   @media (prefers-color-scheme: dark) {
-    :root {
+    :root:not([data-theme="light"]) {
       --bg: #12141b; --card: #1c1f29; --text: #eceef5; --sub: #9aa1b5; --line: #2c3040;
-      --primary-pale: #232a4a; --shadow: none;
+      --primary-pale: #232a4a; --shadow: none; color-scheme: dark;
     }
+  }
+  :root[data-theme="dark"] {
+    --bg: #12141b; --card: #1c1f29; --text: #eceef5; --sub: #9aa1b5; --line: #2c3040;
+    --primary-pale: #232a4a; --shadow: none; color-scheme: dark;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
   [hidden] { display: none !important; }
@@ -135,9 +140,12 @@
 
   .result { text-align: center; }
   .result .big { font-size: 42px; }
-  .toast { position: fixed; left: 50%; bottom: calc(var(--safe-b) + 20px); transform: translate(-50%, 20px); background: #1f2433; color: #fff; padding: 10px 18px; border-radius: 99px; font-size: 13px; opacity: 0; transition: .3s; pointer-events: none; z-index: 60; max-width: 90vw; }
+  .toast { position: fixed; left: 50%; bottom: calc(var(--safe-b) + 20px); transform: translate(-50%, 20px); background: var(--toast-bg); color: var(--toast-fg); padding: 10px 18px; border-radius: 99px; font-size: 13px; opacity: 0; transition: .3s; pointer-events: none; z-index: 60; max-width: 90vw; text-align: center; }
   .toast.show { opacity: .95; transform: translate(-50%, 0); }
-  video#src { position: fixed; left: -9999px; top: 0; width: 2px; height: 2px; opacity: 0; }
+  video#src { position: fixed; left: 0; top: 0; width: 2px; height: 2px; opacity: 0.01; pointer-events: none; z-index: -1; }
+  .err { background: #fff1f2; color: #b4232f; border-radius: 12px; padding: 10px 12px; font-size: 12px; margin-top: 10px; word-break: break-word; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .err { background: #3a1d22; color: #ffb3bb; } }
+  :root[data-theme="dark"] .err { background: #3a1d22; color: #ffb3bb; }
   footer { text-align: center; font-size: 11px; color: var(--sub); margin-top: 20px; }
 </style>
 </head>
@@ -177,7 +185,7 @@
       <div class="tip">💡 見つからない場合は、クイック設定の編集（鉛筆アイコン）から追加できます。機種によって名前が違うことがあります。</div>
     </div>
     <div data-how="pc" hidden>
-      <p class="muted">下の「このブラウザで録画」で、画面やウィンドウをそのまま録画できます。録画中にページをめくって、終わったら停止してください。</p>
+      <ol class="how"><li>Windowsは <b>Win + Alt + R</b>（Xbox Game Bar）、Macは <b>Shift + Command + 5</b> で画面収録を開始（下に「このブラウザで録画」ボタンがあれば、それでもOK）</li><li>ページを1枚ずつ、少し止めながらめくる</li><li>録画を停止して、下のボタンから動画を選ぶ</li></ol>
     </div>
 
     <div id="browser-rec" hidden>
@@ -239,6 +247,7 @@
       </div>
     </div>
     <button class="btn" id="extract" style="margin-top:16px;">▶ ページを切り出す</button>
+    <div class="err" id="extract-err" hidden></div>
   </section>
 
   <!-- ③ 抽出中 -->
@@ -271,10 +280,12 @@
       <input type="text" id="pdf-name">
     </div>
     <button class="btn" id="make-pdf" style="margin-top:14px;">📄 PDFを作成</button>
+    <div class="err" id="pdf-err" hidden></div>
     <div class="result" id="result" hidden>
       <div class="big">✅</div>
       <p><b id="result-text"></b></p>
       <p class="muted small" id="result-size"></p>
+      <button class="btn" id="save" hidden style="margin-top:10px;">⬇️ PDFを保存</button>
       <button class="btn" id="share" hidden style="margin-top:10px;">📤 共有・ファイルに保存</button>
       <a class="btn sub" id="download" style="margin-top:10px;">⬇️ ダウンロード</a>
     </div>
@@ -283,11 +294,10 @@
   <footer>動画も画像も、この端末の中だけで処理されます（アップロードしません）</footer>
 </main>
 
-<video id="src" playsinline muted preload="auto"></video>
+<video id="src" playsinline webkit-playsinline muted preload="auto"></video>
 <div class="viewer" id="viewer"><img id="viewer-img" alt=""><button id="viewer-close" aria-label="閉じる">×</button></div>
 <div class="toast" id="toast"></div>
 
-<script src="vendor/jspdf.umd.min.js"></script>
 <script>
 (() => {
   'use strict';
@@ -317,7 +327,8 @@
   setOS(isIOS ? 'ios' : isAndroid ? 'android' : 'pc');
 
   // ───────── ブラウザ内録画（対応ブラウザのみ：主にPC） ─────────
-  const canRecord = !!(navigator.mediaDevices && navigator.mediaDevices.getDisplayMedia && window.MediaRecorder);
+  // claude.ai 上（window.claude がある）では画面キャプチャが使えない
+  const canRecord = !window.claude && !!(navigator.mediaDevices && navigator.mediaDevices.getDisplayMedia && window.MediaRecorder);
   if (canRecord) show('#browser-rec');
   let recorder = null, recStream = null, recTimer = null;
   $('#rec-start').addEventListener('click', async () => {
@@ -358,9 +369,9 @@
     el.addEventListener(ev, h, { once: true });
   });
 
-  async function seek(t) {
+  async function seek(t, ms = 6000) {
     if (Math.abs(video.currentTime - t) < 0.001) return;
-    const p = once(video, 'seeked', 6000);
+    const p = once(video, 'seeked', ms);
     video.currentTime = t;
     await p;
     // シーク後のフレームが描画されるのを待つ
@@ -509,66 +520,129 @@
     return new Promise((res) => c.toBlob((blob) => res({ blob, w: c.width, h: c.height, url: URL.createObjectURL(blob) }), 'image/jpeg', 0.88));
   }
 
-  $('#extract').addEventListener('click', async () => {
-    if (S.running) return;
-    resetResults();
-    S.running = true; S.cancel = false;
-    show('#card-extract'); show('#card-pages', false); show('#card-pdf', false);
-    $('#extract').disabled = true;
-    $('#card-extract').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // フレームの読み取りがうまくいっているか（真っ黒・真っ白だけなら読めていない）
+  const isBlank = (g) => { let mn = 255, mx = 0; for (let i = 0; i < g.length; i += 7) { if (g[i] < mn) mn = g[i]; if (g[i] > mx) mx = g[i]; } return mx - mn < 6; };
 
-    // iOSで一度再生しないとフレームが描画されないことがあるため
-    try { await video.play(); } catch (e) {}
-    video.pause();
+  // シーク方式：指定した時刻に1つずつ移動して読む（PC向け・正確）
+  async function* seekFrames(dur, step) {
+    for (let t = 0; t <= dur; t += step) {
+      await seek(Math.min(t, Math.max(0, dur - 0.05)), 5000);
+      yield t;
+    }
+  }
+  // 再生方式：早送り再生しながら読む（iPhoneなどシークが苦手な環境向け）
+  async function* playFrames(dur, step) {
+    video.currentTime = 0;
+    await once(video, 'seeked', 5000).catch(() => {});
+    try { video.playbackRate = 3; } catch (e) {}
+    await video.play();
+    let last = -Infinity, stuck = 0, lastT = -1;
+    try {
+      while (!video.ended && video.currentTime < dur - 0.05) {
+        if ('requestVideoFrameCallback' in video) await Promise.race([new Promise((r) => video.requestVideoFrameCallback(() => r())), sleep(250)]);
+        else await sleep(60);
+        if (video.paused && !video.ended) { try { await video.play(); } catch (e) {} }
+        const t = video.currentTime;
+        if (t === lastT) { if (++stuck > 60) throw new Error('再生が止まりました'); } else { stuck = 0; lastT = t; }
+        if (t - last >= step) { last = t; yield t; }
+      }
+      yield dur;
+    } finally {
+      video.pause();
+      try { video.playbackRate = 1; } catch (e) {}
+    }
+  }
 
+  async function runExtract(engine) {
     const r = cropRect();
     const maxSide = +$('#quality').value;
     const maxPages = Math.max(0, parseInt($('#max-pages').value, 10) || 0);
     const dur = S.duration;
-    const step = S.mode === 'auto' ? Math.min(0.5, Math.max(0.2, dur / 600)) : +$('#interval').value;
+    const step = S.mode === 'auto'
+      ? (engine === 'play' ? 0.25 : Math.min(0.5, Math.max(0.2, dur / 600)))
+      : +$('#interval').value;
     const change = SENS[+$('#sens').value].change;
     const SETTLE = Math.min(0.003, change / 2); // これ以下の変化なら「止まっている」とみなす
+    // 再生方式は揺れ（圧縮ノイズ）を拾いやすいので少しゆるめる
+    const settle = engine === 'play' ? Math.max(SETTLE, 0.006) : SETTLE;
 
-    let prev = null, lastKept = null, pending = null;
+    let prev = null, lastKept = null, pending = null, n = 0, blank = 0;
     const keep = async (g) => {
       const p = await capture(r, maxSide);
       S.pages.push(p); lastKept = g;
       $('#live-img').src = p.url; $('#live-count').textContent = S.pages.length;
     };
-
-    try {
-      for (let t = 0; t <= dur && !S.cancel; t += step) {
-        await seek(Math.min(t, Math.max(0, dur - 0.05)));
-        const g = grayFrame(r);
-        if (S.mode === 'interval') {
-          if (diff(g, lastKept) > 0.001) await keep(g); // 完全に同じ画面は飛ばす
-        } else {
-          // 前のサンプルとほぼ同じ＝ページが止まっている。最後に保存したページと違えば新しいページ
-          const stable = prev && diff(g, prev) <= SETTLE;
-          if (stable && diff(g, lastKept) > change) await keep(g);
-          else if (!stable) pending = g;
-        }
-        prev = g;
-        if (maxPages && S.pages.length >= maxPages) break;
-        $('#bar').style.width = `${Math.min(100, (t / dur) * 100)}%`;
-        $('#progress-text').textContent = `${fmt(t)} / ${fmt(dur)}`;
+    const frames = engine === 'play' ? playFrames(dur, step) : seekFrames(dur, step);
+    for await (const t of frames) {
+      if (S.cancel) break;
+      const g = grayFrame(r);
+      n++;
+      if (isBlank(g)) blank++;
+      if (n === 6 && blank === 6) throw Object.assign(new Error('動画の映像を読み取れません（真っ黒／真っ白）'), { blank: true });
+      if (S.mode === 'interval') {
+        if (diff(g, lastKept) > 0.001) await keep(g); // 完全に同じ画面は飛ばす
+      } else {
+        // 前のサンプルとほぼ同じ＝ページが止まっている。最後に保存したページと違えば新しいページ
+        const stable = prev && diff(g, prev) <= settle;
+        if (stable && diff(g, lastKept) > change) await keep(g);
+        else if (!stable) pending = g;
       }
-      // 最後まで一度も止まらなかった場合などの保険
-      if (S.mode === 'auto' && !S.pages.length && (pending || prev)) await keep(prev || pending);
-    } catch (e) {
-      console.error(e);
-      toast('途中で読み込みに失敗しました。ここまでのページを表示します');
+      prev = g;
+      if (maxPages && S.pages.length >= maxPages) break;
+      $('#bar').style.width = `${Math.min(100, (t / dur) * 100)}%`;
+      $('#progress-text').textContent = `${fmt(t)} / ${fmt(dur)}${engine === 'play' ? '（再生しながら読み取り中）' : ''}`;
+    }
+    // 最後まで一度も止まらなかった場合などの保険
+    if (S.mode === 'auto' && !S.pages.length && (prev || pending) && !S.cancel) await keep(prev || pending);
+  }
+
+  $('#extract').addEventListener('click', async () => {
+    if (S.running) return;
+    resetResults();
+    S.running = true; S.cancel = false;
+    show('#extract-err', false);
+    show('#card-extract'); show('#card-pages', false); show('#card-pdf', false);
+    $('#extract').disabled = true;
+    $('#card-extract').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    // iPhoneなどでは一度再生しないとフレームが描画されないことがある（タップ直後に呼ぶ）
+    try { await video.play(); } catch (e) {}
+    video.pause();
+
+    // iPhone / iPad は再生方式から。PCはシーク方式で、失敗したら再生方式に切り替える
+    const engines = isIOS ? ['play', 'seek'] : ['seek', 'play'];
+    const errors = [];
+    for (const engine of engines) {
+      try {
+        await runExtract(engine);
+        if (S.pages.length || S.cancel) break;
+        errors.push(`${engine}: 0ページ`);
+      } catch (e) {
+        console.error(e);
+        errors.push(`${engine}: ${e && e.message ? e.message : e}`);
+        if (S.pages.length && !e.blank) break; // 途中までのページは使う
+        S.pages.forEach((p) => URL.revokeObjectURL(p.url));
+        S.pages = []; $('#live-count').textContent = '0';
+        if (S.cancel) break;
+        $('#progress-text').textContent = '別の方法でもう一度読み取ります…';
+      }
     }
 
     $('#bar').style.width = '100%';
     S.running = false;
     $('#extract').disabled = false;
     show('#card-extract', false);
-    if (!S.pages.length) { toast('ページが見つかりませんでした。感度を上げてみてください'); return; }
+    if (!S.pages.length) {
+      const e = $('#extract-err');
+      e.textContent = `ページを切り出せませんでした。感度を「高い」にするか、「一定間隔」で試してください。（詳細：${errors.join(' / ') || '不明'}・${video.videoWidth}×${video.videoHeight}）`;
+      show('#extract-err');
+      $('#card-settings').scrollIntoView({ behavior: 'smooth', block: 'end' });
+      return;
+    }
     renderPages();
     show('#card-pages'); show('#card-pdf');
     $('#card-pages').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    toast(`${S.pages.length}ページを切り出しました`);
+    toast(errors.length ? `${S.pages.length}ページを切り出しました（途中で読み取りが止まった可能性があります）` : `${S.pages.length}ページを切り出しました`);
   });
   $('#cancel').addEventListener('click', () => (S.cancel = true));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { if (S.running) S.cancel = true; else if (recorder && recorder.state === 'recording') recorder.stop(); closeViewer(); } });
@@ -617,40 +691,82 @@
     pdfFile = null; pdfUrl = null;
   }
 
+  // JPEGをそのまま埋め込んだPDFを組み立てる（文字列はすべてASCII）
+  function buildPdf(pages) {
+    const W = 595; // A4の横幅（pt）。高さはページの比率どおり
+    const parts = [], offsets = [];
+    let pos = 0;
+    const put = (x) => { parts.push(x); pos += typeof x === 'string' ? x.length : x.size; };
+    const N = 2 + pages.length * 3;
+    const pageId = (i) => 3 + i * 3;
+    put('%PDF-1.4\n');
+    offsets[1] = pos; put('1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n');
+    offsets[2] = pos; put(`2 0 obj\n<< /Type /Pages /Kids [${pages.map((_, i) => `${pageId(i)} 0 R`).join(' ')}] /Count ${pages.length} >>\nendobj\n`);
+    pages.forEach((p, i) => {
+      const id = pageId(i), H = +(W * p.h / p.w).toFixed(2);
+      const content = `q ${W} 0 0 ${H} 0 0 cm /Im0 Do Q`;
+      offsets[id] = pos;
+      put(`${id} 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${W} ${H}] /Resources << /XObject << /Im0 ${id + 2} 0 R >> >> /Contents ${id + 1} 0 R >>\nendobj\n`);
+      offsets[id + 1] = pos;
+      put(`${id + 1} 0 obj\n<< /Length ${content.length} >>\nstream\n${content}\nendstream\nendobj\n`);
+      offsets[id + 2] = pos;
+      put(`${id + 2} 0 obj\n<< /Type /XObject /Subtype /Image /Width ${p.w} /Height ${p.h} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${p.blob.size} >>\nstream\n`);
+      put(p.blob);
+      put('\nendstream\nendobj\n');
+    });
+    const xref = pos;
+    let x = `xref\n0 ${N + 1}\n0000000000 65535 f \n`;
+    for (let i = 1; i <= N; i++) x += `${String(offsets[i]).padStart(10, '0')} 00000 n \n`;
+    put(x + `trailer\n<< /Size ${N + 1} /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF\n`);
+    return new Blob(parts, { type: 'application/pdf' });
+  }
+
   $('#make-pdf').addEventListener('click', async () => {
-    if (!window.jspdf) { toast('PDF機能を読み込めませんでした。再読み込みしてください'); return; }
     const btn = $('#make-pdf');
     btn.disabled = true; btn.textContent = '作成中…';
+    show('#pdf-err', false);
     try {
-      const { jsPDF } = window.jspdf;
-      const W = 595; // A4の横幅（pt）に合わせて、高さはページの比率どおり
-      let doc = null;
-      for (let i = 0; i < S.pages.length; i++) {
-        const p = S.pages[i];
-        const h = W * p.h / p.w;
-        const orient = W > h ? 'l' : 'p';
-        if (!doc) doc = new jsPDF({ unit: 'pt', format: [W, h], orientation: orient, compress: true });
-        else doc.addPage([W, h], orient);
-        const bytes = new Uint8Array(await p.blob.arrayBuffer());
-        doc.addImage(bytes, 'JPEG', 0, 0, W, h, undefined, 'NONE');
-        btn.textContent = `作成中… ${i + 1}/${S.pages.length}`;
-        await sleep(0);
-      }
       const name = (($('#pdf-name').value || S.name).trim().replace(/[\\/:*?"<>|]/g, '_') || 'recording') + '.pdf';
-      const blob = doc.output('blob');
+      const blob = buildPdf(S.pages);
       pdfFile = new File([blob], name, { type: 'application/pdf' });
       pdfUrl = URL.createObjectURL(blob);
       const a = $('#download');
       a.href = pdfUrl; a.download = name;
       $('#result-text').textContent = `${name}（${S.pages.length}ページ）`;
       $('#result-size').textContent = `${(blob.size / 1048576).toFixed(1)}MB`;
-      $('#share').hidden = !(navigator.canShare && navigator.canShare({ files: [pdfFile] }));
+      if (downloads) {
+        // claude.ai 上ではリンクからのダウンロードが使えないため、保存ボタンだけを出す
+        show('#save'); show('#share', false); show('#download', false);
+      } else {
+        show('#save', false); show('#download');
+        let canShare = false;
+        try { canShare = !!(navigator.canShare && navigator.canShare({ files: [pdfFile] })); } catch (e) {}
+        show('#share', canShare);
+      }
       show('#result'); show('#make-pdf', false);
     } catch (e) {
       console.error(e);
-      toast('PDFの作成に失敗しました。画質を下げて試してください');
+      $('#pdf-err').textContent = `PDFの作成に失敗しました。画質を「標準」にして試してください。（詳細：${e && e.message ? e.message : e}）`;
+      show('#pdf-err');
     }
     btn.disabled = false; btn.textContent = '📄 PDFを作成';
+  });
+
+  // claude.ai 上で開いたときの保存機能（それ以外では null）
+  let downloads = null;
+  try {
+    if (window.claude && window.claude.use) window.claude.use('downloads').then((d) => { downloads = d; }).catch(() => {});
+  } catch (e) {}
+  $('#save').addEventListener('click', async () => {
+    if (!downloads || !pdfFile) return;
+    try { await downloads.save({ filename: pdfFile.name, data: pdfFile }); toast('保存しました'); }
+    catch (e) {
+      const code = e && e.code;
+      if (code === 'declined') return;
+      if (code === 'rate_limited') { toast('保存の確認画面がすでに開いています'); return; }
+      $('#pdf-err').textContent = `保存できませんでした。（詳細：${code || ''} ${e && e.message ? e.message : e}）`;
+      show('#pdf-err');
+    }
   });
 
   $('#share').addEventListener('click', async () => {

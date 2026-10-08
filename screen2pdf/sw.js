@@ -1,10 +1,9 @@
 // アプリ本体をキャッシュして、オフラインでも使えるようにする
-const CACHE = 'screen2pdf-v1';
+const CACHE = 'screen2pdf-v2';
 const SHELL = [
   './',
   './index.html',
   './manifest.webmanifest',
-  './vendor/jspdf.umd.min.js',
   './icons/icon.svg',
   './icons/icon-192.png',
   './icons/icon-512.png',
