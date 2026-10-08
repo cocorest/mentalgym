@@ -123,4 +123,4 @@ inspiration: メンタルジム（ACT・価値と目標・心理的柔軟性／�
 - Wilson, T. D., et al. (1993). Introspecting about reasons can reduce post-choice satisfaction. *Personality and Social Psychology Bulletin, 19*(3), 331–339.
 
 ▼ 個別相談・メンタルジムのお申し込みはこちら
-https://mosh.jp/admin/services/363404/preview
+https://mosh.jp/services/363404?openExternalBrowser=1

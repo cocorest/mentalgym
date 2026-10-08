@@ -81,4 +81,4 @@ inspiration: メンタルジム（相談事例：営業職／ぽ子の営業時�
 成果とメンタルの両立を一緒に考えたい方は、個別スポット相談でお話ししましょう。
 
 ▼ 個別相談・メンタルジムのお申し込みはこちら
-https://mosh.jp/admin/services/363404/preview
+https://mosh.jp/services/363404?openExternalBrowser=1

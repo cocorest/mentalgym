@@ -92,4 +92,4 @@ ACTでは、頭の中の声と自分を切り離すことを「脱フュージ�
 自分を責める声と向き合いたい方は、有料ワークブック「安心ベース再設計ワークブック」のSTEP4もおすすめです。
 
 ▼ 個別相談・メンタルジムのお申し込みはこちら
-https://mosh.jp/admin/services/363404/preview
+https://mosh.jp/services/363404?openExternalBrowser=1

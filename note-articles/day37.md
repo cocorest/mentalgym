@@ -78,4 +78,4 @@ inspiration: メンタルジム（ACT・コントロールを手放す）
 - Wegner, D. M., et al. (1987). Paradoxical effects of thought suppression. *Journal of Personality and Social Psychology, 53*(1), 5–13.
 
 ▼ 個別相談・メンタルジムのお申し込みはこちら
-https://mosh.jp/admin/services/363404/preview
+https://mosh.jp/services/363404?openExternalBrowser=1

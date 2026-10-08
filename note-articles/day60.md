@@ -94,4 +94,4 @@ inspiration: 連載第2部まとめ（自分との仲直り）
 「ちょっと聞いてみたい」くらいの気持ちで大丈夫です。オンラインの個別スポット相談（1時間）と、完全オーダーメイドの個別メンタルジム6回コースをご用意しています。プロフィールのリンクからどうぞ。
 
 ▼ 個別相談・メンタルジムのお申し込みはこちら
-https://mosh.jp/admin/services/363404/preview
+https://mosh.jp/services/363404?openExternalBrowser=1

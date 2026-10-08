@@ -90,4 +90,4 @@ ACTでは、選択の基準として**価値（バリュー）**を大切にし�
 自分の大切にしたいことを一緒に言葉にしたい方は、個別スポット相談をご利用ください。
 
 ▼ 個別相談・メンタルジムのお申し込みはこちら
-https://mosh.jp/admin/services/363404/preview
+https://mosh.jp/services/363404?openExternalBrowser=1

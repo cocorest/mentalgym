@@ -83,4 +83,4 @@ inspiration: メンタルジム（NVC・つながりの力）
 頼れないパターンの奥にあるものを一緒に見ていきたい方は、個別スポット相談へどうぞ。
 
 ▼ 個別相談・メンタルジムのお申し込みはこちら
-https://mosh.jp/admin/services/363404/preview
+https://mosh.jp/services/363404?openExternalBrowser=1

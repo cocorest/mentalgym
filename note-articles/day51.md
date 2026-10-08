@@ -84,4 +84,4 @@ Day42では夜の習慣をご紹介しました。今日はその続きの、朝
 自分に合った朝の習慣を一緒に考えたい方は、個別メンタルジム6回コースもご用意しています。
 
 ▼ 個別相談・メンタルジムのお申し込みはこちら
-https://mosh.jp/admin/services/363404/preview
+https://mosh.jp/services/363404?openExternalBrowser=1

@@ -88,4 +88,4 @@ inspiration: メンタルジム（6つのニーズ・自己決定理論）
 自分の心のクセを一緒に整理したい方は、個別スポット相談でお話を聞かせてください。
 
 ▼ 個別相談・メンタルジムのお申し込みはこちら
-https://mosh.jp/admin/services/363404/preview
+https://mosh.jp/services/363404?openExternalBrowser=1

@@ -69,4 +69,4 @@ inspiration: メンタルジム（心身の土台・自然のリズム）
 休み方がわからない、休んでも回復しないという方は、個別スポット相談でお話を聞かせてください。
 
 ▼ 個別相談・メンタルジムのお申し込みはこちら
-https://mosh.jp/admin/services/363404/preview
+https://mosh.jp/services/363404?openExternalBrowser=1

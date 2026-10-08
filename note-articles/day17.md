@@ -77,4 +77,4 @@ inspiration: メンタルジム（完璧主義の罠・CBT）
 「自分には価値がない」感を手放したい方は、個別スポット相談で丁寧にお話を伺います。
 
 ▼ 個別相談・メンタルジムのお申し込みはこちら
-https://mosh.jp/admin/services/363404/preview
+https://mosh.jp/services/363404?openExternalBrowser=1

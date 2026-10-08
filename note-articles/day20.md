@@ -80,4 +80,4 @@ inspiration: メンタルジム（NVC・怒りの3つのテーマ）
 イライラを減らして、穏やかに関わりたい方は、個別スポット相談でお話を聞かせてください。
 
 ▼ 個別相談・メンタルジムのお申し込みはこちら
-https://mosh.jp/admin/services/363404/preview
+https://mosh.jp/services/363404?openExternalBrowser=1

@@ -80,4 +80,4 @@ inspiration: メンタルジム（人生を「実験」する心理学）
 完璧主義で苦しくなっている方は、第1部の「60点で回す」記事（Day21）もあわせてどうぞ。
 
 ▼ 個別相談・メンタルジムのお申し込みはこちら
-https://mosh.jp/admin/services/363404/preview
+https://mosh.jp/services/363404?openExternalBrowser=1

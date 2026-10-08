@@ -87,4 +87,4 @@ inspiration: メンタルジム（相談事例：登校しぶり・25％ルー�
 お子さんの不安・恐怖心との関わり方を一緒に考えたい方は、個別スポット相談をご利用ください。
 
 ▼ 個別相談・メンタルジムのお申し込みはこちら
-https://mosh.jp/admin/services/363404/preview
+https://mosh.jp/services/363404?openExternalBrowser=1

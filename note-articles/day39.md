@@ -89,4 +89,4 @@ inspiration: メンタルジム（セルフコンパッション・認知的不�
 自分にかける言葉を変えたい方は、有料ワークブック「安心ベース再設計ワークブック」のワーク7もおすすめです。
 
 ▼ 個別相談・メンタルジムのお申し込みはこちら
-https://mosh.jp/admin/services/363404/preview
+https://mosh.jp/services/363404?openExternalBrowser=1

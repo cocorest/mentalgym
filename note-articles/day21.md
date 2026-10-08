@@ -84,4 +84,4 @@ inspiration: メンタルジム（相談事例：ワーママ・3つの心のタ
 仕事と生活の両立を、根本から再構築したい方は、個別スポット相談でお話ししましょう。
 
 ▼ 個別相談・メンタルジムのお申し込みはこちら
-https://mosh.jp/admin/services/363404/preview
+https://mosh.jp/services/363404?openExternalBrowser=1

@@ -81,4 +81,4 @@ inspiration: メンタルジム（セルフコーチング・おかげさま探�
 一人では整理しきれないときは、プロと一緒に考えるのも一つの方法です。個別スポット相談でお待ちしています。
 
 ▼ 個別相談・メンタルジムのお申し込みはこちら
-https://mosh.jp/admin/services/363404/preview
+https://mosh.jp/services/363404?openExternalBrowser=1
