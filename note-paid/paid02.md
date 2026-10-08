@@ -755,3 +755,6 @@ inspiration: メンタルジム講座・イルカマスターコース（イル�
 - Neff, K. D. (2003). Self-compassion: An alternative conceptualization of a healthy attitude toward oneself. *Self and Identity, 2*(2), 85–101.
 - Rosenberg, M. B. (2015). *Nonviolent communication: A language of life* (3rd ed.). PuddleDancer Press.
 - Wegner, D. M., Schneider, D. J., Carter, S. R., & White, T. L. (1987). Paradoxical effects of thought suppression. *Journal of Personality and Social Psychology, 53*(1), 5–13.
+
+▼ 個別相談・メンタルジムのお申し込みはこちら
+https://mosh.jp/admin/services/363404/preview

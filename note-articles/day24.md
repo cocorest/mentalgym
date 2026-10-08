@@ -79,3 +79,6 @@ inspiration: メンタルジム（ACT・価値の明確化）
 
 **参考文献**
 - King, L. A. (2001). The health benefits of writing about life goals. *Personality and Social Psychology Bulletin, 27*(7), 798–807.
+
+▼ 個別相談・メンタルジムのお申し込みはこちら
+https://mosh.jp/admin/services/363404/preview

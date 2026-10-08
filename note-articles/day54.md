@@ -88,3 +88,6 @@ inspiration: メンタルジム（人生を「実験」する心理学・プラ�
 **参考文献**
 - Boswell, W. R., Boudreau, J. W., & Tichy, J. (2005). The relationship between employee job change and job satisfaction: The honeymoon-hangover effect. *Journal of Applied Psychology, 90*(5), 882–892.
 - de Bloom, J., et al. (2009). Do we recover from vacation? Meta-analysis of vacation effects on health and well-being. *Journal of Occupational Health, 51*(1), 13–25.
+
+▼ 個別相談・メンタルジムのお申し込みはこちら
+https://mosh.jp/admin/services/363404/preview

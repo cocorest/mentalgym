@@ -83,3 +83,6 @@ inspiration: メンタルジム（NVC・アイメッセージ）
 **参考文献**
 - Butler, E. A., et al. (2003). The social consequences of expressive suppression. *Emotion, 3*(1), 48–67.
 - Collins, N. L., & Miller, L. C. (1994). Self-disclosure and liking: A meta-analytic review. *Psychological Bulletin, 116*(3), 457–475.
+
+▼ 個別相談・メンタルジムのお申し込みはこちら
+https://mosh.jp/admin/services/363404/preview

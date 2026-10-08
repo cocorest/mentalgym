@@ -75,3 +75,6 @@ inspiration: メンタルジム（AWAREテクニック・感情の波）
 - Lieberman, M. D., et al. (2007). Putting feelings into words: Affect labeling disrupts amygdala activity in response to affective stimuli. *Psychological Science, 18*(5), 421–428.
 - Nolen-Hoeksema, S. (2000). The role of rumination in depressive disorders and mixed anxiety/depressive symptoms. *Journal of Abnormal Psychology, 109*(3), 504–511.
 - Verduyn, P., & Lavrijsen, S. (2015). Which emotions last longest and why: The role of event importance and rumination. *Motivation and Emotion, 39*(1), 119–127.
+
+▼ 個別相談・メンタルジムのお申し込みはこちら
+https://mosh.jp/admin/services/363404/preview

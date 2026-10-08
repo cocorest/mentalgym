@@ -81,3 +81,6 @@ inspiration: メンタルジム（親切の心理学・受け取る力）
 - Crocker, J., & Canevello, A. (2008). Creating and undermining social support in communal relationships: The role of compassionate and self-image goals. *Journal of Personality and Social Psychology, 95*(3), 555–575.
 - Curry, O. S., et al. (2018). Happy to help? A systematic review and meta-analysis of the effects of performing acts of kindness on the well-being of the actor. *Journal of Experimental Social Psychology, 76*, 320–329.
 - Helgeson, V. S., & Fritz, H. L. (1998). A theory of unmitigated communion. *Personality and Social Psychology Review, 2*(3), 173–183.
+
+▼ 個別相談・メンタルジムのお申し込みはこちら
+https://mosh.jp/admin/services/363404/preview

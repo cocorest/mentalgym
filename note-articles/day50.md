@@ -87,3 +87,6 @@ inspiration: メンタルジム（NVC・課題の分離）
 - Birditt, K. S., Miller, L. M., Fingerman, K. L., & Lefkowitz, E. S. (2009). Tensions in the parent and adult child relationship: Links to solidarity and ambivalence. *Psychology and Aging, 24*(2), 287–295.
 - Lieberman, M. D., et al. (2007). Putting feelings into words: Affect labeling disrupts amygdala activity in response to affective stimuli. *Psychological Science, 18*(5), 421–428.
 - Rosenberg, M. B. (2015). *Nonviolent communication: A language of life* (3rd ed.). PuddleDancer Press.
+
+▼ 個別相談・メンタルジムのお申し込みはこちら
+https://mosh.jp/admin/services/363404/preview

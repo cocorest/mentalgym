@@ -121,3 +121,6 @@ inspiration: メンタルジム（ACT・価値と目標・心理的柔軟性／�
 - Klug, H. J. P., & Maier, G. W. (2015). Linking goal progress and subjective well-being: A meta-analysis. *Journal of Happiness Studies, 16*(1), 37–65.
 - Wethington, E. (2000). Expecting stress: Americans and the "midlife crisis." *Motivation and Emotion, 24*(2), 85–103.
 - Wilson, T. D., et al. (1993). Introspecting about reasons can reduce post-choice satisfaction. *Personality and Social Psychology Bulletin, 19*(3), 331–339.
+
+▼ 個別相談・メンタルジムのお申し込みはこちら
+https://mosh.jp/admin/services/363404/preview
