@@ -1,7 +1,7 @@
 <title>メンタルジム note管理</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap">
 <style>
-/* Layout: left = 30-day schedule list, right = reading pane; stacks on phones */
+/* Layout: left = numbered article list, right = reading pane; stacks on phones */
 :root {
   --bg: #fffaf8;
   --surface: #ffffff;
@@ -47,7 +47,7 @@ h1 { font-family: var(--font-display); font-size: 24px; margin: 0; text-wrap: ba
 .grid { display: grid; grid-template-columns: minmax(0, 400px) minmax(0, 1fr); gap: 20px; align-items: start; }
 @media (max-width: 820px) { .grid { grid-template-columns: minmax(0, 1fr); } }
 .list { display: flex; flex-direction: column; gap: 6px; }
-.item { display: grid; grid-template-columns: 52px minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); cursor: pointer; text-align: left; font: inherit; color: inherit; width: 100%; }
+.item { display: grid; grid-template-columns: 60px minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); cursor: pointer; text-align: left; font: inherit; color: inherit; width: 100%; }
 .item:hover { border-color: var(--accent); }
 .item[aria-current="true"] { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
 .item.is-done { background: var(--done-soft); }
@@ -104,7 +104,7 @@ a.btn { text-decoration: none; display: inline-flex; align-items: center; }
   <header class="top">
     <div>
       <h1>メンタルジム note管理</h1>
-      <p class="sub">個人版メンタルジム｜毎日1本の投稿スケジュール</p>
+      <p class="sub">個人版メンタルジム｜番号順に好きなペースで投稿</p>
     </div>
     <div class="progress" aria-live="polite">
       <div class="progress-label"><span>投稿済み</span><span><strong id="doneCount">0</strong> / <span id="totalCount">0</span> 本</span></div>
@@ -118,7 +118,7 @@ a.btn { text-decoration: none; display: inline-flex; align-items: center; }
       <button type="button" id="f-todo" data-filter="todo" aria-pressed="false">未投稿</button>
       <button type="button" id="f-done" data-filter="done" aria-pressed="false">投稿済み</button>
     </div>
-    <button type="button" class="btn" id="jumpToday">今日の記事へ</button>
+    <button type="button" class="btn" id="jumpToday">次の未投稿へ</button>
     <span class="status-note" id="syncNote">読み込み中…</span>
   </div>
 
@@ -136,8 +136,6 @@ a.btn { text-decoration: none; display: inline-flex; align-items: center; }
 <script>
 const state = { current: null, articles: [], filter: 'all', selected: null, db: null, canWrite: false, source: '' };
 const $ = (id) => document.getElementById(id);
-const WEEK = ['日','月','火','水','木','金','土'];
-const todayStr = (() => { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0'); })();
 
 function esc(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function inline(s) { return esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>'); }
@@ -201,12 +199,6 @@ function plainText(md) {
   return lines.join('\n').replace(/\*\*(.+?)\*\*/g, '$1').replace(/\*(.+?)\*/g, '$1').trim();
 }
 
-function fmtDate(iso) {
-  if (!iso) return { md: '', w: '' };
-  const [y, m, d] = iso.split('-').map(Number);
-  return { md: m + '/' + d, w: WEEK[new Date(y, m-1, d).getDay()] };
-}
-
 function visible() {
   return state.articles.filter(a => state.filter === 'all' || (state.filter === 'done') === !!a.posted);
 }
@@ -219,6 +211,7 @@ function renderList() {
   const rows = visible();
   if (!rows.length) { $('list').innerHTML = '<p class="empty">' + (state.articles.length ? 'この条件の記事はありません。' : '記事がまだありません。') + '</p>'; return; }
   const paid = rows.filter(a => a.type === 'paid'), special = rows.filter(a => a.type === 'special'), daily = rows.filter(a => a.type !== 'paid' && a.type !== 'special');
+  const nextDaily = state.articles.find(a => a.type === 'daily' && !a.posted);
   const row = a => {
     if (a.type === 'special') {
       return '<button type="button" class="item is-paid' + (a.posted ? ' is-done' : '') + '" data-id="' + esc(a.id) + '"' + (state.selected === a.id ? ' aria-current="true"' : '') + '>' +
@@ -230,16 +223,15 @@ function renderList() {
         '<span class="date"><b>¥' + a.price + '</b><small>' + Math.round((a.chars || 0) / 1000) + '千字</small></span>' +
         '<span class="ititle">' + esc(a.title) + '</span>' + (a.posted ? '<span class="pill done">投稿済み</span>' : '<span class="pill paid">有料</span>') + '</button>';
     }
-    const f = fmtDate(a.date);
-    const isToday = a.date === todayStr;
-    const pill = a.posted ? '<span class="pill done">投稿済み</span>' : isToday ? '<span class="pill today">今日</span>' : (a.date < todayStr ? '<span class="pill">未投稿</span>' : '<span class="pill">予定</span>');
-    return '<button type="button" class="item' + (a.posted ? ' is-done' : '') + (isToday ? ' is-today' : '') + '" data-id="' + esc(a.id) + '"' + (state.selected === a.id ? ' aria-current="true"' : '') + '>' +
-      '<span class="date"><b>' + f.md + '</b><small>' + f.w + ' · Day ' + a.day + '</small></span>' +
+    const isNext = !!nextDaily && nextDaily.id === a.id;
+    const pill = a.posted ? '<span class="pill done">投稿済み</span>' : isNext ? '<span class="pill today">次はこれ</span>' : '<span class="pill">未投稿</span>';
+    return '<button type="button" class="item' + (a.posted ? ' is-done' : '') + (isNext ? ' is-today' : '') + '" data-id="' + esc(a.id) + '"' + (state.selected === a.id ? ' aria-current="true"' : '') + '>' +
+      '<span class="date"><b>No.' + String(a.day).padStart(2, '0') + '</b><small>' + Math.round((a.chars || 0) / 100) / 10 + '千字</small></span>' +
       '<span class="ititle">' + esc(a.title) + '</span>' + pill + '</button>';
   };
   $('list').innerHTML = (paid.length ? '<p class="group">有料記事</p>' + paid.map(row).join('') : '') +
     (special.length ? '<p class="group">特別記事（長編・投稿日は自由）</p>' + special.map(row).join('') : '') +
-    (daily.length ? '<p class="group">毎日の記事</p>' + daily.map(row).join('') : '');
+    (daily.length ? '<p class="group">通常記事（番号順）</p>' + daily.map(row).join('') : '');
 }
 
 function renderPane() {
@@ -247,11 +239,10 @@ function renderPane() {
   if (!a) { $('pane').innerHTML = '<p class="empty">左の一覧から記事を選ぶと、本文がここに表示されます。</p>'; return; }
   state.current = a;
   const isPaid = a.type === 'paid';
-  const f = fmtDate(a.date);
   const parts = a.body.split(PAYWALL);
   const postedAt = a.postedAt ? new Date(a.postedAt) : null;
   $('pane').innerHTML =
-    '<div class="meta">' + (isPaid ? '<span>有料記事 ¥' + a.price + '</span><span>無料部分 ' + parts[0].trim().length + '字／有料部分 ' + (parts[1] || '').trim().length + '字</span>' : a.type === 'special' ? '<span>特別記事（長編）</span><span>投稿日は自由</span>' : '<span>Day ' + a.day + '</span><span>' + a.date + '（' + f.w + '）投稿予定</span>') + '<span>' + (a.chars || a.body.length) + '字</span><span>着想：' + esc(a.inspiration || '') + '</span></div>' +
+    '<div class="meta">' + (isPaid ? '<span>有料記事 ¥' + a.price + '</span><span>無料部分 ' + parts[0].trim().length + '字／有料部分 ' + (parts[1] || '').trim().length + '字</span>' : a.type === 'special' ? '<span>特別記事（長編）</span><span>投稿日は自由</span>' : '<span>No.' + a.day + '</span>') + '<span>' + (a.chars || a.body.length) + '字</span><span>着想：' + esc(a.inspiration || '') + '</span></div>' +
     '<h2>' + esc(a.title) + '</h2>' +
     '<p class="summary">' + esc(a.summary) + '</p>' +
     '<div class="tags">' + (a.tags || []).map(t => '<span>#' + esc(t) + '</span>').join('') + '</div>' +
@@ -328,7 +319,7 @@ $('list').addEventListener('click', e => {
   if (window.matchMedia('(max-width: 820px)').matches) $('pane').scrollIntoView({ behavior: 'smooth' });
 });
 $('jumpToday').addEventListener('click', () => {
-  const t = state.articles.find(a => a.date === todayStr) || state.articles.find(a => !a.posted);
+  const t = state.articles.find(a => !a.posted && a.type === 'daily') || state.articles.find(a => !a.posted);
   if (t) { state.selected = t.id; render(); }
 });
 
@@ -339,7 +330,7 @@ function sortArticles(list) {
 
 function pickDefault() {
   if (state.selected && state.articles.some(a => a.id === state.selected)) return;
-  const t = state.articles.find(a => a.date === todayStr) || state.articles.find(a => !a.posted && a.type === 'daily') || state.articles[0];
+  const t = state.articles.find(a => !a.posted && a.type === 'daily') || state.articles[0];
   state.selected = t ? t.id : null;
 }
 

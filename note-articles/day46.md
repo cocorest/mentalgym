@@ -73,7 +73,7 @@ inspiration: メンタルジム（作業興奮・感情回避）
 
 ---
 
-先延ばしで自分を責めてしまう方は、第1部の「行動が先、気分はあと」（Day23）もあわせてどうぞ。
+先延ばしで自分を責めてしまう方は、第1部の「行動が先、気分はあと」（No.23）もあわせてどうぞ。
 
 **参考文献**
 - Wohl, M. J. A., Pychyl, T. A., & Bennett, S. H. (2010). I forgive myself, now I can study: How self-forgiveness for procrastinating can reduce future procrastination. *Personality and Individual Differences, 48*(7), 803–808.

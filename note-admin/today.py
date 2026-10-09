@@ -1,19 +1,19 @@
-"""今日（日本時間）の note 記事を、お知らせメール用にまとめて出力する。
+"""指定した番号（No.）の note 記事を、お知らせメール用にまとめて出力する。
 
-使い方: python3 note-admin/today.py [YYYY-MM-DD]
-出力: JSON {found, day, date, subject, text, html}
+使い方: python3 note-admin/today.py <No.>   例: python3 note-admin/today.py 11
+（次に投稿する No. は、管理ページのDBで posted が false の通常記事のうち一番小さい番号）
+出力: JSON {found, day, subject, text, html}
 """
-import datetime, html, json, pathlib, re, sys
+import html, json, pathlib, re, sys
 
 root = pathlib.Path(__file__).resolve().parent.parent
 ADMIN = "https://claude.ai/artifact/PtKhv6LJ4ZVvdRW6DYej49"
-today = sys.argv[1] if len(sys.argv) > 1 else datetime.datetime.now(
-    datetime.timezone(datetime.timedelta(hours=9))).strftime("%Y-%m-%d")
+no = int(sys.argv[1].lower().removeprefix("day").removeprefix("no.")) if len(sys.argv) > 1 else 0
 
 articles = json.loads((root / "note-admin" / "articles.json").read_text(encoding="utf-8"))
-a = next((x for x in articles if x.get("type") != "paid" and x.get("date") == today), None)
+a = next((x for x in articles if x.get("type") == "daily" and x.get("day") == no), None)
 if not a:
-    print(json.dumps({"found": False, "date": today}, ensure_ascii=False))
+    print(json.dumps({"found": False, "day": no}, ensure_ascii=False))
     sys.exit(0)
 
 
@@ -68,13 +68,13 @@ def to_text(md):
 
 
 tags = " ".join("#" + t for t in a["tags"])
-subject = f"【今日のnote】Day{a['day']}｜{a['title']}"
-text = (f"今日（{a['date']}）は Day{a['day']} の記事です。\n\n■タイトル\n{a['title']}\n\n■ハッシュタグ\n{tags}\n\n"
+subject = f"【次のnote】No.{a['day']}｜{a['title']}"
+text = (f"次に投稿するのは No.{a['day']} の記事です。\n\n■タイトル\n{a['title']}\n\n■ハッシュタグ\n{tags}\n\n"
         f"■本文\n{to_text(a['body'])}\n\n――――\nnoteで書く: https://note.com/notes/new\n管理ページ（見出しつきコピー・投稿済みチェック）: {ADMIN}\n")
-body_html = (f"<p>今日（{a['date']}）は <strong>Day{a['day']}</strong> の記事です。</p>"
+body_html = (f"<p>次に投稿するのは <strong>No.{a['day']}</strong> の記事です。</p>"
              f"<p><a href=\"https://note.com/notes/new\">noteで新しい記事を書く</a> ／ <a href=\"{ADMIN}\">管理ページを開く</a></p>"
              f"<p><strong>タイトル</strong><br>{html.escape(a['title'])}</p>"
              f"<p><strong>ハッシュタグ</strong><br>{html.escape(tags)}</p><hr>"
              f"<h1>{html.escape(a['title'])}</h1>{to_html(a['body'])}")
-print(json.dumps({"found": True, "day": a["day"], "date": a["date"], "subject": subject,
+print(json.dumps({"found": True, "day": a["day"], "subject": subject,
                   "text": text, "html": body_html}, ensure_ascii=False))
