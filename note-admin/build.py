@@ -4,7 +4,7 @@ import json, pathlib, re
 root = pathlib.Path(__file__).resolve().parent.parent
 out = []
 files = (sorted((root / "note-articles").glob("day*.md")) + sorted((root / "note-paid").glob("paid*.md"))
-         + sorted((root / "note-special").glob("sp*.md")))
+         + sorted((root / "note-special").glob("sp*.md")) + sorted((root / "note-essay").glob("es*.md")))
 for p in files:
     text = p.read_text(encoding="utf-8")
     m = re.match(r"^---\n(.*?)\n---\n(.*)$", text, re.S)
