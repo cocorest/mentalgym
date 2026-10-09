@@ -85,5 +85,5 @@ inspiration: メンタルジム（25％ルール・しなやかマインドセ�
 **参考文献**
 - Klug, H. J. P., & Maier, G. W. (2015). Linking goal progress and subjective well-being: A meta-analysis. *Journal of Happiness Studies, 16*(1), 37–65.
 
-▼ 個別相談・メンタルジムのお申し込みはこちら
+▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1

@@ -82,5 +82,5 @@ inspiration: メンタルジム（親切の心理学・受け取る力）
 - Curry, O. S., et al. (2018). Happy to help? A systematic review and meta-analysis of the effects of performing acts of kindness on the well-being of the actor. *Journal of Experimental Social Psychology, 76*, 320–329.
 - Helgeson, V. S., & Fritz, H. L. (1998). A theory of unmitigated communion. *Personality and Social Psychology Review, 2*(3), 173–183.
 
-▼ 個別相談・メンタルジムのお申し込みはこちら
+▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1

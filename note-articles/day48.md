@@ -83,5 +83,5 @@ inspiration: メンタルジム（現実的な楽観主義・コントロール�
 - Killingsworth, M. A., & Gilbert, D. T. (2010). A wandering mind is an unhappy mind. *Science, 330*(6006), 932.
 - LaFreniere, L. S., & Newman, M. G. (2020). Exposing worry's deceit: Percentage of untrue worries in generalized anxiety disorder treatment. *Behavior Therapy, 51*(3), 413–423.
 
-▼ 個別相談・メンタルジムのお申し込みはこちら
+▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1

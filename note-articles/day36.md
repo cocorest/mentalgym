@@ -77,5 +77,5 @@ inspiration: メンタルジム（イルカモード・自己一致）
 - Gross, J. J., & John, O. P. (2003). Individual differences in two emotion regulation processes: Implications for affect, relationships, and well-being. *Journal of Personality and Social Psychology, 85*(2), 348–362.
 - Wood, A. M., et al. (2008). The authentic personality: A theoretical and empirical conceptualization and the development of the Authenticity Scale. *Journal of Counseling Psychology, 55*(3), 385–399.
 
-▼ 個別相談・メンタルジムのお申し込みはこちら
+▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1

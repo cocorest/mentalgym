@@ -74,5 +74,5 @@ inspiration: メンタルジム（安心51％・RAS・感謝の習慣）
 - Emmons, R. A., & McCullough, M. E. (2003). Counting blessings versus burdens: An experimental investigation of gratitude and subjective well-being in daily life. *Journal of Personality and Social Psychology, 84*(2), 377–389.
 - Seligman, M. E. P., Steen, T. A., Park, N., & Peterson, C. (2005). Positive psychology progress: Empirical validation of interventions. *American Psychologist, 60*(5), 410–421.
 
-▼ 個別相談・メンタルジムのお申し込みはこちら
+▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1

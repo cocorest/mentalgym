@@ -77,5 +77,5 @@ NOが言えないままだと、自分の時間も気持ちも、少しずつ削
 **参考文献**
 - Gilovich, T., Medvec, V. H., & Savitsky, K. (2000). The spotlight effect in social judgment. *Journal of Personality and Social Psychology, 78*(2), 211–222.
 
-▼ 個別相談・メンタルジムのお申し込みはこちら
+▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1

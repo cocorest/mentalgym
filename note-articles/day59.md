@@ -122,5 +122,5 @@ inspiration: メンタルジム（ACT・価値と目標・心理的柔軟性／�
 - Wethington, E. (2000). Expecting stress: Americans and the "midlife crisis." *Motivation and Emotion, 24*(2), 85–103.
 - Wilson, T. D., et al. (1993). Introspecting about reasons can reduce post-choice satisfaction. *Personality and Social Psychology Bulletin, 19*(3), 331–339.
 
-▼ 個別相談・メンタルジムのお申し込みはこちら
+▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1
