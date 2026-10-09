@@ -65,6 +65,10 @@ h1 { font-family: var(--font-display); font-size: 24px; margin: 0; text-wrap: ba
 .meta { display: flex; flex-wrap: wrap; gap: 6px 12px; font-size: 12px; color: var(--muted); margin-bottom: 8px; }
 .pane h2 { font-family: var(--font-display); font-size: 22px; line-height: 1.45; margin: 0 0 10px; text-wrap: balance; }
 .summary { background: var(--accent-soft); border-radius: 10px; padding: 10px 14px; font-size: 14px; margin: 0 0 14px; }
+.memo { border: 1px dashed var(--line); border-radius: 10px; padding: 10px 14px; font-size: 13px; color: var(--muted); margin: 0 0 14px; overflow-wrap: anywhere; }
+.memo b { display: block; color: var(--text, inherit); margin-bottom: 4px; }
+.memo ul { margin: 0; padding-left: 18px; }
+.memo a { color: inherit; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
 .tags span { font-size: 12px; color: var(--accent); }
 .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; padding-bottom: 16px; border-bottom: 1px dashed var(--line); }
@@ -245,6 +249,7 @@ function renderPane() {
     '<div class="meta">' + (isPaid ? '<span>有料記事 ¥' + a.price + '</span><span>無料部分 ' + parts[0].trim().length + '字／有料部分 ' + (parts[1] || '').trim().length + '字</span>' : a.type === 'special' ? '<span>特別記事（長編）</span><span>投稿日は自由</span>' : '<span>No.' + a.day + '</span>') + '<span>' + (a.chars || a.body.length) + '字</span><span>着想：' + esc(a.inspiration || '') + '</span></div>' +
     '<h2>' + esc(a.title) + '</h2>' +
     '<p class="summary">' + esc(a.summary) + '</p>' +
+    (a.memo ? '<div class="memo"><b>参考メモ（自分用・本文にはコピーされません）</b><ul>' + a.memo.split(/\s*\uFF0F\s*/).map(m => '<li>' + esc(m).replace(/https:\/\/[A-Za-z0-9._\/?=%-]+/g, u => '<a href="' + u + '" target="_blank" rel="noopener">' + u + '</a>') + '</li>').join('') + '</ul></div>' : '') +
     '<div class="tags">' + (a.tags || []).map(t => '<span>#' + esc(t) + '</span>').join('') + '</div>' +
     '<ol class="steps"><li>noteで新しい記事を開く</li><li>タイトルを貼る</li><li>' + (isPaid ? '無料部分→有料ライン→有料部分の順に貼る' : '本文を貼る（見出し・太字もそのまま）') + '</li><li>公開設定でハッシュタグを貼る</li><li>投稿したら「投稿済みにする」</li></ol>' +
     '<div class="actions">' +

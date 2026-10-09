@@ -25,6 +25,7 @@ for p in files:
         "summary": d["summary"],
         "tags": d["tags"],
         "inspiration": d["inspiration"],
+        "memo": d.get("memo", ""),
         "body": body,
         "chars": len(body.replace("===有料ライン===", "")),
     }
