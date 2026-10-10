@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>領収書 {{番号}}</title>
+<style>
+  @page { size: A5 landscape; margin: 12mm; }
+  body { font-family: "Hiragino Mincho ProN", "Yu Mincho", serif; color: #222; background: #fff; margin: 0; }
+  .sheet { max-width: 720px; margin: 24px auto; padding: 32px 40px; border: 1px solid #ccc; }
+  h1 { text-align: center; letter-spacing: .6em; font-size: 28px; margin: 0 0 24px; }
+  .row { display: flex; justify-content: space-between; align-items: flex-end; }
+  .to { font-size: 20px; border-bottom: 1px solid #222; padding-bottom: 4px; min-width: 55%; }
+  .meta { text-align: right; font-size: 13px; line-height: 1.7; }
+  .amount { margin: 28px auto 8px; text-align: center; font-size: 30px; font-weight: bold;
+            border-top: 2px solid #222; border-bottom: 2px solid #222; padding: 10px 0; width: 70%; }
+  .note { text-align: center; font-size: 14px; margin-bottom: 24px; }
+  table { border-collapse: collapse; font-size: 13px; }
+  td { border: 1px solid #999; padding: 4px 10px; }
+  .issuer { text-align: right; font-size: 13px; line-height: 1.7; }
+  .print { text-align: center; margin: 16px; }
+  @media print { .print { display: none; } .sheet { border: none; margin: 0; } }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <h1>領収書</h1>
+  <div class="row">
+    <div class="to">{{宛名}} 様</div>
+    <div class="meta">No. {{番号}}<br>発行日 {{発行日}}</div>
+  </div>
+  <div class="amount">¥{{税込金額}} −（税込）</div>
+  <div class="note">但し　{{但し書き}}<br>上記正に領収いたしました。</div>
+  <div class="row">
+    <table>
+      <tr><td>税率</td><td>{{税率}}%対象</td></tr>
+      <tr><td>内消費税額</td><td>¥{{消費税額}}</td></tr>
+      <tr><td>お支払い方法</td><td>{{支払い方法}}</td></tr>
+      <tr><td>お支払い日</td><td>{{受領日}}</td></tr>
+    </table>
+    <div class="issuer">
+      {{屋号}}<br>
+      {{住所}}<br>
+      {{連絡先}}<br>
+      登録番号 {{インボイス登録番号}}
+    </div>
+  </div>
+</div>
+<p class="print"><button onclick="window.print()">印刷・PDFに保存</button></p>
+</body>
+</html>
