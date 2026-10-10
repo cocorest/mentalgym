@@ -1,0 +1,95 @@
+:root {
+  --main: #2f8f6b; --sub: #f29b38; --wall: #cfeadb; --floor: #e8cfa6; --panel: #fffaf0;
+  --ink: #3b3a36; --muted: #7a776f; --line: #e6dccb;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: "Hiragino Maru Gothic ProN", "Yu Gothic UI", "Meiryo", sans-serif;
+       color: var(--ink); background: #f6f1e7; }
+.top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;
+       padding: 12px 16px; background: var(--main); color: #fff; }
+.brand { font-size: 20px; font-weight: bold; display: flex; gap: 8px; align-items: center; }
+.updated { font-size: 12px; opacity: .85; }
+main { max-width: 1100px; margin: 0 auto; padding: 16px; }
+
+/* ===== オフィス ===== */
+.room { position: relative; height: 380px; border-radius: 18px; overflow: hidden;
+        background: linear-gradient(var(--wall) 0 42%, var(--floor) 42% 100%);
+        box-shadow: inset 0 -6px 0 rgba(0,0,0,.06); border: 3px solid var(--main); }
+.room::after { content: ""; position: absolute; left: 0; right: 0; top: 42%; height: 58%;
+        background: repeating-linear-gradient(90deg, transparent 0 58px, rgba(120,80,40,.10) 58px 60px); pointer-events: none; }
+.window { position: absolute; top: 18px; width: 90px; height: 64px; background: #eaf7ff;
+          border: 5px solid #fff; border-radius: 8px; box-shadow: 0 2px 0 rgba(0,0,0,.08); }
+.window::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 4px; background: #fff; }
+.w1 { left: 30%; } .w2 { left: 62%; }
+.plant { position: absolute; top: 34%; font-size: 34px; z-index: 1; }
+.p1 { left: 2%; } .p2 { right: 2%; }
+.bossdesk { position: absolute; left: 4%; bottom: 14%; width: 150px; height: 60px; background: #b7864f;
+            border-radius: 10px; box-shadow: 0 6px 0 #8d6439; z-index: 2; }
+.nameplate { position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%); white-space: nowrap;
+             background: var(--sub); color: #fff; font-size: 12px; padding: 3px 10px; border-radius: 999px; }
+
+.member { position: absolute; width: 96px; text-align: center; z-index: 3;
+          transition: left 1.6s ease, bottom 1.6s ease; }
+.member svg { width: 64px; height: 64px; display: block; margin: 0 auto; }
+.member .tag { font-size: 11px; background: rgba(255,255,255,.9); border-radius: 999px; padding: 1px 8px;
+               display: inline-block; margin-top: 2px; white-space: nowrap; }
+.member .desk { width: 80px; height: 18px; margin: -6px auto 0; background: #c99a63; border-radius: 6px;
+                box-shadow: 0 4px 0 #a37744; }
+.bubble { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); width: max-content; max-width: 170px;
+          background: #fff; border: 2px solid var(--main); border-radius: 12px; padding: 4px 8px;
+          font-size: 11px; line-height: 1.4; margin-bottom: 4px; }
+.bubble::after { content: ""; position: absolute; top: 100%; left: 50%; margin-left: -6px;
+                 border: 6px solid transparent; border-top-color: var(--main); }
+.member.working svg { animation: bob .6s ease-in-out infinite alternate; }
+.member.waiting .hand { display: inline; }
+.member.resting svg { opacity: .65; }
+.member .hand { display: none; position: absolute; right: 4px; top: 0; font-size: 20px; animation: wave 1s infinite; }
+.member .zzz { display: none; position: absolute; right: 8px; top: -4px; font-size: 14px; color: var(--muted); }
+.member.resting .zzz { display: block; }
+@keyframes bob { to { transform: translateY(-4px); } }
+@keyframes wave { 50% { transform: rotate(18deg); } }
+
+/* ===== パネル ===== */
+.panels { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 16px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px;
+        box-shadow: 0 2px 0 rgba(0,0,0,.04); }
+.card.wide { grid-column: 1 / -1; }
+.card h2 { font-size: 15px; margin: 0 0 8px; color: var(--main); display: flex; gap: 6px; align-items: center; }
+.badge { background: var(--sub); color: #fff; border-radius: 999px; font-size: 12px; padding: 0 8px; }
+.badge:empty { display: none; }
+.list { list-style: none; margin: 0; padding: 0; font-size: 14px; }
+.list li { padding: 6px 0; border-bottom: 1px dashed var(--line); }
+.list li:last-child { border-bottom: none; }
+.list .empty { color: var(--muted); font-size: 13px; }
+.list .done { text-decoration: line-through; color: var(--muted); }
+.list.log li { font-size: 13px; }
+.list .time { color: var(--muted); margin-right: 6px; }
+.list button.link { background: none; border: none; color: var(--main); text-decoration: underline; cursor: pointer;
+                    font: inherit; padding: 0; text-align: left; }
+.actions { margin-top: 4px; display: flex; gap: 6px; }
+.btn { border: none; border-radius: 999px; padding: 8px 14px; font: inherit; font-size: 13px; cursor: pointer;
+       background: var(--main); color: #fff; }
+.btn.alt { background: #fff; color: var(--main); border: 2px solid var(--main); }
+.btn.sub { background: var(--sub); }
+.quick { display: flex; flex-wrap: wrap; gap: 8px; }
+.hint { font-size: 12px; color: var(--muted); margin: 0 0 8px; }
+.toast { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); background: var(--ink); color: #fff;
+         padding: 10px 16px; border-radius: 999px; font-size: 14px; opacity: 0; transition: opacity .3s; pointer-events: none; }
+.toast.show { opacity: 1; }
+.error { background: #fff0f0; border: 2px solid #e57373; border-radius: 12px; padding: 12px; margin-bottom: 12px; font-size: 14px; }
+
+@media (max-width: 640px) {
+  .room { height: 360px; }
+  .member .role { display: none; }
+  .bubble { max-width: 110px; font-size: 10px; }
+  .member.idle .bubble { display: none; }
+  .member { width: 72px; }
+  .member svg { width: 48px; height: 48px; }
+  .member .desk { width: 60px; }
+  .bossdesk { width: 100px; }
+  .window { width: 60px; height: 44px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .member { transition: none; }
+  .member svg, .member .hand { animation: none !important; }
+}
