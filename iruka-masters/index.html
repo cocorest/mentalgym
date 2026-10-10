@@ -37,7 +37,11 @@ h1{font-family:var(--display);font-size:clamp(30px,6vw,48px);line-height:1.25;ma
 .meta{font-size:12px;color:var(--ink-soft);font-variant-numeric:tabular-nums;letter-spacing:.04em}
 .intro{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;font-size:14.5px}
 .intro.empty{color:var(--ink-soft);font-size:13px}
-.link{font-size:13px;color:var(--aqua);overflow-wrap:anywhere}
+.links{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.link{font-size:13px;color:var(--aqua);overflow-wrap:anywhere;min-width:0}
+.sns{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--aqua);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:4px 12px 4px 8px}
+.sns:hover{border-color:var(--aqua)}
+.sns svg{width:16px;height:16px}
 .actions{display:flex;flex-wrap:wrap;gap:8px;padding-top:4px}
 button{font:inherit;font-size:13px;border-radius:999px;padding:7px 14px;cursor:pointer;border:1px solid var(--aqua);background:transparent;color:var(--aqua);font-weight:700}
 button.primary{background:var(--aqua);color:var(--surface)}
@@ -104,30 +108,32 @@ footer{padding-top:40px;font-size:12px;color:var(--ink-soft);text-align:center}
 
   const DOLPHIN = '<svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M27.6 13.2c-1.6-3.9-5.7-6.6-10.3-6.6-.6 0-1.1-.9-1.8-1.6-.9-.9-2.3-1.2-2.3-1.2s.6 1.3.5 2.7C8.6 7.9 5.4 11.3 4.6 15.7c-.3 1.4-1.4 2.3-2.4 2.9.9.6 2.5.7 3.6.1.4 1.2 1 2.3 1.8 3.2-.4 1.4-1.6 2.8-1.6 2.8s2.2 0 3.6-1.2c1 .5 2.1.8 3.3.9l.6 3.4 2.6-3.2c3.7-.4 6.8-2.6 8.3-5.6.8.6 2.3 1.3 3.8 1.1-.9-1-1.5-2.2-1.7-3.3.4-.6.8-1.2 1.1-1.8z"/></svg>';
 
+  const FB_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9V12h3.4l-.5 3.5h-2.9v8.4A12 12 0 0 0 24 12z"/></svg>';
   function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
   function safeUrl(u){u=(u||'').trim(); return /^https?:\/\//i.test(u)?u:'';}
+  function fbUrl(u){u=safeUrl(u); return /^https?:\/\/([a-z0-9-]+\.)*(facebook\.com|fb\.com|fb\.me)(\/|$)/i.test(u)?u:'';}
   function fmtDate(d){const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(d||''); return m?`${+m[1]}年${+m[2]}月${+m[3]}日`:'';}
   function canEditMember(m){return !readOnly && artifactApi && (isOwner || !m.claimedBy || (myId && m.claimedBy===myId));}
 
   function cardHtml(m){
     if(editing===m.id){
       return `<article class="card" id="card-${esc(m.id)}"><form class="edit" data-id="${esc(m.id)}">
-        <p class="name">${esc(m.name)}</p>
+        <label>ニックネーム（一覧と修了証に表示されます）<input id="f-name-${esc(m.id)}" name="name" maxlength="40" required value="${esc(m.name)}"></label>
         <label>肩書き・活動内容<input id="f-role-${esc(m.id)}" name="role" maxlength="60" value="${esc(m.role)}" placeholder="例：心理士／子育て中のママ"></label>
         <label>自己紹介<textarea id="f-intro-${esc(m.id)}" name="intro" maxlength="600" placeholder="コースで学んだこと、これからやりたいことなど">${esc(m.intro)}</textarea><span class="hint">600文字まで</span></label>
-        <label>リンク（Instagram・ブログなど）<input id="f-link-${esc(m.id)}" name="link" maxlength="200" value="${esc(m.link)}" placeholder="https://"></label>
-        ${isOwner?`<label>表示名<input id="f-name-${esc(m.id)}" name="name" maxlength="40" value="${esc(m.name)}"></label>`:''}
-        <p class="hint">保存すると、このカードはあなた専用になり、ほかの人は書き換えられなくなります。</p>
+        <label>Facebook<input id="f-facebook-${esc(m.id)}" name="facebook" maxlength="200" value="${esc(m.facebook)}" placeholder="https://www.facebook.com/..."></label>
+        <label>そのほかのリンク（Instagram・ブログなど）<input id="f-link-${esc(m.id)}" name="link" maxlength="200" value="${esc(m.link)}" placeholder="https://"></label>
+        <p class="hint">ニックネームを変えると、修了証の名前も変わります。保存すると、このカードはあなた専用になり、ほかの人は書き換えられなくなります。</p>
         <div class="actions"><button type="submit" class="primary">保存して公開</button><button type="button" class="quiet" data-act="cancel">やめる</button></div>
         <p class="status" role="status">${esc(statusMsg)}</p>
       </form></article>`;
     }
-    const url = safeUrl(m.link);
+    const url = safeUrl(m.link), fb = fbUrl(m.facebook);
     return `<article class="card" id="card-${esc(m.id)}">
       <div class="card-head"><span class="badge">${DOLPHIN}</span><div class="who"><p class="name">${esc(m.name)}</p>${m.role?`<p class="role">${esc(m.role)}</p>`:''}</div></div>
       <div class="meta">No. ${esc(m.no)}　${esc(fmtDate(m.date))} 修了</div>
       ${m.intro?`<p class="intro">${esc(m.intro)}</p>`:`<p class="intro empty">自己紹介はまだありません。</p>`}
-      ${url?`<a class="link" href="${esc(url)}" target="_blank" rel="noopener">${esc(url)}</a>`:''}
+      ${fb||url?`<div class="links">${fb?`<a class="sns" href="${esc(fb)}" target="_blank" rel="noopener">${FB_ICON}Facebook</a>`:''}${url?`<a class="link" href="${esc(url)}" target="_blank" rel="noopener">${esc(url)}</a>`:''}</div>`:''}
       <div class="actions">
         <button type="button" data-act="cert" data-id="${esc(m.id)}">修了証を見る</button>
         ${canEditMember(m)?`<button type="button" class="quiet" data-act="edit" data-id="${esc(m.id)}">${m.intro?'自己紹介を編集':'自己紹介を書く'}</button>`:''}
@@ -235,14 +241,17 @@ footer{padding-top:40px;font-size:12px;color:var(--ink-soft);text-align:center}
       const max=state.members.reduce((a,m)=>Math.max(a,+(m.no.split('-').pop())||0),0);
       const next=String(max+1).padStart(3,'0');
       const year=(date||'').slice(0,4)||String(new Date().getFullYear());
-      state.members.push({id:'m'+next, no:`IM-${year}-${next}`, name, date, role:'', intro:'', link:''});
+      state.members.push({id:'m'+next, no:`IM-${year}-${next}`, name, date, role:'', intro:'', facebook:'', link:''});
       await save(); return;
     }
     const f=e.target, id=f.dataset.id, m=state.members.find(x=>x.id===id); if(!m) return;
-    const link=f.link.value.trim();
-    if(link && !safeUrl(link)){ statusMsg='リンクは https:// から始まるURLを入れてください。'; const keep={role:f.role.value,intro:f.intro.value,link}; render(); const nf=app.querySelector('form.edit'); nf.role.value=keep.role; nf.intro.value=keep.intro; nf.link.value=keep.link; return; }
-    m.role=f.role.value.trim(); m.intro=f.intro.value.trim(); m.link=link;
-    if(isOwner && f.name && f.name.value.trim()) m.name=f.name.value.trim();
+    const name=f.name.value.trim(), link=f.link.value.trim(), facebook=f.facebook.value.trim();
+    let problem='';
+    if(!name) problem='ニックネームを入れてください。';
+    else if(facebook && !fbUrl(facebook)) problem='Facebookには https://www.facebook.com/ から始まるURLを入れてください。';
+    else if(link && !safeUrl(link)) problem='リンクは https:// から始まるURLを入れてください。';
+    if(problem){ statusMsg=problem; const keep={name:f.name.value,role:f.role.value,intro:f.intro.value,link:f.link.value,facebook:f.facebook.value}; render(); const nf=app.querySelector('form.edit'); for(const k in keep) nf[k].value=keep[k]; return; }
+    m.name=name; m.role=f.role.value.trim(); m.intro=f.intro.value.trim(); m.link=link; m.facebook=facebook;
     if(!isOwner && myId && !m.claimedBy) m.claimedBy=myId;
     f.querySelectorAll('button').forEach(x=>x.disabled=true);
     statusMsg='保存しています…';
