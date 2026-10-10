@@ -15,5 +15,11 @@ description: オフィス画面。社長が「オフィスを開いて」「オ�
 - `company`：会社名
 - `boss`：社長の呼び名
 - `theme`：`main`（メインの色）、`sub`（差し色）、`wall`（壁）、`floor`（床）、`panel`（カードの色）
-- `staff` の `color`（体の色）、`animal`（tanuki / bear / rabbit / chick / cat）、`name`、`role`
+- `staff` の各社員：
+  - `animal`：tanuki（たぬき）/ bear（くま）/ rabbit（うさぎ）/ cat（ねこ）/ hamster（ハムスター）/ chick（ひよこ）
+  - `color`：毛の色　`outfit`：洋服の色
+  - `acc`：小物 ribbon（リボン）/ glasses（めがね）/ beret（ベレー帽）/ scarf（スカーフ）/ headset（ヘッドセット）/ pearl（パールのピアス）/ なし は ""
+  - `accColor`：小物の色
+  - `name`、`role`：名前と担当
+- 初期デザインは「ローズピンク×ミルクティー×ラベンダー」。戻したいと言われたら main `#c4687f`、sub `#a993cf`、wall `#fbe9ec`、floor `#ead9c6`、panel `#ffffff` にする。
 色の案を出すときは、3パターンほど言葉で説明して選んでもらう（例：「さくら色のやさしいオフィス」）。
