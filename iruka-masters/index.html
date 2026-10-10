@@ -1,0 +1,261 @@
+<title>イルカマスター一覧</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=M+PLUS+Rounded+1c:wght@400;500;700&family=Shippori+Mincho:wght@500;700&display=swap">
+<style id="page-style">
+/* Layout: 浅い海から深い海へ降りていく縦長の一枚。上に見出し、下にマスターのカードが並ぶ。 */
+:root{
+  --sea:#f2f8fa; --surface:#ffffff; --ink:#173a4a; --ink-soft:#4f6e7b;
+  --aqua:#2b8fa8; --aqua-pale:#dcf0f4; --coral:#d8707f; --line:#cfe3e9; --gold:#b08a3e;
+  --display:'Zen Maru Gothic','M PLUS Rounded 1c','Hiragino Maru Gothic ProN',sans-serif;
+  --body:'M PLUS Rounded 1c','Hiragino Sans','Noto Sans JP',sans-serif;
+  --formal:'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --sea:#0d2028; --surface:#132c36; --ink:#e3f1f5; --ink-soft:#9fbcc6;
+  --aqua:#62c3da; --aqua-pale:#173d49; --coral:#ee95a1; --line:#25485a; --gold:#d9b46a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --sea:#0d2028; --surface:#132c36; --ink:#e3f1f5; --ink-soft:#9fbcc6;
+  --aqua:#62c3da; --aqua-pale:#173d49; --coral:#ee95a1; --line:#25485a; --gold:#d9b46a; color-scheme:dark}
+body{background:var(--sea);color:var(--ink);font-family:var(--body);line-height:1.75;padding-inline:16px;padding-block:0 56px}
+.wrap{max-width:1040px;margin:0 auto}
+header.top{padding-block:56px 32px;display:grid;gap:12px}
+.eyebrow{font-size:12px;letter-spacing:.18em;color:var(--aqua);font-weight:700}
+h1{font-family:var(--display);font-size:clamp(30px,6vw,48px);line-height:1.25;margin:0;text-wrap:balance}
+.lead{max-width:38em;color:var(--ink-soft);margin:0}
+.wave{display:block;width:100%;height:28px;color:var(--aqua);opacity:.35}
+.toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding-block:20px 8px}
+.count{font-family:var(--display);font-size:15px}
+.count b{font-size:22px;color:var(--aqua);font-variant-numeric:tabular-nums}
+.note{font-size:13px;color:var(--ink-soft);margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:16px;padding-block:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;display:grid;gap:10px;align-content:start;min-width:0}
+.card-head{display:flex;gap:12px;align-items:center}
+.badge{flex:none;width:44px;height:44px;border-radius:50%;background:var(--aqua-pale);color:var(--aqua);display:grid;place-items:center}
+.badge svg{width:26px;height:26px}
+.who{min-width:0}
+.name{font-family:var(--display);font-size:19px;font-weight:700;margin:0;overflow-wrap:anywhere}
+.role{font-size:13px;color:var(--ink-soft);margin:0;overflow-wrap:anywhere}
+.meta{font-size:12px;color:var(--ink-soft);font-variant-numeric:tabular-nums;letter-spacing:.04em}
+.intro{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;font-size:14.5px}
+.intro.empty{color:var(--ink-soft);font-size:13px}
+.link{font-size:13px;color:var(--aqua);overflow-wrap:anywhere}
+.actions{display:flex;flex-wrap:wrap;gap:8px;padding-top:4px}
+button{font:inherit;font-size:13px;border-radius:999px;padding:7px 14px;cursor:pointer;border:1px solid var(--aqua);background:transparent;color:var(--aqua);font-weight:700}
+button.primary{background:var(--aqua);color:var(--surface)}
+button.quiet{border-color:var(--line);color:var(--ink-soft);font-weight:500}
+button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:2px solid var(--coral);outline-offset:2px}
+button:disabled{opacity:.5;cursor:default}
+form.edit{display:grid;gap:10px}
+label{font-size:12px;color:var(--ink-soft);display:grid;gap:4px}
+input,textarea{font:inherit;font-size:14px;color:var(--ink);background:var(--sea);border:1px solid var(--line);border-radius:8px;padding:8px 10px;width:100%;box-sizing:border-box}
+textarea{min-height:120px;resize:vertical}
+.hint{font-size:11.5px;color:var(--ink-soft)}
+.status{font-size:13px;color:var(--coral);min-height:1em;margin:0}
+.admin{background:var(--surface);border:1px dashed var(--line);border-radius:14px;padding:16px;display:grid;gap:10px;margin-block:8px}
+.admin-row{display:flex;flex-wrap:wrap;gap:8px;align-items:end}
+.admin-row label{flex:1 1 180px}
+/* 修了証 */
+.cert-layer{position:fixed;inset:0;background:rgba(10,30,40,.55);display:grid;place-items:center;padding:16px;z-index:10;overflow:auto}
+.cert{background:var(--surface);color:var(--ink);width:min(100%,640px);aspect-ratio:1.414/1;max-width:100%;border-radius:4px;padding:clamp(14px,3vw,22px);box-sizing:border-box;box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.cert-frame{height:100%;border:2px solid var(--gold);outline:1px solid var(--gold);outline-offset:-7px;display:grid;grid-template-rows:auto 1fr auto;text-align:center;padding:clamp(12px,3.5vw,28px);box-sizing:border-box;font-family:var(--formal)}
+.cert-no{font-size:clamp(9px,1.6vw,11px);text-align:right;letter-spacing:.08em;font-variant-numeric:tabular-nums;color:var(--ink-soft)}
+.cert-body{display:grid;align-content:center;gap:clamp(4px,1.4vw,12px)}
+.cert-title{font-size:clamp(22px,5vw,38px);letter-spacing:.5em;margin:0;padding-left:.5em;font-weight:700}
+.cert-en{font-size:clamp(9px,1.6vw,12px);letter-spacing:.3em;color:var(--gold);margin:0}
+.cert-name{font-size:clamp(18px,4vw,30px);margin:clamp(4px,1.5vw,12px) 0 0;font-weight:700}
+.cert-text{font-size:clamp(11px,2.1vw,15px);margin:0;line-height:1.9}
+.cert-foot{display:flex;justify-content:space-between;align-items:end;gap:8px;font-size:clamp(10px,1.9vw,13px);text-align:left}
+.cert-foot .sign{text-align:right}
+.cert-foot .sign b{font-size:clamp(14px,2.8vw,20px);display:block}
+.seal{color:var(--gold);width:clamp(40px,8vw,64px);height:clamp(40px,8vw,64px);flex:none}
+.cert-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:12px}
+.cert-actions button{background:var(--surface)}
+.copyfield{font-size:12px;background:var(--surface);color:var(--ink);padding:6px 10px;border-radius:8px;max-width:100%;overflow-wrap:anywhere}
+footer{padding-top:40px;font-size:12px;color:var(--ink-soft);text-align:center}
+@media (prefers-reduced-motion:no-preference){.card{transition:border-color .2s}.card:hover{border-color:var(--aqua)}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="eyebrow">IRUKA MASTER COURSE · 修了生</div>
+    <h1>イルカマスター一覧</h1>
+    <p class="lead">サメモードとイルカモードを学び、イルカマスターコースを修了したメンバーです。カードの「修了証を見る」から、それぞれの電子修了証をご覧いただけます。</p>
+  </header>
+  <svg class="wave" viewBox="0 0 400 28" preserveAspectRatio="none" aria-hidden="true"><path d="M0 14 Q 25 0 50 14 T 100 14 T 150 14 T 200 14 T 250 14 T 300 14 T 350 14 T 400 14" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+  <div id="app"></div>
+  <footer>主宰：臨床心理士・公認心理師 ぽ子</footer>
+</div>
+
+<script type="application/json" id="state">{"issuer": "臨床心理士・公認心理師 ぽ子", "members": [{"id": "m001", "no": "IM-2026-001", "name": "ちくわちゃん", "date": "2026-10-10", "role": "", "intro": "", "link": ""}, {"id": "m002", "no": "IM-2026-002", "name": "すずちゃん", "date": "2026-10-10", "role": "", "intro": "", "link": ""}, {"id": "m003", "no": "IM-2026-003", "name": "アキピ", "date": "2026-10-10", "role": "", "intro": "", "link": ""}, {"id": "m004", "no": "IM-2026-004", "name": "女神lala", "date": "2026-10-10", "role": "", "intro": "", "link": ""}, {"id": "m005", "no": "IM-2026-005", "name": "心理士さゆちゃん", "date": "2026-10-10", "role": "", "intro": "", "link": ""}, {"id": "m006", "no": "IM-2026-006", "name": "ぴかりん", "date": "2026-10-10", "role": "", "intro": "", "link": ""}, {"id": "m007", "no": "IM-2026-007", "name": "りいと", "date": "2026-10-10", "role": "", "intro": "", "link": ""}, {"id": "m008", "no": "IM-2026-008", "name": "お多福ちゃん", "date": "2026-10-10", "role": "", "intro": "", "link": ""}, {"id": "m009", "no": "IM-2026-009", "name": "猪山ちゃん", "date": "2026-10-10", "role": "", "intro": "", "link": ""}, {"id": "m010", "no": "IM-2026-010", "name": "ももちん", "date": "2026-10-10", "role": "", "intro": "", "link": ""}, {"id": "m011", "no": "IM-2026-011", "name": "りかぴー", "date": "2026-10-10", "role": "", "intro": "", "link": ""}, {"id": "m012", "no": "IM-2026-012", "name": "ゆみみん", "date": "2026-10-10", "role": "", "intro": "", "link": ""}, {"id": "m013", "no": "IM-2026-013", "name": "パリスともちん", "date": "2026-10-10", "role": "", "intro": "", "link": ""}, {"id": "m014", "no": "IM-2026-014", "name": "さっち", "date": "2026-10-10", "role": "", "intro": "", "link": ""}, {"id": "m015", "no": "IM-2026-015", "name": "ゆこち", "date": "2026-10-10", "role": "", "intro": "", "link": ""}, {"id": "m016", "no": "IM-2026-016", "name": "Taka Mina", "date": "2026-10-10", "role": "", "intro": "", "link": ""}]}</script>
+<script id="app-js">
+(function(){
+  const TITLE_HTML = '<title>イルカマスター一覧</title>';
+  const FONT_LINK = document.querySelector('link[rel="stylesheet"]').outerHTML;
+  const STYLE_HTML = document.getElementById('page-style').outerHTML;
+  const SCRIPT_SRC = document.getElementById('app-js').textContent;
+  // 公開用のページ本体（見出し〜フッター）。状態以外は毎回同じものを書き出す。
+  const SHELL_HTML = document.querySelector('.wrap').outerHTML.replace(/<div id="app">[\s\S]*?<\/div>\s*<footer>/, '<div id="app"></div>\n  <footer>');
+  const HEAD = '<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>' + (document.head.querySelector('style') ? document.head.querySelector('style').textContent : '') + '</style></head><body>';
+
+  const state = JSON.parse(document.getElementById('state').textContent);
+  const app = document.getElementById('app');
+  let artifactApi = null, userApi = null, myId = null, isOwner = false, readOnly = false, adminOpen = false;
+  let editing = null; // member id being edited
+  let statusMsg = '';
+
+  const DOLPHIN = '<svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M27.6 13.2c-1.6-3.9-5.7-6.6-10.3-6.6-.6 0-1.1-.9-1.8-1.6-.9-.9-2.3-1.2-2.3-1.2s.6 1.3.5 2.7C8.6 7.9 5.4 11.3 4.6 15.7c-.3 1.4-1.4 2.3-2.4 2.9.9.6 2.5.7 3.6.1.4 1.2 1 2.3 1.8 3.2-.4 1.4-1.6 2.8-1.6 2.8s2.2 0 3.6-1.2c1 .5 2.1.8 3.3.9l.6 3.4 2.6-3.2c3.7-.4 6.8-2.6 8.3-5.6.8.6 2.3 1.3 3.8 1.1-.9-1-1.5-2.2-1.7-3.3.4-.6.8-1.2 1.1-1.8z"/></svg>';
+
+  function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+  function safeUrl(u){u=(u||'').trim(); return /^https?:\/\//i.test(u)?u:'';}
+  function fmtDate(d){const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(d||''); return m?`${+m[1]}年${+m[2]}月${+m[3]}日`:'';}
+  function canEditMember(m){return !readOnly && artifactApi && (isOwner || !m.claimedBy || (myId && m.claimedBy===myId));}
+
+  function cardHtml(m){
+    if(editing===m.id){
+      return `<article class="card" id="card-${esc(m.id)}"><form class="edit" data-id="${esc(m.id)}">
+        <p class="name">${esc(m.name)}</p>
+        <label>肩書き・活動内容<input id="f-role-${esc(m.id)}" name="role" maxlength="60" value="${esc(m.role)}" placeholder="例：心理士／子育て中のママ"></label>
+        <label>自己紹介<textarea id="f-intro-${esc(m.id)}" name="intro" maxlength="600" placeholder="コースで学んだこと、これからやりたいことなど">${esc(m.intro)}</textarea><span class="hint">600文字まで</span></label>
+        <label>リンク（Instagram・ブログなど）<input id="f-link-${esc(m.id)}" name="link" maxlength="200" value="${esc(m.link)}" placeholder="https://"></label>
+        ${isOwner?`<label>表示名<input id="f-name-${esc(m.id)}" name="name" maxlength="40" value="${esc(m.name)}"></label>`:''}
+        <p class="hint">保存すると、このカードはあなた専用になり、ほかの人は書き換えられなくなります。</p>
+        <div class="actions"><button type="submit" class="primary">保存して公開</button><button type="button" class="quiet" data-act="cancel">やめる</button></div>
+        <p class="status" role="status">${esc(statusMsg)}</p>
+      </form></article>`;
+    }
+    const url = safeUrl(m.link);
+    return `<article class="card" id="card-${esc(m.id)}">
+      <div class="card-head"><span class="badge">${DOLPHIN}</span><div class="who"><p class="name">${esc(m.name)}</p>${m.role?`<p class="role">${esc(m.role)}</p>`:''}</div></div>
+      <div class="meta">No. ${esc(m.no)}　${esc(fmtDate(m.date))} 修了</div>
+      ${m.intro?`<p class="intro">${esc(m.intro)}</p>`:`<p class="intro empty">自己紹介はまだありません。</p>`}
+      ${url?`<a class="link" href="${esc(url)}" target="_blank" rel="noopener">${esc(url)}</a>`:''}
+      <div class="actions">
+        <button type="button" data-act="cert" data-id="${esc(m.id)}">修了証を見る</button>
+        ${canEditMember(m)?`<button type="button" class="quiet" data-act="edit" data-id="${esc(m.id)}">${m.intro?'自己紹介を編集':'自己紹介を書く'}</button>`:''}
+        ${isOwner&&adminOpen?`<button type="button" class="quiet" data-act="release" data-id="${esc(m.id)}" ${m.claimedBy?'':'disabled'}>書き込み者を解除</button><button type="button" class="quiet" data-act="remove" data-id="${esc(m.id)}">一覧から外す</button>`:''}
+      </div></article>`;
+  }
+
+  function adminHtml(){
+    if(!isOwner || readOnly || !artifactApi) return '';
+    if(!adminOpen) return `<div class="actions"><button type="button" class="quiet" data-act="admin">管理メニューを開く</button></div>`;
+    return `<section class="admin"><strong>管理メニュー（主宰者だけに表示）</strong>
+      <form class="admin-row" id="add-form"><label>追加するマスターの表示名<input id="add-name" maxlength="40" required></label><label>修了日<input id="add-date" type="date" value="${esc(state.members[0]?state.members[0].date:'')}"></label><button type="submit" class="primary">追加して公開</button></form>
+      <p class="hint">「書き込み者を解除」を押すと、そのカードを別の人が書けるようになります。</p>
+      <div class="actions"><button type="button" class="quiet" data-act="admin">管理メニューを閉じる</button></div>
+      <p class="status" role="status">${editing?'':esc(statusMsg)}</p></section>`;
+  }
+
+  function render(){
+    const n = state.members.length;
+    let note;
+    if(readOnly || !artifactApi) note = 'このページは閲覧用です。自己紹介を書くには、主宰者から編集の招待を受けたClaudeアカウントでログインしてください。';
+    else note = '自分のカードの「自己紹介を書く」から、自己紹介を追加できます。';
+    app.innerHTML = `<div class="toolbar"><div class="count">修了メンバー <b>${n}</b> 名</div><p class="note">${esc(note)}</p></div>
+      ${adminHtml()}
+      <div class="grid">${n?state.members.map(cardHtml).join(''):'<p class="note">まだメンバーが登録されていません。</p>'}</div>`;
+    const hashId = (location.hash||'').slice(1);
+    if(hashId && state.members.some(m=>m.id===hashId)) showCert(hashId);
+  }
+
+  function showCert(id){
+    const m = state.members.find(x=>x.id===id); if(!m) return;
+    closeCert();
+    const layer = document.createElement('div');
+    layer.className='cert-layer'; layer.id='cert-layer'; layer.setAttribute('role','dialog'); layer.setAttribute('aria-modal','true'); layer.setAttribute('aria-label', m.name+'さんの修了証');
+    layer.innerHTML = `<div style="width:min(100%,640px)"><div class="cert"><div class="cert-frame">
+        <div class="cert-no">No. ${esc(m.no)}</div>
+        <div class="cert-body">
+          <p class="cert-title">修了証</p>
+          <p class="cert-en">CERTIFICATE OF COMPLETION</p>
+          <p class="cert-name">${esc(m.name)}　殿</p>
+          <p class="cert-text">あなたはイルカマスターコースの全課程を修了し<br>イルカマスターとして認定されたことを証します</p>
+        </div>
+        <div class="cert-foot">
+          <svg class="seal" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="32" cy="32" r="24" fill="none" stroke="currentColor" stroke-width="1"/><g transform="translate(16 16)">${DOLPHIN.replace('<svg viewBox="0 0 32 32" aria-hidden="true">','<svg viewBox="0 0 32 32" width="32" height="32">')}</g></svg>
+          <div class="sign">${esc(fmtDate(m.date))}<b>${esc(state.issuer)}</b></div>
+        </div>
+      </div></div>
+      <div class="cert-actions"><button type="button" data-act="copylink" data-id="${esc(m.id)}">この修了証のリンクをコピー</button><button type="button" data-act="close">閉じる</button></div>
+      <p class="cert-actions"><span class="copyfield" id="copyfield" hidden></span></p></div>`;
+    document.body.appendChild(layer);
+    layer.addEventListener('click', e=>{ if(e.target===layer) closeCert(); });
+    layer.querySelector('[data-act="close"]').focus();
+  }
+  function closeCert(){ const l=document.getElementById('cert-layer'); if(l) l.remove(); if(location.hash) history.replaceState(null,'',location.pathname+location.search); }
+
+  function buildDocument(){
+    const json = JSON.stringify(state).replace(/</g,'\\u003c');
+    return HEAD + TITLE_HTML + '\n' + FONT_LINK + '\n' + STYLE_HTML + '\n\n' + SHELL_HTML + '\n\n<script type="application/json" id="state">' + json + '<\/script>\n<script id="app-js">' + SCRIPT_SRC + '<\/script>\n</body></html>';
+  }
+
+  async function save(){
+    try{ sessionStorage.setItem('iruka-pending', JSON.stringify({editing})); }catch(e){}
+    try{
+      await artifactApi.publish(buildDocument());
+      try{ sessionStorage.removeItem('iruka-pending'); }catch(e){}
+    }catch(err){
+      const code = err && err.code;
+      if(code==='conflict'){ statusMsg='ほかの人が同時に保存したため、最新の内容を読み込み直しています。もう一度入力してください。'; }
+      else if(['not_writer','not_granted','not_declared','consent_required','capability_disabled','capability_removed'].includes(code)){ readOnly=true; editing=null; statusMsg=''; }
+      else if(code==='rate_limited'){ statusMsg='保存が続いています。少し待ってからもう一度押してください。'; }
+      else { statusMsg='保存できませんでした。通信状態を確認して、もう一度押してください。'; }
+      render();
+    }
+  }
+
+  app.addEventListener('click', async e=>{
+    const b = e.target.closest('button[data-act]'); if(!b) return;
+    const act=b.dataset.act, id=b.dataset.id;
+    if(act==='cert'){ showCert(id); }
+    else if(act==='edit'){ editing=id; statusMsg=''; render(); const t=document.getElementById('f-intro-'+id); if(t) t.focus(); }
+    else if(act==='cancel'){ editing=null; statusMsg=''; render(); }
+    else if(act==='admin'){ adminOpen=!adminOpen; statusMsg=''; render(); }
+    else if(act==='release'){ const m=state.members.find(x=>x.id===id); if(m){ delete m.claimedBy; b.disabled=true; await save(); } }
+    else if(act==='remove'){
+      if(b.dataset.confirm!=='1'){ b.dataset.confirm='1'; b.textContent='もう一度押すと外します'; return; }
+      state.members=state.members.filter(x=>x.id!==id); await save();
+    }
+  });
+  document.addEventListener('click', async e=>{
+    const b = e.target.closest('.cert-layer button[data-act]'); if(!b) return;
+    if(b.dataset.act==='close') closeCert();
+    if(b.dataset.act==='copylink'){
+      const field=document.getElementById('copyfield');
+      const text = '「イルカマスター一覧」ページのリンクの末尾に #' + b.dataset.id + ' を付けると、この修了証が直接開きます';
+      field.textContent=text; field.hidden=false;
+      try{ await navigator.clipboard.writeText('#'+b.dataset.id); b.textContent='末尾に付ける文字をコピーしました'; }catch(err){ const r=document.createRange(); r.selectNodeContents(field); const s=getSelection(); s.removeAllRanges(); s.addRange(r); }
+    }
+  });
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeCert(); });
+  app.addEventListener('submit', async e=>{
+    e.preventDefault();
+    if(e.target.id==='add-form'){
+      const name=document.getElementById('add-name').value.trim(); if(!name) return;
+      const date=document.getElementById('add-date').value;
+      const max=state.members.reduce((a,m)=>Math.max(a,+(m.no.split('-').pop())||0),0);
+      const next=String(max+1).padStart(3,'0');
+      const year=(date||'').slice(0,4)||String(new Date().getFullYear());
+      state.members.push({id:'m'+next, no:`IM-${year}-${next}`, name, date, role:'', intro:'', link:''});
+      await save(); return;
+    }
+    const f=e.target, id=f.dataset.id, m=state.members.find(x=>x.id===id); if(!m) return;
+    const link=f.link.value.trim();
+    if(link && !safeUrl(link)){ statusMsg='リンクは https:// から始まるURLを入れてください。'; const keep={role:f.role.value,intro:f.intro.value,link}; render(); const nf=app.querySelector('form.edit'); nf.role.value=keep.role; nf.intro.value=keep.intro; nf.link.value=keep.link; return; }
+    m.role=f.role.value.trim(); m.intro=f.intro.value.trim(); m.link=link;
+    if(isOwner && f.name && f.name.value.trim()) m.name=f.name.value.trim();
+    if(!isOwner && myId && !m.claimedBy) m.claimedBy=myId;
+    f.querySelectorAll('button').forEach(x=>x.disabled=true);
+    statusMsg='保存しています…';
+    await save();
+  });
+
+  render();
+  (async()=>{
+    if(!window.claude || !window.claude.use) return;
+    const [a,u] = await Promise.all([claude.use('artifact'), claude.use('user')]);
+    artifactApi=a; userApi=u;
+    if(u){ try{ isOwner=!!(await u.isOwner()); }catch(e){} try{ myId = u.id ? await u.id() : null; }catch(e){} }
+    render();
+  })();
+})();
+</script>
