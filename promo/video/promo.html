@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=1080, height=1920">
+<title>ぽこAIカンパニー 販促動画</title>
+<link rel="stylesheet" href="timeline.css">
+<style>
+  .scene { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 80px; }
+  h1 { font-size: 112px; line-height: 1.35; font-weight: 700; letter-spacing: .02em; }
+  h1 .rose { color: var(--rose); }
+  .row { display: flex; gap: 10px; margin-top: 90px; }
+  .row .char { width: 176px; height: 220px; }
+  .lead { font-size: 64px; font-weight: 700; line-height: 1.5; margin-bottom: 60px; }
+  .chips { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; width: 100%; }
+  .chip { font-size: 50px; padding: 34px 20px; }
+  .sigh { font-size: 60px; margin-top: 70px; color: var(--rose); font-weight: 700; }
+  .small { font-size: 58px; color: var(--rose); font-weight: 700; margin-bottom: 40px; }
+  .logo { font-size: 124px; font-weight: 700; color: var(--rose); line-height: 1.2; }
+  .logo small { display: block; font-size: 60px; color: var(--ink); margin-bottom: 10px; letter-spacing: .3em; }
+  .tag { font-size: 52px; line-height: 1.6; margin-top: 60px; }
+  .feat .num { position: absolute; top: 120px; right: 90px; font-size: 44px; color: var(--lav); font-weight: 700; }
+  .feat .big { width: 400px; height: 500px; }
+  .feat h2 { font-size: 92px; margin: 30px 0 50px; }
+  .feat .ask { font-size: 56px; padding: 40px 50px; border: 4px solid var(--rose-soft); }
+  .feat .arrow { font-size: 50px; color: var(--rose); margin: 30px 0; }
+  .feat .res { font-size: 60px; line-height: 1.55; font-weight: 700; }
+  .laptop { width: 980px; background: #fff; border-radius: 30px; padding: 24px; box-shadow: 0 30px 60px rgba(196,104,127,.25); overflow: hidden; }
+  .laptop .screen { height: 620px; border-radius: 16px; overflow: hidden; position: relative; }
+  .laptop img { position: absolute; width: 1600px; left: 0; top: 0; animation: pan 6s ease-in-out var(--s) both; }
+  @keyframes pan { from { transform: translate(-60px, -100px); } to { transform: translate(-560px, -100px); } }
+  .base { width: 1100px; height: 34px; background: linear-gradient(#efe6ea, #dccdd3); border-radius: 0 0 40px 40px; }
+  .cta { font-size: 96px; line-height: 1.4; font-weight: 700; }
+  .btn { font-size: 50px; white-space: nowrap; margin-top: 70px; padding: 34px 60px; box-shadow: 0 14px 30px rgba(196,104,127,.35); }
+  .heart { font-size: 70px; }
+</style>
+<script src="chars.js"></script>
+</head><body><div class="stage">
+  <span class="heart" style="left:70px; top:200px">♡</span>
+  <span class="heart" style="right:90px; top:420px; animation-delay:-2s">♡</span>
+  <span class="heart" style="left:120px; bottom:260px; animation-delay:-4s">♡</span>
+
+  <section class="scene" style="--s:0s; --dur:4.5s">
+    <h1 class="in" style="--d:.2s">AIの<span class="rose">社員</span>、<br>雇いませんか？</h1>
+    <div class="row">
+      <div class="char bob pop" style="--d:.9s" data-char="kotoha"></div>
+      <div class="char bob pop" style="--d:1.05s" data-char="tsumiki"></div>
+      <div class="char bob pop" style="--d:1.2s" data-char="poko"></div>
+      <div class="char bob pop" style="--d:1.35s" data-char="soroban"></div>
+      <div class="char bob pop" style="--d:1.5s" data-char="yubin"></div>
+    </div>
+  </section>
+
+  <section class="scene" style="--s:4.5s; --dur:5.5s">
+    <p class="lead in" style="--d:.1s">毎日の<span class="mark">これ全部</span>、<br>ひとりでやっていませんか？</p>
+    <div class="chips">
+      <div class="chip card pop" style="--d:.6s">📬 メール</div>
+      <div class="chip card pop" style="--d:.85s">✍️ SNS投稿</div>
+      <div class="chip card pop" style="--d:1.1s">🧾 領収書</div>
+      <div class="chip card pop" style="--d:1.35s">📊 レポート</div>
+      <div class="chip card pop" style="--d:1.6s">⏰ 予定管理</div>
+      <div class="chip card pop" style="--d:1.85s">💡 商品づくり</div>
+    </div>
+    <p class="sigh in" style="--d:2.6s">…時間、足りないですよね。</p>
+  </section>
+
+  <section class="scene" style="--s:10s; --dur:5s">
+    <p class="small in" style="--d:.1s">そんなあなたに</p>
+    <div class="logo pop" style="--d:.5s"><small>あなた専用</small>ぽこ<br>AIカンパニー</div>
+    <p class="tag in" style="--d:1.3s">話しかけるだけで動く<br><span class="mark">AIの会社</span>が手に入る♡</p>
+  </section>
+
+  <section class="scene feat" style="--s:15.00s; --dur:2.7s">
+    <div class="num fade" style="--d:.0s">1/6</div>
+    <div class="char bob big pop" style="--d:.05s" data-char="poko"></div>
+    <h2 class="in" style="--d:.15s">☀️ 朝のぽこ便</h2>
+    <div class="ask card slideL" style="--d:.45s">「おはよう！」</div>
+    <div class="arrow fade" style="--d:.9s">▼</div>
+    <p class="res in" style="--d:1.0s">気分・予定・今日やること3つを<br>一緒に決めてくれる</p>
+  </section>
+  <section class="scene feat" style="--s:17.70s; --dur:2.7s">
+    <div class="num fade" style="--d:.0s">2/6</div>
+    <div class="char bob big pop" style="--d:.05s" data-char="kotoha"></div>
+    <h2 class="in" style="--d:.15s">✍️ 記事・SNS投稿</h2>
+    <div class="ask card slideL" style="--d:.45s">「秋のイベントの告知を書いて」</div>
+    <div class="arrow fade" style="--d:.9s">▼</div>
+    <p class="res in" style="--d:1.0s">あなたの口ぐせで<br>ブログもInstagramも</p>
+  </section>
+  <section class="scene feat" style="--s:20.40s; --dur:2.7s">
+    <div class="num fade" style="--d:.0s">3/6</div>
+    <div class="char bob big pop" style="--d:.05s" data-char="soroban"></div>
+    <h2 class="in" style="--d:.15s">🧾 領収書</h2>
+    <div class="ask card slideL" style="--d:.45s">「田中さんに1万5千円の領収書」</div>
+    <div class="arrow fade" style="--d:.9s">▼</div>
+    <p class="res in" style="--d:1.0s">消費税も計算して<br>番号つきで発行＆記録</p>
+  </section>
+  <section class="scene feat" style="--s:23.10s; --dur:2.7s">
+    <div class="num fade" style="--d:.0s">4/6</div>
+    <div class="char bob big pop" style="--d:.05s" data-char="yubin"></div>
+    <h2 class="in" style="--d:.15s">📬 メールチェック</h2>
+    <div class="ask card slideL" style="--d:.45s">「メール見ておいて」</div>
+    <div class="arrow fade" style="--d:.9s">▼</div>
+    <p class="res in" style="--d:1.0s">返信が必要なものだけ教えて<br>下書きまで用意</p>
+  </section>
+  <section class="scene feat" style="--s:25.80s; --dur:2.7s">
+    <div class="num fade" style="--d:.0s">5/6</div>
+    <div class="char bob big pop" style="--d:.05s" data-char="tsumiki"></div>
+    <h2 class="in" style="--d:.15s">📱 アプリづくり</h2>
+    <div class="ask card slideL" style="--d:.45s">「予約管理アプリつくって」</div>
+    <div class="arrow fade" style="--d:.9s">▼</div>
+    <p class="res in" style="--d:1.0s">ダブルクリックで使える<br>あなた専用アプリが完成</p>
+  </section>
+  <section class="scene feat" style="--s:28.50s; --dur:2.7s">
+    <div class="num fade" style="--d:.0s">6/6</div>
+    <div class="char bob big pop" style="--d:.05s" data-char="poko"></div>
+    <h2 class="in" style="--d:.15s">⏰ アラーム＆自動化</h2>
+    <div class="ask card slideL" style="--d:.45s">「明日9時にリマインドして」</div>
+    <div class="arrow fade" style="--d:.9s">▼</div>
+    <p class="res in" style="--d:1.0s">カレンダーに登録。<br>いつもの作業も一言で</p>
+  </section>
+
+  <section class="scene" style="--s:31.2s; --dur:6s">
+    <p class="lead in" style="--d:.1s">AI社員が働くようすが<br><span class="mark">オフィス画面</span>で見える♡</p>
+    <div class="laptop pop" style="--d:.4s"><div class="screen"><img src="assets/office.png" alt=""></div></div>
+    <div class="base fade" style="--d:.5s"></div>
+  </section>
+
+  <section class="scene" style="--s:37.2s; --dur:6s">
+    <p class="cta in" style="--d:.1s">あなた専用の<br><span style="color:var(--rose)">AIの会社</span>、<br>今日からはじめよう</p>
+    <div class="row">
+      <div class="char bob pop" style="--d:.7s" data-char="kotoha"></div>
+      <div class="char bob pop" style="--d:.8s" data-char="tsumiki"></div>
+      <div class="char bob pop" style="--d:.9s" data-char="poko"></div>
+      <div class="char bob pop" style="--d:1.0s" data-char="soroban"></div>
+      <div class="char bob pop" style="--d:1.1s" data-char="yubin"></div>
+    </div>
+    <div class="btn pill pop" style="--d:1.6s">くわしくはプロフィールのリンクへ</div>
+  </section>
+</div></body></html>

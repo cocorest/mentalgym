@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>ぽこAIカンパニー はじめかたガイド</title>
+<link rel="stylesheet" href="timeline.css">
+<style>
+ .center { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+ h1 { font-size:110px; color:var(--rose); font-weight:700; }
+ .kicker { font-size:44px; letter-spacing:.3em; color:var(--lav); font-weight:700; margin-bottom:10px; }
+ .sub { font-size:44px; margin-top:24px; }
+ .row { display:flex; gap:10px; margin-top:50px; }
+ .row .char { width:150px; height:188px; }
+ .stepscene { display:grid; grid-template-columns: 820px 1fr; gap:40px; padding:90px 100px; }
+ .left { position:relative; }
+ .badge { display:inline-block; background:var(--rose); color:#fff; font-size:38px; font-weight:700; border-radius:999px; padding:8px 30px; }
+ .badge small { font-size:26px; }
+ h2 { font-size:72px; margin:26px 0 34px; line-height:1.3; }
+ .center h2 { margin:0; }
+ ul { list-style:none; }
+ li { font-size:38px; line-height:1.5; padding:14px 0 14px 50px; position:relative; }
+ li::before { content:"♡"; position:absolute; left:0; color:var(--rose); }
+ li small { font-size:30px; color:#9a8a8f; }
+ .guide { position:absolute; left:0; bottom:0; display:flex; align-items:flex-end; gap:20px; }
+ .guide .char { width:150px; height:188px; }
+ .say { background:#fff; border-radius:28px; padding:20px 30px; font-size:34px; box-shadow:0 8px 24px rgba(196,104,127,.18); margin-bottom:90px; line-height:1.4; }
+ .right { display:flex; flex-direction:column; align-items:center; justify-content:center; }
+ .items, .flow { display:flex; gap:20px; align-items:center; }
+ .item, .box { width:220px; height:220px; display:flex; flex-direction:column; align-items:center; justify-content:center; font-size:90px; text-align:center; }
+ .item span, .box span { font-size:32px; margin-top:12px; line-height:1.3; font-weight:700; }
+ .box { width:200px; }
+ .box span { font-size:24px; }
+ .ar { font-size:60px; color:var(--rose); }
+ .note { font-size:32px; max-width:840px; line-height:1.6; margin-top:50px; background:#fff3f6; border-radius:24px; padding:24px 34px; }
+ .win { width:840px; overflow:hidden; }
+ .bar { background:#f6eef1; padding:18px 24px; display:flex; gap:10px; align-items:center; }
+ .bar i { width:18px; height:18px; border-radius:50%; background:#e7c3cd; }
+ .bar span { margin-left:16px; font-size:26px; color:#9a8a8f; }
+ .files div { font-size:38px; padding:22px 40px; border-bottom:1px solid #f4e6ea; }
+ .pick { animation: pick .6s ease calc(var(--s) + var(--d)) both; }
+ @keyframes pick { from { background:#fff; } to { background:var(--rose-soft); color:var(--rose); font-weight:700; } }
+ .okbtn { margin:30px 40px; display:inline-block; background:var(--rose); color:#fff; font-size:34px; padding:16px 40px; border-radius:999px; }
+ .chat { padding:30px; display:flex; flex-direction:column; gap:20px; }
+ .chat .me { align-self:flex-end; background:var(--rose); color:#fff; border-radius:28px 28px 6px 28px; padding:18px 30px; font-size:32px; }
+ .chat .ai { align-self:flex-start; background:#fff6f8; border-radius:28px 28px 28px 6px; padding:18px 30px 18px 100px; font-size:32px; line-height:1.5; position:relative; }
+ .mini { position:absolute; left:16px; top:6px; width:70px; height:88px; }
+ .mini svg { width:100%; height:100%; }
+ .exs { display:grid; grid-template-columns:repeat(3, 540px); gap:30px; margin-top:50px; }
+ .ex { display:grid; grid-template-columns:120px 1fr; grid-template-rows:auto auto; align-items:center; padding:20px 30px; text-align:left; column-gap:16px; }
+ .ex .char { grid-row:1 / 3; width:110px; height:138px; }
+ .ex b { font-size:32px; white-space:nowrap; }
+ .ex span { font-size:28px; color:var(--rose); font-weight:700; }
+ .laptop { width:840px; border:20px solid #fff; border-radius:30px; box-shadow:0 30px 60px rgba(196,104,127,.25); overflow:hidden; }
+ .laptop img { width:100%; display:block; }
+ .qa { display:flex; flex-direction:column; gap:30px; width:720px; }
+ .qa .card { font-size:40px; padding:34px 44px; line-height:1.5; }
+ .foot { position:absolute; bottom:50px; font-size:26px; color:#9a8a8f; }
+ .heart { font-size:60px; }
+</style>
+<script src="chars.js"></script>
+</head><body><div class="stage">
+<span class="heart" style="left:60px; top:60px">♡</span><span class="heart" style="right:80px; bottom:80px; animation-delay:-3s">♡</span>
+<section class="scene " style="--s:0.00s; --dur:6s"><div class="center"><p class="kicker in" style="--d:.1s">はじめかたガイド</p>
+<h1 class="pop" style="--d:.3s">ぽこAIカンパニー</h1>
+<p class="sub in" style="--d:.7s">約30分で、あなた専用のAI会社がオープン♡</p><div class="row"><div class="char bob pop" style="--d:0.60s" data-char="kotoha"></div><div class="char bob pop" style="--d:0.72s" data-char="tsumiki"></div><div class="char bob pop" style="--d:0.84s" data-char="poko"></div><div class="char bob pop" style="--d:0.96s" data-char="soroban"></div><div class="char bob pop" style="--d:1.08s" data-char="yubin"></div></div></div></section><section class="scene stepscene" style="--s:6.00s; --dur:8s"><div class="left">
+      <div class="badge pop" style="--d:.1s">準備</div>
+      <h2 class="in" style="--d:.3s">用意するもの</h2>
+      <ul><li class="in" style="--d:0.9s">💻 パソコン（Mac / Windows）</li><li class="in" style="--d:1.5s">✨ Claude の有料プラン（Pro 以上）</li><li class="in" style="--d:2.1s">📦 ぽこAIカンパニーのZIPファイル</li></ul>
+      <div class="guide"><div class="char bob pop" style="--d:.5s" data-char="poko"></div><div class="say pop" style="--d:3.0s">この3つがあればOK！</div></div>
+    </div>
+    <div class="right"><div class="items"><div class="item card pop" style="--d:.8s">💻<span>パソコン</span></div><div class="item card pop" style="--d:1.4s">✨<span>Claude<br>有料プラン</span></div><div class="item card pop" style="--d:2.0s">📦<span>キットの<br>ZIP</span></div></div></div></section><section class="scene stepscene" style="--s:14.00s; --dur:10s"><div class="left">
+      <div class="badge pop" style="--d:.1s">STEP 1</div>
+      <h2 class="in" style="--d:.3s">Claude アプリを入れる</h2>
+      <ul><li class="in" style="--d:0.9s">claude.ai からデスクトップアプリをダウンロード</li><li class="in" style="--d:1.5s">インストールして開く</li><li class="in" style="--d:2.1s">自分のアカウントでログイン</li></ul>
+      <div class="guide"><div class="char bob pop" style="--d:.5s" data-char="poko"></div></div>
+    </div>
+    <div class="right"><div class="flow"><div class="box card pop" style="--d:.8s">⬇️<span>ダウンロード</span></div><div class="ar fade" style="--d:1.2s">→</div><div class="box card pop" style="--d:1.4s">🖥️<span>インストール</span></div><div class="ar fade" style="--d:1.8s">→</div><div class="box card pop" style="--d:2.0s">🔑<span>ログイン</span></div></div></div></section><section class="scene stepscene" style="--s:24.00s; --dur:11s"><div class="left">
+      <div class="badge pop" style="--d:.1s">STEP 2</div>
+      <h2 class="in" style="--d:.3s">フォルダを置く</h2>
+      <ul><li class="in" style="--d:0.9s">ZIPを右クリック →「すべて展開」<br><small>（Mac はダブルクリック）</small></li><li class="in" style="--d:1.5s">できた <b>poko-ai-company</b> フォルダを「書類」へ移動</li></ul>
+      <div class="guide"><div class="char bob pop" style="--d:.5s" data-char="soroban"></div><div class="say pop" style="--d:2.4s">置き場所はわかりやすく♪</div></div>
+    </div>
+    <div class="right"><div class="flow"><div class="box card pop" style="--d:.8s">📦<span>ZIP</span></div><div class="ar fade" style="--d:1.2s">→</div><div class="box card pop" style="--d:1.4s">📂<span>poko-ai-company</span></div><div class="ar fade" style="--d:1.8s">→</div><div class="box card pop" style="--d:2.0s">🗂️<span>書類</span></div></div>
+ <p class="note in" style="--d:2.6s">⚠️ デスクトップやダウンロードに置きっぱなしにすると、うっかり消してしまうことがあるので注意！</p></div></section><section class="scene stepscene" style="--s:35.00s; --dur:11s"><div class="left">
+      <div class="badge pop" style="--d:.1s">STEP 3</div>
+      <h2 class="in" style="--d:.3s">Claude でフォルダを開く</h2>
+      <ul><li class="in" style="--d:0.9s">Claude アプリで <b>Claude Code（コード）</b> を開く</li><li class="in" style="--d:1.5s">作業フォルダに <b>poko-ai-company</b> を選ぶ</li><li class="in" style="--d:2.1s">中のファイルではなく<b>フォルダごと</b>選ぶのがポイント</li></ul>
+      <div class="guide"><div class="char bob pop" style="--d:.5s" data-char="tsumiki"></div><div class="say pop" style="--d:3.0s">フォルダごと、だよ</div></div>
+    </div>
+    <div class="right"><div class="win card pop" style="--d:.6s"><div class="bar"><i></i><i></i><i></i><span>フォルダを選ぶ（イメージ）</span></div>
+ <div class="files"><div>📁 写真</div><div class="hl pick" style="--d:2.2s">📁 poko-ai-company</div><div>📁 仕事メモ</div><div>📄 メモ.txt</div></div>
+ <div class="okbtn pop" style="--d:2.8s">このフォルダを開く</div></div></div></section><section class="scene stepscene" style="--s:46.00s; --dur:15s"><div class="left">
+      <div class="badge pop" style="--d:.1s">STEP 4</div>
+      <h2 class="in" style="--d:.3s">「はじめまして」と送る</h2>
+      <ul><li class="in" style="--d:0.9s">チャットに「はじめまして」と入力</li><li class="in" style="--d:1.5s">ぽこの質問に、ひとつずつ答える（約10分）</li><li class="in" style="--d:2.1s">わからないところは「とばす」でOK</li><li class="in" style="--d:2.7s">最後にメニューが出たら準備完了🎉</li></ul>
+      <div class="guide"><div class="char bob pop" style="--d:.5s" data-char="poko"></div></div>
+    </div>
+    <div class="right"><div class="win card pop" style="--d:.4s"><div class="bar"><i></i><i></i><i></i><span>チャット（イメージ）</span></div>
+<div class="chat">
+<div class="me slideL" style="--d:.9s">はじめまして</div>
+<div class="ai in" style="--d:1.8s"><span class="mini" data-char="poko"></span>はじめまして！秘書のぽこです♡<br>10分くらい、質問させてくださいね。</div>
+<div class="ai in" style="--d:3.4s"><span class="mini" data-char="poko"></span>まず、呼ばれたいお名前を教えてください。</div>
+<div class="me slideL" style="--d:4.8s">みほです！</div>
+<div class="ai in" style="--d:6.0s"><span class="mini" data-char="poko"></span>みほ社長、よろしくお願いします！<br>次に、お仕事の内容を教えてください。</div>
+</div></div></div></section><section class="scene stepscene" style="--s:61.00s; --dur:12s"><div class="left">
+      <div class="badge pop" style="--d:.1s">STEP 5<small>（おすすめ）</small></div>
+      <h2 class="in" style="--d:.3s">メール・予定とつなぐ</h2>
+      <ul><li class="in" style="--d:0.9s">Claude の設定 →「コネクタ」を開く</li><li class="in" style="--d:1.5s">Gmail と Google カレンダーを選ぶ</li><li class="in" style="--d:2.1s">Googleアカウントで許可する</li></ul>
+      <div class="guide"><div class="char bob pop" style="--d:.5s" data-char="yubin"></div><div class="say pop" style="--d:3.0s">メールチェックが<br>できるようになるよ</div></div>
+    </div>
+    <div class="right"><div class="flow"><div class="box card pop" style="--d:.8s">⚙️<span>設定</span></div><div class="ar fade" style="--d:1.2s">→</div><div class="box card pop" style="--d:1.4s">🔌<span>コネクタ</span></div><div class="ar fade" style="--d:1.8s">→</div><div class="box card pop" style="--d:2.0s">📬📅<span>Gmail・<br>カレンダー</span></div></div>
+ <p class="note in" style="--d:2.6s">💡 つながなくても使えます。アラームは「カレンダーに追加できるファイル」で届きます。</p></div></section><section class="scene " style="--s:73.00s; --dur:14s"><div class="center"><h2 class="in" style="--d:.1s">さっそく話しかけてみよう</h2>
+<p class="sub in" style="--d:.4s">ふだんの言葉でOK。「メニュー」と送ると、できることが全部見られます</p>
+<div class="exs"><div class="ex card pop" style="--d:0.8s"><div class="char" data-char="poko"></div><b>「おはよう！」</b><span>朝のぽこ便</span></div><div class="ex card pop" style="--d:1.3s"><div class="char" data-char="kotoha"></div><b>「告知記事を書いて」</b><span>記事・投稿</span></div><div class="ex card pop" style="--d:1.8s"><div class="char" data-char="soroban"></div><b>「領収書つくって」</b><span>領収書</span></div><div class="ex card pop" style="--d:2.3s"><div class="char" data-char="yubin"></div><b>「メールチェックして」</b><span>メール</span></div><div class="ex card pop" style="--d:2.8s"><div class="char" data-char="tsumiki"></div><b>「予約アプリつくって」</b><span>アプリ</span></div><div class="ex card pop" style="--d:3.3s"><div class="char" data-char="poko"></div><b>「明日9時にリマインド」</b><span>アラーム</span></div></div></div></section><section class="scene stepscene" style="--s:87.00s; --dur:12s"><div class="left">
+      <div class="badge pop" style="--d:.1s">おまけ</div>
+      <h2 class="in" style="--d:.3s">オフィス画面を開く</h2>
+      <ul><li class="in" style="--d:0.9s"><b>office</b> フォルダの <b>index.html</b> をダブルクリック</li><li class="in" style="--d:1.5s">AI社員の働くようすが見られる</li><li class="in" style="--d:2.1s">「オフィスの色を変えて」で模様替えもできる</li></ul>
+      <div class="guide"><div class="char bob pop" style="--d:.5s" data-char="kotoha"></div><div class="say pop" style="--d:3.0s">かわいくしてね♡</div></div>
+    </div>
+    <div class="right"><div class="laptop pop" style="--d:.6s"><img src="assets/office.png" alt=""></div></div></section><section class="scene stepscene" style="--s:99.00s; --dur:12s"><div class="left">
+      <div class="badge pop" style="--d:.1s">困ったら</div>
+      <h2 class="in" style="--d:.3s">こんなときは</h2>
+      <ul><li class="in" style="--d:0.9s">「許可しますか？」→ 内容を見てOKならそのまま許可</li><li class="in" style="--d:1.5s">画面がわからない → スクショを見せて「これどうするの？」</li><li class="in" style="--d:2.1s">ぽこが設定を忘れたみたい →「わたしのこと を読み直して」</li></ul>
+      <div class="guide"><div class="char bob pop" style="--d:.5s" data-char="poko"></div><div class="say pop" style="--d:3.0s">なんでも<br>聞いてくださいね</div></div>
+    </div>
+    <div class="right"><div class="qa"><div class="card in" style="--d:.9s">🔐 許可の確認は<br><b>安全のため</b>のもの</div><div class="card in" style="--d:1.5s">📸 困ったら<br><b>そのまま聞く</b></div><div class="card in" style="--d:2.1s">📝 大事なファイルは<br><b>ときどきバックアップ</b></div></div></div></section><section class="scene " style="--s:111.00s; --dur:7s"><div class="center"><h1 class="pop" style="--d:.2s" >準備おつかれさまでした♡</h1>
+<p class="sub in" style="--d:.8s">さっそく「おはよう！」と話しかけてみてね</p><div class="row"><div class="char bob pop" style="--d:0.60s" data-char="kotoha"></div><div class="char bob pop" style="--d:0.72s" data-char="tsumiki"></div><div class="char bob pop" style="--d:0.84s" data-char="poko"></div><div class="char bob pop" style="--d:0.96s" data-char="soroban"></div><div class="char bob pop" style="--d:1.08s" data-char="yubin"></div></div>
+<p class="foot fade" style="--d:1.6s">※ 画面はイメージです。Claude のアップデートで表示が変わることがあります</p></div></section>
+</div></body></html>
