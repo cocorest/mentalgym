@@ -158,10 +158,10 @@ ACTは、まさにこの「考えとの距離のとり方」を練習する心�
 
 ぐるぐる思考から抜け出したい方は、個別スポット相談でお話を聞かせてください。
 
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
 **参考文献**
 - A-Tjak, J. G. L., et al. (2015). A meta-analysis of the efficacy of acceptance and commitment therapy for clinically relevant mental and physical health problems. *Psychotherapy and Psychosomatics, 84*(1), 30–36.
 - Masuda, A., Hayes, S. C., Sackett, C. F., & Twohig, M. P. (2004). Cognitive defusion and self-relevant negative thoughts: Examining the impact of a ninety year old technique. *Behaviour Research and Therapy, 42*(4), 477–485.
 - Wegner, D. M., Schneider, D. J., Carter, S. R., & White, T. L. (1987). Paradoxical effects of thought suppression. *Journal of Personality and Social Psychology, 53*(1), 5–13.
-
-▼ 個別相談のお申し込みはこちら
-https://mosh.jp/services/363404?openExternalBrowser=1

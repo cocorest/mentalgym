@@ -160,10 +160,10 @@ memo: ぽ子さん自身の講座・LP資料：メンタルジム（感情との
 
 自分の気持ちがわからなくなってしまった方は、個別スポット相談で一緒に整理しましょう。
 
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
 **参考文献**
 - Barrett, L. F., Gross, J., Christensen, T. C., & Benvenuto, M. (2001). Knowing what you're feeling and knowing what to do about it: Mapping the relation between emotion differentiation and emotion regulation. *Cognition and Emotion, 15*(6), 713–724.
 - Lieberman, M. D., et al. (2007). Putting feelings into words: Affect labeling disrupts amygdala activity in response to affective stimuli. *Psychological Science, 18*(5), 421–428.
 - Pennebaker, J. W. (1997). Writing about emotional experiences as a therapeutic process. *Psychological Science, 8*(3), 162–166.
-
-▼ 個別相談のお申し込みはこちら
-https://mosh.jp/services/363404?openExternalBrowser=1

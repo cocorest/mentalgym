@@ -129,10 +129,10 @@ LINEの返信が遅いだけで、「何か気に障ること言ったかな」�
 
 嫌われる不安や人間関係の疲れについて、近日中に有料ワークブック第2弾で体系的にまとめます。
 
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
 **参考文献**
 - Baumeister, R. F., & Leary, M. R. (1995). The need to belong: Desire for interpersonal attachments as a fundamental human motivation. *Psychological Bulletin, 117*(3), 497–529.
 - Boothby, E. J., Cooney, G., Sandstrom, G. M., & Clark, M. S. (2018). The liking gap in conversations: Do people like us more than we think? *Psychological Science, 29*(11), 1742–1756.
 - Gilovich, T., Medvec, V. H., & Savitsky, K. (2000). The spotlight effect in social judgment. *Journal of Personality and Social Psychology, 78*(2), 211–222.
-
-▼ 個別相談のお申し込みはこちら
-https://mosh.jp/services/363404?openExternalBrowser=1

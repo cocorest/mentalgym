@@ -138,10 +138,10 @@ Kindleで初めて本を出すとき、「発売月に〇冊売る」という�
 
 目標と自分を責める気持ちの間で疲れている方は、有料ワークブック「安心ベース再設計ワークブック」もおすすめです。
 
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
 **参考文献**
 - Dweck, C. S. (2006). *Mindset: The new psychology of success*. Random House.
 - Klug, H. J. P., & Maier, G. W. (2015). Linking goal progress and subjective well-being: A meta-analysis. *Journal of Happiness Studies, 16*(1), 37–65.
 - Locke, E. A., & Latham, G. P. (2002). Building a practically useful theory of goal setting and task motivation. *American Psychologist, 57*(9), 705–717.
-
-▼ 個別相談のお申し込みはこちら
-https://mosh.jp/services/363404?openExternalBrowser=1

@@ -137,9 +137,9 @@ No.42では夜の習慣をご紹介しました。今日はその続きの、朝
 
 自分に合った朝の習慣を一緒に考えたい方は、個別メンタルジム6回コースもご用意しています。
 
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
 **参考文献**
 - Gollwitzer, P. M. (1999). Implementation intentions: Strong effects of simple plans. *American Psychologist, 54*(7), 493–503.
 - Oettingen, G. (2012). Future thought and behaviour change. *European Review of Social Psychology, 23*(1), 1–63.
-
-▼ 個別相談のお申し込みはこちら
-https://mosh.jp/services/363404?openExternalBrowser=1

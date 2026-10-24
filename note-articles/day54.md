@@ -122,10 +122,10 @@ memo: 椎原崇さん（YouTube「椎原崇・伝説のコンサルタント」�
 
 キャリアの迷いを一緒に整理したい方は、個別スポット相談をご利用ください。
 
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
 **参考文献**
 - Boswell, W. R., Boudreau, J. W., & Tichy, J. (2005). The relationship between employee job change and job satisfaction: The honeymoon-hangover effect. *Journal of Applied Psychology, 90*(5), 882–892.
 - de Bloom, J., et al. (2009). Do we recover from vacation? Meta-analysis of vacation effects on health and well-being. *Journal of Occupational Health, 51*(1), 13–25.
 - Mitchell, K. E., Levin, A. S., & Krumboltz, J. D. (1999). Planned happenstance: Constructing unexpected career opportunities. *Journal of Counseling & Development, 77*(2), 115–124.
-
-▼ 個別相談のお申し込みはこちら
-https://mosh.jp/services/363404?openExternalBrowser=1

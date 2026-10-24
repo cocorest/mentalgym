@@ -140,9 +140,9 @@ No.38でもお伝えしましたが、もう一度ここで整理させてくだ
 
 一歩踏み出す勇気がほしい方は、個別スポット相談でお話を聞かせてください。私もあなたのドリームサポーターになりたいと思っています。
 
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
 **参考文献**
 - Bandura, A. (1977). Self-efficacy: Toward a unifying theory of behavioral change. *Psychological Review, 84*(2), 191–215.
 - Lockwood, P., & Kunda, Z. (1997). Superstars and me: Predicting the impact of role models on the self. *Journal of Personality and Social Psychology, 73*(1), 91–103.
-
-▼ 個別相談のお申し込みはこちら
-https://mosh.jp/services/363404?openExternalBrowser=1

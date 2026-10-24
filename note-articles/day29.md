@@ -155,9 +155,9 @@ memo: 秦卓民さん（YouTube「秦卓民 ビジネスコーチch」）のチ�
 
 一人では整理しきれないときは、プロと一緒に考えるのも一つの方法です。個別スポット相談でお待ちしています。
 
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
 **参考文献**
 - Grant, A. M. (2003). The impact of life coaching on goal attainment, metacognition and mental health. *Social Behavior and Personality, 31*(3), 253–263.
 - Kross, E., et al. (2014). Self-talk as a regulatory mechanism: How you do it matters. *Journal of Personality and Social Psychology, 106*(2), 304–324.
-
-▼ 個別相談のお申し込みはこちら
-https://mosh.jp/services/363404?openExternalBrowser=1

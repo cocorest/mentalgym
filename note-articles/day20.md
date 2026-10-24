@@ -154,10 +154,10 @@ memo: ぽ子さん自身の講座・LP資料：メンタルジム（NVC） ／ �
 
 イライラを減らして、穏やかに関わりたい方は、個別スポット相談でお話を聞かせてください。
 
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
 **参考文献**
 - Bushman, B. J. (2002). Does venting anger feed or extinguish the flame? Catharsis, rumination, distraction, anger, and aggressive responding. *Personality and Social Psychology Bulletin, 28*(6), 724–731.
 - Rosenberg, M. B. (2003). *Nonviolent communication: A language of life* (2nd ed.). PuddleDancer Press.
 - Zillmann, D. (1971). Excitation transfer in communication-mediated aggressive behavior. *Journal of Experimental Social Psychology, 7*(4), 419–434.
-
-▼ 個別相談のお申し込みはこちら
-https://mosh.jp/services/363404?openExternalBrowser=1

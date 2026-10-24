@@ -149,9 +149,9 @@ memo: ぽ子さん自身の講座・LP資料：メンタルジムLP（「自分�
 
 「自分には価値がない」感を手放したい方は、個別スポット相談で丁寧にお話を伺います。
 
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
 **参考文献**
 - Fennell, M. J. V. (1997). Low self-esteem: A cognitive perspective. *Behavioural and Cognitive Psychotherapy, 25*(1), 1–26.
 - Neff, K. D. (2003). Self-compassion: An alternative conceptualization of a healthy attitude toward oneself. *Self and Identity, 2*(2), 85–101.
-
-▼ 個別相談のお申し込みはこちら
-https://mosh.jp/services/363404?openExternalBrowser=1

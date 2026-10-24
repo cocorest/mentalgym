@@ -145,11 +145,11 @@ memo: Kengoさん（YouTube「Kengo - 自然の法則」）の動画「口うる
 
 家族との関係で悩んでいる方は、個別スポット相談でゆっくりお話を聞かせてください。
 
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
 **参考文献**
 - Birditt, K. S., Miller, L. M., Fingerman, K. L., & Lefkowitz, E. S. (2009). Tensions in the parent and adult child relationship: Links to solidarity and ambivalence. *Psychology and Aging, 24*(2), 287–295.
 - Fingerman, K. L., Cheng, Y.-P., Birditt, K., & Zarit, S. (2012). Only as happy as the least happy child: Multiple grown children's problems and successes and middle-aged parents' well-being. *The Journals of Gerontology: Series B, 67*(2), 184–193.
 - Lieberman, M. D., et al. (2007). Putting feelings into words: Affect labeling disrupts amygdala activity in response to affective stimuli. *Psychological Science, 18*(5), 421–428.
 - Rosenberg, M. B. (2015). *Nonviolent communication: A language of life* (3rd ed.). PuddleDancer Press.
-
-▼ 個別相談のお申し込みはこちら
-https://mosh.jp/services/363404?openExternalBrowser=1

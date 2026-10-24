@@ -155,9 +155,9 @@ memo: 秦卓民さん（YouTube「秦卓民 ビジネスコーチch」）のチ�
 
 成果とメンタルの両立を一緒に考えたい方は、個別スポット相談でお話ししましょう。
 
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
 **参考文献**
 - Crocker, J., & Park, L. E. (2004). The costly pursuit of self-esteem. *Psychological Bulletin, 130*(3), 392–414.
 - Locke, E. A., & Latham, G. P. (2002). Building a practically useful theory of goal setting and task motivation. *American Psychologist, 57*(9), 705–717.
-
-▼ 個別相談のお申し込みはこちら
-https://mosh.jp/services/363404?openExternalBrowser=1

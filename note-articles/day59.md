@@ -113,6 +113,9 @@ memo: 秦卓民さん（YouTube「秦卓民 ビジネスコーチch」）の動�
 
 これからの生き方を一緒に考えたい方は、個別メンタルジム6回コースで、じっくり伴走します。
 
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
 **参考文献**
 - Blanchflower, D. G., & Oswald, A. J. (2008). Is well-being U-shaped over the life cycle? *Social Science & Medicine, 66*(8), 1733–1749.
 - Boswell, W. R., Boudreau, J. W., & Tichy, J. (2005). The relationship between employee job change and job satisfaction: The honeymoon-hangover effect. *Journal of Applied Psychology, 90*(5), 882–892.
@@ -122,6 +125,3 @@ memo: 秦卓民さん（YouTube「秦卓民 ビジネスコーチch」）の動�
 - Klug, H. J. P., & Maier, G. W. (2015). Linking goal progress and subjective well-being: A meta-analysis. *Journal of Happiness Studies, 16*(1), 37–65.
 - Wethington, E. (2000). Expecting stress: Americans and the "midlife crisis." *Motivation and Emotion, 24*(2), 85–103.
 - Wilson, T. D., et al. (1993). Introspecting about reasons can reduce post-choice satisfaction. *Personality and Social Psychology Bulletin, 19*(3), 331–339.
-
-▼ 個別相談のお申し込みはこちら
-https://mosh.jp/services/363404?openExternalBrowser=1

@@ -145,9 +145,9 @@ memo: ぽ子さん自身の講座・LP資料：メンタルジム（子どもの
 
 お子さんの不安・恐怖心との関わり方を一緒に考えたい方は、個別スポット相談をご利用ください。
 
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
 **参考文献**
 - Gottman, J. M., Katz, L. F., & Hooven, C. (1996). Parental meta-emotion philosophy and the emotional life of families: Theoretical models and preliminary data. *Journal of Family Psychology, 10*(3), 243–268.
 - Kendall, P. C. (1994). Treating anxiety disorders in children: Results of a randomized clinical trial. *Journal of Consulting and Clinical Psychology, 62*(1), 100–110.
-
-▼ 個別相談のお申し込みはこちら
-https://mosh.jp/services/363404?openExternalBrowser=1

@@ -143,9 +143,9 @@ NOが言えないままだと、自分の時間も気持ちも、少しずつ削
 
 周りに振り回されず、自分の時間を生きたい方は、個別スポット相談でお話ししましょう。
 
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
 **参考文献**
 - Gilovich, T., Medvec, V. H., & Savitsky, K. (2000). The spotlight effect in social judgment. *Journal of Personality and Social Psychology, 78*(2), 211–222.
 - Ury, W. (2007). *The power of a positive no: How to say no and still get to yes*. Bantam.
-
-▼ 個別相談のお申し込みはこちら
-https://mosh.jp/services/363404?openExternalBrowser=1

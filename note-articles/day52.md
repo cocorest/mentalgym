@@ -153,10 +153,10 @@ memo: Kengoさん（YouTube「Kengo - 自然の法則」）の動画（条件は
 
 大切な人との関係を見直したい方は、個別スポット相談でお話しください。
 
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
 **参考文献**
 - Butler, E. A., et al. (2003). The social consequences of expressive suppression. *Emotion, 3*(1), 48–67.
 - Collins, N. L., & Miller, L. C. (1994). Self-disclosure and liking: A meta-analytic review. *Psychological Bulletin, 116*(3), 457–475.
 - Laurenceau, J.-P., Barrett, L. F., & Pietromonaco, P. R. (1998). Intimacy as an interpersonal process: The importance of self-disclosure, partner disclosure, and perceived partner responsiveness in interpersonal exchanges. *Journal of Personality and Social Psychology, 74*(5), 1238–1251.
-
-▼ 個別相談のお申し込みはこちら
-https://mosh.jp/services/363404?openExternalBrowser=1

@@ -147,10 +147,10 @@ memo: Kengoさん（YouTube「Kengo - 自然の法則」）の動画「子供が
 
 子育ての悩みや不安を一緒に整理したい方は、個別スポット相談でお話を聞かせてください。
 
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
 **参考文献**
 - Bowlby, J. (1988). *A secure base: Parent-child attachment and healthy human development*. Basic Books.
 - Gottman, J. M., Katz, L. F., & Hooven, C. (1996). Parental meta-emotion philosophy and the emotional life of families: Theoretical models and preliminary data. *Journal of Family Psychology, 10*(3), 243–268.
 - Waters, S. F., West, T. V., & Mendes, W. B. (2014). Stress contagion: Physiological covariation between mothers and infants. *Psychological Science, 25*(4), 934–942.
-
-▼ 個別相談のお申し込みはこちら
-https://mosh.jp/services/363404?openExternalBrowser=1

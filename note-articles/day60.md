@@ -148,9 +148,9 @@ memo: Kengoさん（YouTube「Kengo - 自然の法則」）の動画「人間関
 このnoteは、これからも続けていきます。
 「ちょっと聞いてみたい」くらいの気持ちで大丈夫です。オンラインの個別スポット相談（1時間）と、完全オーダーメイドの個別メンタルジム6回コースをご用意しています。プロフィールのリンクからどうぞ。
 
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
 **参考文献**
 - Neff, K. D. (2003). Self-compassion: An alternative conceptualization of a healthy attitude toward oneself. *Self and Identity, 2*(2), 85–101.
 - Zessin, U., Dickhäuser, O., & Garbade, S. (2015). The relationship between self-compassion and well-being: A meta-analysis. *Applied Psychology: Health and Well-Being, 7*(3), 340–364.
-
-▼ 個別相談のお申し込みはこちら
-https://mosh.jp/services/363404?openExternalBrowser=1

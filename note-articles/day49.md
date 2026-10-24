@@ -149,11 +149,11 @@ memo: Kengoさん（YouTube「Kengo - 自然の法則」）の動画（与えす
 
 人間関係で消耗しがちな方のための有料ワークブック第2弾を、近日公開予定です。
 
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
 **参考文献**
 - Crocker, J., & Canevello, A. (2008). Creating and undermining social support in communal relationships: The role of compassionate and self-image goals. *Journal of Personality and Social Psychology, 95*(3), 555–575.
 - Curry, O. S., et al. (2018). Happy to help? A systematic review and meta-analysis of the effects of performing acts of kindness on the well-being of the actor. *Journal of Experimental Social Psychology, 76*, 320–329.
 - Grant, A. M. (2013). *Give and take: A revolutionary approach to success*. Viking.
 - Helgeson, V. S., & Fritz, H. L. (1998). A theory of unmitigated communion. *Personality and Social Psychology Review, 2*(3), 173–183.
-
-▼ 個別相談のお申し込みはこちら
-https://mosh.jp/services/363404?openExternalBrowser=1

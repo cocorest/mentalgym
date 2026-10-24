@@ -144,9 +144,9 @@ memo: Kengoさん（YouTube「Kengo - 自然の法則」）の動画（【基礎
 
 人間関係のモヤモヤを整理したい方へ、近日中に有料ワークブック第2弾を公開します。
 
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
 **参考文献**
 - Bushman, B. J. (2002). Does venting anger feed or extinguish the flame? Catharsis, rumination, distraction, anger, and aggressive responding. *Personality and Social Psychology Bulletin, 28*(6), 724–731.
 - Kross, E., & Ayduk, O. (2011). Making meaning out of negative experiences by self-distancing. *Current Directions in Psychological Science, 20*(3), 187–191.
-
-▼ 個別相談のお申し込みはこちら
-https://mosh.jp/services/363404?openExternalBrowser=1

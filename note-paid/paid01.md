@@ -601,6 +601,9 @@ if-thenプランの「△△する」の部分は、**ばかばかしいほど�
 
 このワークブックは、日常のストレスや悩みとのつきあい方を学ぶためのセルフケア教材です。医療的な診断や治療に代わるものではありません。気分の落ち込みや不安が強く、日常生活に支障が出ている場合、眠れない・食べられない状態が続いている場合、死にたい気持ちがある場合には、ワークを中断し、医療機関や専門の相談窓口にご相談ください。
 
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
 ## 参考文献
 
 - A-Tjak, J. G. L., Davis, M. L., Morina, N., Powers, M. B., Smits, J. A. J., & Emmelkamp, P. M. G. (2015). A meta-analysis of the efficacy of acceptance and commitment therapy for clinically relevant mental and physical health problems. *Psychotherapy and Psychosomatics, 84*(1), 30–36.
@@ -615,6 +618,3 @@ if-thenプランの「△△する」の部分は、**ばかばかしいほど�
 - Neff, K. D. (2003). Self-compassion: An alternative conceptualization of a healthy attitude toward oneself. *Self and Identity, 2*(2), 85–101.
 - Oettingen, G., Pak, H., & Schnetter, K. (2001). Self-regulation of goal-setting: Turning free fantasies about the future into binding goals. *Journal of Personality and Social Psychology, 80*(5), 736–753.
 - Wegner, D. M., Schneider, D. J., Carter, S. R., & White, T. L. (1987). Paradoxical effects of thought suppression. *Journal of Personality and Social Psychology, 53*(1), 5–13.
-
-▼ 個別相談のお申し込みはこちら
-https://mosh.jp/services/363404?openExternalBrowser=1

@@ -135,10 +135,10 @@ memo: 秦卓民さん（YouTube「秦卓民 ビジネスコーチch」）の動�
 
 自己肯定感の土台づくりを一緒に進めたい方は、個別メンタルジム6回コースでお待ちしています。
 
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
 **参考文献**
 - Briñol, P., Petty, R. E., & Wagner, B. (2009). Body posture effects on self-evaluation: A self-validation approach. *European Journal of Social Psychology, 39*(6), 1053–1064.
 - Emmons, R. A., & McCullough, M. E. (2003). Counting blessings versus burdens: An experimental investigation of gratitude and subjective well-being in daily life. *Journal of Personality and Social Psychology, 84*(2), 377–389.
 - Gable, S. L., Reis, H. T., Impett, E. A., & Asher, E. R. (2004). What do you do when things go right? The intrapersonal and interpersonal benefits of sharing positive events. *Journal of Personality and Social Psychology, 87*(2), 228–245.
-
-▼ 個別相談のお申し込みはこちら
-https://mosh.jp/services/363404?openExternalBrowser=1

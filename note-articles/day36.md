@@ -148,10 +148,10 @@ memo: Kengoさん（YouTube「Kengo - 自然の法則」）の動画（幸せに
 
 人間関係で疲れやすい方のために、近日中に有料ワークブック第2弾を公開予定です。
 
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
 **参考文献**
 - Butler, E. A., et al. (2003). The social consequences of expressive suppression. *Emotion, 3*(1), 48–67.
 - Gross, J. J., & John, O. P. (2003). Individual differences in two emotion regulation processes: Implications for affect, relationships, and well-being. *Journal of Personality and Social Psychology, 85*(2), 348–362.
 - Wood, A. M., et al. (2008). The authentic personality: A theoretical and empirical conceptualization and the development of the Authenticity Scale. *Journal of Counseling Psychology, 55*(3), 385–399.
-
-▼ 個別相談のお申し込みはこちら
-https://mosh.jp/services/363404?openExternalBrowser=1

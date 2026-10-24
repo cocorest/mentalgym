@@ -151,10 +151,10 @@ NVCは話すときだけでなく、聞くときにも使えます。
 
 話し合いをもっと穏やかにしたい方は、個別スポット相談で練習してみませんか。
 
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
 **参考文献**
 - Gottman, J. M., Coan, J., Carrere, S., & Swanson, C. (1998). Predicting marital happiness and stability from newlywed interactions. *Journal of Marriage and the Family, 60*(1), 5–22.
 - Gottman, J. M., & Silver, N. (1999). *The seven principles for making marriage work*. Crown.
 - Rosenberg, M. B. (2003). *Nonviolent communication: A language of life* (2nd ed.). PuddleDancer Press.
-
-▼ 個別相談のお申し込みはこちら
-https://mosh.jp/services/363404?openExternalBrowser=1

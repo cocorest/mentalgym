@@ -140,10 +140,10 @@ memo: 椎原崇さん（YouTube「椎原崇・伝説のコンサルタント」�
 
 不安が強く、日常生活に支障が出ている方は、無理をせず専門家にご相談ください。個別スポット相談もご利用いただけます。
 
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
 **参考文献**
 - Covey, S. R. (1989). *The 7 habits of highly effective people*. Free Press.
 - Killingsworth, M. A., & Gilbert, D. T. (2010). A wandering mind is an unhappy mind. *Science, 330*(6006), 932.
 - LaFreniere, L. S., & Newman, M. G. (2020). Exposing worry's deceit: Percentage of untrue worries in generalized anxiety disorder treatment. *Behavior Therapy, 51*(3), 413–423.
-
-▼ 個別相談のお申し込みはこちら
-https://mosh.jp/services/363404?openExternalBrowser=1

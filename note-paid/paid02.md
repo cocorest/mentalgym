@@ -743,6 +743,9 @@ memo: Kengoさん（YouTube「Kengo - 自然の法則」）（いい人をやめ
 
 気分の落ち込みや不安が強く、日常生活に支障が出ている場合、眠れない・食べられない状態が続いている場合、死にたい気持ちがある場合にも、ワークを中断し、医療機関や専門の相談窓口にご相談ください。
 
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
 ## 参考文献
 
 - Baumeister, R. F., & Leary, M. R. (1995). The need to belong: Desire for interpersonal attachments as a fundamental human motivation. *Psychological Bulletin, 117*(3), 497–529.
@@ -756,6 +759,3 @@ memo: Kengoさん（YouTube「Kengo - 自然の法則」）（いい人をやめ
 - Neff, K. D. (2003). Self-compassion: An alternative conceptualization of a healthy attitude toward oneself. *Self and Identity, 2*(2), 85–101.
 - Rosenberg, M. B. (2015). *Nonviolent communication: A language of life* (3rd ed.). PuddleDancer Press.
 - Wegner, D. M., Schneider, D. J., Carter, S. R., & White, T. L. (1987). Paradoxical effects of thought suppression. *Journal of Personality and Social Psychology, 53*(1), 5–13.
-
-▼ 個別相談のお申し込みはこちら
-https://mosh.jp/services/363404?openExternalBrowser=1

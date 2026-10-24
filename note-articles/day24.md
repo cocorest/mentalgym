@@ -151,10 +151,10 @@ memo: 椎原崇さん（YouTube「椎原崇・伝説のコンサルタント」�
 
 自分の本音を見つけたい、新しい自分へ踏み出したい方は、個別スポット相談でお話を聞かせてください。
 
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
 **参考文献**
 - King, L. A. (2001). The health benefits of writing about life goals. *Personality and Social Psychology Bulletin, 27*(7), 798–807.
 - Oettingen, G. (2012). Future thought and behaviour change. *European Review of Social Psychology, 23*(1), 1–63.
 - Sheldon, K. M., & Lyubomirsky, S. (2006). How to increase and sustain positive emotion: The effects of expressing gratitude and visualizing best possible selves. *The Journal of Positive Psychology, 1*(2), 73–82.
-
-▼ 個別相談のお申し込みはこちら
-https://mosh.jp/services/363404?openExternalBrowser=1

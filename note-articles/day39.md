@@ -129,10 +129,10 @@ memo: 椎原崇さん（YouTube「椎原崇・伝説のコンサルタント」�
 
 自分にかける言葉を変えたい方は、有料ワークブック「安心ベース再設計ワークブック」のワーク7もおすすめです。
 
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
 **参考文献**
 - Festinger, L. (1957). *A theory of cognitive dissonance*. Stanford University Press.
 - Neff, K. D. (2003). Self-compassion: An alternative conceptualization of a healthy attitude toward oneself. *Self and Identity, 2*(2), 85–101.
 - Wood, J. V., Perunovic, W. Q. E., & Lee, J. W. (2009). Positive self-statements: Power for some, peril for others. *Psychological Science, 20*(7), 860–866.
-
-▼ 個別相談のお申し込みはこちら
-https://mosh.jp/services/363404?openExternalBrowser=1

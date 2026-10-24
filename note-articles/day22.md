@@ -153,9 +153,9 @@ SNSで「自分にないもの」を探すモードになっていると、脳�
 
 比べて落ち込むクセを変えたい方は、個別スポット相談でお話を聞かせてください。
 
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
 **参考文献**
 - Festinger, L. (1954). A theory of social comparison processes. *Human Relations, 7*(2), 117–140.
 - Verduyn, P., et al. (2015). Passive Facebook usage undermines affective well-being: Experimental and longitudinal evidence. *Journal of Experimental Psychology: General, 144*(2), 480–488.
-
-▼ 個別相談のお申し込みはこちら
-https://mosh.jp/services/363404?openExternalBrowser=1
