@@ -78,3 +78,9 @@ inspiration: メンタルジム（不安はお守り・安心51％）
 このテーマは、イルカマスター講座の第2章で扱います。
 次回は『目標が続かないのは、意志が弱いからではない』をお届けします。
 雑談会・スポット相談のご案内はプロフィールから。
+
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links

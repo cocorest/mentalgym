@@ -8,7 +8,7 @@ inspiration: メンタルジム（セルフコンパッション・認知的不�
 memo: 椎原崇さん（YouTube「椎原崇・伝説のコンサルタント」）の動画「鏡の自分に『あの言葉』を言うほど、自信が削れていく理由！」 https://youtu.be/LNdzQ51mC9o ／ 論文：Wood et al. (2009)、Festinger (1957)、Neff (2003) を明記 ／ 鏡の前のエピソードは実体験風。実際に合わせて調整OK ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
 ---
 こんにちは。
-臨床心理士・公認心理師のぽ子です。
+臨床心理士・公認心理師のぽこです。
 
 朝、鏡の前で。
 
@@ -287,6 +287,9 @@ memo: 椎原崇さん（YouTube「椎原崇・伝説のコンサルタント」�
 
 ▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
 **参考文献**
 - Festinger, L. (1957). *A theory of cognitive dissonance*. Stanford University Press.

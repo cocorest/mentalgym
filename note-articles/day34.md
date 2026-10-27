@@ -8,7 +8,7 @@ inspiration: メンタルジム（安全行動・不安の正体を掘り下げ�
 memo: Kengoさん（YouTube「Kengo - 自然の法則」）の動画（リスクヘッジへのこだわりは危険／将来が不安なとき） https://youtu.be/uSKItv3zm-0 ／ 論文：Salkovskis (1991) 安全行動、Hayes et al. (2006) を追加 ／ 防災グッズのエピソードは実体験風。実際に合わせて調整OK ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
 ---
 こんにちは。
-臨床心理士・公認心理師のぽ子です。
+臨床心理士・公認心理師のぽこです。
 
 老後のお金。
 自分や家族の健康。
@@ -301,6 +301,9 @@ memo: Kengoさん（YouTube「Kengo - 自然の法則」）の動画（リスク
 
 ▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
 **参考文献**
 - Hayes, S. C., Luoma, J. B., Bond, F. W., Masuda, A., & Lillis, J. (2006). Acceptance and commitment therapy: Model, processes and outcomes. *Behaviour Research and Therapy, 44*(1), 1–25.

@@ -8,7 +8,7 @@ inspiration: メンタルジム（親切の心理学・受け取る力）
 memo: Kengoさん（YouTube「Kengo - 自然の法則」）の動画（与えすぎも受け取りすぎも不幸になる） https://youtu.be/TRJo-zqFDaM ／ 論文は本文末の「参考文献」参照 ／ 参考：Grant (2013) を追加 ／ 産後に手伝いを断っていたエピソードは実体験風。実際に合わせて調整OK ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
 ---
 こんにちは。
-臨床心理士・公認心理師のぽ子です。
+臨床心理士・公認心理師のぽこです。
 
 頼まれたら、断れない。
 
@@ -244,6 +244,9 @@ memo: Kengoさん（YouTube「Kengo - 自然の法則」）の動画（与えす
 
 ▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
 **参考文献**
 - Crocker, J., & Canevello, A. (2008). Creating and undermining social support in communal relationships: The role of compassionate and self-image goals. *Journal of Personality and Social Psychology, 95*(3), 555–575.

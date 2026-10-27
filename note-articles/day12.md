@@ -5,7 +5,7 @@ title: 他人の機嫌の「お世話係」を辞める方法
 summary: 人の気持ちに敏感な人ほど、他人の感情まで背負い込んでしまう。「課題の分離」で心の境界線を引くコツ。
 tags: [課題の分離, 人間関係, 境界線, 職場]
 inspiration: メンタルジム（課題の分離・イルカモードの土台）
-memo: ぽ子さん自身の講座・LP資料：メンタルジム（課題の分離・境界線） ／ 論文：Hatfield et al. (1993) 情動伝染、Helgeson & Fritz (1998) を追加 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
+memo: ぽこさん自身の講座・LP資料：メンタルジム（課題の分離・境界線） ／ 論文：Hatfield et al. (1993) 情動伝染、Helgeson & Fritz (1998) を追加 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
 ---
 上司が不機嫌だと、自分が何かしたのかと不安になる。
 パートナーがため息をつくと、機嫌をとらなきゃと焦る。
@@ -160,6 +160,9 @@ memo: ぽ子さん自身の講座・LP資料：メンタルジム（課題の分
 
 ▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
 **参考文献**
 - Hatfield, E., Cacioppo, J. T., & Rapson, R. L. (1993). Emotional contagion. *Current Directions in Psychological Science, 2*(3), 96–99.

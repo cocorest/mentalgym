@@ -5,10 +5,10 @@ title: イライラは敵じゃない。「心の火災報知器」の止め方
 summary: イライラする自分を責める必要はない。怒りの奥には、満たされていない大切なニーズがある。NVCの視点でイライラを読み解く。
 tags: [イライラ, 怒り, NVC, ニーズ]
 inspiration: メンタルジム（NVC・怒りの3つのテーマ）
-memo: ぽ子さん自身の講座・LP資料：メンタルジム（NVC） ／ 論文：Bushman (2002)、Zillmann (1971)、Rosenberg (2003) を追加 ／ 朝のイライラのエピソードは実体験風。実際に合わせて調整OK ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
+memo: ぽこさん自身の講座・LP資料：メンタルジム（NVC） ／ 論文：Bushman (2002)、Zillmann (1971)、Rosenberg (2003) を追加 ／ 朝のイライラのエピソードは実体験風。実際に合わせて調整OK ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
 ---
 こんにちは。
-臨床心理士・公認心理師のぽ子です。
+臨床心理士・公認心理師のぽこです。
 
 子どもが、何度言っても片づけない。
 パートナーが、スマホばかり見ている。
@@ -289,6 +289,9 @@ memo: ぽ子さん自身の講座・LP資料：メンタルジム（NVC） ／ �
 
 ▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
 **参考文献**
 - Bushman, B. J. (2002). Does venting anger feed or extinguish the flame? Catharsis, rumination, distraction, anger, and aggressive responding. *Personality and Social Psychology Bulletin, 28*(6), 724–731.

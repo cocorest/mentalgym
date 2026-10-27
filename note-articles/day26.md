@@ -5,10 +5,10 @@ title: 子どもの「こわい」に、どう寄り添えばいい？
 summary: 暗闇、新しい場所、人前での発表。子どもの不安や恐怖心に対して、否定も過保護もしない関わり方のステップ。
 tags: [子育て, 子どもの不安, 恐怖心, 親子関係]
 inspiration: メンタルジム（子どもの不安・アクノレッジ）
-memo: ぽ子さん自身の講座・LP資料：メンタルジム（子どもの不安との関わり方） ／ 論文：Gottman et al. (1996) 感情コーチング、Kendall (1994) を追加 ／ おばけのエピソードは実体験風。実際に合わせて調整OK ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
+memo: ぽこさん自身の講座・LP資料：メンタルジム（子どもの不安との関わり方） ／ 論文：Gottman et al. (1996) 感情コーチング、Kendall (1994) を追加 ／ おばけのエピソードは実体験風。実際に合わせて調整OK ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
 ---
 こんにちは。
-臨床心理士・公認心理師のぽ子です。
+臨床心理士・公認心理師のぽこです。
 
 「こわいから、一人で寝られない」
 「みんなの前で話すのが、こわい」
@@ -303,6 +303,9 @@ memo: ぽ子さん自身の講座・LP資料：メンタルジム（子どもの
 
 ▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
 **参考文献**
 - Gottman, J. M., Katz, L. F., & Hooven, C. (1996). Parental meta-emotion philosophy and the emotional life of families: Theoretical models and preliminary data. *Journal of Family Psychology, 10*(3), 243–268.

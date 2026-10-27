@@ -5,10 +5,10 @@ title: 頭の中の「悪口」を真に受けない方法
 summary: 「私はダメだ」という考えが浮かんでも、それは事実ではなく思考。ACTの「脱フュージョン」で考えと距離をとる練習。
 tags: [ACT, 脱フュージョン, 思考, 心理学]
 inspiration: メンタルジム（ACT・脱フュージョン）
-memo: ぽ子さん自身の講座・LP資料：メンタルジム（ACT） ／ 論文は本文末の「参考文献」参照 ／ 論文：Wegner et al. (1987) 思考抑制、Masuda et al. (2004) 脱フュージョンを追加 ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
+memo: ぽこさん自身の講座・LP資料：メンタルジム（ACT） ／ 論文は本文末の「参考文献」参照 ／ 論文：Wegner et al. (1987) 思考抑制、Masuda et al. (2004) 脱フュージョンを追加 ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
 ---
 こんにちは。
-臨床心理士・公認心理師のぽ子です。
+臨床心理士・公認心理師のぽこです。
 
 「私って、本当に何をやってもダメだな」
 
@@ -274,6 +274,9 @@ ACTは、まさにこの「考えとの距離のとり方」を練習する心�
 
 ▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
 **参考文献**
 - A-Tjak, J. G. L., et al. (2015). A meta-analysis of the efficacy of acceptance and commitment therapy for clinically relevant mental and physical health problems. *Psychotherapy and Psychosomatics, 84*(1), 30–36.

@@ -8,7 +8,7 @@ inspiration: メンタルジム（子育て・25％ルール）
 memo: Kengoさん（YouTube「Kengo - 自然の法則」）の動画「子供が本当に幸せになる教育とは？」 https://youtu.be/20VSQk44XWQ ／ 論文は本文末の「参考文献」参照 ／ 論文：Waters et al. (2014)、Bowlby (1988) を追加 ／ 習いごとのエピソードは実体験風。実際に合わせて調整OK ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
 ---
 こんにちは。
-臨床心理士・公認心理師のぽ子です。
+臨床心理士・公認心理師のぽこです。
 
 勉強は、大丈夫かな。
 友だちと、うまくやれているかな。
@@ -276,6 +276,9 @@ memo: Kengoさん（YouTube「Kengo - 自然の法則」）の動画「子供が
 
 ▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
 **参考文献**
 - Bowlby, J. (1988). *A secure base: Parent-child attachment and healthy human development*. Basic Books.

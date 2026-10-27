@@ -89,9 +89,15 @@ inspiration: メンタルジム（ACT×セルフコンパッション）
 
 自分を責める声が強くて苦しい方は、一人で抱えず個別スポット相談をご利用ください。
 
-**参考文献**
-- Breines, J. G., & Chen, S. (2012). Self-compassion increases self-improvement motivation. *Personality and Social Psychology Bulletin, 38*(9), 1133–1143.
-
 このテーマは、イルカマスター講座の第3章で扱います。
 次回は『「助けて」が言えない優秀な人へ。アイメッセージのすすめ』をお届けします。
 雑談会・スポット相談のご案内はプロフィールから。
+
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
+
+**参考文献**
+- Breines, J. G., & Chen, S. (2012). Self-compassion increases self-improvement motivation. *Personality and Social Psychology Bulletin, 38*(9), 1133–1143.

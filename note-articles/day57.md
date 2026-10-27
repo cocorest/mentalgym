@@ -8,7 +8,7 @@ inspiration: メンタルジム（ACT・脱フュージョン）
 memo: Kengoさん（YouTube「Kengo - 自然の法則」）の動画（自分を追い詰めていることに気づけば、人生は好転する） https://youtu.be/QPB1eLEk9sQ ／ 論文：Gilbert & Procter (2006) を追加 ／ 看病中のメールのエピソードは実体験風。実際に合わせて調整OK ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
 ---
 こんにちは。
-臨床心理士・公認心理師のぽ子です。
+臨床心理士・公認心理師のぽこです。
 
 誰かに、怒られたわけでもない。
 特に、大きな問題があるわけでもない。
@@ -278,6 +278,9 @@ ACTでは、頭の中の声と自分を切り離すことを「脱フュージ�
 
 ▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
 **参考文献**
 - Gilbert, P., & Procter, S. (2006). Compassionate mind training for people with high shame and self-criticism: Overview and pilot study of a group therapy approach. *Clinical Psychology & Psychotherapy, 13*(6), 353–379.

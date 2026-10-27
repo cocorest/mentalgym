@@ -8,7 +8,7 @@ inspiration: メンタルジム（セルフコンパッション・つながり�
 memo: Kengoさん（YouTube「Kengo - 自然の法則」）の動画（嫌われる・見捨てられる恐怖を乗り越えるには） https://youtu.be/aJ7nL4lA0Q8 ／ 論文は本文末の「参考文献」参照 ／ 論文：Baumeister & Leary (1995)、Gilovich et al. (2000) を追加 ／ 既読がつかないエピソードは実体験風。実際に合わせて調整OK ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
 ---
 こんにちは。
-臨床心理士・公認心理師のぽ子です。
+臨床心理士・公認心理師のぽこです。
 
 LINEの返信が、遅い。
 
@@ -276,6 +276,9 @@ LINEの返信が、遅い。
 
 ▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
 **参考文献**
 - Baumeister, R. F., & Leary, M. R. (1995). The need to belong: Desire for interpersonal attachments as a fundamental human motivation. *Psychological Bulletin, 117*(3), 497–529.

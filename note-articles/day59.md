@@ -8,7 +8,7 @@ inspiration: メンタルジム（ACT・価値と目標・心理的柔軟性／�
 memo: 秦卓民さん（YouTube「秦卓民 ビジネスコーチch」）の動画「40代・50代で夢中に生きる｜トップコーチ秦卓民が語る『後悔しない生き方』」 https://youtu.be/Hk8RiDvkzeA ／ サトマイさん（YouTube「謎解き統計学 | サトマイ」）の動画「もう昔みたいには頑張れない人への処方箋」 https://youtu.be/igq-lhwYI1A ／ 論文は本文末の「参考文献」参照 ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
 ---
 こんにちは。
-臨床心理士・公認心理師のぽ子です。
+臨床心理士・公認心理師のぽこです。
 
 仕事も、収入も、家庭も、
 ある程度、安定してきた。
@@ -277,6 +277,9 @@ ACTは、苦しみをゼロにする方法じゃなく、
 
 ▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
 **参考文献**
 - Blanchflower, D. G., & Oswald, A. J. (2008). Is well-being U-shaped over the life cycle? *Social Science & Medicine, 66*(8), 1733–1749.

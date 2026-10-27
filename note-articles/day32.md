@@ -8,7 +8,7 @@ inspiration: メンタルジム（6つのニーズ・自己決定理論）
 memo: 秦卓民さん（YouTube「秦卓民 ビジネスコーチch」）の動画「秦流【心の整え方｜保存版】誰でもできる『6つのニーズ』の満たし方」 https://youtu.be/MoY00o4rpfY ／ 論文：Ryan & Deci (2000)、Baumeister & Leary (1995) を追加 ／ 朝のエピソードは実体験風。実際に合わせて調整OK ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
 ---
 こんにちは。
-臨床心理士・公認心理師のぽ子です。
+臨床心理士・公認心理師のぽこです。
 
 なんとなく、イライラする。
 朝、どうしても起きる気力がわかない。
@@ -274,6 +274,9 @@ memo: 秦卓民さん（YouTube「秦卓民 ビジネスコーチch」）の動�
 
 ▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
 **参考文献**
 - Baumeister, R. F., & Leary, M. R. (1995). The need to belong: Desire for interpersonal attachments as a fundamental human motivation. *Psychological Bulletin, 117*(3), 497–529.

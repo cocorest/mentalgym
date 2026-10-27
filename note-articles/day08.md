@@ -4,11 +4,11 @@ date: 2026-10-12
 title: 数字に振り回される日々を卒業する｜元営業の心理士が手放した「数字＝自分の価値」という思い込み
 summary: 数字の上下でメンタルが揺れると、成果も揺れる。営業職のための「数字と心を切り離す」セルフマネジメント。
 tags: [営業, セールス, メンタル, 仕事]
-inspiration: メンタルジム（相談事例：営業職／ぽ子の営業時代）
+inspiration: メンタルジム（相談事例：営業職／ぽこの営業時代）
 memo: 秦卓民さん（YouTube「秦卓民 ビジネスコーチch」）のチャンネル（テーマ：セールス。特定の動画URLは記録なし） ／ 論文：Crocker & Park (2004) 自尊心の条件づけ、Locke & Latham (2002) 目標設定 ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
 ---
 こんにちは。
-臨床心理士・公認心理師のぽ子です。
+臨床心理士・公認心理師のぽこです。
 
 今月の数字がいいと、
 気分も上がる。
@@ -282,6 +282,9 @@ memo: 秦卓民さん（YouTube「秦卓民 ビジネスコーチch」）のチ�
 
 ▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
 **参考文献**
 - Crocker, J., & Park, L. E. (2004). The costly pursuit of self-esteem. *Psychological Bulletin, 130*(3), 392–414.

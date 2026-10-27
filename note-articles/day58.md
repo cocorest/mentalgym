@@ -8,7 +8,7 @@ inspiration: メンタルジム（安心51％・RAS・感謝の習慣）
 memo: 椎原崇さん（YouTube「椎原崇・伝説のコンサルタント」）の動画「【引き寄せの法則】"既にある"前提で過ごしてみたら、願望実現して人生が激変しました」 https://youtu.be/oUcMAQyW_XU ／ 論文は本文末の「参考文献」参照 ／ 論文：Brickman et al. (1978) を追加 ／ 「次」を探し続けたエピソードは実体験風。実際に合わせて調整OK ／ 冒頭の「12月になりました」は日付に依存しない表現に変更 ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
 ---
 こんにちは。
-臨床心理士・公認心理師のぽ子です。
+臨床心理士・公認心理師のぽこです。
 
 手帳を見返したとき。
 誰かの近況を聞いたとき。
@@ -257,6 +257,9 @@ Kindleで本を出せた
 
 ▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
 **参考文献**
 - Brickman, P., Coates, D., & Janoff-Bulman, R. (1978). Lottery winners and accident victims: Is happiness relative? *Journal of Personality and Social Psychology, 36*(8), 917–927.

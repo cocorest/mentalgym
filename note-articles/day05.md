@@ -89,9 +89,15 @@ inspiration: メンタルジム（ACT・感情を受け入れる5段階）
 
 感情に振り回されるパターンを変えていきたい方は、個別スポット相談でお話を聞かせてください。
 
-**参考文献**
-- Gross, J. J., & John, O. P. (2003). Individual differences in two emotion regulation processes: Implications for affect, relationships, and well-being. *Journal of Personality and Social Psychology, 85*(2), 348–362.
-
 このテーマは、イルカマスター講座の第4章で扱います。
 次回は『自分に一番厳しい「上司」をクビにする方法』をお届けします。
 雑談会・スポット相談のご案内はプロフィールから。
+
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
+
+**参考文献**
+- Gross, J. J., & John, O. P. (2003). Individual differences in two emotion regulation processes: Implications for affect, relationships, and well-being. *Journal of Personality and Social Psychology, 85*(2), 348–362.

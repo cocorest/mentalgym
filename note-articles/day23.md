@@ -8,7 +8,7 @@ inspiration: メンタルジム（作業興奮・行動が先）
 memo: 秦卓民さん（YouTube「秦卓民 ビジネスコーチch」）のチャンネル（テーマ：目標達成。特定の動画URLは記録なし） ／ 論文：Dimidjian et al. (2006) 行動活性化、Lally et al. (2010) 習慣化を追加 ／ 営業電話のエピソードは実体験風。実際に合わせて調整OK ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
 ---
 こんにちは。
-臨床心理士・公認心理師のぽ子です。
+臨床心理士・公認心理師のぽこです。
 
 「やる気が出たら、始めよう」
 
@@ -307,6 +307,9 @@ SNSをちょっと見て。
 
 ▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
 **参考文献**
 - Dimidjian, S., et al. (2006). Randomized trial of behavioral activation, cognitive therapy, and antidepressant medication in the acute treatment of adults with major depression. *Journal of Consulting and Clinical Psychology, 74*(4), 658–670.

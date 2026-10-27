@@ -8,7 +8,7 @@ inspiration: メンタルジム（作業興奮・感情回避）
 memo: Kengoさん（YouTube「Kengo - 自然の法則」）の動画「ギリギリまで動かない、何でも先延ばしするクセはどうすれば直る？」 https://youtu.be/ZmsCH1ChNGQ ／ 論文は本文末の「参考文献」参照 ／ 論文：Sirois & Pychyl (2013)、Steel (2007) を追加 ／ 原稿と冷蔵庫掃除のエピソードは実体験風。実際に合わせて調整OK ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
 ---
 こんにちは。
-臨床心理士・公認心理師のぽ子です。
+臨床心理士・公認心理師のぽこです。
 
 締め切りは、来週。
 時間は、ある。
@@ -289,6 +289,9 @@ SNSを見て。
 
 ▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
 **参考文献**
 - Sirois, F., & Pychyl, T. (2013). Procrastination and the priority of short-term mood regulation: Consequences for future self. *Social and Personality Psychology Compass, 7*(2), 115–127.

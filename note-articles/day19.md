@@ -5,10 +5,10 @@ title: モヤモヤは「名前をつける」だけで半分消える
 summary: 正体のわからないモヤモヤは不安を大きくする。感情に名前をつける「ラベリング」の効果とやり方。
 tags: [感情, ラベリング, セルフケア, マインドフルネス]
 inspiration: メンタルジム（感情のラベリングとスケーリング）
-memo: ぽ子さん自身の講座・LP資料：メンタルジム（感情との関わり方） ／ 論文は本文末の「参考文献」参照 ／ 論文：Barrett et al. (2001) 感情の粒度、Pennebaker (1997) 筆記を追加 ／ 相談室・子育てのエピソードは実体験風。実際に合わせて調整OK ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
+memo: ぽこさん自身の講座・LP資料：メンタルジム（感情との関わり方） ／ 論文は本文末の「参考文献」参照 ／ 論文：Barrett et al. (2001) 感情の粒度、Pennebaker (1997) 筆記を追加 ／ 相談室・子育てのエピソードは実体験風。実際に合わせて調整OK ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
 ---
 こんにちは。
-臨床心理士・公認心理師のぽ子です。
+臨床心理士・公認心理師のぽこです。
 
 なんだかわからないけど、モヤモヤする。
 
@@ -290,6 +290,9 @@ memo: ぽ子さん自身の講座・LP資料：メンタルジム（感情との
 
 ▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
 **参考文献**
 - Barrett, L. F., Gross, J., Christensen, T. C., & Benvenuto, M. (2001). Knowing what you're feeling and knowing what to do about it: Mapping the relation between emotion differentiation and emotion regulation. *Cognition and Emotion, 15*(6), 713–724.

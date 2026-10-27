@@ -5,10 +5,10 @@ title: 夫婦の話し合いを「ケンカ」で終わらせない方法
 summary: 話し合いのつもりが言い合いになってしまう。NVC（非暴力コミュニケーション）の4ステップで「責めずに伝える」練習。
 tags: [NVC, 夫婦関係, コミュニケーション, パートナーシップ]
 inspiration: メンタルジム（NVC・サメモード／イルカモード）
-memo: ぽ子さん自身の講座・LP資料：メンタルジム（NVCコミュニケーション） ／ 論文：Gottman et al. (1998)、Gottman & Silver (1999)、Rosenberg (2003) を追加 ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
+memo: ぽこさん自身の講座・LP資料：メンタルジム（NVCコミュニケーション） ／ 論文：Gottman et al. (1998)、Gottman & Silver (1999)、Rosenberg (2003) を追加 ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
 ---
 こんにちは。
-臨床心理士・公認心理師のぽ子です。
+臨床心理士・公認心理師のぽこです。
 
 「ちゃんと話し合おう」
 
@@ -276,6 +276,9 @@ NVCは、聞くときにも使えます。
 
 ▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
 **参考文献**
 - Gottman, J. M., Coan, J., Carrere, S., & Swanson, C. (1998). Predicting marital happiness and stability from newlywed interactions. *Journal of Marriage and the Family, 60*(1), 5–22.

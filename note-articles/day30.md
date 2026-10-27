@@ -5,10 +5,10 @@ title: 「安心を育てる」小さな習慣まとめ｜不安をお守りに�
 summary: 書き続けてきた30本のnoteを振り返り、自分の中に安心を育てるために明日から続けられる5つの習慣にまとめる。
 tags: [まとめ, 習慣, 安心, メンタルジム]
 inspiration: 連載まとめ（親切の心理学）
-memo: ぽ子さん自身の講座・LP資料：連載まとめ ／ 論文は本文末の「参考文献」参照 ／ 論文：Curry et al. (2018) 親切の効果を明記（以前の「心理療法に近い効果」という表現は根拠が確認できず削除） ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
+memo: ぽこさん自身の講座・LP資料：連載まとめ ／ 論文は本文末の「参考文献」参照 ／ 論文：Curry et al. (2018) 親切の効果を明記（以前の「心理療法に近い効果」という表現は根拠が確認できず削除） ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
 ---
 こんにちは。
-臨床心理士・公認心理師のぽ子です。
+臨床心理士・公認心理師のぽこです。
 
 このnoteも、今回で第1部の区切りになります。
 
@@ -293,6 +293,9 @@ SNSを見て落ちこむ夜もある。
 
 ▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
 **参考文献**
 - Curry, O. S., Rowland, L. A., Van Lissa, C. J., Zlotowitz, S., McAlaney, J., & Whitehouse, H. (2018). Happy to help? A systematic review and meta-analysis of the effects of performing acts of kindness on the well-being of the actor. *Journal of Experimental Social Psychology, 76*, 320–329.

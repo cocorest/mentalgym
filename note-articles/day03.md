@@ -79,3 +79,9 @@ inspiration: メンタルジム（目標と行動の仕組みづくり・13回�
 このテーマは、イルカマスター講座の第6章で扱います。
 次回は『「昔はうまくいった」を手放せないあなたへ』をお届けします。
 雑談会・スポット相談のご案内はプロフィールから。
+
+▼ 個別相談のお申し込みはこちら
+https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links

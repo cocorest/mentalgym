@@ -8,7 +8,7 @@ inspiration: メンタルジム（反すう・インキュベーション効果�
 memo: 椎原崇さん（YouTube「椎原崇・伝説のコンサルタント」）の動画「寝る前に『潜在意識に質問』して寝るだけで勝手に人生は好転！インキュベーション効果」 https://youtu.be/CDC2meTX6ZU ／ 論文：Nolen-Hoeksema (2000)、Sio & Ormerod (2009)、Masicampo & Baumeister (2011)、Scullin et al. (2018) を追加 ／ 研修前夜のエピソードは実体験風。実際に合わせて調整OK ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
 ---
 こんにちは。
-臨床心理士・公認心理師のぽ子です。
+臨床心理士・公認心理師のぽこです。
 
 夜、布団に入ったとたん。
 
@@ -268,6 +268,9 @@ memo: 椎原崇さん（YouTube「椎原崇・伝説のコンサルタント」�
 
 ▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
 **参考文献**
 - Masicampo, E. J., & Baumeister, R. F. (2011). Consider it done! Plan making can eliminate the cognitive effects of unfulfilled goals. *Journal of Personality and Social Psychology, 101*(4), 667–683.

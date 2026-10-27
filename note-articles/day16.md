@@ -5,10 +5,10 @@ title: 迷ったときは「価値」というコンパスを使う
 summary: 何を選べばいいかわからないときは、正解ではなく「自分が大切にしたいこと」で選ぶ。ACTの価値の見つけ方。
 tags: [ACT, 価値, 選択, 生き方]
 inspiration: メンタルジム（ACT・価値の10領域）
-memo: ぽ子さん自身の講座・LP資料：メンタルジム（ACT） ／ サトマイさん（YouTube「謎解き統計学 | サトマイ」）の動画「もう昔みたいには頑張れない人への処方箋」 https://youtu.be/igq-lhwYI1A ／ 論文：Cohen & Sherman (2014)、Hayes et al. (2006) を追加 ／ 心理士への転身エピソードは実体験風。実際に合わせて調整OK ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
+memo: ぽこさん自身の講座・LP資料：メンタルジム（ACT） ／ サトマイさん（YouTube「謎解き統計学 | サトマイ」）の動画「もう昔みたいには頑張れない人への処方箋」 https://youtu.be/igq-lhwYI1A ／ 論文：Cohen & Sherman (2014)、Hayes et al. (2006) を追加 ／ 心理士への転身エピソードは実体験風。実際に合わせて調整OK ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
 ---
 こんにちは。
-臨床心理士・公認心理師のぽ子です。
+臨床心理士・公認心理師のぽこです。
 
 転職するか、今の職場にいるか。
 仕事を優先するか、家族との時間を優先するか。
@@ -285,6 +285,9 @@ ACT（アクセプタンス＆コミットメント・セラピー）では、�
 
 ▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
 **参考文献**
 - Cohen, G. L., & Sherman, D. K. (2014). The psychology of change: Self-affirmation and social psychological intervention. *Annual Review of Psychology, 65*, 333–371.

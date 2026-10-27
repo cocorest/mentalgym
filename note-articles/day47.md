@@ -8,7 +8,7 @@ inspiration: メンタルジム（自信と確信・ドリームサポーター�
 memo: 秦卓民さん（YouTube「秦卓民 ビジネスコーチch」）の動画（自信が持てない人へ：成功者も最初は自信ゼロだった） https://youtu.be/bKCDPnhZHKI ／ 論文：Bandura (1977)、Lockwood & Kunda (1997) を追加 ／ 研修を引き受けたエピソードは実体験風。実際に合わせて調整OK ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
 ---
 こんにちは。
-臨床心理士・公認心理師のぽ子です。
+臨床心理士・公認心理師のぽこです。
 
 「もっと自信がついたら、挑戦してみたい」
 「実績がないから、自信が持てない」
@@ -265,6 +265,9 @@ No.38でもお伝えしましたが、もう一度整理させてください。
 
 ▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
 **参考文献**
 - Bandura, A. (1977). Self-efficacy: Toward a unifying theory of behavioral change. *Psychological Review, 84*(2), 191–215.

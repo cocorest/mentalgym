@@ -8,7 +8,7 @@ inspiration: メンタルジム（キャンセルした心・感情の受容）
 memo: Kengoさん（YouTube「Kengo - 自然の法則」）の動画（もう我慢したくない！毎日我慢せずに楽に生きるには） https://youtu.be/V9IkuHUwaiE ／ 論文は本文末の「参考文献」参照 ／ 帰りの電車で涙が出たエピソードは実体験風。実際に合わせて調整OK ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
 ---
 こんにちは。
-臨床心理士・公認心理師のぽ子です。
+臨床心理士・公認心理師のぽこです。
 
 「これくらい、我慢しなきゃ」
 「私さえ我慢すれば、丸く収まる」
@@ -276,6 +276,9 @@ memo: Kengoさん（YouTube「Kengo - 自然の法則」）の動画（もう我
 
 ▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
 **参考文献**
 - Gross, J. J., & John, O. P. (2003). Individual differences in two emotion regulation processes: Implications for affect, relationships, and well-being. *Journal of Personality and Social Psychology, 85*(2), 348–362.

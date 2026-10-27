@@ -8,7 +8,7 @@ inspiration: メンタルジム（スリー・グッド・シングス・感謝�
 memo: 秦卓民さん（YouTube「秦卓民 ビジネスコーチch」）の動画「成功する人は毎晩何を振り返っているのか？人生を変える『夜10分』の習慣」 https://youtu.be/ZPIkzjgqDQ8 ／ 論文は本文末の「参考文献」参照 ／ 論文：Pennebaker (1997)、Emmons & McCullough (2003) を追加 ／ 寝る前の「今日たのしかったこと」のエピソードは実体験風。実際に合わせて調整OK ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
 ---
 こんにちは。
-臨床心理士・公認心理師のぽ子です。
+臨床心理士・公認心理師のぽこです。
 
 「振り返りが大事」
 
@@ -291,6 +291,9 @@ memo: 秦卓民さん（YouTube「秦卓民 ビジネスコーチch」）の動�
 
 ▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
 **参考文献**
 - Emmons, R. A., & McCullough, M. E. (2003). Counting blessings versus burdens: An experimental investigation of gratitude and subjective well-being in daily life. *Journal of Personality and Social Psychology, 84*(2), 377–389.

@@ -8,7 +8,7 @@ inspiration: メンタルジム（NVC・アイメッセージ）
 memo: Kengoさん（YouTube「Kengo - 自然の法則」）の動画（条件は後回しに。本音を先に言えばうまくいく） https://youtu.be/2CsZSvEyGj8 ／ 論文は本文末の「参考文献」参照 ／ 論文：Laurenceau et al. (1998) を追加 ／ 親友に先に謝ったエピソードは実体験風。実際に合わせて調整OK ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
 ---
 こんにちは。
-臨床心理士・公認心理師のぽ子です。
+臨床心理士・公認心理師のぽこです。
 
 「パートナーがもう少し家事をしてくれたら、感謝の気持ちを伝えられるのに」
 「上司が先に歩み寄ってくれたら、私も本音を話せるのに」
@@ -284,6 +284,9 @@ LINEや手紙でも、もちろん大丈夫ですよ。
 
 ▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
 **参考文献**
 - Butler, E. A., et al. (2003). The social consequences of expressive suppression. *Emotion, 3*(1), 48–67.

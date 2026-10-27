@@ -8,7 +8,7 @@ inspiration: メンタルジム（人生を「実験」する心理学・プラ�
 memo: 椎原崇さん（YouTube「椎原崇・伝説のコンサルタント」）の動画「【質問】今の仕事に違和感を感じていて、特にやりたいこともないのですが、こんな状況では何をしたらいいですか？」 https://youtu.be/m0d-KzmNgDE ／ サトマイさん（YouTube「謎解き統計学 | サトマイ」）の動画「もう昔みたいには頑張れない人への処方箋」 https://youtu.be/igq-lhwYI1A ／ 論文は本文末の「参考文献」参照 ／ 論文：Mitchell et al. (1999) 計画的偶発性を追加 ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
 ---
 こんにちは。
-臨床心理士・公認心理師のぽ子です。
+臨床心理士・公認心理師のぽこです。
 
 仕事に、大きな不満があるわけじゃない。
 
@@ -290,6 +290,9 @@ memo: 椎原崇さん（YouTube「椎原崇・伝説のコンサルタント」�
 
 ▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
 **参考文献**
 - Boswell, W. R., Boudreau, J. W., & Tichy, J. (2005). The relationship between employee job change and job satisfaction: The honeymoon-hangover effect. *Journal of Applied Psychology, 90*(5), 882–892.

@@ -8,7 +8,7 @@ inspiration: メンタルジム（安心ベース・ワクワクはアクセル�
 memo: 椎原崇さん（YouTube「椎原崇・伝説のコンサルタント」）のチャンネル（テーマ：ゆるビジネス。特定の動画URLは記録なし） ／ 論文：Fredrickson (2001)、Sio & Ormerod (2009) を追加 ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
 ---
 こんにちは。
-臨床心理士・公認心理師のぽ子です。
+臨床心理士・公認心理師のぽこです。
 
 「頑張らないと、うまくいかない」
 
@@ -293,6 +293,9 @@ memo: 椎原崇さん（YouTube「椎原崇・伝説のコンサルタント」�
 
 ▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
 **参考文献**
 - Fredrickson, B. L. (2001). The role of positive emotions in positive psychology: The broaden-and-build theory of positive emotions. *American Psychologist, 56*(3), 218–226.

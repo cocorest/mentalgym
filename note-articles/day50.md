@@ -8,7 +8,7 @@ inspiration: メンタルジム（NVC・課題の分離）
 memo: Kengoさん（YouTube「Kengo - 自然の法則」）の動画「口うるさい親にうんざり… なぜ私はこの親から生まれたの？」 https://youtu.be/Y3suIDSdQLs ／ 論文は本文末の「参考文献」参照 ／ 論文：Fingerman et al. (2012) を追加 ／ 親になってわかったエピソードは実体験風。実際に合わせて調整OK ／ 書き方を心屋さん（kokoroya）の型（短い改行・リズムのある列挙・逆説の問い・自己開示）に変更 ／ サメモード／イルカモードの接続文・イルカマスター講座の章案内・次回予告を追加、「でも大丈夫」型の締めを特別記事の構文（今日のまとめ＋締めのひとこと）に変更
 ---
 こんにちは。
-臨床心理士・公認心理師のぽ子です。
+臨床心理士・公認心理師のぽこです。
 
 「ちゃんと食べてるの？」
 「子どもに、そんな服着せて」
@@ -281,6 +281,9 @@ memo: Kengoさん（YouTube「Kengo - 自然の法則」）の動画「口うる
 
 ▼ 個別相談のお申し込みはこちら
 https://mosh.jp/services/363404?openExternalBrowser=1
+
+▼ よくある質問・ご感想はこちら
+https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
 **参考文献**
 - Birditt, K. S., Miller, L. M., Fingerman, K. L., & Lefkowitz, E. S. (2009). Tensions in the parent and adult child relationship: Links to solidarity and ambivalence. *Psychology and Aging, 24*(2), 287–295.
