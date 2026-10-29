@@ -272,6 +272,9 @@ https://mosh.jp/services/363404?openExternalBrowser=1
 ▼ よくある質問・ご感想はこちら
 https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
+▼ 無料｜サメ？イルカ？モード診断（1分でできます）
+https://claude.ai/artifact/8GDEN61qEsk7Gzm6kk1BEU
+
 **参考文献**
 - Briñol, P., Petty, R. E., & Wagner, B. (2009). Body posture effects on self-evaluation: A self-validation approach. *European Journal of Social Psychology, 39*(6), 1053–1064.
 - Emmons, R. A., & McCullough, M. E. (2003). Counting blessings versus burdens: An experimental investigation of gratitude and subjective well-being in daily life. *Journal of Personality and Social Psychology, 84*(2), 377–389.

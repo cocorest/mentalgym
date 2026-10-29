@@ -280,7 +280,7 @@ ACT（アクセプタンス＆コミットメント・セラピー）では、�
 自分の大切にしたいことは、人と話しながらのほうが言葉にしやすいものです。一緒に言葉にしてみたい方は、個別スポット相談をご利用ください。
 
 このテーマは、イルカマスター講座の第4章で扱います。
-次回は『「自分には価値がない」と感じてしまうあなたへ』をお届けします。
+次回は『「自分には価値がない」と感じる人へ｜何もしなくても大丈夫と思える3つの練習』をお届けします。
 雑談会・スポット相談のご案内はプロフィールから。
 
 ▼ 個別相談のお申し込みはこちら
@@ -288,6 +288,9 @@ https://mosh.jp/services/363404?openExternalBrowser=1
 
 ▼ よくある質問・ご感想はこちら
 https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
+
+▼ 無料｜サメ？イルカ？モード診断（1分でできます）
+https://claude.ai/artifact/8GDEN61qEsk7Gzm6kk1BEU
 
 **参考文献**
 - Cohen, G. L., & Sherman, D. K. (2014). The psychology of change: Self-affirmation and social psychological intervention. *Annual Review of Psychology, 65*, 333–371.

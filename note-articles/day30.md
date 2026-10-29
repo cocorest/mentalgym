@@ -297,6 +297,9 @@ https://mosh.jp/services/363404?openExternalBrowser=1
 ▼ よくある質問・ご感想はこちら
 https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
+▼ 無料｜サメ？イルカ？モード診断（1分でできます）
+https://claude.ai/artifact/8GDEN61qEsk7Gzm6kk1BEU
+
 **参考文献**
 - Curry, O. S., Rowland, L. A., Van Lissa, C. J., Zlotowitz, S., McAlaney, J., & Whitehouse, H. (2018). Happy to help? A systematic review and meta-analysis of the effects of performing acts of kindness on the well-being of the actor. *Journal of Experimental Social Psychology, 76*, 320–329.
 - Lally, P., van Jaarsveld, C. H. M., Potts, H. W. W., & Wardle, J. (2010). How are habits formed: Modelling habit formation in the real world. *European Journal of Social Psychology, 40*(6), 998–1009.

@@ -277,7 +277,7 @@ memo: 秦卓民さん（YouTube「秦卓民 ビジネスコーチch」）のチ�
 数字と自分の価値がくっついてしまうクセは、ひとりではなかなかほどけません。成果とメンタルの両立を一緒に考えたい方は、個別スポット相談でお話ししましょう。
 
 このテーマは、イルカマスター講座の第4章で扱います。
-次回は『「もっと学ばなきゃ」中毒から抜け出す方法』をお届けします。
+次回は『「もっと学ばなきゃ」が止まらない人へ｜知識を増やしても不安が消えない理由と3つの手放し方』をお届けします。
 雑談会・スポット相談のご案内はプロフィールから。
 
 ▼ 個別相談のお申し込みはこちら
@@ -285,6 +285,9 @@ https://mosh.jp/services/363404?openExternalBrowser=1
 
 ▼ よくある質問・ご感想はこちら
 https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
+
+▼ 無料｜サメ？イルカ？モード診断（1分でできます）
+https://claude.ai/artifact/8GDEN61qEsk7Gzm6kk1BEU
 
 **参考文献**
 - Crocker, J., & Park, L. E. (2004). The costly pursuit of self-esteem. *Psychological Bulletin, 130*(3), 392–414.

@@ -278,6 +278,9 @@ https://mosh.jp/services/363404?openExternalBrowser=1
 ▼ よくある質問・ご感想はこちら
 https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
+▼ 無料｜サメ？イルカ？モード診断（1分でできます）
+https://claude.ai/artifact/8GDEN61qEsk7Gzm6kk1BEU
+
 **参考文献**
 - Borkovec, T. D., Wilkinson, L., Folensbee, R., & Lerman, C. (1983). Stimulus control applications to the treatment of worry. *Behaviour Research and Therapy, 21*(3), 247–251.
 - Lieberman, M. D., et al. (2007). Putting feelings into words: Affect labeling disrupts amygdala activity in response to affective stimuli. *Psychological Science, 18*(5), 421–428.

@@ -155,7 +155,7 @@ memo: ぽこさん自身の講座・LP資料：メンタルジム（課題の分
 人間関係でいつも疲れてしまう方は、個別スポット相談で一緒に整理しましょう。
 
 このテーマは、イルカマスター講座の第5章で扱います。
-次回は『夫婦の話し合いを「ケンカ」で終わらせない方法』をお届けします。
+次回は『夫婦の話し合いがケンカになる人へ｜気持ちが伝わる言いかえ5選』をお届けします。
 雑談会・スポット相談のご案内はプロフィールから。
 
 ▼ 個別相談のお申し込みはこちら
@@ -163,6 +163,9 @@ https://mosh.jp/services/363404?openExternalBrowser=1
 
 ▼ よくある質問・ご感想はこちら
 https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
+
+▼ 無料｜サメ？イルカ？モード診断（1分でできます）
+https://claude.ai/artifact/8GDEN61qEsk7Gzm6kk1BEU
 
 **参考文献**
 - Hatfield, E., Cacioppo, J. T., & Rapson, R. L. (1993). Emotional contagion. *Current Directions in Psychological Science, 2*(3), 96–99.

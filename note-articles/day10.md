@@ -88,7 +88,7 @@ inspiration: メンタルジム（相談事例：登校しぶり・25％ルー�
 お子さんの不安・恐怖心との関わり方を一緒に考えたい方は、個別スポット相談をご利用ください。
 
 このテーマは、イルカマスター講座の第6章で扱います。
-次回は『頭の中の「悪口」を真に受けない方法』をお届けします。
+次回は『頭の中の悪口が止まらない人へ｜自分責めの声と距離をとる3つの方法』をお届けします。
 雑談会・スポット相談のご案内はプロフィールから。
 
 ▼ 個別相談のお申し込みはこちら
@@ -96,3 +96,6 @@ https://mosh.jp/services/363404?openExternalBrowser=1
 
 ▼ よくある質問・ご感想はこちら
 https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
+
+▼ 無料｜サメ？イルカ？モード診断（1分でできます）
+https://claude.ai/artifact/8GDEN61qEsk7Gzm6kk1BEU

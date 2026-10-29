@@ -285,6 +285,9 @@ https://mosh.jp/services/363404?openExternalBrowser=1
 ▼ よくある質問・ご感想はこちら
 https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
+▼ 無料｜サメ？イルカ？モード診断（1分でできます）
+https://claude.ai/artifact/8GDEN61qEsk7Gzm6kk1BEU
+
 **参考文献**
 - Birditt, K. S., Miller, L. M., Fingerman, K. L., & Lefkowitz, E. S. (2009). Tensions in the parent and adult child relationship: Links to solidarity and ambivalence. *Psychology and Aging, 24*(2), 287–295.
 - Fingerman, K. L., Cheng, Y.-P., Birditt, K., & Zarit, S. (2012). Only as happy as the least happy child: Multiple grown children's problems and successes and middle-aged parents' well-being. *The Journals of Gerontology: Series B, 67*(2), 184–193.

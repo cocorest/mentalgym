@@ -281,6 +281,9 @@ https://mosh.jp/services/363404?openExternalBrowser=1
 ▼ よくある質問・ご感想はこちら
 https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
+▼ 無料｜サメ？イルカ？モード診断（1分でできます）
+https://claude.ai/artifact/8GDEN61qEsk7Gzm6kk1BEU
+
 **参考文献**
 - Gilovich, T., Medvec, V. H., & Savitsky, K. (2000). The spotlight effect in social judgment. *Journal of Personality and Social Psychology, 78*(2), 211–222.
 - Ury, W. (2007). *The power of a positive no: How to say no and still get to yes*. Bantam.
