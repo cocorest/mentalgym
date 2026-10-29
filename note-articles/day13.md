@@ -280,9 +280,6 @@ https://mosh.jp/services/363404?openExternalBrowser=1
 ▼ よくある質問・ご感想はこちら
 https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
-▼ 無料｜サメ？イルカ？モード診断（1分でできます）
-https://claude.ai/artifact/8GDEN61qEsk7Gzm6kk1BEU
-
 **参考文献**
 - Gottman, J. M., Coan, J., Carrere, S., & Swanson, C. (1998). Predicting marital happiness and stability from newlywed interactions. *Journal of Marriage and the Family, 60*(1), 5–22.
 - Gottman, J. M., & Silver, N. (1999). *The seven principles for making marriage work*. Crown.

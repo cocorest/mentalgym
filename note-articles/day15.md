@@ -300,9 +300,6 @@ https://mosh.jp/services/363404?openExternalBrowser=1
 ▼ よくある質問・ご感想はこちら
 https://claude.ai/artifact/8uizquxhUwyHMSmF42s5YN#no_universal_links
 
-▼ 無料｜サメ？イルカ？モード診断（1分でできます）
-https://claude.ai/artifact/8GDEN61qEsk7Gzm6kk1BEU
-
 **参考文献**
 - Levinson, D. J. (1978). *The seasons of a man's life*. Knopf.
 - Sonnentag, S., & Fritz, C. (2007). The Recovery Experience Questionnaire: Development and validation of a measure for assessing recuperation and unwinding from work. *Journal of Occupational Health Psychology, 12*(3), 204–221.
