@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8">
+<title>ぽこAIカンパニー はじめかたガイド</title>
+<script src="../video/chars.js"></script>
+<style>
+@page { size: A4; margin: 0; }
+:root { --rose:#c4687f; --rose-soft:#f3d4dc; --rose-pale:#fdf0f3; --lav:#a993cf; --lav-pale:#f2edfa; --tea:#c9ad92; --ink:#5a4a4f; --muted:#9a8a8f; --cream:#fffaf8; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN",sans-serif; color:var(--ink); -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+.page { width:210mm; height:297mm; position:relative; overflow:hidden; page-break-after:always; background:var(--cream); padding:20mm 18mm 18mm; }
+.page:last-child { page-break-after:auto; }
+.page::before { content:""; position:absolute; inset:0; background:radial-gradient(circle at 92% 6%, #fbe1e8 0, transparent 30%), radial-gradient(circle at 5% 96%, #f1eafa 0, transparent 28%); z-index:0; }
+.page > * { position:relative; z-index:1; }
+.pno { position:absolute; bottom:9mm; left:0; right:0; text-align:center; font-size:9pt; color:var(--muted); letter-spacing:.2em; }
+.char svg { width:100%; height:100%; display:block; }
+h2 { font-size:22pt; margin:3mm 0 6mm; letter-spacing:.04em; }
+.badge { display:inline-block; background:var(--rose); color:#fff; border-radius:999px; padding:1.5mm 5mm; font-size:11pt; font-weight:700; letter-spacing:.08em; }
+.badge.lav { background:var(--lav); }
+p, li { font-size:11.5pt; line-height:1.85; }
+.card { background:#fff; border-radius:6mm; padding:6mm 7mm; box-shadow:0 1.5mm 5mm rgba(196,104,127,.12); margin-bottom:5mm; }
+.card h3 { font-size:13pt; color:var(--rose); margin-bottom:2mm; }
+ol.steps { list-style:none; counter-reset:s; }
+ol.steps li { counter-increment:s; padding-left:11mm; position:relative; margin-bottom:3mm; }
+ol.steps li::before { content:counter(s); position:absolute; left:0; top:.6mm; width:7mm; height:7mm; border-radius:50%; background:var(--rose-soft); color:var(--rose); font-weight:700; font-size:10pt; display:grid; place-items:center; line-height:1; }
+ul.hearts { list-style:none; }
+ul.hearts li { padding-left:6mm; position:relative; }
+ul.hearts li::before { content:"♡"; position:absolute; left:0; color:var(--rose); }
+.small { font-size:9.5pt; color:var(--muted); line-height:1.7; }
+.os { display:grid; grid-template-columns:1fr 1fr; gap:4mm; margin-top:3mm; }
+.os div { background:var(--rose-pale); border-radius:4mm; padding:3mm 4mm; font-size:10pt; line-height:1.7; }
+.os b { color:var(--rose); }
+.tip { background:var(--lav-pale); border-radius:5mm; padding:4mm 6mm; font-size:10.5pt; line-height:1.8; margin-top:4mm; }
+.tip b { color:#7b65a8; }
+.warn { background:#fff3f6; border:0.4mm dashed var(--rose); border-radius:5mm; padding:4mm 6mm; font-size:10.5pt; line-height:1.8; margin-top:4mm; }
+.say { display:flex; align-items:flex-end; gap:3mm; position:absolute; right:16mm; bottom:16mm; }
+.say .char { width:26mm; height:32mm; }
+.say .bubble { background:#fff; border-radius:5mm; padding:3mm 5mm; font-size:10pt; line-height:1.6; box-shadow:0 1mm 4mm rgba(196,104,127,.18); margin-bottom:12mm; max-width:60mm; }
+kbd { display:inline-block; background:#fff; border:0.3mm solid #e6d6dc; border-bottom-width:0.8mm; border-radius:1.5mm; padding:0 1.6mm; font-family:inherit; font-size:9.5pt; line-height:1.6; }
+code { background:var(--rose-pale); color:var(--rose); border-radius:1.5mm; padding:0 1.5mm; font-family:inherit; font-weight:700; }
+/* 表紙 */
+.cover { display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; background:linear-gradient(170deg,#fdeef2 0%,#fffaf8 55%,#f4eefb 100%); }
+.cover .kicker { color:var(--lav); letter-spacing:.4em; font-weight:700; font-size:12pt; }
+.cover h1 { font-size:38pt; color:var(--rose); margin:5mm 0 3mm; letter-spacing:.04em; }
+.cover .sub { font-size:13pt; }
+.cover .row { display:flex; gap:1mm; margin:16mm 0 12mm; }
+.cover .row .char { width:30mm; height:38mm; }
+.cover .time { display:inline-block; background:#fff; border-radius:999px; padding:2.5mm 8mm; font-size:11pt; box-shadow:0 1mm 4mm rgba(196,104,127,.15); }
+.cover .ver { position:absolute; bottom:14mm; font-size:9pt; color:var(--muted); }
+/* もくじ */
+.toc { list-style:none; margin-top:4mm; }
+.toc li { display:flex; align-items:center; gap:4mm; padding:3.4mm 0; border-bottom:0.3mm dashed var(--rose-soft); font-size:12pt; }
+.toc .n { width:24mm; color:var(--rose); font-weight:700; font-size:10pt; }
+.toc .pg { margin-left:auto; color:var(--muted); font-size:10pt; }
+/* 必要なもの */
+.need { display:grid; grid-template-columns:repeat(3,1fr); gap:4mm; margin-bottom:6mm; }
+.need div { background:#fff; border-radius:5mm; text-align:center; padding:6mm 2mm; box-shadow:0 1mm 4mm rgba(196,104,127,.12); font-size:10.5pt; line-height:1.6; }
+.need .ic { font-size:24pt; display:block; margin-bottom:2mm; }
+.need.no div { background:#faf6f7; box-shadow:none; position:relative; color:var(--muted); }
+.need.no div::after { content:"✕"; position:absolute; top:2mm; right:4mm; color:var(--rose); font-weight:700; font-size:14pt; }
+/* 例 */
+.ex { display:grid; grid-template-columns:1fr 1fr; gap:4mm; }
+.ex div { background:#fff; border-radius:5mm; padding:3mm 4mm; display:grid; grid-template-columns:15mm 1fr; align-items:center; gap:2mm; box-shadow:0 1mm 4mm rgba(196,104,127,.1); }
+.ex .char { width:14mm; height:18mm; }
+.ex b { font-size:10.5pt; display:block; }
+.ex span { font-size:9pt; color:var(--rose); font-weight:700; }
+.shot { width:100%; height:92mm; object-fit:cover; object-position:top; border-radius:4mm; border:2mm solid #fff; box-shadow:0 1.5mm 5mm rgba(196,104,127,.18); display:block; margin:3mm 0 5mm; }
+.tmpl p { border-bottom:0.3mm dashed var(--rose-soft); padding:1.5mm 0; font-size:11pt; }
+.tmpl p b { color:var(--rose); }
+.faq dt { font-weight:700; font-size:11.5pt; color:var(--rose); margin-top:4mm; }
+.faq dt::before { content:"Q. "; }
+.faq dd { font-size:10.5pt; line-height:1.8; padding-left:6mm; }
+.faq dd::before { content:"A. "; margin-left:-6mm; color:var(--lav); font-weight:700; }
+.end { display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+.end h2 { color:var(--rose); font-size:26pt; }
+</style></head><body>
+
+<!-- 1 表紙 -->
+<section class="page cover">
+  <p class="kicker">はじめかたガイド</p>
+  <h1>ぽこAIカンパニー</h1>
+  <p class="sub">話しかけるだけで動く、あなた専用のAIの会社</p>
+  <div class="row">
+    <div class="char" data-char="kotoha"></div><div class="char" data-char="tsumiki"></div><div class="char" data-char="poko"></div><div class="char" data-char="soroban"></div><div class="char" data-char="yubin"></div>
+  </div>
+  <p class="time">⏱ 準備の目安　約30分（初期設定こみ）</p>
+  <p class="ver">Mac・Windows 対応　｜　画面はイメージです。Claude のアップデートで表示が変わることがあります</p>
+</section>
+
+<!-- 2 もくじ・社員紹介 -->
+<section class="page">
+  <span class="badge">CONTENTS</span>
+  <h2>もくじ</h2>
+  <ul class="toc">
+    <li><span class="n">準備</span>用意するもの・いらないもの<span class="pg">P.3</span></li>
+    <li><span class="n">STEP 1〜2</span>アプリを入れて、フォルダを置く<span class="pg">P.4</span></li>
+    <li><span class="n">STEP 3〜4</span>フォルダを開いて、話しかける<span class="pg">P.5</span></li>
+    <li><span class="n">STEP 5</span>メール・カレンダーとつなぐ<span class="pg">P.6</span></li>
+    <li><span class="n">使い方</span>話しかけてみよう・オフィス画面<span class="pg">P.7</span></li>
+    <li><span class="n">困ったら</span>引っかかったときの聞き方<span class="pg">P.8</span></li>
+    <li><span class="n">Q&amp;A</span>よくある質問<span class="pg">P.9</span></li>
+  </ul>
+  <div class="card" style="margin-top:9mm">
+    <h3>AI社員のしょうかい</h3>
+    <div class="ex">
+      <div><div class="char" data-char="poko"></div><p><b>ぽこ（秘書）</b><span>窓口・朝夕のふり返り・相談</span></p></div>
+      <div><div class="char" data-char="tsumiki"></div><p><b>つみき（アプリ担当）</b><span>アプリ・ツールづくり</span></p></div>
+      <div><div class="char" data-char="kotoha"></div><p><b>ことは（文章担当）</b><span>記事・SNS・レポート</span></p></div>
+      <div><div class="char" data-char="soroban"></div><p><b>そろばん（経理担当）</b><span>領収書・お金の記録</span></p></div>
+      <div><div class="char" data-char="yubin"></div><p><b>ゆうびん（メール担当）</b><span>メールの仕分け・下書き</span></p></div>
+    </div>
+  </div>
+  <p class="pno">2</p>
+</section>
+
+<!-- 3 準備 -->
+<section class="page">
+  <span class="badge">準備</span>
+  <h2>用意するもの</h2>
+  <div class="need">
+    <div><span class="ic">💻</span>パソコン<br><span class="small">Mac / Windows</span></div>
+    <div><span class="ic">✨</span>Claude の<br>有料プラン<br><span class="small">Pro 以上</span></div>
+    <div><span class="ic">📦</span>このキットの<br>ZIPファイル</div>
+  </div>
+  <h2>いらないもの</h2>
+  <div class="need no">
+    <div><span class="ic">⬛</span>ターミナル<br>（黒い画面）の操作</div>
+    <div><span class="ic">🌐</span>GitHub の<br>登録</div>
+    <div><span class="ic">🧑‍💻</span>プログラミングの<br>知識</div>
+  </div>
+  <div class="tip">💡 <b>Claude のデスクトップアプリに、必要なものが全部入っています。</b>アプリを入れるだけで、すぐに使いはじめられます。</div>
+  <div class="say"><div class="bubble">むずかしい準備は<br>いりませんよ♡</div><div class="char" data-char="poko"></div></div>
+  <p class="pno">3</p>
+</section>
+
+<!-- 4 STEP1-2 -->
+<section class="page">
+  <span class="badge">STEP 1</span>
+  <h2>Claude アプリを入れる</h2>
+  <div class="card">
+    <ol class="steps">
+      <li><b>claude.ai</b> から、デスクトップアプリをダウンロードします。</li>
+      <li>インストールして、アプリを開きます。<br><span class="small">Mac：「アプリケーション」フォルダから ／ Windows：スタートメニューから</span></li>
+      <li>ご自身の Claude アカウントでログインします。</li>
+    </ol>
+  </div>
+  <span class="badge" style="margin-top:4mm">STEP 2</span>
+  <h2>フォルダを置く</h2>
+  <div class="card">
+    <ol class="steps">
+      <li>ダウンロードしたZIPファイルを展開します。<br><span class="small">Mac：ダブルクリック ／ Windows：右クリック →「すべて展開」</span></li>
+      <li>できた <code>poko-ai-company</code> フォルダを、<b>「書類」フォルダ</b>に移します。</li>
+    </ol>
+  </div>
+  <div class="warn">⚠️ デスクトップや「ダウンロード」に置きっぱなしにすると、片付けのときにうっかり消してしまうことがあります。<b>「書類」</b>など、わかりやすい場所に置きましょう。</div>
+  <div class="say"><div class="bubble">置き場所は<br>わかりやすく♪</div><div class="char" data-char="soroban"></div></div>
+  <p class="pno">4</p>
+</section>
+
+<!-- 5 STEP3-4 -->
+<section class="page">
+  <span class="badge">STEP 3</span>
+  <h2>Claude でフォルダを開く</h2>
+  <div class="card">
+    <ol class="steps">
+      <li>Claude アプリの画面上のまん中にある <b>Code（コード）</b> タブを押します。<br><span class="small">「アップグレード」と表示されたら、有料プランへの登録が必要です。</span></li>
+      <li>実行場所は <b>Local（ローカル）</b> を選びます。</li>
+      <li><b>Select folder（フォルダを選択）</b> を押して、<code>poko-ai-company</code> を選びます。</li>
+    </ol>
+    <div class="tip">🔑 <b>ポイント</b>：中のファイルではなく、<b>フォルダごと</b>選びます。</div>
+  </div>
+  <span class="badge" style="margin-top:2mm">STEP 4</span>
+  <h2>「はじめまして」と送る</h2>
+  <div class="card">
+    <ol class="steps">
+      <li>入力欄に「<b>はじめまして</b>」と入力して送ります。</li>
+      <li>秘書のぽこが、ひとつずつ質問します。答えていきましょう（10分くらい）。</li>
+      <li>わからない質問は「<b>とばす</b>」と送ればOK。あとから変えられます。</li>
+      <li>最後に「メニュー」が表示されたら、<b>準備完了</b>です 🎉</li>
+    </ol>
+    <p class="small">※ ぽこがファイルを保存するときなどに「許可しますか？」と確認されます。内容を見て、問題なければ許可してください。</p>
+  </div>
+  <p class="pno">5</p>
+</section>
+
+<!-- 6 STEP5 -->
+<section class="page">
+  <span class="badge lav">STEP 5　おすすめ</span>
+  <h2>メール・カレンダーとつなぐ</h2>
+  <p style="margin-bottom:5mm">つなぐと「メールチェック」や、カレンダーへの「アラーム登録」がもっと便利になります。</p>
+  <div class="card">
+    <ol class="steps">
+      <li>文字を入力する欄の横にある <b>＋</b> ボタンを押して、<b>Connectors（コネクタ）</b> を選びます。</li>
+      <li><b>Gmail</b> と <b>Google カレンダー</b> を選びます。</li>
+      <li>画面の案内どおり、Googleアカウントで許可します。</li>
+      <li>ぽこに「<b>メールをチェックして</b>」と話しかけて、動くか試してみましょう。</li>
+    </ol>
+  </div>
+  <div class="tip">💡 <b>つながなくても大丈夫。</b>アラームは「カレンダーに追加できるファイル」で届くので、ダブルクリックするだけでカレンダーに入ります。</div>
+  <div class="tip">🔒 <b>安心ポイント</b>：ゆうびんは、メールを読む・仕分ける・下書きをつくるまで。<b>送信や削除は、あなたが「OK」と言うまでしません。</b></div>
+  <div class="say"><div class="bubble">返信が必要なメールだけ<br>お知らせしますね</div><div class="char" data-char="yubin"></div></div>
+  <p class="pno">6</p>
+</section>
+
+<!-- 7 使い方 -->
+<section class="page">
+  <span class="badge">使い方</span>
+  <h2>さっそく話しかけてみよう</h2>
+  <p style="margin-bottom:4mm">ふだんの言葉でOK。「<b>メニュー</b>」と送ると、できることが全部見られます。</p>
+  <div class="ex" style="margin-bottom:6mm">
+    <div><div class="char" data-char="poko"></div><p><b>「おはよう！」</b><span>朝のぽこ便：気分・予定・今日やること</span></p></div>
+    <div><div class="char" data-char="kotoha"></div><p><b>「告知記事を書いて」</b><span>記事・SNS投稿</span></p></div>
+    <div><div class="char" data-char="soroban"></div><p><b>「田中さんに領収書」</b><span>領収書の発行と記録</span></p></div>
+    <div><div class="char" data-char="yubin"></div><p><b>「メールチェックして」</b><span>メールの仕分け</span></p></div>
+    <div><div class="char" data-char="tsumiki"></div><p><b>「予約アプリつくって」</b><span>アプリづくり</span></p></div>
+    <div><div class="char" data-char="poko"></div><p><b>「明日9時にリマインド」</b><span>アラーム</span></p></div>
+  </div>
+  <span class="badge lav">おまけ</span>
+  <h2 style="margin-bottom:2mm">オフィス画面を開く</h2>
+  <p><code>office</code> フォルダの <code>index.html</code> をダブルクリックすると、AI社員の働くようすが見られます。「<b>オフィスの色を変えて</b>」と頼めば、模様替えもできます。</p>
+  <img class="shot" src="../video/assets/office.png" alt="オフィス画面">
+  <p class="pno">7</p>
+</section>
+
+<!-- 8 困ったら -->
+<section class="page">
+  <span class="badge">困ったら</span>
+  <h2>引っかかったときの聞き方</h2>
+  <p style="margin-bottom:4mm">わからないことは、<b>Claude にそのまま聞く</b>のがいちばん早いです。専門用語がわからなくても大丈夫。</p>
+  <div class="card">
+    <h3>① スクショで聞く（おすすめ）</h3>
+    <ol class="steps">
+      <li>困っている画面のスクリーンショットを撮ります。
+        <div class="os"><div><b>Mac</b><br><kbd>Shift</kbd>＋<kbd>Command</kbd>＋<kbd>4</kbd> で範囲を選ぶ</div><div><b>Windows</b><br><kbd>Windows</kbd>＋<kbd>Shift</kbd>＋<kbd>S</kbd> で範囲を選ぶ</div></div></li>
+      <li>入力欄に貼りつけます（Mac <kbd>Command</kbd>＋<kbd>V</kbd> ／ Windows <kbd>Ctrl</kbd>＋<kbd>V</kbd>）。画像をドラッグしてもOK。</li>
+      <li>「<b>この画面になりました。どうしたらいいですか？</b>」と送ります。</li>
+    </ol>
+  </div>
+  <div class="card tmpl">
+    <h3>② 文章で聞く</h3>
+    <p>この3つを書くと、答えが早く正確になります。</p>
+    <p><b>やろうとしたこと</b>：オフィス画面を開こうとした</p>
+    <p><b>起きたこと</b>：真っ白な画面になった</p>
+    <p><b>どうしたいか</b>：画面を表示したい</p>
+  </div>
+  <div class="card">
+    <h3>③ どこで聞く？</h3>
+    <ul class="hearts">
+      <li>ふだんの困りごと → いつもの <b>Code</b> タブで、ぽこに聞く</li>
+      <li>Code タブが開けない・動かない → Claude アプリの <b>Chat</b> タブで聞く</li>
+      <li>それでも解決しない → 購入者サポート <b>aoki.miho.824@gmail.com</b></li>
+    </ul>
+  </div>
+  <p class="pno">8</p>
+</section>
+
+<!-- 9 Q&A -->
+<section class="page">
+  <span class="badge">Q&amp;A</span>
+  <h2>よくある質問</h2>
+  <dl class="faq card">
+    <dt>「許可しますか？」と聞かれた</dt>
+    <dd>ぽこがファイルを保存したり、ツールを使ったりするときの確認です。内容を見て、問題なければ許可してください。</dd>
+    <dt>「Git is required」と表示された（主に Windows）</dt>
+    <dd>Claude アプリを最新版に更新してください（Windows：Help → Check for Updates ／ Mac：Claude → Check for Updates）。それでも出る場合は、公式サイト（git-scm.com）から「Git for Windows」を入れて、もう一度開いてください。</dd>
+    <dt>ターミナルや GitHub の登録は必要？</dt>
+    <dd>必要ありません。ぽこAIカンパニーは、パソコンの中のフォルダだけで動きます。</dd>
+    <dt>ぽこが設定を忘れたみたい</dt>
+    <dd>「わたしのこと を読み直して」と伝えてください。</dd>
+    <dt>オフィス画面の文字の形がいつもと違う</dt>
+    <dd>インターネットにつながっていないと、かわいい丸文字フォントが読み込めず、パソコンに入っている文字で表示されます。動きは同じなので安心してください。</dd>
+    <dt>間違えて大事なファイルを消してしまった</dt>
+    <dd>購入時のZIPを、もう一度展開すれば元に戻せます。<code>わたしのこと</code> と <code>できたもの</code> のフォルダは、ときどきバックアップしておくと安心です。</dd>
+  </dl>
+  <p class="pno">9</p>
+</section>
+
+<!-- 10 おわり -->
+<section class="page end">
+  <h2>準備おつかれさまでした♡</h2>
+  <p style="font-size:13pt; margin-top:4mm">さっそく「<b>おはよう！</b>」と話しかけてみてくださいね。</p>
+  <div class="cover" style="background:none; margin-top:10mm"><div class="row" style="margin:0">
+    <div class="char" data-char="kotoha"></div><div class="char" data-char="tsumiki"></div><div class="char" data-char="poko"></div><div class="char" data-char="soroban"></div><div class="char" data-char="yubin"></div>
+  </div></div>
+  <div class="card" style="margin-top:14mm; width:150mm; text-align:left">
+    <h3>お問い合わせ</h3>
+    <p class="small" style="color:var(--ink)">購入者サポート：aoki.miho.824@gmail.com<br>ご利用条件は、キットの中の <code>ご利用規約.md</code> をご確認ください。</p>
+  </div>
+  <p class="pno">10</p>
+</section>
+</body></html>
