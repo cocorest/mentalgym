@@ -76,14 +76,14 @@
 
 
   var STAFF = {
-    poko:    { animal: "tanuki",  color: "#b48a6a", outfit: "#f3d4dc", acc: "ribbon",  accColor: "#c4687f" },
+    ellie:   { animal: "tanuki",  color: "#b48a6a", outfit: "#f3d4dc", acc: "ribbon",  accColor: "#c4687f" },
     tsumiki: { animal: "bear",    color: "#c9a88c", outfit: "#d8cbee", acc: "headset", accColor: "#a993cf" },
     kotoha:  { animal: "rabbit",  color: "#fbf4f1", outfit: "#eeb3c2", acc: "beret",   accColor: "#a993cf" },
-    soroban: { animal: "hamster", color: "#efcfa6", outfit: "#f7e6d2", acc: "glasses", accColor: "" },
-    yubin:   { animal: "cat",     color: "#d9d3dc", outfit: "#f6cdd7", acc: "scarf",   accColor: "#a993cf" }
+    soropon: { animal: "hamster", color: "#efcfa6", outfit: "#f7e6d2", acc: "glasses", accColor: "" },
+    yupin:   { animal: "cat",     color: "#d9d3dc", outfit: "#f6cdd7", acc: "scarf",   accColor: "#a993cf" }
   };
   window.pokoChar = function (id) { return animalSvg(STAFF[id]); };
-  // data-char="poko" の要素にキャラを描く
+  // data-char="ellie" の要素にキャラを描く
   document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll("[data-char]").forEach(function (el) { el.innerHTML = animalSvg(STAFF[el.dataset.char]); });
   });

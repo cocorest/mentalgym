@@ -9,7 +9,7 @@
     { left: 92, bottom: 36 }, { left: 31, bottom: 8 }
   ];
   var QUICK = [
-    { label: "☀️ 朝のぽこ便", text: "おはよう！朝のぽこ便をお願い" },
+    { label: "☀️ 朝のエリー便", text: "おはよう！朝のエリー便をお願い" },
     { label: "📬 メールチェック", text: "メールをチェックして、返信が必要なものを教えて" },
     { label: "🧾 領収書", text: "領収書をつくりたい" },
     { label: "⏰ アラーム", text: "アラームをセットしたい" },
@@ -162,7 +162,7 @@
 
     renderList("today", state.today, function (x) {
       return '<li class="' + (x.done ? "done" : "") + '">' + (x.done ? "✅ " : "⬜ ") + esc(x.text) + '</li>';
-    }, "まだありません。「朝のぽこ便」で決めましょう");
+    }, "まだありません。「朝のエリー便」で決めましょう");
 
     var waiting = state.waiting || [];
     $("waitCount").textContent = waiting.length ? String(waiting.length) : "";
