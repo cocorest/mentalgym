@@ -1,4 +1,4 @@
-// ぽこAIカンパニー オフィス画面
+// AIカンパニー オフィス画面
 // state.js を5秒ごとに読みなおして、画面を更新します（サーバー不要・ダブルクリックで開けます）。
 (function () {
   "use strict";
@@ -153,8 +153,8 @@
     var t = state.theme || {};
     var root = document.documentElement.style;
     ["main", "sub", "wall", "floor", "panel"].forEach(function (k) { if (t[k]) root.setProperty("--" + k, t[k]); });
-    $("company").textContent = state.company || "ぽこAIカンパニー";
-    document.title = (state.company || "ぽこAIカンパニー") + " オフィス";
+    $("company").textContent = state.company || "AIカンパニー";
+    document.title = (state.company || "AIカンパニー") + " オフィス";
     $("boss").textContent = state.boss || "社長";
     $("updated").textContent = state.updated || "";
 

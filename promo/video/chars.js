@@ -1,4 +1,4 @@
-// ぽこAIカンパニーのキャラクター（オフィス画面と同じ描き方）
+// AIカンパニーのキャラクター（オフィス画面と同じ描き方）
 (function () {
   function shade(hex, amt) {
     var n = parseInt(hex.replace("#", ""), 16);

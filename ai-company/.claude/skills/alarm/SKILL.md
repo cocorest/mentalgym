@@ -22,9 +22,9 @@ Claude はパソコンを閉じると動けないので、アラームは **カ�
 ```
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//POKO AI COMPANY//JA
+PRODID:-//AI COMPANY//JA
 BEGIN:VEVENT
-UID:（日時＋ランダムな文字列）@poko-ai
+UID:（日時＋ランダムな文字列）@ai-company
 DTSTAMP:（今の日時 UTC 例 20261010T010000Z）
 DTSTART;TZID=Asia/Tokyo:20261011T090000
 DTEND;TZID=Asia/Tokyo:20261011T091500
