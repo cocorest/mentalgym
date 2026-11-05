@@ -54,10 +54,8 @@ def geocode(addr):
         return None
     lon, lat = res[0]["geometry"]["coordinates"]
     title = res[0]["properties"].get("title", "")
-    # 住所の番地数字がヒット結果に含まれていれば番地付近、なければ町丁目代表点
-    z2h = lambda t: t.translate(str.maketrans("０１２３４５６７８９", "0123456789"))
-    nums = re.findall(r"[0-9]+", z2h(addr))
-    precise = bool(nums) and nums[-1] in z2h(title)
+    # ヒットが「〇番」「〇番地」まで落ちていれば番地付近、そうでなければ町丁目代表点
+    precise = bool(re.search(r"[0-9０-９]+番", title))
     return lat, lon, title, precise
 
 
