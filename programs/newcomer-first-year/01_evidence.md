@@ -2,7 +2,8 @@
 
 > 本プログラムの設計根拠となる査読済み論文・公的データをまとめたものです。
 > 各文献には **エビデンスの強さ** を付けています（★★★ メタ分析/系統的レビュー、★★ RCT・縦断研究、★ 横断研究・小規模研究・調査）。
-> ⚠️ 印は「出典の詳細（頁数・効果量など）を原典で再確認してから資料に載せてほしいもの」です。
+> ⚠️ 印は「出典の詳細を原典で再確認してから資料に載せてほしいもの」です。
+> 全文献のDOIリンクは [`05_references.md`](05_references.md) にまとめています。
 
 ---
 
@@ -39,7 +40,7 @@
   - **拒絶感受性（Rejection Sensitivity）**：拒絶を「不安げに予期し」「すぐ知覚し」「過剰に反応する」傾向。曖昧な反応も拒絶と解釈しやすい。
 - **Watson, D., & Friend, R. (1969).** Measurement of social-evaluative anxiety. *Journal of Consulting and Clinical Psychology, 33*(4), 448–457. ／ **Leary, M. R. (1983).** A brief version of the Fear of Negative Evaluation Scale. *Personality and Social Psychology Bulletin, 9*(3), 371–375. ★
   - **否定的評価への恐れ（FNE）** の概念と尺度。日本語版（短縮版）もあり、本プログラムの効果測定に使える。
-- **新入社員636名（中国、勤続1年以内）を対象とした研究** ★ ⚠️（掲載誌を要確認）
+- **Wang, C., & Zhang, Y. (2021).** New employees' interpersonal sensitivity and help-seeking behavior: Fear of negative evaluation and social anxiety as mediators. *Social Behavior and Personality, 49*(10). ★（中国の新入社員636名、勤続1年以内）
   - 対人過敏性が高い新人ほど **援助要請（助けを求める行動）が少ない**。その関係は「否定的評価への恐れ → 社会不安」を介していた。
   - **→ 反映**：評価過敏な新人は「困っても聞けない → 抱え込む → シャットダウン」の悪循環に入りやすい。**助けの求め方（NVCのリクエスト）** を具体的スキルとして教える。
 
@@ -96,7 +97,7 @@
 - **Bond, F. W., & Bunce, D. (2003).** The role of acceptance and job control in mental health, job satisfaction, and work performance. *Journal of Applied Psychology, 88*(6), 1057–1067. ★★
   - 縦断研究。**アクセプタンス（心理的柔軟性）は1年後のメンタルヘルスと客観的業績を予測**。仕事の裁量の効果も、柔軟性が高い人ほど大きい。
   - **→ 反映**：心理的柔軟性は「メンタル対策」であると同時に「業績要因」。企業向け提案の根拠になる。
-- **Unruh, I., Neubert, M., Wilhelm, M., & Euteneuer, F. (2022).** ACT in the workplace to improve employee well-being: A systematic review and meta-analysis of randomized controlled trials. *Journal of Contextual Behavioral Science*. ★★★ ⚠️（巻・頁を要確認）
+- **Unruh, I., Neubert, M., Wilhelm, M., & Euteneuer, F. (2022).** ACT in the workplace: A meta-analytic examination of randomized controlled trials. *Journal of Contextual Behavioral Science, 26*, 114–124. ★★★
   - 職場で対面実施されたACTの17RCT。心理的苦痛 g=−0.38、心理的柔軟性 g=0.33、ウェルビーイング g=0.24。フォローアップ時も効果が残存。**特にオフィスワーカーで効果が高い**。
 - **Masuda, A., Hayes, S. C., Sackett, C. F., & Twohig, M. P. (2004).** Cognitive defusion and self-relevant negative thoughts: Examining the impact of a ninety year old technique. *Behaviour Research and Therapy, 42*(4), 477–485. ★★
   - 否定的な自己関連思考（例：「私はダメだ」）を、短時間の脱フュージョン技法で **信じ込み度と不快感が低下**。
@@ -105,10 +106,10 @@
 
 ### C-3. NVC（非暴力コミュニケーション）
 
-- **Wacker, R., & Dziobek, I. (2018).** Preventing empathic distress and social stressors at work through nonviolent communication training: A field study with health professionals. *Journal of Occupational Health Psychology, 23*(1), 141–150. ★ ⚠️
+- **Wacker, R., & Dziobek, I. (2018).** Preventing empathic distress and social stressors at work through nonviolent communication training: A field study with health professionals. *Journal of Occupational Health Psychology, 23*(1), 141–150. ★
   - 医療職へのNVC研修（統制群あり）で、共感的苦痛と職場の対人ストレッサーの低減。
-- **フランス医学生を対象としたNVC研修研究（International Journal of Medical Education, 2021）** ★★ ⚠️（著者名要確認）
-  - 短期NVC研修で、**3か月後の主観的共感性が向上**。
+- **Epinat-Duclos, J., Foncelle, A., Quesque, F., Chabanat, E., Duguet, A., Van Der Henst, J.-B., & Rossetti, Y. (2021).** Does nonviolent communication education improve empathy in French medical students? *International Journal of Medical Education, 12*, 205–218. ★★
+  - 医学生312名（介入123名・統制189名）。2.5日のNVC研修で、**3か月後の主観的共感性が向上**。
 - ⚠️ 正直な評価：NVCは実践現場での支持は厚いが、**大規模RCTやメタ分析はまだない**。本プログラムでは「セルフコンパッション／ACTで内側を立て直し、NVCで関係を立て直す」という位置づけで、**エビデンスの主軸はセルフコンパッションとACT** に置く。
 
 ### C-4. 環境側の要因（上司・先輩向け）
@@ -117,7 +118,7 @@
   - 心理的安全性が高いチームほど、質問・ミスの報告・助けを求めるなどの **学習行動が増える**。
 - **Kammeyer-Mueller, J., Wanberg, C., Rubenstein, A., & Song, Z. (2013).** Support, undermining, and newcomer socialization: Fitting in during the first 90 days. *Academy of Management Journal, 56*(4), 1104–1124. ★★
   - 入社後90日間の **上司・同僚からの支援と足引っ張り（undermining）** の推移が、新人の適応と離職を左右。初期の支援の「減り方」も重要。
-- **Haimovitz, K., & Dweck, C. S. (2016).** Parents' views of failure predict children's fixed and growth intelligence mind-sets. *Psychological Science, 27*(6), 859–869. ★★
+- **Haimovitz, K., & Dweck, C. S. (2016).** What predicts children's fixed and growth intelligence mind-sets? Not their parents' views of intelligence but their parents' views of failure. *Psychological Science, 27*(6), 859–869. ★★
   - 親子研究だが、**「失敗は学びになる」と見るか「失敗は害だ」と見るか（失敗観）** が、相手の反応を通じて伝わることを示した。上司・先輩の失敗観も新人に伝播すると考えられる（職場への外挿である点に注意）。
 
 ---
