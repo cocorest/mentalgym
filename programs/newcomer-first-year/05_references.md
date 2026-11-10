@@ -49,7 +49,7 @@ DOIリンク（https://doi.org/…）は、出版社の論文ページに飛び�
 
 | # | 文献 | 研究の種類 | ステップ | リンク | 照合 |
 |---|---|---|---|---|---|
-| 18 | Lieberman, M. D., Eisenberger, N. I., Crockett, M. J., Tom, S. M., Pfeifer, J. H., & Way, B. M. (2007). Putting feelings into words: Affect labeling disrupts amygdala activity in response to affective stimuli. *Psychological Science, 18*(5), 421–428. | 実験（fMRI、30名） | **A 認める**（感情に名前をつける） | [doi:10.1111/j.1467-9280.2007.01916.x](https://doi.org/10.1111/j.1467-9280.2007.01916.x) | ✅ |
+| 18 | Lieberman, M. D., Eisenberger, N. I., Crockett, M. J., Tom, S. M., Pfeifer, J. H., & Way, B. M. (2007). Putting feelings into words: Affect labeling disrupts amygdala activity in response to affective stimuli. *Psychological Science, 18*(5), 421–428. | 実験（fMRI、30名） | **A 気づく**（気持ちに気づいて名前をつける） | [doi:10.1111/j.1467-9280.2007.01916.x](https://doi.org/10.1111/j.1467-9280.2007.01916.x) | ✅ |
 | 19 | Masuda, A., Hayes, S. C., Sackett, C. F., & Twohig, M. P. (2004). Cognitive defusion and self-relevant negative thoughts: Examining the impact of a ninety year old technique. *Behaviour Research and Therapy, 42*(4), 477–485. | 実験 | **U 外す**（脱フュージョン） | [doi:10.1016/j.brat.2003.10.008](https://doi.org/10.1016/j.brat.2003.10.008) | ✅ |
 | 20 | David, S., & Congleton, C. (2013). Emotional agility. *Harvard Business Review, 91*(11), 125–128. | ビジネス誌の解説（非査読） | **U 外す**（「Unhook」という言葉の出典の一つ） | [hbr.org](https://hbr.org/2013/11/emotional-agility) | ◯ |
 | 21 | Neff, K. D. (2003). The development and validation of a scale to measure self-compassion. *Self and Identity, 2*(3), 223–250. | 尺度開発 | **S 思いやる**（3要素の定義） | [doi:10.1080/15298860309027](https://doi.org/10.1080/15298860309027) | ◯ |
