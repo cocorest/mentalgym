@@ -19,6 +19,17 @@ DOIリンク（https://doi.org/…）は、出版社の論文ページに飛び�
 | 5 | Louis, M. R. (1980). Surprise and sense making: What newcomers experience in entering unfamiliar organizational settings. *Administrative Science Quarterly, 25*(2), 226–251. | 理論論文 | 新人は「驚き」を意味づけする | [doi:10.2307/2392453](https://doi.org/10.2307/2392453) | ✅ |
 | 6 | Kammeyer-Mueller, J., Wanberg, C., Rubenstein, A., & Song, Z. (2013). Support, undermining, and newcomer socialization: Fitting in during the first 90 days. *Academy of Management Journal, 56*(4), 1104–1124. | 縦断研究（14時点、264名） | 支援は90日で減る。上司の足引っ張りは離職と関連 | [doi:10.5465/amj.2010.0791](https://doi.org/10.5465/amj.2010.0791) | ✅ |
 
+## 1-2. 「最近の若手は扱いにくい」は本当か（世代差）
+
+| # | 文献 | 研究の種類 | プログラムでの使い方 | リンク | 照合 |
+|---|---|---|---|---|---|
+| 34 | Protzko, J., & Schooler, J. W. (2019). Kids these days: Why the youth of today seem lacking. *Science Advances, 5*(10), eaav5916. | 調査・実験（5研究、事前登録） | 「最近の若者は」は記憶のバイアスで生じやすい | [doi:10.1126/sciadv.aav5916](https://doi.org/10.1126/sciadv.aav5916) | ✅ |
+| 35 | Costanza, D. P., Badger, J. M., Fraser, R. L., Severt, J. B., & Gade, P. A. (2012). Generational differences in work-related attitudes: A meta-analysis. *Journal of Business and Psychology, 27*(4), 375–394. | メタ分析（20研究、約2万人） | 仕事への態度の世代差はほぼゼロ〜小 | [doi:10.1007/s10869-012-9259-4](https://doi.org/10.1007/s10869-012-9259-4) | ✅ |
+| 36 | Curran, T., & Hill, A. P. (2019). Perfectionism is increasing over time: A meta-analysis of birth cohort differences from 1989 to 2016. *Psychological Bulletin, 145*(4), 410–429. | メタ分析（164サンプル、大学生41,641人、米・加・英） | 「周りから完璧を求められている」感覚が33%上昇 | [doi:10.1037/bul0000138](https://doi.org/10.1037/bul0000138) | ✅ |
+| 37 | Twenge, J. M., Cooper, A. B., Joiner, T. E., Duffy, M. E., & Binau, S. G. (2019). Age, period, and cohort trends in mood disorder indicators and suicide-related outcomes in a nationally representative dataset, 2005–2017. *Journal of Abnormal Psychology, 128*(3), 185–199. | 全国調査の時系列分析（米国、約61万人） | 18〜25歳の深刻な心理的苦痛が71%増 | [doi:10.1037/abn0000410](https://doi.org/10.1037/abn0000410) | ✅ |
+
+> #36・#37 は欧米のデータです。日本の若手にそのまま当てはまるかは検証されていません。また Twenge の解釈（スマートフォン等の影響）には研究者間で議論があります。
+
 ## 2. 評価過敏性・フィードバック・援助要請
 
 | # | 文献 | 研究の種類 | プログラムでの使い方 | リンク | 照合 |

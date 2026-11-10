@@ -62,6 +62,27 @@ async function build(out) {
     L.txt(s, stats[i][2], { x: x + 0.3, y: 5.0, w: w - 0.6, h: 0.9, fontSize: 12, color: C.accent5, align: "center" });
   }
 
+  s = L.content(d, "「最近の若手は扱いにくい」は本当？",
+    "結論：若手が弱くなったという証拠は乏しい。ただし「周りから完璧を求められている」と感じる度合いや、若年層の心理的苦痛は実際に高まっている。だから根性論ではなく、回復のスキルを教える意味がある。Curran & Hill と Twenge は欧米のデータで、日本の若手にそのまま当てはまるかは未検証です。");
+  const gen = [
+    [0, "思い込みの面", "「最近の若者は」は昔から", "大人は自分が得意なことほど、若者が劣って見える記憶のバイアスがある", "Protzko & Schooler 2019", "FaHistory", C.accent5],
+    [0, "思い込みの面", "仕事への態度の世代差は小さい", "職務満足・コミットメント・離職意図の世代差は、ほぼゼロ〜小（20研究、約2万人）", "Costanza et al. 2012（メタ分析）", "FaBalanceScale", C.accent5],
+    [1, "実際に変わった面", "「完璧を求められている」感覚が上昇", "周りから完璧を求められていると感じる度合いが、1989→2016年で33%上昇（大学生 約4万人）", "Curran & Hill 2019（メタ分析）", "FaChartLine", C.accent1],
+    [1, "実際に変わった面", "若年層の心理的苦痛が増加", "18〜25歳の深刻な心理的苦痛が2008→2017年で71%増。上の年代では小さい", "Twenge et al. 2019", "FaHeartbeat", C.accent1],
+  ];
+  L.txt(s, "思い込みの面", { x: 0.6, y: 1.35, w: 5.9, h: 0.45, fontSize: 18, bold: true, color: C.accent5 });
+  L.txt(s, "実際に変わった面", { x: 6.8, y: 1.35, w: 5.9, h: 0.45, fontSize: 18, bold: true, color: C.accent1 });
+  for (let i = 0; i < 4; i++) {
+    const [col, , head, body, cite, ic, circ] = gen[i];
+    const x = 0.6 + col * 6.2, y = 1.9 + (i % 2) * 2.05;
+    L.card(d, s, x, y, 5.9, 1.85, { fill: col ? HEX.lt2 : "F4F1F2" });
+    await L.iconCircle(d, s, x + 0.25, y + 0.3, 0.8, ic, circ);
+    L.txt(s, head, { x: x + 1.25, y: y + 0.15, w: 4.5, h: 0.5, fontSize: 17, bold: true, color: C.text2 });
+    L.txt(s, body, { x: x + 1.25, y: y + 0.65, w: 4.5, h: 0.8, fontSize: 14, color: C.text1 });
+    L.txt(s, cite, { x: x + 1.25, y: y + 1.45, w: 4.5, h: 0.3, fontSize: 11, color: C.accent5 });
+  }
+  L.txt(s, "若手が弱くなったのではなく、評価のプレッシャーを強く感じやすい時代にいる", { x: 0.6, y: 6.05, w: 12.1, h: 0.7, fontSize: 20, bold: true, color: C.accent1, align: "center", valign: "middle" });
+
   s = L.content(d, "「心が折れる」は、脳の防衛反応",
     "既存メンタルジムの「サメモード」と同じ考え方です。評価される場面は脳にとって危険信号。反応は3つに分かれます。");
   await L.iconCards(d, s, [
@@ -406,7 +427,7 @@ async function build(out) {
 
   // 参考文献
   L.sectionSlide(d, "参考文献", "使用した論文・データ");
-  L.refSlides(d, "参考文献", [R.mhlw, R.persol, R.ogata, R.bauer, R.louis, R.km, R.wang, R.kluger, R.anseel, R.arvan, R.sliter, R.hulsheger, R.hayes, R.aldao, R.lieberman, R.masuda, R.david, R.neff, R.leary, R.breines, R.ferrari, R.kotera, R.bond, R.unruh, R.wacker, R.epinat, R.edmondson, R.haimovitz], 8);
+  L.refSlides(d, "参考文献", [R.mhlw, R.persol, R.ogata, R.protzko, R.costanza, R.curran, R.twenge, R.bauer, R.louis, R.km, R.wang, R.kluger, R.anseel, R.arvan, R.sliter, R.hulsheger, R.hayes, R.aldao, R.lieberman, R.masuda, R.david, R.neff, R.leary, R.breines, R.ferrari, R.kotera, R.bond, R.unruh, R.wacker, R.epinat, R.edmondson, R.haimovitz], 8);
 
   s = L.content(d, "参考文献についての注意");
   L.bullets(s, [
