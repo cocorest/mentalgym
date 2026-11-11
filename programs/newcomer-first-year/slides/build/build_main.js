@@ -25,6 +25,71 @@ async function pauseSlide(d, s, y = 1.55, h = 5.15) {
   }
 }
 
+
+// 研究とプログラムの対応（2列）
+async function researchSlide(d) {
+  const { C } = d;
+  const s = L.content(d, "心理学の研究に基づいてプログラムを構築",
+    "根拠：Bauer et al. 2007（メタ分析）／Wang & Zhang 2021（新入社員636名）／Kluger & DeNisi 1996（メタ分析）／Hülsheger & Schewe 2011（メタ分析）／Leary et al. 2007・Breines & Chen 2012／Bond & Bunce 2003。詳しくは巻末の参考文献へ。");
+  L.table(d, s, [
+    ["分かっていること", "プログラムでは"],
+    ["新人の適応は「役割の明確さ・自己効力感・受け入れられている感覚」で決まる", "役割を自分で明確化し、他人の評価に依存せず、自分で自分を顧みる力を育てる"],
+    ["評価を恐れる新人ほど、助けを求められない", "助けを求める心の土台を作る"],
+    ["フィードバックや指摘の約1/3は、逆効果", "フィードバックや指摘を「情報」として受け取る知識とスキルを獲得する"],
+    ["感情を押し殺す（表層演技）ほど消耗する", "思考や感情に気付き、それを上手く扱うスキルを高める"],
+    ["自分を思いやる人は、否定的評価で落ち込みにくく、責任は認め、改善への意欲も高まる", "自分自身を思いやり、自分の心の土台から整え、行動につなげていく"],
+    ["不安があっても大切なことに向かって動ける人は、1年後の心の健康と仕事の成果が高い", "不安や迷いがあっても、自分が大切にしたいことに沿って一歩を踏み出せる力を育てる"],
+  ], { colW: [6.05, 6.05], fontSize: 15, headSize: 15, y: 1.5, rowH: [0.5, 0.85, 0.65, 0.65, 0.65, 0.85, 0.85] });
+}
+
+// PAUSEはなぜこの順番？
+async function pauseOrderSlide(d) {
+  const { C, pres } = d;
+  const s = L.content(d, "PAUSEは、なぜこの順番？",
+    "体 → 気持ち → 考え → 自分への言葉 → 行動 の順に、内側から整えていきます。慣れれば30秒〜3分。全部できなくても大丈夫で、P（止まる）だけでも十分に意味があります。");
+  const phases = [
+    { title: "① 止まって、受け止める", sub: "体と気持ち", letters: [["P", "止まる", C.accent1], ["A", "気づく", C.accent5]], body: "まず反応を止めて、\n今の気持ちに気づく", fill: HEX.lt2 },
+    { title: "② 自分との関係を立て直す", sub: "考えと、自分への言葉", letters: [["U", "外す", C.accent4], ["S", "思いやる", C.accent1]], body: "責める考えから離れて、\n自分にやさしい言葉を", fill: "F1EDF6" },
+    { title: "③ 動き出す", sub: "行動", letters: [["E", "取り組む", C.accent6]], body: "不安が残っていても、\n大切なことへ小さな一歩", fill: "EAF3F1" },
+  ];
+  const ws = [4.6, 4.6, 2.5], gap = 0.2;
+  let x = 0.6;
+  for (let i = 0; i < 3; i++) {
+    const p = phases[i], w = ws[i];
+    L.card(d, s, x, 1.55, w, 4.2, { fill: p.fill });
+    L.txt(s, p.title, { x: x + 0.25, y: 1.75, w: w - 0.5, h: 0.5, fontSize: 18, bold: true, color: C.text2 });
+    L.txt(s, p.sub, { x: x + 0.25, y: 2.25, w: w - 0.5, h: 0.4, fontSize: 14, color: C.accent5 });
+    const n = p.letters.length, cw = 1.4;
+    const lx0 = x + (w - (n * cw + (n - 1) * 0.4)) / 2;
+    for (let k = 0; k < n; k++) {
+      const [lt, ja, col] = p.letters[k];
+      const lx = lx0 + k * (cw + 0.4);
+      s.addShape(pres.ShapeType.ellipse, { x: lx + 0.2, y: 2.8, w: 1.0, h: 1.0, fill: { color: col }, line: { color: col }, objectName: "letter" });
+      L.txt(s, lt, { x: lx + 0.2, y: 2.8, w: 1.0, h: 1.0, fontSize: 34, bold: true, color: C.background1, align: "center", valign: "middle" });
+      L.txt(s, ja, { x: lx, y: 3.85, w: cw, h: 0.45, fontSize: 16, bold: true, color: C.text2, align: "center" });
+      if (k < n - 1) s.addShape(pres.ShapeType.rightArrow, { x: lx + cw + 0.05, y: 3.15, w: 0.3, h: 0.3, fill: { color: C.accent2 }, line: { color: C.accent2 }, objectName: "arrow" });
+    }
+    L.txt(s, p.body, { x: x + 0.25, y: 4.5, w: w - 0.5, h: 1.1, fontSize: 15, color: C.text1, align: "center" });
+    if (i < 2) s.addShape(pres.ShapeType.chevron, { x: x + w + 0.02, y: 3.45, w: 0.16, h: 0.4, fill: { color: C.accent1 }, line: { color: C.accent1 }, objectName: "chevron" });
+    x += w + gap;
+  }
+  L.txt(s, "体 → 気持ち → 考え → 自分への言葉 → 行動。内側から順に整えていく", { x: 0.6, y: 6.0, w: 12.1, h: 0.7, fontSize: 20, bold: true, color: C.accent1, align: "center", valign: "middle" });
+}
+
+// それぞれの背景（やさしい言葉で）
+async function pauseBackgroundSlide(d) {
+  const s = L.content(d, "PAUSEの心理学的な背景",
+    "専門用語との対応：P＝マインドフルネス、A＝感情ラベリング、U＝ACTの脱フュージョン、S＝セルフコンパッション、E＝ACTの価値に沿った行動。参考：Lieberman et al. 2007／Masuda et al. 2004／Breines & Chen 2012・Leary et al. 2007／Bond & Bunce 2003。");
+  L.table(d, s, [
+    ["ステップ", "なぜ、この順番？", "心理学では"],
+    ["P 止まる", "心が揺れた直後、体は「戦う・逃げる・固まる」の準備に入っている。まず止まらないと、考える余裕が生まれない", "ゆっくり息を吐くと、体が落ち着きやすい。注意を「今この瞬間」に戻す練習"],
+    ["A 気づく", "何を感じているか分からないままでは、整えようがない。まず「今、悔しい」と言葉にする", "気持ちに名前をつけるだけで、脳の警報の反応が下がる"],
+    ["U 外す", "気持ちの周りには「私はダメだ」などの考えがくっついている。考えに飲み込まれたままでは、自分にやさしくできない", "考えは事実ではなく「頭が出した予想」。少し距離をとるだけで、信じ込みとつらさが下がる"],
+    ["S 思いやる", "責める考えから少し離れられたら、親友にかけるような言葉を自分にかける", "自分を思いやる人の方が、失敗後に改善しようとする意欲が高く、責任もきちんと認める"],
+    ["E 取り組む", "気持ちが少し落ち着いたら、不安が消えるのを待たずに、大切なことに沿った小さな一歩を", "不安があっても大切なことに向かって動ける人は、1年後の心の健康と仕事の成果が高い"],
+  ], { colW: [1.9, 5.35, 4.85], fontSize: 14, headSize: 15, boldFirst: true, y: 1.45, rowH: [0.5, 1.0, 0.85, 1.0, 0.85, 0.85] });
+}
+
 async function build(out) {
   const d = L.newDeck("入社1年目に学ぶ 職場の心理学");
   const { C, pres } = d;
@@ -106,17 +171,7 @@ async function build(out) {
   L.txt(s, "くり返すほど、回避が癖になる", { x: 1.0, y: 4.15, w: 4.8, h: 0.6, fontSize: 18, bold: true, color: C.accent1, valign: "middle" });
   L.txt(s, "回避・抑制・反すうは不調と関連し、受容・再評価・問題解決は心を守る（Aldao et al., 2010 メタ分析）", { x: 0.6, y: 5.5, w: 12.1, h: 0.8, fontSize: 15, color: C.text1 });
 
-  s = L.content(d, "研究が教えてくれること",
-    "プログラムの設計根拠です。詳しくは巻末の参考文献へ。");
-  L.table(d, s, [
-    ["分かっていること", "研究", "プログラムでは"],
-    ["新人の適応は「役割の明確さ・自己効力感・受け入れられている感覚」で決まる", "Bauer et al. 2007（メタ分析）", "自分で立て直す力＋助けを求める力"],
-    ["評価を恐れる新人ほど、助けを求められない", "Wang & Zhang 2021（新入社員636名）", "助けの求め方を台本で練習"],
-    ["指摘の約1/3は、注意が「自分という人間」に向くと逆効果", "Kluger & DeNisi 1996（メタ分析）", "指摘を「情報」として受け取る"],
-    ["感情を押し殺す（表層演技）ほど消耗する", "Hülsheger & Schewe 2011（メタ分析）", "感情は押し殺さず、名前をつける"],
-    ["自分を思いやる人は、否定的評価で落ち込みにくく、責任は認める", "Leary et al. 2007", "セルフコンパッションは甘えではない"],
-    ["心理的柔軟性は1年後の健康と業績を予測する", "Bond & Bunce 2003", "不安があっても動ける力を育てる"],
-  ], { colW: [5.6, 3.4, 3.1], fontSize: 13, headSize: 14, y: 1.45 });
+  await researchSlide(d);
 
   s = L.content(d, "目指すのは「折れない心」ではない",
     "設計の中心となる考え方です。");
@@ -133,16 +188,8 @@ async function build(out) {
     "メンタルジムのオリジナルモデル。各ステップは研究に基づいていますが、PAUSE全体の効果検証はこれからです。PAUSEは英語で「一時停止」。動画の一時停止ボタンのように、いったん止めていいと伝えます。");
   await pauseSlide(d, s);
 
-  s = L.content(d, "PAUSEの各ステップの根拠",
-    "日本語で覚えるなら「止まる・気づく・外す・思いやる・取り組む」。");
-  L.table(d, s, [
-    ["ステップ", "背景理論", "主な研究"],
-    ["P  Pause｜止まる", "マインドフルネス、ACT「今この瞬間」", "Hayes et al. 2006"],
-    ["A  Aware｜気づく", "マインドフルネスの気づき、感情ラベリング（名づければ、手なずけられる）", "Lieberman et al. 2007"],
-    ["U  Unhook｜外す", "ACT 脱フュージョン（考えの釣り針から外れる）", "Masuda et al. 2004 ／ David & Congleton 2013"],
-    ["S  Self-compassion｜思いやる", "セルフコンパッション（やさしさ・共通の人間性・マインドフルネス）", "Neff 2003 ／ Leary et al. 2007 ／ Ferrari et al. 2019"],
-    ["E  Engage｜取り組む", "ACT 価値とコミットされた行為、NVC", "Bond & Bunce 2003 ／ Unruh et al. 2022"],
-  ], { colW: [3.6, 5.0, 3.5], fontSize: 14, boldFirst: true, y: 1.6, rowH: 0.75 });
+  await pauseOrderSlide(d);
+  await pauseBackgroundSlide(d);
 
   s = L.content(d, "1年間のスケジュール",
     "研修は1回で終わらせず、入社2年目の節目（尾形）と、支援が減っていく時期（Kammeyer-Mueller et al. 2013）に合わせて再接続します。");
@@ -441,5 +488,5 @@ async function build(out) {
 
   await L.save(d, out);
 }
-module.exports = { build, pauseSlide };
+module.exports = { build, pauseSlide, researchSlide, pauseOrderSlide, pauseBackgroundSlide };
 if (require.main === module) build(process.argv[2] || "main.pptx").catch((e) => { console.error(e); process.exit(1); });
