@@ -50,7 +50,7 @@ async function pauseOrderSlide(d) {
   const phases = [
     { title: "① 止まって、受け止める", sub: "体と気持ち", letters: [["P", "止まる", C.accent1], ["A", "気づく", C.accent5]], body: "まず反応を止めて、\n今の気持ちに気づく", fill: HEX.lt2 },
     { title: "② 自分との関係を立て直す", sub: "考えと、自分への言葉", letters: [["U", "外す", C.accent4], ["S", "思いやる", C.accent1]], body: "責める考えから離れて、\n自分にやさしい言葉を", fill: "F1EDF6" },
-    { title: "③ 動き出す", sub: "行動", letters: [["E", "取り組む", C.accent6]], body: "不安が残っていても、\n大切なことへ小さな一歩", fill: "EAF3F1" },
+    { title: "③ 動き出す", sub: "行動", letters: [["E", "取り組む", C.accent6]], body: "不安が残っていても、\n大切なことへ\n小さな一歩", fill: "EAF3F1" },
   ];
   const ws = [4.6, 4.6, 2.5], gap = 0.2;
   let x = 0.6;
